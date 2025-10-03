@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Safety | MyIPNow</title>
+    <meta name="description" content="Learn how to stay safe while using the internet.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text><text y=%22.9em%22 x=%2228%22 font-size=%2255%22>📍</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b;
+            --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+        .site-header { background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); }
+        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .search-form { display: flex; flex-grow: 1; max-width: 400px; }
+        .search-form input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 0.9rem; outline-color: var(--accent-color); }
+        .search-form button { padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500; transition: background-color 0.2s ease; }
+        .search-form button:hover { background: #059669; }
+        .category-nav { padding-top: 1rem; }
+        .category-nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; align-items: center; overflow-x: auto; white-space: nowrap; }
+        .category-nav a { text-decoration: none; color: var(--text-primary); font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
+        .category-nav a:hover { color: var(--accent-color); }
+        .page-header { background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center; }
+        .page-header h1 { font-size: 2.5rem; color: var(--text-primary); margin: 0 0 0.5rem 0; }
+        .page-header p { font-size: 1rem; color: var(--text-secondary); margin: 0; }
+        .article-list .article-item { background: var(--card-bg); margin-bottom: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); padding: 1.5rem 2rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .article-list .article-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .article-item h2 { margin-top: 0; }
+        .article-item h2 a { text-decoration: none; color: var(--text-primary); font-size: 1.5rem; }
+        .article-item h2 a:hover { color: var(--accent-color); }
+        .article-excerpt { color: var(--text-secondary); font-size: 1rem; }
+        .read-more { display: inline-block; margin-top: 1rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        .pagination { display: flex; justify-content: center; gap: 1rem; align-items: center; margin-top: 2rem; padding-bottom: 2rem; }
+        .pagination a, .pagination span { padding: 0.75rem 1rem; border-radius: 8px; text-decoration: none; color: var(--text-primary); background: var(--card-bg); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .pagination a:hover { background: var(--accent-color); color: white; }
+        .pagination .current { background: var(--accent-color); color: white; font-weight: 600; }
+        .footer { text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background-color: #fff; border-radius: 16px; box-shadow: var(--card-shadow); }
+        .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; list-style: none; padding: 0; margin: 0 0 1rem 0; }
+        .footer-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease; }
+        .footer-nav a:hover { color: var(--accent-color); }
+        .footer-copyright { font-size: 0.85rem; color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <div class="header-top">
+                <a href="index.html" class="logo">🌐 MyIPNow</a>
+                <form class="search-form" action="/search" method="get">
+                    <input type="search" name="q" placeholder="Search..." aria-label="Search articles">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <nav class="category-nav" aria-label="Article Categories">
+                <ul>
+                    <li><a href="online-safety.html">Online Safety</a></li>
+                    <li><a href="online-privacy.html">Online Privacy</a></li>
+                    <li><a href="networking.html">Networking</a></li>
+                    <li><a href="ip-addresses.html">IP Addresses</a></li>
+                    <li><a href="home-computing.html">Home Computing</a></li>
+                    <li><a href="general-topics.html">General Topics</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <header class="page-header">
+                <h1>Online Safety</h1>
+                <p>Learn how to stay safe while using the internet.</p>
+            </header>
+            <div class="article-list">
+                
+    <article class="article-item">
+        <h2><a href="/unlocking-the-power-of-scamming-expert/">Unlocking the Power of Scamming: Expert Tips and Tricks.</a></h2>
+        <p class="article-excerpt">A deep dive into Unlocking the Power of Scamming: Expert Tips and Tricks.</p>
+        <a href="/unlocking-the-power-of-scamming-expert/" class="read-more">Read More &rarr;</a>
+    </article>
+    
+
+    <article class="article-item">
+        <h2><a href="/unlocking-the-power-of-scams-artificial/">Unlocking the Power of Scams Artificial Intelligence: Expert Tips and Tricks.</a></h2>
+        <p class="article-excerpt">A deep dive into Unlocking the Power of Scams Artificial Intelligence: Expert Tips and Tricks.</p>
+        <a href="/unlocking-the-power-of-scams-artificial/" class="read-more">Read More &rarr;</a>
+    </article>
+    
+
+    <article class="article-item">
+        <h2><a href="/unlocking-the-power-of-scams-crisis/">Unlocking the Power of Scams Crisis: Expert Tips and Tricks.</a></h2>
+        <p class="article-excerpt">A deep dive into Unlocking the Power of Scams Crisis: Expert Tips and Tricks.</p>
+        <a href="/unlocking-the-power-of-scams-crisis/" class="read-more">Read More &rarr;</a>
+    </article>
+    
+
+    <article class="article-item">
+        <h2><a href="/unlocking-the-power-of-scams-work/">Unlocking the Power of Scams Work: Expert Tips and Tricks.</a></h2>
+        <p class="article-excerpt">A deep dive into Unlocking the Power of Scams Work: Expert Tips and Tricks.</p>
+        <a href="/unlocking-the-power-of-scams-work/" class="read-more">Read More &rarr;</a>
+    </article>
+    
+
+    <article class="article-item">
+        <h2><a href="/unlocking-the-power-of-sextortion-scams/">Unlocking the Power of Sextortion Scams: Expert Tips and Tricks.</a></h2>
+        <p class="article-excerpt">A deep dive into Unlocking the Power of Sextortion Scams: Expert Tips and Tricks.</p>
+        <a href="/unlocking-the-power-of-sextortion-scams/" class="read-more">Read More &rarr;</a>
+    </article>
+    
+
+    <article class="article-item">
+        <h2><a href="/unlocking-the-power-of-types-computer/">Unlocking the Power of Types Computer Viruses: Expert Tips and Tricks.</a></h2>
+        <p class="article-excerpt">A deep dive into Unlocking the Power of Types Computer Viruses: Expert Tips and Tricks.</p>
+        <a href="/unlocking-the-power-of-types-computer/" class="read-more">Read More &rarr;</a>
+    </article>
+    
+            </div>
+            <nav class="pagination" aria-label="Page navigation">
+                <a href="page35.html">&larr; Previous</a> <a href="index.html">1</a> <span>…</span> <a href="page34.html">34</a> <a href="page35.html">35</a> <span class="current">36</span>
+            </nav>
+        </main>
+        <footer class="footer">
+            <ul class="footer-nav">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Affiliate Disclosure</a></li>
+            </ul>
+            <div class="footer-copyright">&copy; 2025 MyIPNow. All Rights Reserved.</div>
+        </footer>
+    </div>
+</body>
+</html>
