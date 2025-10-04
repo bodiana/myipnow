@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us | MyIPNow</title>
-    <meta name="description" content="Get in touch with MyIPNow. Contact us with questions, feedback, or business inquiries." />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text><text y=%22.9em%22 x=%2228%22 font-size=%2255%22>📍</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | MyIPNow</title>
+<meta content="Get in touch with MyIPNow. Contact us with questions, feedback, or business inquiries." name="description"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
             --bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b;
             --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -23,9 +24,29 @@
         .search-form button { padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500; transition: background-color 0.2s ease; }
         .search-form button:hover { background: #059669; }
         .category-nav { padding-top: 1rem; }
-        .category-nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; align-items: center; overflow-x: auto; white-space: nowrap; }
-        .category-nav a { text-decoration: none; color: var(--text-primary); font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
-        .category-nav a:hover { color: var(--accent-color); }
+        .category-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  justify-content: center !important;
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
         .page-content { background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; }
         .page-content h1 { font-size: 2rem; margin-bottom: 1rem; }
         .page-content p { margin-bottom: 1rem; color: var(--text-secondary); }
@@ -38,54 +59,92 @@
         .footer-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease; }
         .footer-nav a:hover { color: var(--accent-color); }
         .footer-copyright { font-size: 0.85rem; color: var(--text-secondary); }
-    </style>
+    
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header class="site-header">
-            <div class="header-top">
-                <a href="index.html" class="logo">🌐 MyIPNow</a>
-                <form class="search-form" action="/search" method="get">
-                    <input type="search" name="q" placeholder="Search..." aria-label="Search articles">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-            <nav class="category-nav" aria-label="Article Categories">
-                <ul>
-                    <li><a href="online-safety.html">Online Safety</a></li>
-                    <li><a href="online-privacy.html">Online Privacy</a></li>
-                    <li><a href="networking.html">Networking</a></li>
-                    <li><a href="ip-addresses.html">IP Addresses</a></li>
-                    <li><a href="home-computing.html">Home Computing</a></li>
-                    <li><a href="general-topics.html">General Topics</a></li>
-                </ul>
-            </nav>
-        </header>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="/">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li><a href="/online-safety/">Online Safety</a></li>
+<li><a href="/online-privacy/">Online Privacy</a></li>
+<li><a href="/networking/">Networking</a></li>
+<li><a href="/ip-addresses/">IP Addresses</a></li>
+<li><a href="/home-computing/">Home Computing</a></li>
+<li><a href="/general-topics/">General Topics</a></li>
+</ul>
+</nav></header><main class="page-content">
+<h1>Contact Us</h1>
+<p>We’d love to hear from you! Whether you have feedback, business inquiries, or just a question, reach out to us using the form below.</p>
+<form action="mailto:your@email.com" class="contact-form" enctype="text/plain" method="post">
+<input name="name" placeholder="Your Name" required="" type="text"/>
+<input name="email" placeholder="Your Email" required="" type="email"/>
+<textarea name="message" placeholder="Your Message" required="" rows="5"></textarea>
+<button type="submit">Send Message</button>
+</form>
+</main><footer class="footer">
+<ul class="footer-nav">
+<li><a href="/about.html">About</a></li>
+<li><a href="/contact.html">Contact</a></li>
+<li><a href="/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="/terms-of-use.html">Terms of Use</a></li>
+<li><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">© 2025 myipnow. All Rights Reserved.</div>
+</footer></div>
 
-        <main class="page-content">
-            <h1>Contact Us</h1>
-            <p>We’d love to hear from you! Whether you have feedback, business inquiries, or just a question, reach out to us using the form below.</p>
-            
-            <form class="contact-form" action="mailto:your@email.com" method="post" enctype="text/plain">
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Your Email" required />
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </main>
 
-        <footer class="footer">
-            <ul class="footer-nav">
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-use.html">Terms of Use</a></li>
-                <li><a href="affiliate-disclosure.html">Affiliate Disclosure</a></li>
-            </ul>
-            <div class="footer-copyright">
-                &copy; 2025 MyIPNow. All Rights Reserved.
-            </div>
-        </footer>
-    </div>
 </body>
 </html>

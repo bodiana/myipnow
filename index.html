@@ -1,23 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What's My IP Address? IPv4 & IPv6 Lookup</title>
-    <meta name="description" content="Instantly find your public IPv4 and IPv6 addresses, location, and ISP with our fast, free IP address checker.">
-    <meta name="keywords" content="IP address, IPv4, IPv6, public IP, find my IP, IP lookup, IP location, IP finder, my IP, hide my ip, vpn, privacy, security">
-    <meta property="og:title" content="What's My Public IP Address? IPv4 & IPv6 Lookup">
-    <meta property="og:description" content="Discover your public IPv4 and IPv6 addresses and location instantly with our easy-to-use tool.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://yourdomain.com/preview.png">
-    <meta property="og:url" content="https://yourdomain.com">
-    <meta name="google-site-verification" content="nqgYu_ffRt3NDAFGwI6QxcrzBgCSP7POE2z3t2G7ulA" />
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text><text y=%22.9em%22 x=%2228%22 font-size=%2255%22>📍</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'" />
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>What's My IP Address? IPv4 &amp; IPv6 Lookup</title>
+<meta content="Instantly find your public IPv4 and IPv6 addresses, location, and ISP with our fast, free IP address checker." name="description"/>
+<meta content="IP address, IPv4, IPv6, public IP, find my IP, IP lookup, IP location, IP finder, my IP, hide my ip, vpn, privacy, security" name="keywords"/>
+<meta content="What's My Public IP Address? IPv4 &amp; IPv6 Lookup" property="og:title"/>
+<meta content="Discover your public IPv4 and IPv6 addresses and location instantly with our easy-to-use tool." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://yourdomain.com/preview.png" property="og:image"/>
+<meta content="https://yourdomain.com" property="og:url"/>
+<meta content="nqgYu_ffRt3NDAFGwI6QxcrzBgCSP7POE2z3t2G7ulA" name="google-site-verification"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'" rel="stylesheet"/>
+<style>
         :root {
             --bg-color: #f7f8f9;
             --card-bg: #ffffff;
@@ -96,30 +95,28 @@
             padding-top: 1rem;
         }
         .category-nav ul {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-        }
-        .category-nav .nav-title {
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .category-nav a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color var(--transition-speed);
-        }
-        .category-nav a:hover {
-            color: var(--accent-color);
-        }
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  justify-content: center !important;
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
 
         .main-section, .map-section, .faq-section, .guide-section, .snippet-section {
             background: var(--card-bg);
@@ -341,10 +338,16 @@
                 max-width: none;
             }
             .category-nav ul {
-                overflow-x: auto;
-                padding-bottom: 10px; /* For scrollbar */
-                white-space: nowrap;
-            }
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+
+}
         }
 
         @media (max-width: 600px) {
@@ -356,9 +359,53 @@
             .hide-ip-btn { font-size: 1.1rem; padding: 1.2rem 2rem; }
             .info-grid { grid-template-columns: 1fr 1fr; }
         }
-    </style>
     
-    <script type="application/ld+json">
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
+<script type="application/ld+json">
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
@@ -371,7 +418,7 @@
           }
         }
     </script>
-    <script type="application/ld+json">
+<script type="application/ld+json">
         {
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -415,157 +462,122 @@
         }
     </script>
 </head>
-
 <body>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17582870702"></script>
-    <script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-17582870702"></script>
+<script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'AW-17582870702');
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379" crossorigin="anonymous"></script>
-
-    <div class="container">
-        <header class="site-header">
-            <div class="header-top">
-                <a href="/" class="logo">🌐 MyIPNow</a>
-                <form class="search-form" action="/search" method="get">
-                    <input type="search" name="q" placeholder="Search..." aria-label="Search articles">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-            <nav class="category-nav" aria-label="Article Categories">
-                <ul>
-                    <!-- REMOVED: <li class="nav-title">ARTICLES:</li> -->
-                    <li><a href="/online-safety/">Online Safety</a></li>
-                    <li><a href="/online-privacy/">Online Privacy</a></li>
-                    <li><a href="/networking/">Networking</a></li>
-                    <li><a href="/ip-addresses/">IP Addresses</a></li>
-                    <li><a href="/home-computing/">Home Computing</a></li>
-                    <li><a href="/general-topics/">General Topics</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main class="main-section" aria-label="IP Information">
-            <h2>Your Public IP Address</h2>
-            <div class="ip-display">
-                <div class="ip-display-item">
-                    <p class="ip-label">IPv4</p>
-                    <p id="ipAddressIPv4" class="ip-address">Loading...</p>
-                </div>
-                <div class="ip-display-item">
-                    <p class="ip-label">IPv6</p>
-                    <p id="ipAddressIPv6" class="ip-address">Loading...</p>
-                </div>
-            </div>
-            <section id="additionalInfo" class="info-grid" style="display: none;" aria-label="Additional IP Details">
-                <div class="info-card"><div class="info-title">🏙️ Location</div><div id="location" class="info-value">Loading...</div></div>
-                <div class="info-card"><div class="info-title">🏢 ISP</div><div id="isp" class="info-value">Loading...</div></div>
-                <div class="info-card"><div class="info-title">🌍 Country</div><div id="country" class="info-value">Loading...</div></div>
-                <div class="info-card"><div class="info-title">🕐 Timezone</div><div id="timezone" class="info-value">Loading...</div></div>
-            </section>
-        </main>
-        
-        <nav aria-label="Privacy Guide Link">
-             <a href="hide-my-ip.html" class="action-btn hide-ip-btn">🛡️ Hide My IP Address & Get Private!</a>
-        </nav>
-
-        <section class="map-section" id="map-section" aria-label="Map Location">
-            <h3 class="map-title">📍 Approximate Location</h3>
-            <div id="map"></div>
-            <div id="coordinates" class="coordinates" style="display: none;"></div>
-        </section>
-
-        <nav class="controls" aria-label="Utility Tools">
-            <button class="action-btn" onclick="runAllFetches()">🔄 Refresh Check</button>
-            <button class="action-btn" onclick="toggleMapType()">🗺️ Toggle Map</button>
-        </nav>
-
-        <!-- SNIPPET MOVED HERE -->
-        <section class="snippet-section" aria-label="IP Address Explanation">
-            <h2>What is My IP Address and Why Does It Matter?</h2>
-            <p>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="/">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<!-- REMOVED: <li class="nav-title">ARTICLES:</li> -->
+<li><a href="/online-safety/">Online Safety</a></li>
+<li><a href="/online-privacy/">Online Privacy</a></li>
+<li><a href="/networking/">Networking</a></li>
+<li><a href="/ip-addresses/">IP Addresses</a></li>
+<li><a href="/home-computing/">Home Computing</a></li>
+<li><a href="/general-topics/">General Topics</a></li>
+</ul>
+</nav></header><main aria-label="IP Information" class="main-section">
+<h2>Your Public IP Address</h2>
+<div class="ip-display">
+<div class="ip-display-item">
+<p class="ip-label">IPv4</p>
+<p class="ip-address" id="ipAddressIPv4">Loading...</p>
+</div>
+<div class="ip-display-item">
+<p class="ip-label">IPv6</p>
+<p class="ip-address" id="ipAddressIPv6">Loading...</p>
+</div>
+</div>
+<section aria-label="Additional IP Details" class="info-grid" id="additionalInfo" style="display: none;">
+<div class="info-card"><div class="info-title">🏙️ Location</div><div class="info-value" id="location">Loading...</div></div>
+<div class="info-card"><div class="info-title">🏢 ISP</div><div class="info-value" id="isp">Loading...</div></div>
+<div class="info-card"><div class="info-title">🌍 Country</div><div class="info-value" id="country">Loading...</div></div>
+<div class="info-card"><div class="info-title">🕐 Timezone</div><div class="info-value" id="timezone">Loading...</div></div>
+</section>
+</main><nav aria-label="Privacy Guide Link">
+<a class="action-btn hide-ip-btn" href="/hide-my-ip/">🛡️ Hide My IP Address &amp; Get Private!</a>
+</nav><section aria-label="Map Location" class="map-section" id="map-section">
+<h3 class="map-title">📍 Approximate Location</h3>
+<div id="map"></div>
+<div class="coordinates" id="coordinates" style="display: none;"></div>
+</section><nav aria-label="Utility Tools" class="controls">
+<button class="action-btn" onclick="runAllFetches()">🔄 Refresh Check</button>
+<button class="action-btn" onclick="toggleMapType()">🗺️ Toggle Map</button>
+</nav><!-- SNIPPET MOVED HERE --><section aria-label="IP Address Explanation" class="snippet-section">
+<h2>What is My IP Address and Why Does It Matter?</h2>
+<p>
                 Your IP address is a unique code that identifies your device on the internet, much like a digital home address. It's essential for sending and receiving data online. Knowing your IP is crucial for online privacy, security, and troubleshooting network issues. <a href="/guides/what-is-an-ip-address">Learn more in our complete guide</a>.
             </p>
-        </section>
-
-        <section class="faq-section" aria-label="Frequently Asked Questions">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <div class="faq-question">What is an IP Address?</div>
-                <div class="faq-answer">An IP (Internet Protocol) address is a unique numerical label assigned to every device connected to a computer network that uses the Internet Protocol for communication. Think of it like a mailing address for your computer on the internet.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What is the difference between a Public and Private IP?</div>
-                <div class="faq-answer">Your Public IP address is what the outside world sees. A Private IP is used in your local network. Your router assigns private IPs to devices.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Why is my location not perfectly accurate?</div>
-                <div class="faq-answer">Location is based on your public IP, linked to your ISP's servers. It's usually accurate to city or region level.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Is my IP address static or dynamic?</div>
-                <div class="faq-answer">Most residential connections use dynamic IP addresses. Static IPs are fixed and usually requested by businesses or servers.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How do I change my IP address?</div>
-                <div class="faq-answer">You can change your IP by restarting your router or contacting your ISP for a static IP.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What is IPv4?</div>
-                <div class="faq-answer">IPv4 is the original version of the Internet Protocol, using a 32-bit address format. With the explosion of internet devices, the limited number of IPv4 addresses is a growing concern.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What is IPv6?</div>
-                <div class="faq-answer">IPv6 is the newest version of the Internet Protocol, using a 128-bit address format to accommodate an almost unlimited number of unique addresses.</div>
-            </div>
-        </section>
-
-        <section class="guide-section">
-            <h2>The Ultimate Guide to IP Addresses</h2>
-            <div class="guide-content">
-                <p>An IP address is a fundamental part of how the internet works. It's the unique identifier that allows your computer to communicate with other devices and servers on the web. Understanding your IP address can help you with everything from online security to troubleshooting network issues.</p>
-                <h3>IP Address Basics: Public vs. Private</h3>
-                <p>Every device on a network has an IP address. There are two main types:</p>
-                <ul>
-                    <li><strong>Public IP Address:</strong> This is the address assigned to your network by your Internet Service Provider (ISP). It's the address that the rest of the internet uses to find and communicate with you. Your entire home network shares one public IP address.</li>
-                    <li><strong>Private IP Address:</strong> This is a unique address assigned to each device (like your phone, laptop, or smart TV) within your local network. Your router uses these private IPs to direct traffic to the correct device.</li>
-                </ul>
-                <h3>What's the Difference Between IPv4 and IPv6?</h3>
-                <p>IP addresses come in two main versions:</p>
-                <ul>
-                    <li><strong>IPv4:</strong> The original standard, IPv4 uses a 32-bit address format (e.g., 192.0.2.1). With the explosion of internet-connected devices, the limited number of IPv4 addresses is a growing concern.</li>
-                    <li><strong>IPv6:</strong> The newer version, IPv6 uses a 128-bit address format (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334). It was developed to solve the IPv4 address shortage, offering a virtually unlimited supply of unique addresses.</li>
-                </ul>
-                <h3>Why Does Your IP Address Matter?</h3>
-                <p>Knowing your IP address is important for several reasons:</p>
-                <ul>
-                    <li><strong>Remote Access:</strong> It allows you to connect to devices on your home network from a remote location.</li>
-                    <li><strong>Security:</strong> You can use your IP address to block or allow access to services, which is a key part of network security.</li>
-                    <li><strong>Troubleshooting:</strong> An IP address is the first thing to check when diagnosing internet connection issues.</li>
-                    <li><strong>Geo-targeting:</strong> Websites and online services use your IP address to determine your approximate location to deliver localized content or services.</li>
-                </ul>
-            </div>
-        </section>
-        
-        <footer class="footer">
-            <ul class="footer-nav">
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a href="terms-of-use.html">Terms of Use</a></li>
-                <li><a href="affiliate-disclosure.html">Affiliate Disclosure</a></li>
-            </ul>
-            <div class="footer-copyright">
-                &copy; 2025 myipnow. All Rights Reserved.
-            </div>
-        </footer>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
-    <script>
+</section><section aria-label="Frequently Asked Questions" class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-question">What is an IP Address?</div>
+<div class="faq-answer">An IP (Internet Protocol) address is a unique numerical label assigned to every device connected to a computer network that uses the Internet Protocol for communication. Think of it like a mailing address for your computer on the internet.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What is the difference between a Public and Private IP?</div>
+<div class="faq-answer">Your Public IP address is what the outside world sees. A Private IP is used in your local network. Your router assigns private IPs to devices.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Why is my location not perfectly accurate?</div>
+<div class="faq-answer">Location is based on your public IP, linked to your ISP's servers. It's usually accurate to city or region level.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Is my IP address static or dynamic?</div>
+<div class="faq-answer">Most residential connections use dynamic IP addresses. Static IPs are fixed and usually requested by businesses or servers.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">How do I change my IP address?</div>
+<div class="faq-answer">You can change your IP by restarting your router or contacting your ISP for a static IP.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What is IPv4?</div>
+<div class="faq-answer">IPv4 is the original version of the Internet Protocol, using a 32-bit address format. With the explosion of internet devices, the limited number of IPv4 addresses is a growing concern.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What is IPv6?</div>
+<div class="faq-answer">IPv6 is the newest version of the Internet Protocol, using a 128-bit address format to accommodate an almost unlimited number of unique addresses.</div>
+</div>
+</section><section class="guide-section">
+<h2>The Ultimate Guide to ip-addresses</h2>
+<div class="guide-content">
+<p>An IP address is a fundamental part of how the internet works. It's the unique identifier that allows your computer to communicate with other devices and servers on the web. Understanding your IP address can help you with everything from online security to troubleshooting network issues.</p>
+<h3>IP Address Basics: Public vs. Private</h3>
+<p>Every device on a network has an IP address. There are two main types:</p>
+<ul>
+<li><strong>Public IP Address:</strong> This is the address assigned to your network by your Internet Service Provider (ISP). It's the address that the rest of the internet uses to find and communicate with you. Your entire home network shares one public IP address.</li>
+<li><strong>Private IP Address:</strong> This is a unique address assigned to each device (like your phone, laptop, or smart TV) within your local network. Your router uses these private IPs to direct traffic to the correct device.</li>
+</ul>
+<h3>What's the Difference Between IPv4 and IPv6?</h3>
+<p>IP addresses come in two main versions:</p>
+<ul>
+<li><strong>IPv4:</strong> The original standard, IPv4 uses a 32-bit address format (e.g., 192.0.2.1). With the explosion of internet-connected devices, the limited number of IPv4 addresses is a growing concern.</li>
+<li><strong>IPv6:</strong> The newer version, IPv6 uses a 128-bit address format (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334). It was developed to solve the IPv4 address shortage, offering a virtually unlimited supply of unique addresses.</li>
+</ul>
+<h3>Why Does Your IP Address Matter?</h3>
+<p>Knowing your IP address is important for several reasons:</p>
+<ul>
+<li><strong>Remote Access:</strong> It allows you to connect to devices on your home network from a remote location.</li>
+<li><strong>Security:</strong> You can use your IP address to block or allow access to services, which is a key part of network security.</li>
+<li><strong>Troubleshooting:</strong> An IP address is the first thing to check when diagnosing internet connection issues.</li>
+<li><strong>Geo-targeting:</strong> Websites and online services use your IP address to determine your approximate location to deliver localized content or services.</li>
+</ul>
+</div>
+</section><script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script>
         let map, marker, streetLayer, satelliteLayer, currentLayer;
         let mapInitialized = false;
 
@@ -701,6 +713,28 @@
             currentLayer = (currentLayer === streetLayer) ? satelliteLayer : streetLayer;
             currentLayer.addTo(map);
         }
-    </script>
+    </script><footer class="footer">
+<ul class="footer-nav">
+<li><a href="/about.html">About</a></li>
+<li><a href="/contact.html">Contact</a></li>
+<li><a href="/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="/terms-of-use.html">Terms of Use</a></li>
+<li><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">
+            © 2025 myipnow. All Rights Reserved.
+        </div>
+</footer></div>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
