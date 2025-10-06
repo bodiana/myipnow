@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://myipnow.net/sitemap.xml
+
+Disallow: /online-safety/page
+Disallow: /online-privacy/page
+Disallow: /networking/page
+Disallow: /ip-addresses/page
+Disallow: /home-computing/page
+
