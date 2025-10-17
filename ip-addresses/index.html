@@ -146,20 +146,61 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin:0; 
 <div class="footer-copyright">© 2025 myipnow. All Rights Reserved.</div>
 </footer>
 </div>
-<script id="fix-ip-scroll">
-document.addEventListener("DOMContentLoaded", function () {
-  // Save scroll position when leaving the IP Addresses category
-  if (window.location.pathname.startsWith("/ip-addresses/")) {
-    window.addEventListener("beforeunload", function () {
-      sessionStorage.setItem("scrollPos_ip-addresses", window.scrollY);
-    });
-    // Restore scroll position when returning to the IP Addresses category
-    const pos = sessionStorage.getItem("scrollPos_ip-addresses");
-    if (pos) {
-      window.scrollTo(0, parseInt(pos, 10));
-      sessionStorage.removeItem("scrollPos_ip-addresses");
-    }
+<script id="cat-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  // Save scroll + current URL right before we navigate to an article
+  function saveState(){
+    try {
+      var state = { url: location.pathname + location.search + location.hash,
+                    scroll: (window.scrollY || window.pageYOffset || 0) };
+      sessionStorage.setItem(KEY, JSON.stringify(state));
+    } catch(e){}
   }
-});
+  function restore(){
+    try{
+      var raw = sessionStorage.getItem(KEY);
+      if (!raw) return;
+      var st = JSON.parse(raw);
+      if (st && typeof st.scroll === 'number') {
+        window.scrollTo(0, st.scroll);
+      }
+    }catch(e){}
+  }
+  function init(){
+    // Only run on pages that have article listings
+    var list = document.querySelector('.article-list');
+    if (list){
+      // Capture click as early as possible
+      list.addEventListener('mousedown', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        // internal links only
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
+      list.addEventListener('click', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
+    }
+    // Restore scroll on load and bfcache
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', restore);
+    } else {
+      restore();
+    }
+    window.addEventListener('pageshow', function(ev){
+      if (ev && ev.persisted) restore();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script></body>
 </html>

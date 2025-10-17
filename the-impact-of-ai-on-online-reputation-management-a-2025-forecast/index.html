@@ -349,59 +349,45 @@
      © 2025 MyIPNow. All Rights Reserved.
     </div>
 </footer><!-- Related Articles --></div>
-<script id="fix-return-to-category-v2">
-(function() {
-  try {
-    var btn = document.getElementById("returnToCategory");
+<script id="article-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+    var btn = document.getElementById('returnToCategory');
     if (!btn) return;
 
-    // Neutralize any hardcoded href left in HTML
-    btn.setAttribute("href", "#");
-
-    var categories = ["online-safety","online-privacy","networking","ip-addresses","home-computing","general-topics"];
-    var ref = document.referrer || "";
-    var catHit = null;
-    for (var i=0; i<categories.length; i++) {
-      if (ref.indexOf("/" + categories[i] + "/") !== -1) { catHit = categories[i]; break; }
-    }
-
-    if (catHit) {
-      // Came from a category page (any page, any pagination) → go back exactly there
-      btn.setAttribute("href", ref);
-      return;
-    }
-
-    // No useful referrer → try last saved category path (category pages often save this)
-    var lastPath = sessionStorage.getItem("lastCategoryPath");
-    if (lastPath && typeof lastPath === "string" && lastPath.length > 1) {
-      btn.setAttribute("href", lastPath);
-      return;
-    }
-
-    // Final fallback: home
-    btn.setAttribute("href", "/");
-  } catch (e) {
-    // Fail-safe: still point to home if anything goes wrong
+    var raw = null, url=null;
     try {
-      var b2 = document.getElementById("returnToCategory");
-      if (b2) b2.setAttribute("href", "/");
-    } catch (_) {}
+      raw = sessionStorage.getItem(KEY);
+      if (raw){
+        var st = JSON.parse(raw);
+        url = st && st.url;
+      }
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+    if (url && CAT_RE.test(url)) {
+      btn.setAttribute('href', url);
+      return;
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index.html
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      var cat = '/' + parts[0] + '/';
+      if (CAT_RE.test(cat)) {
+        btn.setAttribute('href', cat + 'index.html');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();
-</script><script id="fix-ip-scroll">
-document.addEventListener("DOMContentLoaded", function () {
-  // Save scroll position when leaving the IP Addresses category
-  if (window.location.pathname.startsWith("/ip-addresses/")) {
-    window.addEventListener("beforeunload", function () {
-      sessionStorage.setItem("scrollPos_ip-addresses", window.scrollY);
-    });
-    // Restore scroll position when returning to the IP Addresses category
-    const pos = sessionStorage.getItem("scrollPos_ip-addresses");
-    if (pos) {
-      window.scrollTo(0, parseInt(pos, 10));
-      sessionStorage.removeItem("scrollPos_ip-addresses");
-    }
-  }
-});
 </script></body>
 </html>

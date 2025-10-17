@@ -254,82 +254,63 @@
 </div>
 </footer>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const returnBtn = document.getElementById("returnToCategory");
-    if (!returnBtn) return;
 
-    const articleToCategory = {
-        "advanced-guide-to-annoying-viral-requests": "general-topics",
-        "unlocking-the-power-of-privacy-gift": "online-privacy",
-        // add all your articles here
-    };
 
-    const pathParts = window.location.pathname.split("/").filter(p => p);
-    const articleSlug = pathParts[pathParts.length - 1];
-    const category = articleToCategory[articleSlug] || "general-topics";
-
-    const lastScroll = sessionStorage.getItem(`scrollPos_${category}`);
-    if (lastScroll) {
-        window.scrollTo(0, parseInt(lastScroll, 10));
-        sessionStorage.removeItem(`scrollPos_${category}`);
+<script id="cat-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  // Save scroll + current URL right before we navigate to an article
+  function saveState(){
+    try {
+      var state = { url: location.pathname + location.search + location.hash,
+                    scroll: (window.scrollY || window.pageYOffset || 0) };
+      sessionStorage.setItem(KEY, JSON.stringify(state));
+    } catch(e){}
+  }
+  function restore(){
+    try{
+      var raw = sessionStorage.getItem(KEY);
+      if (!raw) return;
+      var st = JSON.parse(raw);
+      if (st && typeof st.scroll === 'number') {
+        window.scrollTo(0, st.scroll);
+      }
+    }catch(e){}
+  }
+  function init(){
+    // Only run on pages that have article listings
+    var list = document.querySelector('.article-list');
+    if (list){
+      // Capture click as early as possible
+      list.addEventListener('mousedown', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        // internal links only
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
+      list.addEventListener('click', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
     }
-
-    returnBtn.href = `/${category}/index.html`;
-});
-
-window.addEventListener("beforeunload", function() {
-    const referrerParts = document.referrer.split("/").filter(p => p);
-    if (referrerParts.length >= 1) {
-        const refCategory = referrerParts[0];
-        sessionStorage.setItem(`scrollPos_${refCategory}`, window.scrollY);
+    // Restore scroll on load and bfcache
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', restore);
+    } else {
+      restore();
     }
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const returnBtn = document.getElementById("returnToCategory");
-  if (!returnBtn) return;
-
-  // Check if we have a saved category path
-  const lastCategory = sessionStorage.getItem("lastCategoryPath");
-  const lastScroll = sessionStorage.getItem("lastCategoryScroll");
-
-  if (lastCategory) {
-    returnBtn.href = lastCategory;
-    // Scroll to saved position after returning to category
-    returnBtn.addEventListener("click", function () {
-      sessionStorage.setItem("scrollTo", lastScroll || 0);
+    window.addEventListener('pageshow', function(ev){
+      if (ev && ev.persisted) restore();
     });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    // Fallback: go to a default category if user directly visited article
-    const defaultCategory = "general-topics";
-    returnBtn.href = `/${defaultCategory}/index.html`;
+    init();
   }
-});
-
-// Save scroll position when leaving category pages
-document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.includes("/online-safety/") ||
-      window.location.pathname.includes("/online-privacy/") ||
-      window.location.pathname.includes("/networking/") ||
-      window.location.pathname.includes("/ip-addresses/") ||
-      window.location.pathname.includes("/home-computing/") ||
-      window.location.pathname.includes("/general-topics/")) {
-    
-    window.addEventListener("beforeunload", function () {
-      sessionStorage.setItem("lastCategoryPath", window.location.pathname);
-      sessionStorage.setItem("lastCategoryScroll", window.scrollY);
-    });
-
-    // Restore scroll when returning
-    const scrollTo = sessionStorage.getItem("scrollTo");
-    if (scrollTo) {
-      window.scrollTo(0, parseInt(scrollTo, 10));
-      sessionStorage.removeItem("scrollTo");
-    }
-  }
-});
-</script>
-</body>
+})();
+</script></body>
 </html>

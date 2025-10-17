@@ -365,54 +365,61 @@
 </div>
 </footer>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const returnBtn = document.getElementById("returnToCategory");
-  if (!returnBtn) return;
-
-  // 1️⃣ If user previously browsed a category page, restore it
-  const lastCategoryURL = sessionStorage.getItem("lastCategoryURL");
-  if (lastCategoryURL) {
-    returnBtn.href = lastCategoryURL;
-  } else {
-    // 2️⃣ If direct visit (no session), extract category from URL path
-    const parts = window.location.pathname.split("/").filter(Boolean);
-    const category = parts.length > 1 ? parts[0] : "general-topics";
-    returnBtn.href = `/${category}/index.html`;
+<script id="cat-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  // Save scroll + current URL right before we navigate to an article
+  function saveState(){
+    try {
+      var state = { url: location.pathname + location.search + location.hash,
+                    scroll: (window.scrollY || window.pageYOffset || 0) };
+      sessionStorage.setItem(KEY, JSON.stringify(state));
+    } catch(e){}
   }
-});
-
-// 3️⃣ Save category URL and scroll when browsing category pages
-document.addEventListener("DOMContentLoaded", function () {
-  const categoryPaths = [
-    "/online-safety/",
-    "/online-privacy/",
-    "/networking/",
-    "/ip-addresses/",
-    "/home-computing/",
-    "/general-topics/"
-  ];
-
-  const isCategoryPage = categoryPaths.some(path =>
-    window.location.pathname.startsWith(path)
-  );
-
-  if (isCategoryPage) {
-    // Save the full page (like /online-privacy/page3.html)
-    sessionStorage.setItem("lastCategoryURL", window.location.pathname);
-
-    // Save scroll position
-    window.addEventListener("beforeunload", function () {
-      sessionStorage.setItem("lastCategoryScroll", window.scrollY);
-    });
-
-    // Restore scroll when user returns
-    const savedScroll = sessionStorage.getItem("lastCategoryScroll");
-    if (savedScroll) {
-      window.scrollTo(0, parseInt(savedScroll, 10));
-      sessionStorage.removeItem("lastCategoryScroll");
+  function restore(){
+    try{
+      var raw = sessionStorage.getItem(KEY);
+      if (!raw) return;
+      var st = JSON.parse(raw);
+      if (st && typeof st.scroll === 'number') {
+        window.scrollTo(0, st.scroll);
+      }
+    }catch(e){}
+  }
+  function init(){
+    // Only run on pages that have article listings
+    var list = document.querySelector('.article-list');
+    if (list){
+      // Capture click as early as possible
+      list.addEventListener('mousedown', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        // internal links only
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
+      list.addEventListener('click', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
     }
+    // Restore scroll on load and bfcache
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', restore);
+    } else {
+      restore();
+    }
+    window.addEventListener('pageshow', function(ev){
+      if (ev && ev.persisted) restore();
+    });
   }
-});
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script></body>
 </html>
