@@ -1,11 +1,17 @@
 import os
 from bs4 import BeautifulSoup
 
-# Root directory
-BASE_DIR = r"C:\Users\Bodia\OneDrive\Робочий стіл\myipnow-main-17.10"
+# ✅ Root folder of your website
+ROOT_DIR = r"C:\Users\Bodia\OneDrive\Робочий стіл\myipnow-main-17.10"
 
-# Category folders to skip
-CATEGORY_FOLDERS = [
+# ✅ AdSense script to check / add
+ADSENSE_SNIPPET = (
+    '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379" '
+    'crossorigin="anonymous"></script>'
+)
+
+# Categories for broken link detection
+CATEGORIES = [
     "online-safety",
     "online-privacy",
     "networking",
@@ -14,45 +20,81 @@ CATEGORY_FOLDERS = [
     "general-topics"
 ]
 
-# Collect all article folders (everything that’s not a category folder)
-article_folders = [
-    f for f in os.listdir(BASE_DIR)
-    if os.path.isdir(os.path.join(BASE_DIR, f)) and f not in CATEGORY_FOLDERS
-]
+# --- Results tracking
+broken_links = []
+adsense_added = []
+adsense_already = []
+adsense_missing_nohead = []
 
-def fix_related_links(article_folder):
-    file_path = os.path.join(BASE_DIR, article_folder, "index.html")
-    if not os.path.exists(file_path):
-        print(f"Skipped (no index.html): {article_folder}")
-        return
+
+def process_html(file_path):
+    """Check and fix each HTML file."""
+    global broken_links, adsense_added, adsense_already, adsense_missing_nohead
 
     with open(file_path, "r", encoding="utf-8") as f:
-        soup = BeautifulSoup(f, "html.parser")
+        html = f.read()
 
-    related_section = soup.find("div", class_="related-articles")
-    if not related_section:
-        print(f"No related-articles section found in {article_folder}")
-        return
+    soup = BeautifulSoup(html, "html.parser")
 
-    links = related_section.find_all("a", href=True)
-    for link in links:
-        text = link.text.strip().lower().replace(" ", "-").replace("’", "").replace("'", "")
-        # Clean punctuation for better match with folder names
-        text = "".join(c for c in text if c.isalnum() or c == "-")
+    # --- Check for AdSense presence
+    if "pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379" in html:
+        adsense_already.append(file_path)
+    else:
+        head_tag = soup.find("head")
+        if head_tag:
+            # Add AdSense script just before </head>
+            script_tag = BeautifulSoup(ADSENSE_SNIPPET, "html.parser")
+            head_tag.append("\n")
+            head_tag.append(script_tag)
 
-        # Try to find the matching folder
-        match = next((f for f in article_folders if text.startswith(f.lower()[:20])), None)
-        if match:
-            link["href"] = f"/{match}/"
+            # Save changes
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(str(soup))
+            adsense_added.append(file_path)
         else:
-            print(f"⚠️ No match for link '{link.text}' in {article_folder}")
+            adsense_missing_nohead.append(file_path)
 
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(str(soup))
-    print(f"✅ Updated related articles in {article_folder}")
+    # --- Check for broken article links (like /general-topics/page22/)
+    file_broken_links = []
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        if any(f"/{cat}/page" in href and not href.endswith(".html") for cat in CATEGORIES):
+            file_broken_links.append(href)
 
-# Process each article folder
-for folder in article_folders:
-    fix_related_links(folder)
+    if file_broken_links:
+        broken_links.append((file_path, file_broken_links))
 
-print("\n✅ Done! All related article paths updated correctly.")
+
+# --- Walk all project files
+for root, _, files in os.walk(ROOT_DIR):
+    for file in files:
+        if file.endswith(".html"):
+            process_html(os.path.join(root, file))
+
+
+# --- Print report
+print("\n=== 🔍 Full Website Verification + AdSense Fix ===\n")
+
+if broken_links:
+    print("⚠️ Broken Links Found (old /category/pageX/ paths):")
+    for file, links in broken_links:
+        print(f"\n  {file}")
+        for link in links:
+            print(f"    → {link}")
+else:
+    print("✅ No broken article links found.")
+
+if adsense_added:
+    print(f"\n🩵 AdSense script was ADDED to {len(adsense_added)} files:")
+    for f in adsense_added:
+        print(f"  {f}")
+
+if adsense_already:
+    print(f"\n✅ {len(adsense_already)} files already had AdSense script.")
+
+if adsense_missing_nohead:
+    print(f"\n⚠️ {len(adsense_missing_nohead)} files have NO <head> tag — cannot insert AdSense:")
+    for f in adsense_missing_nohead:
+        print(f"  {f}")
+
+print("\n✅ Scan + Auto-fix complete.")
