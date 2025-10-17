@@ -51,7 +51,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin:0; 
 .footer-nav a:hover { color:var(--accent-color); }
 .footer-copyright { font-size:0.85rem; color:var(--text-secondary); }
 </style>
-
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script></head>
 <body>
 <div class="container">
@@ -147,5 +146,20 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin:0; 
 <div class="footer-copyright">© 2025 myipnow. All Rights Reserved.</div>
 </footer>
 </div>
-</body>
+<script id="fix-ip-scroll">
+document.addEventListener("DOMContentLoaded", function () {
+  // Save scroll position when leaving the IP Addresses category
+  if (window.location.pathname.startsWith("/ip-addresses/")) {
+    window.addEventListener("beforeunload", function () {
+      sessionStorage.setItem("scrollPos_ip-addresses", window.scrollY);
+    });
+    // Restore scroll position when returning to the IP Addresses category
+    const pos = sessionStorage.getItem("scrollPos_ip-addresses");
+    if (pos) {
+      window.scrollTo(0, parseInt(pos, 10));
+      sessionStorage.removeItem("scrollPos_ip-addresses");
+    }
+  }
+});
+</script></body>
 </html>

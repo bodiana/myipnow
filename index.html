@@ -725,86 +725,54 @@
             © 2025 myipnow. All Rights Reserved.
         </div>
 </footer></div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const returnBtn = document.getElementById("returnToCategory");
-    if (!returnBtn) return;
-
-    const articleToCategory = {
-        "advanced-guide-to-annoying-viral-requests": "general-topics",
-        "unlocking-the-power-of-privacy-gift": "online-privacy",
-        // add all your articles here
-    };
-
-    const pathParts = window.location.pathname.split("/").filter(p => p);
-    const articleSlug = pathParts[pathParts.length - 1];
-    const category = articleToCategory[articleSlug] || "general-topics";
-
-    const lastScroll = sessionStorage.getItem(`scrollPos_${category}`);
-    if (lastScroll) {
-        window.scrollTo(0, parseInt(lastScroll, 10));
-        sessionStorage.removeItem(`scrollPos_${category}`);
-    }
-
-    returnBtn.href = `/${category}/index.html`;
-});
-
-window.addEventListener("beforeunload", function() {
-    const referrerParts = document.referrer.split("/").filter(p => p);
-    if (referrerParts.length >= 1) {
-        const refCategory = referrerParts[0];
-        sessionStorage.setItem(`scrollPos_${refCategory}`, window.scrollY);
-    }
-});
-</script>
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const returnBtn = document.getElementById("returnToCategory");
   if (!returnBtn) return;
 
-  // Check if we have a saved category path
-  const lastCategory = sessionStorage.getItem("lastCategoryPath");
-  const lastScroll = sessionStorage.getItem("lastCategoryScroll");
-
-  if (lastCategory) {
-    returnBtn.href = lastCategory;
-    // Scroll to saved position after returning to category
-    returnBtn.addEventListener("click", function () {
-      sessionStorage.setItem("scrollTo", lastScroll || 0);
-    });
+  // Try restoring the last category visited
+  const lastCategoryURL = sessionStorage.getItem("lastCategoryURL");
+  if (lastCategoryURL) {
+    returnBtn.href = lastCategoryURL;
   } else {
-    // Fallback: go to a default category if user directly visited article
-    const defaultCategory = "general-topics";
-    returnBtn.href = `/${defaultCategory}/index.html`;
+    // Detect category directly from the current URL
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    const category = parts.length > 0 ? parts[0] : "general-topics";
+    const article = parts.length > 1 ? parts[1].replace(/\/index\.html$/, "") : "";
+    returnBtn.href = `/${category}/index.html#${article}`;
   }
 });
 
-// Save scroll position when leaving category pages
+// Track which category page and scroll user was on
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.includes("/online-safety/") ||
-      window.location.pathname.includes("/online-privacy/") ||
-      window.location.pathname.includes("/networking/") ||
-      window.location.pathname.includes("/ip-addresses/") ||
-      window.location.pathname.includes("/home-computing/") ||
-      window.location.pathname.includes("/general-topics/")) {
-    
+  const categoryPaths = [
+    "/online-safety/",
+    "/online-privacy/",
+    "/networking/",
+    "/ip-addresses/",
+    "/home-computing/",
+    "/general-topics/"
+  ];
+
+  const isCategoryPage = categoryPaths.some(path =>
+    window.location.pathname.startsWith(path)
+  );
+
+  if (isCategoryPage) {
+    // Save the full category page path
+    sessionStorage.setItem("lastCategoryURL", window.location.pathname);
+
+    // Save and restore scroll position
     window.addEventListener("beforeunload", function () {
-      sessionStorage.setItem("lastCategoryPath", window.location.pathname);
       sessionStorage.setItem("lastCategoryScroll", window.scrollY);
     });
 
-    // Restore scroll when returning
-    const scrollTo = sessionStorage.getItem("scrollTo");
-    if (scrollTo) {
-      window.scrollTo(0, parseInt(scrollTo, 10));
-      sessionStorage.removeItem("scrollTo");
+    const savedScroll = sessionStorage.getItem("lastCategoryScroll");
+    if (savedScroll) {
+      window.scrollTo(0, parseInt(savedScroll, 10));
+      sessionStorage.removeItem("lastCategoryScroll");
     }
   }
 });
-</script>
-
-</body>
+</script></body>
 </html>

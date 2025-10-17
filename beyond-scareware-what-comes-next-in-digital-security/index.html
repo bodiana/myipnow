@@ -405,7 +405,7 @@
 <p>
      As we move beyond scareware, the digital security landscape is transforming. The rise of AI, Zero Trust models, user education, blockchain technology, and increased regulation will shape the future of cybersecurity. While scareware may have been a significant issue in the past, the focus must shift toward understanding and addressing more sophisticated threats. By staying informed and proactive, individuals and organizations can better protect themselves in this dynamic digital world.
     </p>
-<div class="references"><p>References:</p><ul><li><a href="https://openai.com/blog" rel="noopener noreferrer" target="_blank">OpenAI Blog</a></li><li><a href="https://www.technologyreview.com/" rel="noopener noreferrer" target="_blank">MIT Technology Review – AI</a></li><li><a href="https://www.wired.com/category/ai/" rel="noopener noreferrer" target="_blank">WIRED AI Section</a></li><li><a href="https://www.theverge.com/ai-artificial-intelligence" rel="noopener noreferrer" target="_blank">The Verge AI Coverage</a></li><li><a href="https://techcrunch.com/category/artificial-intelligence/" rel="noopener noreferrer" target="_blank">TechCrunch AI News</a></li></ul></div><div class="related-articles"><p>Related Articles:</p><ul><li><a href="/pump-dump-schemes-explained-simply-what-every-user-needs-to-know/">Pump Dump Schemes Explained Simply: What Every User Needs to Know.</a></li><li><a href="/unlocking-the-power-of-addressing-expert-tips-and-tricks/">Unlocking the Power of Clever Technology Thats: Expert Tips and Tricks.</a></li><li><a href="/is-your-fastpeoplesearch-data-removal-vulnerable-a-comprehensive-security-audit/">Is Your Fastpeoplesearch Data Removal Vulnerable? A Comprehensive Security Audit.</a></li></ul></div><p class="updated-date">Last updated: October 06, 2025</p></article><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><div class="article-pagination"><a href="/beyond-scam-texts-robbing-what-comes-next-in-digital-security/">← Previous Article</a><a href="/online-safety/index.html#beyond-scareware-what-comes-next-in" id="returnToCategory">↑ Return to Category</a><a href="/beyond-scrub-social-media-what-comes-next-in-digital-security/">Next Article →</a></div><footer class="footer">
+<div class="references"><p>References:</p><ul><li><a href="https://openai.com/blog" rel="noopener noreferrer" target="_blank">OpenAI Blog</a></li><li><a href="https://www.technologyreview.com/" rel="noopener noreferrer" target="_blank">MIT Technology Review – AI</a></li><li><a href="https://www.wired.com/category/ai/" rel="noopener noreferrer" target="_blank">WIRED AI Section</a></li><li><a href="https://www.theverge.com/ai-artificial-intelligence" rel="noopener noreferrer" target="_blank">The Verge AI Coverage</a></li><li><a href="https://techcrunch.com/category/artificial-intelligence/" rel="noopener noreferrer" target="_blank">TechCrunch AI News</a></li></ul></div><div class="related-articles"><p>Related Articles:</p><ul><li><a href="/pump-dump-schemes-explained-simply-what-every-user-needs-to-know/">Pump Dump Schemes Explained Simply: What Every User Needs to Know.</a></li><li><a href="/unlocking-the-power-of-addressing-expert-tips-and-tricks/">Unlocking the Power of Clever Technology Thats: Expert Tips and Tricks.</a></li><li><a href="/is-your-fastpeoplesearch-data-removal-vulnerable-a-comprehensive-security-audit/">Is Your Fastpeoplesearch Data Removal Vulnerable? A Comprehensive Security Audit.</a></li></ul></div><p class="updated-date">Last updated: October 06, 2025</p></article><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><div class="article-pagination"><a href="/beyond-scam-texts-robbing-what-comes-next-in-digital-security/">← Previous Article</a><a href="#" id="returnToCategory">↑ Return to Category</a><a href="/beyond-scrub-social-media-what-comes-next-in-digital-security/">Next Article →</a></div><footer class="footer">
 <ul class="footer-nav">
 <li>
 <a href="/about.html">
@@ -437,139 +437,59 @@
      © 2025 MyIPNow. All Rights Reserved.
     </div>
 </footer><!-- Related Articles --></div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const backLink = document.querySelector('.article-pagination a[href*="Return to Category"]');
-  if (!backLink) return;
+<script id="fix-return-to-category-v2">
+(function() {
+  try {
+    var btn = document.getElementById("returnToCategory");
+    if (!btn) return;
 
-  const referrer = document.referrer;
-  const currentCategory = window.location.pathname.split('/')[1];
+    // Neutralize any hardcoded href left in HTML
+    btn.setAttribute("href", "#");
 
-  // Determine proper return URL
-  if (referrer && referrer.includes(currentCategory)) {
-    backLink.setAttribute('href', referrer);
-  } else {
-    backLink.setAttribute('href', `/${currentCategory}/index.html`);
-  }
-
-  // Save scroll position when leaving category
-  window.addEventListener("beforeunload", function() {
-    sessionStorage.setItem("scrollPos", window.scrollY);
-  });
-
-  // Restore scroll position when returning to category
-  if (window.location.pathname.includes(currentCategory) && sessionStorage.getItem("scrollPos")) {
-    window.scrollTo(0, parseInt(sessionStorage.getItem("scrollPos"), 10));
-    sessionStorage.removeItem("scrollPos");
-  }
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const returnBtn = document.querySelector('.return-to-category');
-  if (!returnBtn) return;
-
-  const data = sessionStorage.getItem('lastCategory');
-  if (data) {
-    const { category, page } = JSON.parse(data);
-    returnBtn.href = `/${category}/${page}`;
-  } else {
-    // fallback: go to main index of category if direct visit
-    const pathParts = window.location.pathname.split('/');
-    const category = pathParts[1];
-    returnBtn.href = `/${category}/index.html`;
-  }
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const returnBtn = document.getElementById("returnToCategory");
-  if (returnBtn) {
-    const lastCategoryURL = sessionStorage.getItem("lastCategoryURL");
-    if (lastCategoryURL) {
-      returnBtn.href = lastCategoryURL;
-    } else {
-      returnBtn.href = "/"; // fallback if no session data
-    }
-  }
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const returnBtn = document.getElementById("returnToCategory");
-    if (!returnBtn) return;
-
-    const articleToCategory = {
-        "advanced-guide-to-annoying-viral-requests": "general-topics",
-        "unlocking-the-power-of-privacy-gift": "online-privacy",
-        // add all your articles here
-    };
-
-    const pathParts = window.location.pathname.split("/").filter(p => p);
-    const articleSlug = pathParts[pathParts.length - 1];
-    const category = articleToCategory[articleSlug] || "general-topics";
-
-    const lastScroll = sessionStorage.getItem(`scrollPos_${category}`);
-    if (lastScroll) {
-        window.scrollTo(0, parseInt(lastScroll, 10));
-        sessionStorage.removeItem(`scrollPos_${category}`);
+    var categories = ["online-safety","online-privacy","networking","ip-addresses","home-computing","general-topics"];
+    var ref = document.referrer || "";
+    var catHit = null;
+    for (var i=0; i<categories.length; i++) {
+      if (ref.indexOf("/" + categories[i] + "/") !== -1) { catHit = categories[i]; break; }
     }
 
-    returnBtn.href = `/${category}/index.html`;
-});
-
-window.addEventListener("beforeunload", function() {
-    const referrerParts = document.referrer.split("/").filter(p => p);
-    if (referrerParts.length >= 1) {
-        const refCategory = referrerParts[0];
-        sessionStorage.setItem(`scrollPos_${refCategory}`, window.scrollY);
+    if (catHit) {
+      // Came from a category page (any page, any pagination) → go back exactly there
+      btn.setAttribute("href", ref);
+      return;
     }
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const returnBtn = document.getElementById("returnToCategory");
-  if (!returnBtn) return;
 
-  // Check if we have a saved category path
-  const lastCategory = sessionStorage.getItem("lastCategoryPath");
-  const lastScroll = sessionStorage.getItem("lastCategoryScroll");
+    // No useful referrer → try last saved category path (category pages often save this)
+    var lastPath = sessionStorage.getItem("lastCategoryPath");
+    if (lastPath && typeof lastPath === "string" && lastPath.length > 1) {
+      btn.setAttribute("href", lastPath);
+      return;
+    }
 
-  if (lastCategory) {
-    returnBtn.href = lastCategory;
-    // Scroll to saved position after returning to category
-    returnBtn.addEventListener("click", function () {
-      sessionStorage.setItem("scrollTo", lastScroll || 0);
-    });
-  } else {
-    // Fallback: go to a default category if user directly visited article
-    const defaultCategory = "general-topics";
-    returnBtn.href = `/${defaultCategory}/index.html`;
+    // Final fallback: home
+    btn.setAttribute("href", "/");
+  } catch (e) {
+    // Fail-safe: still point to home if anything goes wrong
+    try {
+      var b2 = document.getElementById("returnToCategory");
+      if (b2) b2.setAttribute("href", "/");
+    } catch (_) {}
   }
-});
-
-// Save scroll position when leaving category pages
+})();
+</script><script id="fix-ip-scroll">
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.includes("/online-safety/") ||
-      window.location.pathname.includes("/online-privacy/") ||
-      window.location.pathname.includes("/networking/") ||
-      window.location.pathname.includes("/ip-addresses/") ||
-      window.location.pathname.includes("/home-computing/") ||
-      window.location.pathname.includes("/general-topics/")) {
-    
+  // Save scroll position when leaving the IP Addresses category
+  if (window.location.pathname.startsWith("/ip-addresses/")) {
     window.addEventListener("beforeunload", function () {
-      sessionStorage.setItem("lastCategoryPath", window.location.pathname);
-      sessionStorage.setItem("lastCategoryScroll", window.scrollY);
+      sessionStorage.setItem("scrollPos_ip-addresses", window.scrollY);
     });
-
-    // Restore scroll when returning
-    const scrollTo = sessionStorage.getItem("scrollTo");
-    if (scrollTo) {
-      window.scrollTo(0, parseInt(scrollTo, 10));
-      sessionStorage.removeItem("scrollTo");
+    // Restore scroll position when returning to the IP Addresses category
+    const pos = sessionStorage.getItem("scrollPos_ip-addresses");
+    if (pos) {
+      window.scrollTo(0, parseInt(pos, 10));
+      sessionStorage.removeItem("scrollPos_ip-addresses");
     }
   }
 });
-</script>
-</body>
+</script></body>
 </html>
