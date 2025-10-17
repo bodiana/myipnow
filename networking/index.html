@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   Networking | MyIPNow
+  </title>
+<meta content="Guides and tutorials on computer networks and connections." name="description"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+            --bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b;
+            --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+        .site-header { background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); }
+        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .search-form { display: flex; flex-grow: 1; max-width: 400px; }
+        .search-form input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 0.9rem; outline-color: var(--accent-color); }
+        .search-form button { padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500; transition: background-color 0.2s ease; }
+        .search-form button:hover { background: #059669; }
+        .category-nav { padding-top: 1rem; }
+        .category-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  justify-content: center !important;
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
+        .page-header { background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center; }
+        .page-header h1 { font-size: 2.5rem; color: var(--text-primary); margin: 0 0 0.5rem 0; }
+        .page-header p { font-size: 1rem; color: var(--text-secondary); margin: 0; }
+        .article-list .article-item { background: var(--card-bg); margin-bottom: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); padding: 1.5rem 2rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .article-list .article-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .article-item h2 { margin-top: 0; }
+        .article-item h2 a { text-decoration: none; color: var(--text-primary); font-size: 1.5rem; }
+        .article-item h2 a:hover { color: var(--accent-color); }
+        .article-excerpt { color: var(--text-secondary); font-size: 1rem; }
+        .read-more { display: inline-block; margin-top: 1rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        .pagination { display: flex; justify-content: center; gap: 1rem; align-items: center; margin-top: 2rem; padding-bottom: 2rem; }
+        .pagination a, .pagination span { padding: 0.75rem 1rem; border-radius: 8px; text-decoration: none; color: var(--text-primary); background: var(--card-bg); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .pagination a:hover { background: var(--accent-color); color: white; }
+        .pagination .current { background: var(--accent-color); color: white; font-weight: 600; }
+        .footer { text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background-color: #fff; border-radius: 16px; box-shadow: var(--card-shadow); }
+        .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; list-style: none; padding: 0; margin: 0 0 1rem 0; }
+        .footer-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease; }
+        .footer-nav a:hover { color: var(--accent-color); }
+        .footer-copyright { font-size: 0.85rem; color: var(--text-secondary); }
+   
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+</head>
+<body>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="/">
+      🌐 MyIPNow
+     </a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li id="online-safety">
+<a ""="" href="/online-safety/">
+        Online Safety
+       </a>
+</li>
+<li id="online-privacy">
+<a ""="" href="/online-privacy/">
+        Online Privacy
+       </a>
+</li>
+<li id="networking">
+<a ""="" href="/networking/">
+        Networking
+       </a>
+</li>
+<li id="ip-addresses">
+<a ""="" href="/ip-addresses/">
+        IP Addresses
+       </a>
+</li>
+<li id="home-computing">
+<a ""="" href="/home-computing/">
+        Home Computing
+       </a>
+</li>
+<li id="general-topics">
+<a ""="" href="/general-topics/">
+        General Topics
+       </a>
+</li>
+</ul>
+</nav></header><main>
+<header class="page-header">
+<h1>
+      Networking
+     </h1>
+<p>
+      Guides and tutorials on computer networks and connections.
+     </p>
+</header>
+<div class="article-list">
+<article class="article-item" id="beyond-dnssec-what-comes-next-in">
+<h2 id="beyond-dnssec-what-comes-next-in">
+<a ""="" href="/beyond-dnssec-what-comes-next-in-digital-security/">
+        Beyond Dnssec: What Comes Next in Digital Security?
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Beyond Dnssec: What Comes Next in Digital Security?
+      </p>
+<a ""="" class="read-more" href="/beyond-dnssec-what-comes-next/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="beyond-modems-routers-switches-what-comes">
+<h2 id="beyond-modems-routers-switches-what-comes">
+<a ""="" href="/beyond-modems-routers-switches-what-comes-next-in-digital-security/">
+        Beyond Modems Routers Switches: What Comes Next in Digital Security?
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Beyond Modems Routers Switches: What Comes Next in Digital Security?
+      </p>
+<a ""="" class="read-more" href="/beyond-modems-routers-switches-what/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="beyond-network-security-dummies-what-comes">
+<h2 id="beyond-network-security-dummies-what-comes">
+<a ""="" href="/beyond-network-security-dummies-what-comes-next-in-digital-security/">
+        Beyond Network Security Dummies: What Comes Next in Digital Security?
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Beyond Network Security Dummies: What Comes Next in Digital Security?
+      </p>
+<a ""="" class="read-more" href="/beyond-network-security-dummies-what/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="beyond-protocols-what-comes-next-in">
+<h2 id="beyond-protocols-what-comes-next-in">
+<a ""="" href="/beyond-protocols-what-comes-next-in-digital-security/">
+        Beyond Protocols: What Comes Next in Digital Security?
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Beyond Protocols: What Comes Next in Digital Security?
+      </p>
+<a ""="" class="read-more" href="/beyond-protocols-what-comes-next/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="beyond-router-problems-what-comes-next">
+<h2 id="beyond-router-problems-what-comes-next">
+<a ""="" href="/beyond-router-problems-what-comes-next-in-digital-security/">
+        Beyond Router Problems: What Comes Next in Digital Security?
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Beyond Router Problems: What Comes Next in Digital Security?
+      </p>
+<a ""="" class="read-more" href="/beyond-router-problems-what-comes/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="beyond-unsecured-network-what-comes-next">
+<h2 id="beyond-unsecured-network-what-comes-next">
+<a ""="" href="/beyond-unsecured-network-what-comes-next-in-digital-security/">
+        Beyond Unsecured Network: What Comes Next in Digital Security?
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Beyond Unsecured Network: What Comes Next in Digital Security?
+      </p>
+<a ""="" class="read-more" href="/beyond-unsecured-network-what-comes/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="dns-explained-simply-what-every-user">
+<h2 id="dns-explained-simply-what-every-user">
+<a ""="" href="/dns-explained-simply-what-every-user-needs-to-know/">
+        Dns Explained Simply: What Every User Needs to Know.
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Dns Explained Simply: What Every User Needs to Know.
+      </p>
+<a ""="" class="read-more" href="/dns-explained-simply-what-every/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="don-t-fall-for-ethernet-a">
+<h2 id="don-t-fall-for-ethernet-a">
+<a ""="" href="/dont-fall-for-ethernet-a-step-by-step-prevention-checklist/">
+        Don't Fall for Ethernet: A Step-by-Step Prevention Checklist.
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Don't Fall for Ethernet: A Step-by-Step Prevention Checklist.
+      </p>
+<a ""="" class="read-more" href="/dont-fall-for-ethernet-a/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="don-t-fall-for-ipv-switch">
+<h2 id="don-t-fall-for-ipv-switch">
+<a ""="" href="/dont-fall-for-ipv-switch-a-step-by-step-prevention-checklist/">
+        Don't Fall for Ipv Switch: A Step-by-Step Prevention Checklist.
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Don't Fall for Ipv Switch: A Step-by-Step Prevention Checklist.
+      </p>
+<a ""="" class="read-more" href="/dont-fall-for-ipv-switch/">
+       Read More →
+      </a>
+</article>
+<article class="article-item" id="don-t-fall-for-wannacry-a">
+<h2 id="don-t-fall-for-wannacry-a">
+<a ""="" href="/dont-fall-for-wannacry-a-step-by-step-prevention-checklist/">
+        Don't Fall for Wannacry: A Step-by-Step Prevention Checklist.
+       </a>
+</h2>
+<p class="article-excerpt">
+       A deep dive into Don't Fall for Wannacry: A Step-by-Step Prevention Checklist.
+      </p>
+<a ""="" class="read-more" href="/dont-fall-for-wannacry-a/">
+       Read More →
+      </a>
+</article>
+</div>
+<!-- Desktop Pagination -->
+<!-- Compact Mobile Pagination -->
+<style>
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+.pagination a, .pagination span {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: #fff;
+  text-decoration: none;
+  color: #1e293b;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.pagination a:hover {
+  background: #4f46e5;
+  color: white;
+}
+.pagination .current {
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .desktop-pagination { display: none; }
+  .mobile-pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 769px) {
+  .mobile-pagination { display: none; }
+}
+</style>
+<nav aria-label="Page navigation" class="pagination desktop-pagination" id="page2.html">
+<span class="disabled">← Previous</span> <span class="current">1</span> <a href="page2.html">2</a> <a href="page3.html">3</a> <span>…</span> <a href="page5.html">5</a> <a href="/new-cookies-explained-simply-what/">Next →</a>
+</nav><nav aria-label="Page navigation" class="pagination mobile-pagination" id="page2.html">
+<a href="/mastering-zero-interest-credit-the/">← Prev</a><span class="current">1 / 5</span><a href="/new-cookies-explained-simply-what/">Next →</a>
+</nav></main>
+<footer class="footer">
+<ul class="footer-nav">
+<li id="about.html"><a href="/about.html">About</a></li>
+<li id="contact.html"><a href="/contact.html">Contact</a></li>
+<li id="privacy-policy.html"><a href="/privacy-policy.html">Privacy Policy</a></li>
+<li id="terms-of-use.html"><a href="/terms-of-use.html">Terms of Use</a></li>
+<li id="affiliate-disclosure.html"><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">
+    © 2025 myipnow. All Rights Reserved.
+</div>
+</footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const returnBtn = document.querySelector('.return-to-category');
+  if (!returnBtn) return;
+
+  const data = sessionStorage.getItem('lastCategory');
+  if (data) {
+    const { category, page } = JSON.parse(data);
+    returnBtn.href = `/${category}/${page}`;
+  } else {
+    // fallback: go to main index of category if direct visit
+    const pathParts = window.location.pathname.split('/');
+    const category = pathParts[1];
+    returnBtn.href = `/${category}/index.html`;
+  }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const returnBtn = document.getElementById("returnToCategory");
+    if (!returnBtn) return;
+
+    const articleToCategory = {
+        "advanced-guide-to-annoying-viral-requests": "general-topics",
+        "unlocking-the-power-of-privacy-gift": "online-privacy",
+        // add all your articles here
+    };
+
+    const pathParts = window.location.pathname.split("/").filter(p => p);
+    const articleSlug = pathParts[pathParts.length - 1];
+    const category = articleToCategory[articleSlug] || "general-topics";
+
+    const lastScroll = sessionStorage.getItem(`scrollPos_${category}`);
+    if (lastScroll) {
+        window.scrollTo(0, parseInt(lastScroll, 10));
+        sessionStorage.removeItem(`scrollPos_${category}`);
+    }
+
+    returnBtn.href = `/${category}/index.html`;
+});
+
+window.addEventListener("beforeunload", function() {
+    const referrerParts = document.referrer.split("/").filter(p => p);
+    if (referrerParts.length >= 1) {
+        const refCategory = referrerParts[0];
+        sessionStorage.setItem(`scrollPos_${refCategory}`, window.scrollY);
+    }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const returnBtn = document.getElementById("returnToCategory");
+  if (!returnBtn) return;
+
+  // Check if we have a saved category path
+  const lastCategory = sessionStorage.getItem("lastCategoryPath");
+  const lastScroll = sessionStorage.getItem("lastCategoryScroll");
+
+  if (lastCategory) {
+    returnBtn.href = lastCategory;
+    // Scroll to saved position after returning to category
+    returnBtn.addEventListener("click", function () {
+      sessionStorage.setItem("scrollTo", lastScroll || 0);
+    });
+  } else {
+    // Fallback: go to a default category if user directly visited article
+    const defaultCategory = "general-topics";
+    returnBtn.href = `/${defaultCategory}/index.html`;
+  }
+});
+
+// Save scroll position when leaving category pages
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.pathname.includes("/online-safety/") ||
+      window.location.pathname.includes("/online-privacy/") ||
+      window.location.pathname.includes("/networking/") ||
+      window.location.pathname.includes("/ip-addresses/") ||
+      window.location.pathname.includes("/home-computing/") ||
+      window.location.pathname.includes("/general-topics/")) {
+    
+    window.addEventListener("beforeunload", function () {
+      sessionStorage.setItem("lastCategoryPath", window.location.pathname);
+      sessionStorage.setItem("lastCategoryScroll", window.scrollY);
+    });
+
+    // Restore scroll when returning
+    const scrollTo = sessionStorage.getItem("scrollTo");
+    if (scrollTo) {
+      window.scrollTo(0, parseInt(scrollTo, 10));
+      sessionStorage.removeItem("scrollTo");
+    }
+  }
+});
+</script>
+</body>
+</html>

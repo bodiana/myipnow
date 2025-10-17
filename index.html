@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>What's My IP Address? IPv4 &amp; IPv6 Lookup</title>
+<meta content="Instantly find your public IPv4 and IPv6 addresses, location, and ISP with our fast, free IP address checker." name="description"/>
+<meta content="IP address, IPv4, IPv6, public IP, find my IP, IP lookup, IP location, IP finder, my IP, hide my ip, vpn, privacy, security" name="keywords"/>
+<meta content="What's My Public IP Address? IPv4 &amp; IPv6 Lookup" property="og:title"/>
+<meta content="Discover your public IPv4 and IPv6 addresses and location instantly with our easy-to-use tool." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://yourdomain.com/preview.png" property="og:image"/>
+<meta content="https://yourdomain.com" property="og:url"/>
+<meta content="nqgYu_ffRt3NDAFGwI6QxcrzBgCSP7POE2z3t2G7ulA" name="google-site-verification"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" media="print" onload="this.media='all'" rel="stylesheet"/>
+<style>
+        :root {
+            --bg-color: #f7f8f9;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-color: #4f46e5;
+            --hide-ip-color: #10b981;  
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+            --transition-speed: 0.2s ease;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* --- HEADER STYLES --- */
+        .site-header {
+            background: var(--card-bg);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .search-form {
+            display: flex;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        .search-form input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px 0 0 8px;
+            font-size: 0.9rem;
+            outline-color: var(--accent-color);
+        }
+        .search-form button {
+            padding: 0.75rem 1rem;
+            border: none;
+            background: var(--hide-ip-color);
+            color: white;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color var(--transition-speed);
+        }
+        .search-form button:hover {
+            background: #059669;
+        }
+        .category-nav {
+            padding-top: 1rem;
+        }
+        .category-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  justify-content: center !important;
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
+
+        .main-section, .map-section, .faq-section, .guide-section, .snippet-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+        .main-section h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* --- FEATURED SNIPPET SECTION --- */
+        .snippet-section h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .snippet-section p {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .snippet-section a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .snippet-section a:hover {
+            text-decoration: underline;
+        }
+
+        .ip-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .ip-display-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f8fafc;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+        .ip-label {
+            font-size: 0.75rem;
+            color: #334155;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .ip-address {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .info-card {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .info-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        .info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            word-break: break-word;
+        }
+        .map-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        #map {
+            height: 350px;
+            border-radius: 8px;
+            background-color: #e2e8f0;
+        }
+        .coordinates {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .action-btn {
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--hide-ip-color);
+            color: #fff;
+        }
+        .action-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        .hide-ip-btn {
+            font-weight: 600;
+            margin: 0 auto 2rem auto;
+            font-size: 1.3rem;
+            padding: 1.5rem 3rem;
+            display: block;
+            width: 90%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+        .faq-section h2, .guide-section h2, .guide-section h3 {
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .faq-item {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+        .faq-item:hover { background: #e2e8f0; }
+        .faq-question {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .faq-answer {
+            display: none;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .guide-content {
+            line-height: 1.6;
+            color: #4a4a4a;
+            word-wrap: break-word;
+            overflow-wrap: break-word;  
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin: 2rem auto 0;
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+        .footer-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+        .footer-nav a:hover { color: var(--accent-color); }
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- MOBILE FRIENDLY & HEADER STYLES --- */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .search-form {
+                width: 100%;
+                max-width: none;
+            }
+            .category-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+
+}
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem 0.5rem; }
+            .main-section, .map-section, .faq-section, .guide-section, .snippet-section { padding: 1.5rem 1rem; }
+            .ip-address { font-size: 1.2rem; }
+            #ipAddressIPv6.ip-address { font-size: 1rem; }
+            .ip-display-item { padding: 0.6rem 1rem; }
+            .hide-ip-btn { font-size: 1.1rem; padding: 1.2rem 2rem; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+        }
+    
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
+<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "What's My IP?",
+          "url": "https://yourdomain.com/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://yourdomain.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+    </script>
+<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is an IP Address?",
+              "acceptedAnswer": { "@type": "Answer", "text": "An IP (Internet Protocol) address is a unique numerical label assigned to every device connected to a computer network that uses the Internet Protocol for communication. Think of it like a mailing address for your computer on the internet." }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between a Public and Private IP?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Your Public IP address is what the outside world (websites, services) sees. It's assigned by your Internet Service Provider (ISP). A Private IP address is used within your local network (like your home or office) to identify devices to each other. Your router assigns these private IPs." }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is my location not perfectly accurate?",
+              "acceptedAnswer": { "@type": "Answer", "text": "The location is based on your public IP address, which is typically assigned by your ISP. This address is linked to the location of the ISP's servers or data centers, not your exact physical location. The location is usually accurate to the city or region level." }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my IP address static or dynamic?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Most residential internet connections use a dynamic IP address, which can change periodically. Static IP addresses are fixed and don't change, and are typically used for businesses or servers. You usually need to request and pay for a static IP from your ISP." }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I change my IP address?",
+              "acceptedAnswer": { "@type": "Answer", "text": "You can change your IP by restarting your router or contacting your ISP for a static IP." }
+            },
+            {
+              "@type": "Question",
+              "name": "What is IPv4?",
+              "acceptedAnswer": { "@type": "Answer", "text": "IPv4 is the original version of the Internet Protocol, using a 32-bit address format. With the explosion of internet devices, the limited number of IPv4 addresses is a growing concern." }
+            },
+            {
+              "@type": "Question",
+              "name": "What is IPv6?",
+              "acceptedAnswer": { "@type": "Answer", "text": "IPv6 is the newest version of the Internet Protocol, using a 128-bit address format to accommodate an almost unlimited number of unique addresses." }
+            }
+          ]
+        }
+    </script>
+</head>
+<body>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-17582870702"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17582870702');
+    </script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="/">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<!-- REMOVED: <li class="nav-title">ARTICLES:</li> -->
+<li><a href="/online-safety/">Online Safety</a></li>
+<li><a href="/online-privacy/">Online Privacy</a></li>
+<li><a href="/networking/">Networking</a></li>
+<li><a href="/ip-addresses/">IP Addresses</a></li>
+<li><a href="/home-computing/">Home Computing</a></li>
+<li><a href="/general-topics/">General Topics</a></li>
+</ul>
+</nav></header><main aria-label="IP Information" class="main-section">
+<h2>Your Public IP Address</h2>
+<div class="ip-display">
+<div class="ip-display-item">
+<p class="ip-label">IPv4</p>
+<p class="ip-address" id="ipAddressIPv4">Loading...</p>
+</div>
+<div class="ip-display-item">
+<p class="ip-label">IPv6</p>
+<p class="ip-address" id="ipAddressIPv6">Loading...</p>
+</div>
+</div>
+<section aria-label="Additional IP Details" class="info-grid" id="additionalInfo" style="display: none;">
+<div class="info-card"><div class="info-title">🏙️ Location</div><div class="info-value" id="location">Loading...</div></div>
+<div class="info-card"><div class="info-title">🏢 ISP</div><div class="info-value" id="isp">Loading...</div></div>
+<div class="info-card"><div class="info-title">🌍 Country</div><div class="info-value" id="country">Loading...</div></div>
+<div class="info-card"><div class="info-title">🕐 Timezone</div><div class="info-value" id="timezone">Loading...</div></div>
+</section>
+</main><nav aria-label="Privacy Guide Link">
+<a class="action-btn hide-ip-btn" href="/hide-my-ip/">🛡️ Hide My IP Address &amp; Get Private!</a>
+</nav><section aria-label="Map Location" class="map-section" id="map-section">
+<h3 class="map-title">📍 Approximate Location</h3>
+<div id="map"></div>
+<div class="coordinates" id="coordinates" style="display: none;"></div>
+</section><nav aria-label="Utility Tools" class="controls">
+<button class="action-btn" onclick="runAllFetches()">🔄 Refresh Check</button>
+<button class="action-btn" onclick="toggleMapType()">🗺️ Toggle Map</button>
+</nav><!-- SNIPPET MOVED HERE --><section aria-label="IP Address Explanation" class="snippet-section">
+<h2>What is My IP Address and Why Does It Matter?</h2>
+<p>
+                Your IP address is a unique code that identifies your device on the internet, much like a digital home address. It's essential for sending and receiving data online. Knowing your IP is crucial for online privacy, security, and troubleshooting network issues.
+            </p>
+</section><section aria-label="Frequently Asked Questions" class="faq-section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-question">What is an IP Address?</div>
+<div class="faq-answer">An IP (Internet Protocol) address is a unique numerical label assigned to every device connected to a computer network that uses the Internet Protocol for communication. Think of it like a mailing address for your computer on the internet.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What is the difference between a Public and Private IP?</div>
+<div class="faq-answer">Your Public IP address is what the outside world sees. A Private IP is used in your local network. Your router assigns private IPs to devices.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Why is my location not perfectly accurate?</div>
+<div class="faq-answer">Location is based on your public IP, linked to your ISP's servers. It's usually accurate to city or region level.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Is my IP address static or dynamic?</div>
+<div class="faq-answer">Most residential connections use dynamic IP addresses. Static IPs are fixed and usually requested by businesses or servers.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">How do I change my IP address?</div>
+<div class="faq-answer">You can change your IP by restarting your router or contacting your ISP for a static IP.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What is IPv4?</div>
+<div class="faq-answer">IPv4 is the original version of the Internet Protocol, using a 32-bit address format. With the explosion of internet devices, the limited number of IPv4 addresses is a growing concern.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">What is IPv6?</div>
+<div class="faq-answer">IPv6 is the newest version of the Internet Protocol, using a 128-bit address format to accommodate an almost unlimited number of unique addresses.</div>
+</div>
+</section><section class="guide-section">
+<h2>The Ultimate Guide to IP Addresses</h2>
+<div class="guide-content">
+<p>An IP address is a fundamental part of how the internet works. It's the unique identifier that allows your computer to communicate with other devices and servers on the web. Understanding your IP address can help you with everything from online security to troubleshooting network issues.</p>
+<h3>IP Address Basics: Public vs. Private</h3>
+<p>Every device on a network has an IP address. There are two main types:</p>
+<ul>
+<li><strong>Public IP Address:</strong> This is the address assigned to your network by your Internet Service Provider (ISP). It's the address that the rest of the internet uses to find and communicate with you. Your entire home network shares one public IP address.</li>
+<li><strong>Private IP Address:</strong> This is a unique address assigned to each device (like your phone, laptop, or smart TV) within your local network. Your router uses these private IPs to direct traffic to the correct device.</li>
+</ul>
+<h3>What's the Difference Between IPv4 and IPv6?</h3>
+<p>IP addresses come in two main versions:</p>
+<ul>
+<li><strong>IPv4:</strong> The original standard, IPv4 uses a 32-bit address format (e.g., 192.0.2.1). With the explosion of internet-connected devices, the limited number of IPv4 addresses is a growing concern.</li>
+<li><strong>IPv6:</strong> The newer version, IPv6 uses a 128-bit address format (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334). It was developed to solve the IPv4 address shortage, offering a virtually unlimited supply of unique addresses.</li>
+</ul>
+<h3>Why Does Your IP Address Matter?</h3>
+<p>Knowing your IP address is important for several reasons:</p>
+<ul>
+<li><strong>Remote Access:</strong> It allows you to connect to devices on your home network from a remote location.</li>
+<li><strong>Security:</strong> You can use your IP address to block or allow access to services, which is a key part of network security.</li>
+<li><strong>Troubleshooting:</strong> An IP address is the first thing to check when diagnosing internet connection issues.</li>
+<li><strong>Geo-targeting:</strong> Websites and online services use your IP address to determine your approximate location to deliver localized content or services.</li>
+</ul>
+</div>
+</section><script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script>
+        let map, marker, streetLayer, satelliteLayer, currentLayer;
+        let mapInitialized = false;
+
+        const ui = {
+            ipv4El: document.getElementById('ipAddressIPv4'),
+            ipv6El: document.getElementById('ipAddressIPv6'),
+            infoEl: document.getElementById('additionalInfo'),
+            coordsEl: document.getElementById('coordinates'),
+            locationEl: document.getElementById('location'),
+            ispEl: document.getElementById('isp'),
+            countryEl: document.getElementById('country'),
+            timezoneEl: document.getElementById('timezone')
+        };
+        
+        function resetUI() {
+            ui.ipv4El.textContent = "Loading...";
+            ui.ipv6El.textContent = "Loading...";
+            ui.infoEl.style.display = "none";
+            ui.coordsEl.style.display = "none";
+            ['locationEl', 'ispEl', 'countryEl', 'timezoneEl'].forEach(el => ui[el].textContent = 'Loading...');
+        }
+
+        async function fetchWithTimeout(url, options = {}, timeout = 3000) {
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeout);
+            const response = await fetch(url, { ...options, signal: controller.signal });
+            clearTimeout(id);
+            return response;
+        }
+
+        async function fetchIPv6() {
+            try {
+                const response = await fetchWithTimeout("https://api6.ipify.org?format=json");
+                if (!response.ok) throw new Error('Could not fetch IPv6.');
+                const data = await response.json();
+                ui.ipv6El.textContent = data.ip;
+            } catch (error) {
+                if (ui.ipv6El.textContent === 'Loading...') {
+                    ui.ipv6El.textContent = 'Not Detected/Supported';
+                }
+            }
+        }
+
+        async function fetchPrimaryLocation() {
+            try {
+                const response = await fetch(`https://ip-api.com/json/?fields=status,message,country,countryCode,regionName,city,lat,lon,timezone,isp,query`);
+                if (!response.ok) throw new Error('Primary service failed.');
+                const data = await response.json();
+                if (data.status === 'fail') throw new Error(data.message);
+                populateLocationUI(data.query, data.city, data.regionName, data.isp, data.country, data.countryCode, data.timezone, data.lat, data.lon);
+            } catch(error) {
+                await fetchFallbackLocation();
+            }
+        }
+
+        async function fetchFallbackLocation() {
+            try {
+                const response = await fetch('https://ipinfo.io/json');
+                if (!response.ok) throw new Error('Fallback service failed.');
+                const data = await response.json();
+                const [lat, lon] = data.loc.split(',');
+                populateLocationUI(data.ip, data.city, data.region, data.org, data.country, '', data.timezone, lat, lon);
+            } catch (error) {
+                ['locationEl', 'ispEl', 'countryEl', 'timezoneEl'].forEach(el => ui[el].textContent = 'Error');
+                if(ui.ipv4El.textContent === 'Loading...') ui.ipv4El.textContent = 'Error';
+            }
+        }
+
+        function populateLocationUI(ip, city, region, isp, country, countryCode, timezone, lat, lon) {
+            if (ip) {
+                if (ip.includes(':')) {
+                    ui.ipv6El.textContent = ip;
+                    if (ui.ipv4El.textContent === 'Loading...') ui.ipv4El.textContent = 'Not Detected';
+                } else {
+                    ui.ipv4El.textContent = ip;
+                }
+            }
+            ui.locationEl.textContent = `${city}, ${region}`;
+            ui.ispEl.textContent = isp;
+            ui.countryEl.textContent = countryCode ? `${country} (${countryCode})` : country;
+            ui.timezoneEl.textContent = timezone;
+            ui.infoEl.style.display = "grid";
+            ui.coordsEl.textContent = `Lat: ${parseFloat(lat).toFixed(4)}, Lon: ${parseFloat(lon).toFixed(4)}`;
+            ui.coordsEl.style.display = "block";
+            
+            if (mapInitialized) {
+                map.setView([lat, lon], 11);
+                marker.setLatLng([lat, lon]).setPopupContent(`<b>${city}</b><br>${country}`);
+            }
+        }
+
+        function initMap() {
+            if (mapInitialized) return;
+            mapInitialized = true;
+            map = L.map('map').setView([20, 0], 2);
+            streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'&copy; OpenStreetMap' });
+            satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', { subdomains:['mt0','mt1','mt2','mt3'], maxZoom:20, attribution:'&copy; Google' });
+            currentLayer = streetLayer;
+            currentLayer.addTo(map);
+            marker = L.marker([0, 0]).addTo(map);
+            runAllFetches();
+        }
+
+        async function runAllFetches() {
+            resetUI();
+            fetchIPv6();
+            fetchPrimaryLocation();
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const mapSection = document.getElementById('map-section');
+            const mapObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        initMap();
+                        observer.disconnect();
+                    }
+                });
+            }, { rootMargin: "50px" });
+            mapObserver.observe(mapSection);
+
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.addEventListener('click', () => {
+                    const ans = faq.querySelector('.faq-answer');
+                    ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+
+        function toggleMapType(){
+            if (!map) return;
+            map.removeLayer(currentLayer);
+            currentLayer = (currentLayer === streetLayer) ? satelliteLayer : streetLayer;
+            currentLayer.addTo(map);
+        }
+    </script><footer class="footer">
+<ul class="footer-nav">
+<li><a href="/about.html">About</a></li>
+<li><a href="/contact.html">Contact</a></li>
+<li><a href="/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="/terms-of-use.html">Terms of Use</a></li>
+<li><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">
+            © 2025 myipnow. All Rights Reserved.
+        </div>
+</footer></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const returnBtn = document.getElementById("returnToCategory");
+    if (!returnBtn) return;
+
+    const articleToCategory = {
+        "advanced-guide-to-annoying-viral-requests": "general-topics",
+        "unlocking-the-power-of-privacy-gift": "online-privacy",
+        // add all your articles here
+    };
+
+    const pathParts = window.location.pathname.split("/").filter(p => p);
+    const articleSlug = pathParts[pathParts.length - 1];
+    const category = articleToCategory[articleSlug] || "general-topics";
+
+    const lastScroll = sessionStorage.getItem(`scrollPos_${category}`);
+    if (lastScroll) {
+        window.scrollTo(0, parseInt(lastScroll, 10));
+        sessionStorage.removeItem(`scrollPos_${category}`);
+    }
+
+    returnBtn.href = `/${category}/index.html`;
+});
+
+window.addEventListener("beforeunload", function() {
+    const referrerParts = document.referrer.split("/").filter(p => p);
+    if (referrerParts.length >= 1) {
+        const refCategory = referrerParts[0];
+        sessionStorage.setItem(`scrollPos_${refCategory}`, window.scrollY);
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const returnBtn = document.getElementById("returnToCategory");
+  if (!returnBtn) return;
+
+  // Check if we have a saved category path
+  const lastCategory = sessionStorage.getItem("lastCategoryPath");
+  const lastScroll = sessionStorage.getItem("lastCategoryScroll");
+
+  if (lastCategory) {
+    returnBtn.href = lastCategory;
+    // Scroll to saved position after returning to category
+    returnBtn.addEventListener("click", function () {
+      sessionStorage.setItem("scrollTo", lastScroll || 0);
+    });
+  } else {
+    // Fallback: go to a default category if user directly visited article
+    const defaultCategory = "general-topics";
+    returnBtn.href = `/${defaultCategory}/index.html`;
+  }
+});
+
+// Save scroll position when leaving category pages
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.pathname.includes("/online-safety/") ||
+      window.location.pathname.includes("/online-privacy/") ||
+      window.location.pathname.includes("/networking/") ||
+      window.location.pathname.includes("/ip-addresses/") ||
+      window.location.pathname.includes("/home-computing/") ||
+      window.location.pathname.includes("/general-topics/")) {
+    
+    window.addEventListener("beforeunload", function () {
+      sessionStorage.setItem("lastCategoryPath", window.location.pathname);
+      sessionStorage.setItem("lastCategoryScroll", window.scrollY);
+    });
+
+    // Restore scroll when returning
+    const scrollTo = sessionStorage.getItem("scrollTo");
+    if (scrollTo) {
+      window.scrollTo(0, parseInt(scrollTo, 10));
+      sessionStorage.removeItem("scrollTo");
+    }
+  }
+});
+</script>
+
+</body>
+</html>

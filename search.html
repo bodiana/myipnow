@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Search Results | MyIPNow</title>
+<meta name="description" content="Search MyIPNow articles, guides, and tutorials."/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🌐%3C/text%3E%3Ctext y='0.9em' x='28' font-size='55'%3E📍%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg-color:#f7f8f9; --card-bg:#ffffff; --text-primary:#1e293b; --text-secondary:#64748b;
+  --accent-color:#4f46e5; --hide-ip-color:#10b981; --card-shadow:0 10px 30px rgba(0,0,0,0.08);
+  --border-radius:16px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:0;color:var(--text-primary);line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:1rem;}
+.site-header{background:var(--card-bg);padding:1rem;margin-bottom:2rem;border-radius:var(--border-radius);box-shadow:var(--card-shadow);}
+.header-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-bottom:1rem;border-bottom:1px solid #e2e8f0;}
+.logo{font-size:1.5rem;font-weight:700;color:var(--text-primary);text-decoration:none;}
+.search-form{display:flex;flex-grow:1;max-width:400px;}
+.search-form input{width:100%;padding:.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px 0 0 8px;font-size:.9rem;outline-color:var(--accent-color);}
+.search-form button{padding:.75rem 1rem;border:none;background:var(--hide-ip-color);color:#fff;border-radius:0 8px 8px 0;cursor:pointer;font-weight:500;transition:background-color .2s ease;}
+.search-form button:hover{background:#059669;}
+.category-nav{padding-top:1rem;}
+.category-nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0;align-items:center;overflow-x:auto;white-space:nowrap;justify-content:center !important;}
+.category-nav a{text-decoration:none;color:var(--text-primary);font-size:.9rem;font-weight:500;transition:color .2s ease;}
+.category-nav a:hover{color:var(--accent-color);}
+.page-header{background:var(--card-bg);padding:2rem;border-radius:var(--border-radius);box-shadow:var(--card-shadow);margin-bottom:2rem;text-align:center;}
+.page-header h1{font-size:2.5rem;color:var(--text-primary);margin:0 0 .5rem 0;}
+.page-header p{font-size:1rem;color:var(--text-secondary);margin:0;}
+.article-list .article-item{background:var(--card-bg);margin-bottom:1.5rem;border-radius:var(--border-radius);box-shadow:var(--card-shadow);padding:1.5rem 2rem;transition:transform .2s ease, box-shadow .2s ease;}
+.article-list .article-item:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,0.1);}
+.article-item h2{margin-top:0;}
+.article-item h2 a{text-decoration:none;color:var(--text-primary);font-size:1.5rem;}
+.article-item h2 a:hover{color:var(--accent-color);}
+.article-excerpt{color:var(--text-secondary);font-size:1rem;}
+.read-more{display:inline-block;margin-top:1rem;color:var(--accent-color);text-decoration:none;font-weight:600;}
+
+/* Pagination */
+.pagination a, .pagination span {
+  padding:.75rem 1rem;
+  border-radius:8px;
+  text-decoration:none;
+  color:var(--text-primary);
+  background:var(--card-bg);
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  transition:background-color 0.2s ease,color 0.2s ease;
+}
+.pagination a:hover { background:var(--accent-color); color:#fff; }
+.pagination .current { background:var(--accent-color); color:#fff; font-weight:600; }
+
+/* Desktop / Mobile visibility */
+.desktop-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+.mobile-pagination { display: none; justify-content: center; gap: 1rem; text-align: center; }
+
+@media(max-width:768px){
+  .desktop-pagination { display: none; }
+  .mobile-pagination { display: flex; }
+}
+
+.footer{text-align:center;padding:2rem 1rem;margin:2rem auto 0;background:#fff;border-radius:16px;box-shadow:var(--card-shadow);}
+.footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem 1.5rem;list-style:none;padding:0;margin:0 0 1rem 0;}
+.footer-nav a{color:var(--text-secondary);text-decoration:none;font-size:.9rem;transition:color .2s ease;}
+.footer-nav a:hover{color:var(--accent-color);}
+.footer-copyright{font-size:.85rem;color:var(--text-secondary);}
+mark{background:yellow;padding:0 2px;}
+@media(max-width:768px){
+  .header-top{flex-direction:column;align-items:flex-start;}
+  .search-form{width:100%;max-width:none;}
+  .category-nav ul{overflow-x:auto;padding-bottom:10px;white-space:nowrap;justify-content:center !important;}
+}
+</style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"
+     crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="/">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li><a href="/online-safety/">Online Safety</a></li>
+<li><a href="/online-privacy/">Online Privacy</a></li>
+<li><a href="/networking/">Networking</a></li>
+<li><a href="/ip-addresses/">IP Addresses</a></li>
+<li><a href="/home-computing/">Home Computing</a></li>
+<li><a href="/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<header class="page-header">
+<h1 id="ph-title">Search Results</h1>
+<p id="ph-sub">Find articles, guides, and tutorials across MyIPNow.</p>
+</header>
+
+<div class="article-list" id="results"></div>
+
+<nav aria-label="Page navigation" class="pagination desktop-pagination" id="desktop-pagination"></nav>
+<nav aria-label="Page navigation" class="pagination mobile-pagination" id="mobile-pagination"></nav>
+
+</main>
+
+<footer class="footer">
+<ul class="footer-nav">
+<li><a href="/about.html">About</a></li>
+<li><a href="/contact.html">Contact</a></li>
+<li><a href="/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="/terms-of-use.html">Terms of Use</a></li>
+<li><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">© 2025 myipnow. All Rights Reserved.</div>
+</footer>
+</div>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(async function() {
+  const response = await fetch('/search_index.json');
+  const docs = await response.json();
+
+  const idx = lunr(function () {
+    this.ref('id');
+    this.field('title');
+    this.field('content');
+    docs.forEach(doc => this.add(doc));
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q") || "";
+  const page = parseInt(params.get("page") || "1");
+  const perPage = 10;
+
+  const results = query ? idx.search(query) : [];
+  const container = document.getElementById("results");
+  const desktopPagination = document.getElementById("desktop-pagination");
+  const mobilePagination = document.getElementById("mobile-pagination");
+
+  if (!query) {
+    container.innerHTML = "<p>Please enter a search term above.</p>";
+    return;
+  }
+
+  if (results.length === 0) {
+    container.innerHTML = `<p>No results found for <strong>${query}</strong>.</p>`;
+    return;
+  }
+
+  const totalPages = Math.ceil(results.length / perPage);
+
+  function renderPage(p) {
+    container.innerHTML = "";
+    desktopPagination.innerHTML = "";
+    mobilePagination.innerHTML = "";
+
+    const start = (p - 1) * perPage;
+    const pageResults = results.slice(start, start + perPage);
+
+    pageResults.forEach(r => {
+      const item = docs.find(d => d.id == r.ref);
+      const snippet = item.content.slice(0, 300).replace(new RegExp(query, "gi"), m => `<mark>${m}</mark>`);
+      container.innerHTML += `
+        <div class="article-item">
+          <h2><a href="${item.url}">${item.title}</a></h2>
+          <p class="article-excerpt">${snippet}...</p>
+          <a href="${item.url}" class="read-more">Read More →</a>
+        </div>`;
+    });
+
+    // --- Desktop Pagination ---
+    if(totalPages > 1) {
+      if(p > 1) desktopPagination.innerHTML += `<a href="?q=${encodeURIComponent(query)}&page=${p-1}">← Previous</a>`;
+      const pageLinks = [];
+      for(let i=1;i<=totalPages;i++){
+        if(i===1 || i===totalPages || (i>=p-2 && i<=p+2)) pageLinks.push(i);
+      }
+      let last = 0;
+      pageLinks.forEach(i=>{
+        if(i-last>1) desktopPagination.innerHTML += `<span>…</span>`;
+        if(i===p) desktopPagination.innerHTML += `<span class="current">${i}</span>`;
+        else desktopPagination.innerHTML += `<a href="?q=${encodeURIComponent(query)}&page=${i}">${i}</a>`;
+        last = i;
+      });
+      if(p<totalPages) desktopPagination.innerHTML += `<a href="?q=${encodeURIComponent(query)}&page=${p+1}">Next →</a>`;
+    }
+
+    // --- Mobile Pagination (Centered) ---
+    if(totalPages > 1){
+      let html = '';
+      if(p > 1) html += `<a href="?q=${encodeURIComponent(query)}&page=${p-1}">← Prev</a>`;
+      html += `<span class="current">${p} / ${totalPages}</span>`;
+      if(p < totalPages) html += `<a href="?q=${encodeURIComponent(query)}&page=${p+1}">Next →</a>`;
+      mobilePagination.innerHTML = html;
+    }
+  }
+
+  renderPage(page);
+})();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const returnBtn = document.getElementById("returnToCategory");
+    if (!returnBtn) return;
+
+    const articleToCategory = {
+        "advanced-guide-to-annoying-viral-requests": "general-topics",
+        "unlocking-the-power-of-privacy-gift": "online-privacy",
+        // add all your articles here
+    };
+
+    const pathParts = window.location.pathname.split("/").filter(p => p);
+    const articleSlug = pathParts[pathParts.length - 1];
+    const category = articleToCategory[articleSlug] || "general-topics";
+
+    const lastScroll = sessionStorage.getItem(`scrollPos_${category}`);
+    if (lastScroll) {
+        window.scrollTo(0, parseInt(lastScroll, 10));
+        sessionStorage.removeItem(`scrollPos_${category}`);
+    }
+
+    returnBtn.href = `/${category}/index.html`;
+});
+
+window.addEventListener("beforeunload", function() {
+    const referrerParts = document.referrer.split("/").filter(p => p);
+    if (referrerParts.length >= 1) {
+        const refCategory = referrerParts[0];
+        sessionStorage.setItem(`scrollPos_${refCategory}`, window.scrollY);
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const returnBtn = document.getElementById("returnToCategory");
+  if (!returnBtn) return;
+
+  // Check if we have a saved category path
+  const lastCategory = sessionStorage.getItem("lastCategoryPath");
+  const lastScroll = sessionStorage.getItem("lastCategoryScroll");
+
+  if (lastCategory) {
+    returnBtn.href = lastCategory;
+    // Scroll to saved position after returning to category
+    returnBtn.addEventListener("click", function () {
+      sessionStorage.setItem("scrollTo", lastScroll || 0);
+    });
+  } else {
+    // Fallback: go to a default category if user directly visited article
+    const defaultCategory = "general-topics";
+    returnBtn.href = `/${defaultCategory}/index.html`;
+  }
+});
+
+// Save scroll position when leaving category pages
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.pathname.includes("/online-safety/") ||
+      window.location.pathname.includes("/online-privacy/") ||
+      window.location.pathname.includes("/networking/") ||
+      window.location.pathname.includes("/ip-addresses/") ||
+      window.location.pathname.includes("/home-computing/") ||
+      window.location.pathname.includes("/general-topics/")) {
+    
+    window.addEventListener("beforeunload", function () {
+      sessionStorage.setItem("lastCategoryPath", window.location.pathname);
+      sessionStorage.setItem("lastCategoryScroll", window.scrollY);
+    });
+
+    // Restore scroll when returning
+    const scrollTo = sessionStorage.getItem("scrollTo");
+    if (scrollTo) {
+      window.scrollTo(0, parseInt(scrollTo, 10));
+      sessionStorage.removeItem("scrollTo");
+    }
+  }
+});
+</script>
+
+</body>
+</html>

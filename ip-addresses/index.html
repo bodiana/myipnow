@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IP Addresses | MyIPNow</title>
+<meta name="description" content="All about IP addresses and how they work."/>
+<link href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text><text y='.9em' x='28' font-size='55'>📍</text></svg>" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b;
+        --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        --border-radius: 16px;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin:0; color: var(--text-primary); line-height:1.6; }
+    .container { max-width:900px; margin:0 auto; padding:1rem; }
+    .site-header { background: var(--card-bg); padding:1rem; margin-bottom:2rem; border-radius:var(--border-radius); box-shadow:var(--card-shadow); }
+    .header-top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; padding-bottom:1rem; border-bottom:1px solid #e2e8f0; }
+    .logo { font-size:1.5rem; font-weight:700; color:var(--text-primary); text-decoration:none; }
+    .search-form { display:flex; flex-grow:1; max-width:400px; }
+    .search-form input { width:100%; padding:0.75rem 1rem; border:1px solid #e2e8f0; border-radius:8px 0 0 8px; font-size:0.9rem; outline-color:var(--accent-color); }
+    .search-form button { padding:0.75rem 1rem; border:none; background:var(--hide-ip-color); color:white; border-radius:0 8px 8px 0; cursor:pointer; font-weight:500; transition: background-color 0.2s ease; }
+    .search-form button:hover { background:#059669; }
+    .category-nav { padding-top:1rem; }
+    .category-nav ul { display:flex; gap:1.5rem; list-style:none; margin:0; padding:0; align-items:center; overflow-x:auto; white-space:nowrap; justify-content:center; }
+    .category-nav a { text-decoration:none; color:var(--text-primary); font-size:0.9rem; font-weight:500; transition: color 0.2s ease; }
+    .category-nav a:hover { color:var(--accent-color); }
+    .page-header { background:var(--card-bg); padding:2rem; border-radius:var(--border-radius); box-shadow:var(--card-shadow); margin-bottom:2rem; text-align:center; }
+    .page-header h1 { font-size:2.5rem; margin:0 0 0.5rem 0; color:var(--text-primary); }
+    .page-header p { font-size:1rem; margin:0; color:var(--text-secondary); }
+    .article-list .article-item { background: var(--card-bg); margin-bottom:1.5rem; border-radius:var(--border-radius); box-shadow:var(--card-shadow); padding:1.5rem 2rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .article-list .article-item:hover { transform: translateY(-5px); box-shadow:0 15px 35px rgba(0,0,0,0.1); }
+    .article-item h2 { margin-top:0; }
+    .article-item h2 a { text-decoration:none; color:var(--text-primary); font-size:1.5rem; }
+    .article-item h2 a:hover { color:var(--accent-color); }
+    .article-excerpt { color:var(--text-secondary); font-size:1rem; }
+    .read-more { display:inline-block; margin-top:1rem; color:var(--accent-color); text-decoration:none; font-weight:600; }
+    .footer { text-align:center; padding:2rem 1rem; margin:2rem auto 0; background:var(--card-bg); border-radius:var(--border-radius); box-shadow:var(--card-shadow); }
+    .footer-nav { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem 1.5rem; list-style:none; padding:0; margin:0 0 1rem 0; }
+    .footer-nav a { color:var(--text-secondary); text-decoration:none; font-size:0.9rem; transition: color 0.2s ease; }
+    .footer-nav a:hover { color:var(--accent-color); }
+    .footer-copyright { font-size:0.85rem; color:var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="site-header">
+    <div class="header-top">
+        <a class="logo" href="/">🌐 MyIPNow</a>
+        <form action="/search.html" class="search-form" method="get">
+            <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <nav class="category-nav" aria-label="Article Categories">
+        <ul>
+            <li><a href="/online-safety/">Online Safety</a></li>
+            <li><a href="/online-privacy/">Online Privacy</a></li>
+            <li><a href="/networking/">Networking</a></li>
+            <li><a href="/ip-addresses/">IP Addresses</a></li>
+            <li><a href="/home-computing/">Home Computing</a></li>
+            <li><a href="/general-topics/">General Topics</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <header class="page-header">
+        <h1>IP Addresses</h1>
+        <p>All about IP addresses and how they work.</p>
+    </header>
+
+    <div class="article-list">
+        <article class="article-item" id="advanced-guide-to-enabling-disabling-geolocation">
+            <h2><a href="/advanced-guide-to-enabling-disabling-geolocation-and-prevention/">Advanced Guide to Enabling Disabling Geolocation and Prevention.</a></h2>
+            <p class="article-excerpt">A deep dive into Advanced Guide to Enabling Disabling Geolocation and Prevention.</p>
+            <a class="read-more" href="/advanced-guide-to-enabling-disabling/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="advanced-guide-to-traceroute-and-prevention">
+            <h2><a href="/advanced-guide-to-traceroute-and-prevention/">Advanced Guide to Traceroute and Prevention.</a></h2>
+            <p class="article-excerpt">A deep dive into Advanced Guide to Traceroute and Prevention.</p>
+            <a class="read-more" href="/advanced-guide-to-traceroute-and/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="beyond-geolocation-what-comes-next-in">
+            <h2><a href="/beyond-geolocation-what-comes-next-in-digital-security/">Beyond Geolocation: What Comes Next in Digital Security?</a></h2>
+            <p class="article-excerpt">A deep dive into Beyond Geolocation: What Comes Next in Digital Security?</p>
+            <a class="read-more" href="/beyond-geolocation-what-comes-next/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="beyond-proxy-extension-what-comes-next">
+            <h2><a href="/beyond-proxy-extension-what-comes-next-in-digital-security/">Beyond Proxy Extension: What Comes Next in Digital Security?</a></h2>
+            <p class="article-excerpt">A deep dive into Beyond Proxy Extension: What Comes Next in Digital Security?</p>
+            <a class="read-more" href="/beyond-proxy-extension-what-comes/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="mastering-proxy-risks-the-ultimate-2025">
+            <h2><a href="/mastering-proxy-risks-the-ultimate-2025-deep-dive/">Mastering Proxy Risks: The Ultimate 2025 Deep Dive.</a></h2>
+            <p class="article-excerpt">A deep dive into Mastering Proxy Risks: The Ultimate 2025 Deep Dive.</p>
+            <a class="read-more" href="/mastering-proxy-risks-the-ultimate/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="the-definitive-guide-to-geolocation-in">
+            <h2><a href="/the-definitive-guide-to-geolocation-in-the-age-of-ai/">The Definitive Guide to Geolocation in the Age of AI.</a></h2>
+            <p class="article-excerpt">A deep dive into The Definitive Guide to Geolocation in the Age of AI.</p>
+            <a class="read-more" href="/the-definitive-guide-to-geolocation/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="the-definitive-guide-to-geolocation-stats">
+            <h2><a href="/the-definitive-guide-to-geolocation-stats-in-the-age-of-ai/">The Definitive Guide to Geolocation Stats in the Age of AI.</a></h2>
+            <p class="article-excerpt">A deep dive into The Definitive Guide to Geolocation Stats in the Age of AI.</p>
+            <a class="read-more" href="/the-definitive-guide-to-geolocation/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="the-future-of-proxy-server-emerging">
+            <h2><a href="/the-future-of-proxy-server-emerging-threats-and-solutions/">The Future of Proxy Server: Emerging Threats and Solutions.</a></h2>
+            <p class="article-excerpt">A deep dive into The Future of Proxy Server: Emerging Threats and Solutions.</p>
+            <a class="read-more" href="/the-future-of-proxy-server/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="unlocking-the-power-of-geolocation-accuracy">
+            <h2><a href="/unlocking-the-power-of-geolocation-accuracy-check-expert-tips-and-tricks/">Unlocking the Power of Geolocation Accuracy Check: Expert Tips and Tricks.</a></h2>
+            <p class="article-excerpt">A deep dive into Unlocking the Power of Geolocation Accuracy Check: Expert Tips and Tricks.</p>
+            <a class="read-more" href="/unlocking-the-power-of-geolocation/">Read More →</a>
+        </article>
+
+        <article class="article-item" id="unlocking-the-power-of-proxy-abuse">
+            <h2><a href="/unlocking-the-power-of-proxy-abuse-expert-tips-and-tricks/">Unlocking the Power of Proxy Abuse: Expert Tips and Tricks.</a></h2>
+            <p class="article-excerpt">A deep dive into Unlocking the Power of Proxy Abuse: Expert Tips and Tricks.</p>
+            <a class="read-more" href="/unlocking-the-power-of-proxy/">Read More →</a>
+        </article>
+    </div>
+</main>
+
+<footer class="footer">
+    <ul class="footer-nav">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms-of-use.html">Terms of Use</a></li>
+        <li><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></li>
+    </ul>
+    <div class="footer-copyright">© 2025 myipnow. All Rights Reserved.</div>
+</footer>
+
+</div>
+</body>
+</html>
