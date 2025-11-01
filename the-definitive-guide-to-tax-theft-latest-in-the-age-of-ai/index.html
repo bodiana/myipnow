@@ -624,29 +624,76 @@
   if(!trigger || !dropdown) return;
 
   let menu=null, backdrop=null, open=false;
-  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768)dropdown.style.display='block';});
-  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768)dropdown.style.display='none';});
 
-  function closeMenu(){ if(menu){menu.remove();menu=null;} if(backdrop){backdrop.remove();backdrop=null;} document.body.classList.remove('menu-open'); open=false; }
+  // Desktop hover
+  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
+  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
+
+  function closeMenu(){
+    if(menu){ menu.remove(); menu=null; }
+    if(backdrop){ backdrop.remove(); backdrop=null; }
+    dropdown.style.display='none';
+    document.body.classList.remove('menu-open');
+    open=false;
+  }
 
   function openMenu(e){
     e.preventDefault(); e.stopPropagation();
     if(window.innerWidth>768) return;
+
+    dropdown.style.display='none'; // hide original header dropdown
+
     if(open){ closeMenu(); return; }
-    const rect=trigger.getBoundingClientRect();
-    backdrop=document.createElement('div');
-    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
-    backdrop.addEventListener('click',closeMenu);
+
+    const rect = trigger.getBoundingClientRect();
+    backdrop = document.createElement('div');
+    Object.assign(backdrop.style,{
+      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+      background:'transparent',zIndex:9998
+    });
+    backdrop.addEventListener('click', closeMenu);
     document.body.appendChild(backdrop);
-    menu=dropdown.cloneNode(true);
-    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom + window.scrollY + 8}px`,left:`${rect.left + window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,maxHeight:'70vh',overflowY:'auto'});
-    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
+
+    menu = dropdown.cloneNode(true);
+    Object.assign(menu.style,{
+      position:'absolute',
+      top:`${rect.bottom + window.scrollY + 8}px`,
+      left:`${rect.left + window.scrollX}px`,
+      minWidth:`${Math.max(rect.width,200)}px`,
+      background:'#fff',
+      border:'1px solid #e2e8f0',
+      borderRadius:'10px',
+      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+      listStyle:'none',
+      padding:'.5rem 0',
+      margin:0,
+      zIndex:9999,
+      maxHeight:'70vh',
+      overflowY:'auto',
+      display:'block',        /* ✅ ensures visible */
+      visibility:'visible',   /* ✅ fixes Safari hover ghost */
+      opacity:'1'             /* ✅ fully visible */
+    });
+    menu.querySelectorAll('a').forEach(a=>{
+      a.style.display='block';
+      a.style.padding='.6rem 1.2rem';
+      a.style.color='#1e293b';
+      a.style.textDecoration='none';
+      a.style.fontWeight='500';
+      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
+      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
+    });
+
     document.body.appendChild(menu);
     document.body.classList.add('menu-open');
     open=true;
   }
 
-  window.addEventListener('scroll',()=>{if(!open||!menu)return;const rect=trigger.getBoundingClientRect();menu.style.top=`${rect.bottom + window.scrollY + 8}px`;menu.style.left=`${rect.left + window.scrollX}px`;});
+  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
+    const rect=trigger.getBoundingClientRect();
+    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
+    menu.style.left=`${rect.left + window.scrollX}px`;
+  });
   window.addEventListener('resize',closeMenu);
   trigger.addEventListener('click',openMenu);
   trigger.addEventListener('touchstart',openMenu,{passive:false});
