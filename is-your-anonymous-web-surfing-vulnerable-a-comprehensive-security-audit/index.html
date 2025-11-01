@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit. | MyIPNow
+  </title>
+<meta content="Learn about Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit. in this detailed guide on General Topics." name="description"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; background:#f7f8f9; margin:0; color:#1e293b; line-height:1.7; }
+    .container { max-width:900px; margin:0 auto; padding:1rem; }
+    .site-header { background:#fff; padding:1rem; margin-bottom:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    .header-top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; padding-bottom:1rem; border-bottom:1px solid #e2e8f0; }
+    .logo { font-size:1.5rem; font-weight:700; color:#1e293b; text-decoration:none; }
+    .search-form { display:flex; flex-grow:1; max-width:400px; }
+    .search-form input { width:100%; padding:0.75rem 1rem; border:1px solid #e2e8f0; border-radius:8px 0 0 8px; font-size:0.9rem; }
+    .search-form button { padding:0.75rem 1rem; border:none; background:#10b981; color:white; border-radius:0 8px 8px 0; cursor:pointer; font-weight:500; }
+    .category-nav { padding-top:1rem; }
+    .category-nav ul {
+  display:flex;
+  gap:1.5rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center !important;
+}
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+
+@media(max-width:768px){
+  .category-nav ul {
+    overflow-x:auto;
+    white-space:nowrap;
+    padding-bottom:10px;
+  }
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
+    .page-header { background:#fff; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; text-align:center; }
+    .page-header h1 { font-size:2.2rem; margin:0 0 0.5rem; }
+    .page-header p { font-size:1rem; color:#64748b; margin:0; }
+    .article-body { background:#fff; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; }
+    .article-body h2 { margin-top:2rem; font-size:1.5rem; }
+    .article-body h3 { margin-top:1.2rem; font-size:1.2rem; }
+    .related { background:#fff; padding:1.5rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; }
+    .related h3 { margin-top:0; }
+    .related ul { list-style:none; padding:0; }
+    .related li { margin-bottom:0.5rem; }
+    .related a { text-decoration:none; color:#4f46e5; }
+    .article-pagination { display:flex; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
+    .article-pagination a { background:#fff; padding:0.75rem 1rem; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.05); text-decoration:none; color:#1e293b; font-weight:500; }
+    .article-pagination a:hover { background:#4f46e5; color:white; }
+    .footer { text-align:center; padding:2rem 1rem; margin:2rem auto 0; background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    .footer-nav { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem 1.5rem; list-style:none; padding:0; margin:0 0 1rem; }
+    .footer-nav a { color:#64748b; text-decoration:none; font-size:0.9rem; }
+    .footer-nav a:hover { color:#4f46e5; }
+    .footer-copyright { font-size:0.85rem; color:#64748b; }
+   
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
+<style>
+.nav {
+  text-align: center !important;
+}
+.nav li {
+  display: inline-block !important;
+  float: none !important;
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/is-your-anonymous-web-surfing-vulnerable-a-comprehensive-security-audit/" rel="canonical"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://myipnow.net/#website","url":"https://myipnow.net/","name":"MyIPNow"},{"@type":"Organization","@id":"https://myipnow.net/#organization","name":"MyIPNow","url":"https://myipnow.net/"},{"@type":"WebPage","@id":"https://myipnow.net/is-your-anonymous-web-surfing-vulnerable-a-comprehensive-security-audit/","url":"https://myipnow.net/is-your-anonymous-web-surfing-vulnerable-a-comprehensive-security-audit/","name":"Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit. | MyIPNow","description":"Learn about Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit. in this detailed guide on General Topics.","isPartOf":{"@id":"https://myipnow.net/#website"},"keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup"},{"@type":"Article","@id":"https://myipnow.net/is-your-anonymous-web-surfing-vulnerable-a-comprehensive-security-audit/#article","headline":"Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit.","description":"Learn about Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit. in this detailed guide on General Topics.","mainEntityOfPage":"https://myipnow.net/is-your-anonymous-web-surfing-vulnerable-a-comprehensive-security-audit/","isPartOf":{"@id":"https://myipnow.net/#website"},"author":{"@type":"Organization","name":"MyIPNow"},"publisher":{"@id":"https://myipnow.net/#organization"},"datePublished":"2025-10-03","dateModified":"2025-10-03","keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup","url":"https://myipnow.net/is-your-anonymous-web-surfing-vulnerable-a-comprehensive-security-audit/"}]}</script><style>
+@media (max-width: 768px) {
+  .category-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .category-nav ul {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem;
+  }
+  .category-nav::-webkit-scrollbar { height: 6px; }
+  .category-nav::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  .nav-tools ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    list-style: none;
+    padding: .5rem 0;
+    margin: 0;
+    min-width: 220px;
+    z-index: 999;
+  }
+  .nav-tools.open ul { display: block; }
+}
+</style>
+
+
+
+<style>
+@media (max-width: 768px) {
+  .nav-tools {
+    position: static !important;
+  }
+  .nav-tools ul {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px;
+    right: 10px;
+    display: none;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 10000;
+  }
+  .nav-tools.open ul {
+    display: block !important;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+</style>
+
+
+
+</head>
+<body>
+<script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="/index.html">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="#">Tools ▾</a>
+<ul>
+<li><a href="/index.html">IP Lookup</a></li>
+<li><a href="/dns-lookup.html">DNS Lookup</a></li>
+<li><a href="/whois-lookup.html">WHOIS Lookup</a></li>
+<li><a href="/internet-speed-test.html">Internet Speed Test</a></li>
+<li><a href="/generate-password.html">Generate Password</a></li>
+<li><a href="/ip-blacklist.html">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="/online-safety/index.html">Online Safety</a></li>
+<li><a href="/online-privacy/index.html">Online Privacy</a></li>
+<li><a href="/networking/index.html">Networking</a></li>
+<li><a href="/ip-addresses/index.html">IP Addresses</a></li>
+<li><a href="/home-computing/index.html">Home Computing</a></li>
+<li><a href="/general-topics/index.html">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<!-- Header -->
+<!-- Page Header --><!-- Article Body -->
+<header class="page-header">
+<h1>Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit.</h1>
+</header>
+<article class="article-body"><p class="article-meta">🗓️ Published on October 03, 2025</p>
+<h2>
+     Is Your Anonymous Web Surfing Vulnerable? A Comprehensive Security Audit
+    </h2>
+<p>In an age where online privacy is increasingly under threat, many users turn to anonymous web surfing as a means to protect their personal information. However, many may not realize that their methods of anonymity can themselves be vulnerable. This article provides a thorough security audit for those who wish to surf the web anonymously, highlighting potential risks and offering practical solutions to enhance your online safety. </p>
+<h2>
+     Understanding Anonymous Web Surfing
+    </h2>
+<p>
+     Before diving into the vulnerabilities associated with anonymous web surfing, it’s essential to understand what it entails. Anonymous web surfing refers to methods used to conceal your identity and location while browsing the internet. Common techniques include:
+    </p>
+<ul>
+<li>
+<strong>
+       Virtual Private Networks (VPNs):
+      </strong>
+      These encrypt your internet connection and mask your IP address.
+     </li>
+<li>
+<strong>
+       Tor Browser:
+      </strong>
+      A specialized browser that routes your traffic through multiple servers to anonymize your IP address.
+     </li>
+<li>
+<strong>
+       Proxy Servers:
+      </strong>
+      These act as intermediaries between your device and the internet, helping to hide your IP address.
+     </li>
+<li>
+<strong>
+       Incognito Mode:
+      </strong>
+      A private browsing mode available in most browsers that doesn’t save your browsing history.
+     </li>
+</ul>
+<h2>
+     Common Vulnerabilities in Anonymous Surfing
+    </h2>
+<p>While the methods above can provide a layer of anonymity, they are not foolproof. Here are some common vulnerabilities associated with anonymous web surfing:
+    </p>
+<h3>
+     1. Data Leaks
+    </h3>
+<p>Even when using a VPN or Tor, your data can still be exposed through various leaks:</p>
+<ul>
+<li>
+<strong>
+       DNS Leaks:
+      </strong>
+      If your DNS requests are sent outside the VPN tunnel, your ISP can still see which websites you visit.
+     </li>
+<li>
+<strong>
+       WebRTC Leaks:
+      </strong>
+      This technology can expose your real IP address even when using a VPN.
+     </li>
+</ul>
+<h3>
+     2. Poorly Configured VPNs
+    </h3>
+<p>
+     Not all VPNs are created equal. Some may not offer adequate encryption, or worse, may log your browsing activities. When selecting a VPN, consider the following:</p>
+<ul>
+<li>
+      Check for a no-logs policy.
+     </li>
+<li>
+      Ensure strong encryption standards (AES-256 is recommended).
+     </li>
+<li>
+      Look for independent security audits.
+     </li>
+</ul>
+<h3>
+     3. Malware and Phishing Attacks
+    </h3>
+<p>
+     Anonymous browsing does not protect you from malicious websites and phishing attacks. These threats can compromise your security regardless of the tools you use. Be vigilant and follow these precautions:</p>
+<ul>
+<li>
+      Use antivirus software to protect against malware.
+     </li>
+<li>
+      Be cautious of unsolicited emails or messages requesting personal information.
+     </li>
+<li>
+      Verify the authenticity of websites before entering sensitive information.
+     </li>
+</ul>
+<h3>
+     4. Browser Fingerprinting
+    </h3>
+<p>Websites can use browser fingerprinting techniques to identify users even when they are attempting to browse anonymously. This method considers factors such as:
+    </p>
+<ul>
+<li>
+      Your browser type and version.
+     </li>
+<li>
+      Your operating system.
+     </li>
+<li>
+      Installed plugins and fonts.
+     </li>
+</ul>
+<p>
+     To mitigate this risk, consider using privacy-focused browsers or browser extensions designed to block fingerprinting. </p>
+<h2>
+     Enhancing Your Anonymous Surfing Security
+    </h2>
+<p>To maximize your online anonymity and security, consider implementing the following strategies:</p>
+<h3>
+     1. Use a Reputable VPN
+    </h3>
+<p>Investing in a high-quality VPN can significantly enhance your anonymity. Look for services that:
+    </p>
+<ul>
+<li>
+      Offer strong encryption and security protocols.
+     </li>
+<li>
+      Have a proven track record of protecting user data.
+     </li>
+<li>
+      Provide a kill switch feature to prevent data leaks.
+     </li>
+</ul>
+<h3>
+     2. Regularly Update Software
+    </h3>
+<p>Keeping your operating system, browser, and security software up to date is crucial. Updates often patch vulnerabilities that could be exploited by attackers. </p>
+<h3>
+     3. Utilize Tor for Enhanced Anonymity
+    </h3>
+<p>
+     For those who require an additional layer of anonymity, using the Tor network can help obscure your identity further. However, be aware of the following:</p>
+<ul>
+<li>
+      Tor may slow down your internet speed.
+     </li>
+<li>
+      Use only .onion sites for enhanced security.
+     </li>
+</ul>
+<h3>
+     4. Be Cautious with Personal Information
+    </h3>
+<p>Even while browsing anonymously, refrain from sharing personal information that could be linked back to you. Consider the following best practices:
+    </p>
+<ul>
+<li>
+      Avoid using your real name or email address when signing up for services.
+     </li>
+<li>
+      Use disposable email addresses when necessary.
+     </li>
+<li>
+      Do not connect to your personal accounts while using anonymous browsing methods.
+     </li>
+</ul>
+<h3>
+     5. Regularly Check for Leaks
+    </h3>
+<p>
+     Make it a habit to periodically check for DNS and WebRTC leaks. There are several tools available online that can help you identify any potential leaks in your setup. </p>
+<h2>
+     Conclusion
+    </h2>
+<p>While anonymous web surfing offers a valuable layer of personal privacy, it is essential to recognize that vulnerabilities still exist. By understanding the potential risks and implementing the strategies outlined in this article, you can enhance your online security and enjoy a safer browsing experience. </p>
+<p>Remember, true anonymity on the internet requires diligence and ongoing education. Stay informed about the latest security trends and continuously evaluate your methods to ensure your online presence remains secure. </p>
+<div class="references"><p>References:</p><ul><li><a href="https://www.eff.org/issues/privacy" rel="noopener noreferrer" target="_blank">Electronic Frontier Foundation – Online Privacy</a></li><li><a href="https://protonvpn.com/blog/" rel="noopener noreferrer" target="_blank">ProtonVPN Blog</a></li><li><a href="https://duckduckgo.com/privacy" rel="noopener noreferrer" target="_blank">DuckDuckGo Privacy Resources</a></li><li><a href="https://www.mozilla.org/en-US/privacy/" rel="noopener noreferrer" target="_blank">Mozilla Privacy Blog</a></li><li><a href="https://nordvpn.com/blog/" rel="noopener noreferrer" target="_blank">NordVPN Learn Center</a></li></ul></div><section class="see-also"><h2>See Also</h2><ul><li><a href="/the-impact-of-ai-on-virtual-machines-protect-a-2025-forecast/">The Impact of AI on Virtual Machines Protect: A 2025 Forecast. | MyIPNow</a></li><li><a href="/how-cybersecurity-risk-management-is-being-used-in-next-gen-cyberattacks/">How Cybersecurity Risk Management is Being Used in Next-Gen Cyberattacks. | MyIPNow</a></li><li><a href="/the-future-of-falling-scams-emerging-threats-and-solutions/">The Future of Falling Scams: Emerging Threats and Solutions. | MyIPNow</a></li><li><a href="/top-firewalls-work-alternatives-you-should-consider/">Top Firewalls Work Alternatives You Should Consider. | MyIPNow</a></li><li><a href="/is-your-ssid-vulnerable-a-comprehensive-security-audit/">Is Your Ssid Vulnerable? A Comprehensive Security Audit. | MyIPNow</a></li></ul></section><p class="updated-date">Last updated: November 1, 2025</p></article><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><div class="article-pagination" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;"><a href="/is-your-anonymous-online-vulnerable-a-comprehensive-security-audit/" style="justify-self:start;">← Previous Article</a><a href="/general-topics/page19.html" id="returnToCategory" style="justify-self:center;">↑ Return to Category</a><a href="/is-your-bogons-vulnerable-a-comprehensive-security-audit/" style="justify-self:end;">Next Article →</a></div><footer class="footer">
+<ul class="footer-nav">
+<li>
+<a href="/about.html">
+       About
+      </a>
+</li>
+<li>
+<a href="/contact.html">
+       Contact
+      </a>
+</li>
+<li>
+<a href="/privacy-policy.html">
+       Privacy Policy
+      </a>
+</li>
+<li>
+<a href="/terms-of-use.html">
+       Terms of Use
+      </a>
+</li>
+<li>
+<a href="/affiliate-disclosure.html">
+       Affiliate Disclosure
+      </a>
+</li>
+</ul>
+<div class="footer-copyright">
+     © 2025 MyIPNow. All Rights Reserved.
+    </div>
+</footer><!-- Related Articles --></div>
+<script id="article-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+    var btn = document.getElementById('returnToCategory');
+    if (!btn) return;
+
+    var raw = null, url=null;
+    try {
+      raw = sessionStorage.getItem(KEY);
+      if (raw){
+        var st = JSON.parse(raw);
+        url = st && st.url;
+      }
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+    if (url && CAT_RE.test(url)) {
+      btn.setAttribute('href', url);
+      return;
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index.html
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      var cat = '/' + parts[0] + '/';
+      if (CAT_RE.test(cat)) {
+        btn.setAttribute('href', cat + 'index.html');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768)dropdown.style.display='block';});
+  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768)dropdown.style.display='none';});
+
+  function closeMenu(){ if(menu){menu.remove();menu=null;} if(backdrop){backdrop.remove();backdrop=null;} document.body.classList.remove('menu-open'); open=false; }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+    if(open){ closeMenu(); return; }
+    const rect=trigger.getBoundingClientRect();
+    backdrop=document.createElement('div');
+    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
+    backdrop.addEventListener('click',closeMenu);
+    document.body.appendChild(backdrop);
+    menu=dropdown.cloneNode(true);
+    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom + window.scrollY + 8}px`,left:`${rect.left + window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,maxHeight:'70vh',overflowY:'auto'});
+    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{if(!open||!menu)return;const rect=trigger.getBoundingClientRect();menu.style.top=`${rect.bottom + window.scrollY + 8}px`;menu.style.left=`${rect.left + window.scrollX}px`;});
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+</body>
+</html>

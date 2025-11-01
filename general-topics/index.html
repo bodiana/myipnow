@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   General Topics | MyIPNow
+  </title>
+<meta content="General Topics | MyIPNow — Free IP lookup &amp; privacy guide by MyIPNow. Check IP, IP address lookup, IPv4/IPv6, geolocation, ISP." name="description"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+            --bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b;
+            --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+        .site-header { background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); }
+        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .search-form { display: flex; flex-grow: 1; max-width: 400px; }
+        .search-form input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 0.9rem; outline-color: var(--accent-color); }
+        .search-form button { padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500; transition: background-color 0.2s ease; }
+        .search-form button:hover { background: #059669; }
+        .category-nav { padding-top: 1rem; }
+        .category-nav ul {
+  display:flex;
+  gap:1.5rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center !important;
+}
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+
+@media(max-width:768px){
+  .category-nav ul {
+    overflow-x:auto;
+    white-space:nowrap;
+    padding-bottom:10px;
+  }
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
+        .page-header { background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center; }
+        .page-header h1 { font-size: 2.5rem; color: var(--text-primary); margin: 0 0 0.5rem 0; }
+        .page-header p { font-size: 1rem; color: var(--text-secondary); margin: 0; }
+        .article-list .article-item { background: var(--card-bg); margin-bottom: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); padding: 1.5rem 2rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .article-list .article-item:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .article-item h2 { margin-top: 0; }
+        .article-item h2 a { text-decoration: none; color: var(--text-primary); font-size: 1.5rem; }
+        .article-item h2 a:hover { color: var(--accent-color); }
+        .article-excerpt { color: var(--text-secondary); font-size: 1rem; }
+        .read-more { display: inline-block; margin-top: 1rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        .pagination { display: flex; justify-content: center; gap: 1rem; align-items: center; margin-top: 2rem; padding-bottom: 2rem; }
+        .pagination a, .pagination span { padding: 0.75rem 1rem; border-radius: 8px; text-decoration: none; color: var(--text-primary); background: var(--card-bg); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .pagination a:hover { background: var(--accent-color); color: white; }
+        .pagination .current { background: var(--accent-color); color: white; font-weight: 600; }
+        .footer { text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background-color: #fff; border-radius: 16px; box-shadow: var(--card-shadow); }
+        .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; list-style: none; padding: 0; margin: 0 0 1rem 0; }
+        .footer-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease; }
+        .footer-nav a:hover { color: var(--accent-color); }
+        .footer-copyright { font-size: 0.85rem; color: var(--text-secondary); }
+   
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/general-topics/" rel="canonical"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://myipnow.net/#website","url":"https://myipnow.net/","name":"MyIPNow"},{"@type":"Organization","@id":"https://myipnow.net/#organization","name":"MyIPNow","url":"https://myipnow.net/"},{"@type":"WebPage","@id":"https://myipnow.net/general-topics/","url":"https://myipnow.net/general-topics/","name":"General Topics | MyIPNow","description":"General Topics | MyIPNow — Free IP lookup & privacy guide by MyIPNow. Check IP, IP address lookup, IPv4/IPv6, geolocation, ISP.","isPartOf":{"@id":"https://myipnow.net/#website"},"keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup"},{"@type":"Article","@id":"https://myipnow.net/general-topics/#article","headline":"General Topics","description":"General Topics | MyIPNow — Free IP lookup & privacy guide by MyIPNow. Check IP, IP address lookup, IPv4/IPv6, geolocation, ISP.","mainEntityOfPage":"https://myipnow.net/general-topics/","isPartOf":{"@id":"https://myipnow.net/#website"},"author":{"@type":"Organization","name":"MyIPNow"},"publisher":{"@id":"https://myipnow.net/#organization"},"datePublished":"2025-10-28","dateModified":"2025-10-28","keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup","url":"https://myipnow.net/general-topics/"}]}</script><style>
+@media (max-width: 768px) {
+  .category-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .category-nav ul {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem;
+  }
+  .category-nav::-webkit-scrollbar { height: 6px; }
+  .category-nav::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  .nav-tools ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    list-style: none;
+    padding: .5rem 0;
+    margin: 0;
+    min-width: 220px;
+    z-index: 999;
+  }
+  .nav-tools.open ul { display: block; }
+}
+</style>
+
+
+
+<style>
+@media (max-width: 768px) {
+  .nav-tools {
+    position: static !important;
+  }
+  .nav-tools ul {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px;
+    right: 10px;
+    display: none;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 10000;
+  }
+  .nav-tools.open ul {
+    display: block !important;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+</style>
+
+
+
+</head>
+<body>
+<script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="/index.html">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="#">Tools ▾</a>
+<ul>
+<li><a href="/index.html">IP Lookup</a></li>
+<li><a href="/dns-lookup.html">DNS Lookup</a></li>
+<li><a href="/whois-lookup.html">WHOIS Lookup</a></li>
+<li><a href="/internet-speed-test.html">Internet Speed Test</a></li>
+<li><a href="/generate-password.html">Generate Password</a></li>
+<li><a href="/ip-blacklist.html">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="/online-safety/index.html">Online Safety</a></li>
+<li><a href="/online-privacy/index.html">Online Privacy</a></li>
+<li><a href="/networking/index.html">Networking</a></li>
+<li><a href="/ip-addresses/index.html">IP Addresses</a></li>
+<li><a href="/home-computing/index.html">Home Computing</a></li>
+<li><a href="/general-topics/index.html">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<main>
+
+<header class="page-header">
+  <h1>General Topics</h1>
+  <p>Broader insights into internet technology and security trends.</p>
+</header>
+<div class="article-list"><article class="article-item"><h2><a href="/advanced-guide-to-annoying-viral-requests-and-prevention/">Advanced Guide to Annoying Viral Requests and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Annoying Viral Requests and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-annoying-viral-requests-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-backdoor-and-prevention/">Advanced Guide to Backdoor and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Backdoor and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-backdoor-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-better-security-understand-and-prevention/">Advanced Guide to Better Security Understand and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Better Security Understand and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-better-security-understand-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-bumble-search-find-and-prevention/">Advanced Guide to Bumble Search Find and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Bumble Search Find and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-bumble-search-find-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-classic-movies-accurately-and-prevention/">Advanced Guide to Classic Movies Accurately and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Classic Movies Accurately and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-classic-movies-accurately-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-computer-security-incident-and-prevention/">Advanced Guide to Computer Security Incident and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Computer Security Incident and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-computer-security-incident-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-credential-stuffing-matters-and-prevention/">Advanced Guide to Credential Stuffing Matters and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Credential Stuffing Matters and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-credential-stuffing-matters-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-donate-computer-and-prevention/">Advanced Guide to Donate Computer and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Donate Computer and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-donate-computer-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-dongle-and-prevention/">Advanced Guide to Dongle and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Dongle and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-dongle-and-prevention/">Read More →</a></article><article class="article-item"><h2><a href="/advanced-guide-to-find-significant-ashley-and-prevention/">Advanced Guide to Find Significant Ashley and Prevention..</a></h2><p class="article-excerpt">Learn about Advanced Guide to Find Significant Ashley and Prevention. in this detailed guide on General Topics.</p><a class="read-more" href="/advanced-guide-to-find-significant-ashley-and-prevention/">Read More →</a></article></div>
+<!-- Desktop Pagination -->
+<!-- Compact Mobile Pagination -->
+<style>
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+.pagination a, .pagination span {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: #fff;
+  text-decoration: none;
+  color: #1e293b;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.pagination a:hover {
+  background: #4f46e5;
+  color: white;
+}
+.pagination .current {
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .desktop-pagination { display: none; }
+  .mobile-pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 769px) {
+  .mobile-pagination { display: none; }
+}
+</style>
+<nav aria-label="Page navigation" class="pagination desktop-pagination"><span class="current">1</span><a href="page2.html">2</a><span>…</span><a href="page60.html">60</a><a href="page2.html">Next →</a></nav><nav aria-label="Page navigation" class="pagination mobile-pagination"><span class="current">1 / 60</span><a href="page2.html">Next →</a></nav></main>
+<footer class="footer">
+<ul class="footer-nav">
+<li id="about.html"><a href="/about.html">About</a></li>
+<li id="contact.html"><a href="/contact.html">Contact</a></li>
+<li id="privacy-policy.html"><a href="/privacy-policy.html">Privacy Policy</a></li>
+<li id="terms-of-use.html"><a href="/terms-of-use.html">Terms of Use</a></li>
+<li id="affiliate-disclosure.html"><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">
+    © 2025 myipnow. All Rights Reserved.
+</div>
+</footer>
+</div>
+<script id="cat-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  // Save scroll + current URL right before we navigate to an article
+  function saveState(){
+    try {
+      var state = { url: location.pathname + location.search + location.hash,
+                    scroll: (window.scrollY || window.pageYOffset || 0) };
+      sessionStorage.setItem(KEY, JSON.stringify(state));
+    } catch(e){}
+  }
+  function restore(){
+  try{
+    var raw = sessionStorage.getItem(KEY);
+    if (!raw) return;
+    var st = JSON.parse(raw);
+    if (st && typeof st.scroll === 'number' && document.referrer.includes(st.url)) {
+      window.scrollTo(0, st.scroll);
+    } else {
+      window.scrollTo(0, 0);
+    }
+    sessionStorage.removeItem(KEY);
+  }catch(e){}
+}
+    }catch(e){}
+  }
+  function init(){
+    // Only run on pages that have article listings
+    var list = document.querySelector('.article-list');
+    if (list){
+      // Capture click as early as possible
+      list.addEventListener('mousedown', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        // internal links only
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
+      list.addEventListener('click', function(e){
+        var a = e.target && e.target.closest && e.target.closest('a');
+        if (!a) return;
+        try { if (a.origin && a.origin !== location.origin) return; } catch(e){}
+        saveState();
+      }, true);
+    }
+    // Restore scroll on load and bfcache
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', restore);
+    } else {
+      restore();
+    }
+    window.addEventListener('pageshow', function(ev){
+      if (ev && ev.persisted) restore();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768)dropdown.style.display='block';});
+  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768)dropdown.style.display='none';});
+
+  function closeMenu(){ if(menu){menu.remove();menu=null;} if(backdrop){backdrop.remove();backdrop=null;} document.body.classList.remove('menu-open'); open=false; }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+    if(open){ closeMenu(); return; }
+    const rect=trigger.getBoundingClientRect();
+    backdrop=document.createElement('div');
+    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
+    backdrop.addEventListener('click',closeMenu);
+    document.body.appendChild(backdrop);
+    menu=dropdown.cloneNode(true);
+    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom + window.scrollY + 8}px`,left:`${rect.left + window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,maxHeight:'70vh',overflowY:'auto'});
+    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{if(!open||!menu)return;const rect=trigger.getBoundingClientRect();menu.style.top=`${rect.bottom + window.scrollY + 8}px`;menu.style.left=`${rect.left + window.scrollX}px`;});
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+</body>
+</html>

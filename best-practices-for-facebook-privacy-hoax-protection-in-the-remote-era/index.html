@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   Best Practices for Facebook Privacy Hoax Protection in the Remote Era. | MyIPNow
+  </title>
+<meta content="Learn about Best Practices for Facebook Privacy Hoax Protection in the Remote Era. in this detailed guide on Online Safety." name="description"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; background:#f7f8f9; margin:0; color:#1e293b; line-height:1.7; }
+    .container { max-width:900px; margin:0 auto; padding:1rem; }
+    .site-header { background:#fff; padding:1rem; margin-bottom:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    .header-top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; padding-bottom:1rem; border-bottom:1px solid #e2e8f0; }
+    .logo { font-size:1.5rem; font-weight:700; color:#1e293b; text-decoration:none; }
+    .search-form { display:flex; flex-grow:1; max-width:400px; }
+    .search-form input { width:100%; padding:0.75rem 1rem; border:1px solid #e2e8f0; border-radius:8px 0 0 8px; font-size:0.9rem; }
+    .search-form button { padding:0.75rem 1rem; border:none; background:#10b981; color:white; border-radius:0 8px 8px 0; cursor:pointer; font-weight:500; }
+    .category-nav { padding-top:1rem; }
+    .category-nav ul {
+  display:flex;
+  gap:1.5rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center !important;
+}
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+
+@media(max-width:768px){
+  .category-nav ul {
+    overflow-x:auto;
+    white-space:nowrap;
+    padding-bottom:10px;
+  }
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
+    .page-header { background:#fff; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; text-align:center; }
+    .page-header h1 { font-size:2.2rem; margin:0 0 0.5rem; }
+    .page-header p { font-size:1rem; color:#64748b; margin:0; }
+    .article-body { background:#fff; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; }
+    .article-body h2 { margin-top:2rem; font-size:1.5rem; }
+    .article-body h3 { margin-top:1.2rem; font-size:1.2rem; }
+    .related { background:#fff; padding:1.5rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; }
+    .related h3 { margin-top:0; }
+    .related ul { list-style:none; padding:0; }
+    .related li { margin-bottom:0.5rem; }
+    .related a { text-decoration:none; color:#4f46e5; }
+    .article-pagination { display:flex; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
+    .article-pagination a { background:#fff; padding:0.75rem 1rem; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.05); text-decoration:none; color:#1e293b; font-weight:500; }
+    .article-pagination a:hover { background:#4f46e5; color:white; }
+    .footer { text-align:center; padding:2rem 1rem; margin:2rem auto 0; background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    .footer-nav { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem 1.5rem; list-style:none; padding:0; margin:0 0 1rem; }
+    .footer-nav a { color:#64748b; text-decoration:none; font-size:0.9rem; }
+    .footer-nav a:hover { color:#4f46e5; }
+    .footer-copyright { font-size:0.85rem; color:#64748b; }
+   
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
+<style>
+.nav {
+  text-align: center !important;
+}
+.nav li {
+  display: inline-block !important;
+  float: none !important;
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/best-practices-for-facebook-privacy-hoax-protection-in-the-remote-era/" rel="canonical"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://myipnow.net/#website","url":"https://myipnow.net/","name":"MyIPNow"},{"@type":"Organization","@id":"https://myipnow.net/#organization","name":"MyIPNow","url":"https://myipnow.net/"},{"@type":"WebPage","@id":"https://myipnow.net/best-practices-for-facebook-privacy-hoax-protection-in-the-remote-era/","url":"https://myipnow.net/best-practices-for-facebook-privacy-hoax-protection-in-the-remote-era/","name":"Best Practices for Facebook Privacy Hoax Protection in the Remote Era. | MyIPNow","description":"Learn about Best Practices for Facebook Privacy Hoax Protection in the Remote Era. in this detailed guide on Online Safety.","isPartOf":{"@id":"https://myipnow.net/#website"},"keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup"},{"@type":"Article","@id":"https://myipnow.net/best-practices-for-facebook-privacy-hoax-protection-in-the-remote-era/#article","headline":"Best Practices for Facebook Privacy Hoax Protection in the Remote Era.","description":"Learn about Best Practices for Facebook Privacy Hoax Protection in the Remote Era. in this detailed guide on Online Safety.","mainEntityOfPage":"https://myipnow.net/best-practices-for-facebook-privacy-hoax-protection-in-the-remote-era/","isPartOf":{"@id":"https://myipnow.net/#website"},"author":{"@type":"Organization","name":"MyIPNow"},"publisher":{"@id":"https://myipnow.net/#organization"},"datePublished":"2025-10-11","dateModified":"2025-10-11","keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup","url":"https://myipnow.net/best-practices-for-facebook-privacy-hoax-protection-in-the-remote-era/"}]}</script><style>
+@media (max-width: 768px) {
+  .category-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .category-nav ul {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem;
+  }
+  .category-nav::-webkit-scrollbar { height: 6px; }
+  .category-nav::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  .nav-tools ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    list-style: none;
+    padding: .5rem 0;
+    margin: 0;
+    min-width: 220px;
+    z-index: 999;
+  }
+  .nav-tools.open ul { display: block; }
+}
+</style>
+
+
+
+<style>
+@media (max-width: 768px) {
+  .nav-tools {
+    position: static !important;
+  }
+  .nav-tools ul {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px;
+    right: 10px;
+    display: none;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 10000;
+  }
+  .nav-tools.open ul {
+    display: block !important;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+</style>
+
+
+
+</head>
+<body>
+<script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="/index.html">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="#">Tools ▾</a>
+<ul>
+<li><a href="/index.html">IP Lookup</a></li>
+<li><a href="/dns-lookup.html">DNS Lookup</a></li>
+<li><a href="/whois-lookup.html">WHOIS Lookup</a></li>
+<li><a href="/internet-speed-test.html">Internet Speed Test</a></li>
+<li><a href="/generate-password.html">Generate Password</a></li>
+<li><a href="/ip-blacklist.html">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="/online-safety/index.html">Online Safety</a></li>
+<li><a href="/online-privacy/index.html">Online Privacy</a></li>
+<li><a href="/networking/index.html">Networking</a></li>
+<li><a href="/ip-addresses/index.html">IP Addresses</a></li>
+<li><a href="/home-computing/index.html">Home Computing</a></li>
+<li><a href="/general-topics/index.html">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<!-- Header -->
+<!-- Page Header --><!-- Article Body -->
+<header class="page-header">
+<h1>Best Practices for Facebook Privacy Hoax Protection in the Remote Era.</h1>
+</header>
+<article class="article-body"><p class="article-meta">🗓️ Published on October 11, 2025</p>
+<h2>
+     Best Practices for Facebook Privacy Hoax Protection in the Remote Era
+    </h2>
+<p>In an age where remote work and social media interactions have become the norm, protecting your data privacy online has never been more crucial. Facebook, being one of the largest social media platforms, often finds itself at the center of various privacy hoaxes and misinformation. This article aims to shed light on effective strategies to safeguard your personal information on Facebook while navigating the remote work environment. </p>
+<h2>
+     Understanding Facebook Privacy Hoaxes
+    </h2>
+<p>
+     Before diving into the protective measures, it's essential to understand what Facebook privacy hoaxes are. These are often misleading messages, posts, or chains that claim to offer increased privacy or warn users about supposed changes to Facebook's privacy policies. </p>
+<h3>
+     Common Types of Privacy Hoaxes
+    </h3>
+<ul>
+<li>
+<strong>
+       Chain Messages:
+      </strong>
+      These are posts urging users to share the message to maintain their privacy.
+     </li>
+<li>
+<strong>
+       Fake Privacy Settings:
+      </strong>
+      Notifications claiming users need to adjust their settings to avoid data sharing.
+     </li>
+<li>
+<strong>
+       Phishing Scams:
+      </strong>
+      Messages that prompt users to click on suspicious links to “verify” their accounts.
+     </li>
+</ul>
+<h2>
+     Best Practices for Protecting Your Privacy on Facebook
+    </h2>
+<h3>
+     1. Adjust Your Privacy Settings
+    </h3>
+<p>
+     Your first line of defense against privacy hoaxes is to take control of your privacy settings on Facebook. Regularly reviewing and adjusting these settings can significantly enhance your security. </p>
+<ul>
+<li>
+<strong>
+       Profile Privacy:
+      </strong>
+      Set your profile visibility to "Friends" or "Only Me" to limit who can view your information.
+     </li>
+<li>
+<strong>
+       Post Visibility:
+      </strong>
+      Before posting, check the audience selector to control who can see your updates.
+     </li>
+<li>
+<strong>
+       Limit Past Posts:
+      </strong>
+      Use the "Limit Past Posts" option to change the audience of your previous posts to friends only.
+     </li>
+</ul>
+<h3>
+     2. Be Cautious with Friend Requests
+    </h3>
+<p>
+     In the remote era, it's easy to connect with new people. However, not all friend requests are genuine. Be vigilant when accepting requests from unknown individuals. </p>
+<ul>
+<li>
+<strong>
+       Check Mutual Friends:
+      </strong>
+      Look for mutual connections as a sign of legitimacy.
+     </li>
+<li>
+<strong>
+       Review Profiles:
+      </strong>
+      Investigate the profile for signs of authenticity, such as a complete profile and recent activity.
+     </li>
+</ul>
+<h3>
+     3. Educate Yourself About Misinformation
+    </h3>
+<p>Being informed about the types of misinformation that circulate on Facebook is crucial. Familiarize yourself with common privacy hoaxes and learn to identify them. </p>
+<ul>
+<li>
+<strong>
+       Follow Reliable Sources:
+      </strong>
+      Subscribe to trustworthy news outlets and organizations that focus on online safety.
+     </li>
+<li>
+<strong>
+       Cross-Check Information:
+      </strong>
+      Always verify claims about privacy updates or policies with official Facebook announcements.
+     </li>
+</ul>
+<h3>
+     4. Utilize Two-Factor Authentication
+    </h3>
+<p>Two-factor authentication (2FA) adds an extra layer of security to your Facebook account. This feature requires a second form of verification beyond your password, making it harder for unauthorized users to access your account. </p>
+<ul>
+<li>
+<strong>
+       Enable 2FA:
+      </strong>
+      Go to your security settings and enable two-factor authentication.
+     </li>
+<li>
+<strong>
+       Choose Your Method:
+      </strong>
+      Select a method for receiving codes, such as SMS or an authentication app.
+     </li>
+</ul>
+<h3>
+     5. Be Wary of Third-Party Apps
+    </h3>
+<p>
+     Many apps require linking to your Facebook account for access. Be cautious about granting permissions to third-party applications, as they may misuse your data. </p>
+<ul>
+<li>
+<strong>
+       Review App Permissions:
+      </strong>
+      Regularly check and remove apps that you no longer use or trust.
+     </li>
+<li>
+<strong>
+       Limit Data Sharing:
+      </strong>
+      Avoid apps that request excessive permissions that are not necessary for their functionality.
+     </li>
+</ul>
+<h3>
+     6. Report Suspicious Content
+    </h3>
+<p>
+     If you encounter posts or messages that appear to be hoaxes or scams, report them to Facebook. This assists defend not only yourself but also your friends and the wider community. </p>
+<ul>
+<li>
+<strong>
+       Use the Reporting Tool:
+      </strong>
+      Click on the three dots on the post or message and select “Report” to alert Facebook.
+     </li>
+<li>
+<strong>
+       Educate Others:
+      </strong>
+      Share information about the hoax with your friends to prevent them from falling victim to scams.
+     </li>
+</ul>
+<h2>
+     Recognizing Legitimate Privacy Updates
+    </h2>
+<p>
+     Facebook occasionally updates its privacy policies. Knowing how to identify legitimate changes can help you avoid falling for hoaxes. </p>
+<h3>
+     1. Official Announcements
+    </h3>
+<p>
+     Always refer to Facebook's official blog or help center for updates. These sources provide accurate and up-to-date information regarding any changes. </p>
+<h3>
+     2. Direct Communications from Facebook
+    </h3>
+<p>
+     Any official communication from Facebook will come through verified channels. Be cautious of emails or messages claiming to be from Facebook that ask for personal information. </p>
+<h2>
+     The Role of Community Awareness
+    </h2>
+<p>In the remote work environment, community awareness is vital for combating personal privacy hoaxes. When individuals are informed, they are less likely to fall prey to scams. </p>
+<h3>
+     1. Share Knowledge
+    </h3>
+<p>
+     Encourage discussions about online safety within your social circles. Sharing your knowledge about privacy hoaxes can empower others to protect themselves. </p>
+<h3>
+     2. Participate in Online Safety Campaigns
+    </h3>
+<p>Join or support initiatives that promote awareness around online safety. Many organizations run campaigns that educate users about privacy rights and protection strategies. </p>
+<h2>
+     Conclusion
+    </h2>
+<p>
+     As we continue to adapt to the remote era, safeguarding our online privacy becomes increasingly important. By adjusting your privacy settings, being cautious with friend requests, educating yourself about misinformation, utilizing two-factor authentication, being wary of third-party apps, and recognizing legitimate updates, you can significantly enhance your protection against Facebook data privacy hoaxes. Remember, staying informed and sharing knowledge within your community is key to fostering a safer online environment for everyone. Stay vigilant and proactive to ensure your personal information remains secure in the ever-evolving digital landscape. </p>
+<div class="references"><p>References:</p><ul><li><a href="https://www.eff.org/issues/privacy" rel="noopener noreferrer" target="_blank">Electronic Frontier Foundation – Online Privacy</a></li><li><a href="https://protonvpn.com/blog/" rel="noopener noreferrer" target="_blank">ProtonVPN Blog</a></li><li><a href="https://duckduckgo.com/privacy" rel="noopener noreferrer" target="_blank">DuckDuckGo Privacy Resources</a></li><li><a href="https://www.mozilla.org/en-US/privacy/" rel="noopener noreferrer" target="_blank">Mozilla Privacy Blog</a></li><li><a href="https://nordvpn.com/blog/" rel="noopener noreferrer" target="_blank">NordVPN Learn Center</a></li></ul></div><section class="see-also"><h2>See Also</h2><ul><li><a href="/how-esim-security-benefits-is-being-used-in-next-gen-cyberattacks/">How Esim Security Benefits is Being Used in Next-Gen Cyberattacks. | MyIPNow</a></li><li><a href="/the-10-best-tools-for-browser-history-in-2025/">The 10 Best Tools for Browser History in 2025. | MyIPNow</a></li><li><a href="/the-definitive-guide-to-remote-work-security-in-the-age-of-ai/">The Definitive Guide to Remote Work Security in the Age of AI. | MyIPNow</a></li><li><a href="/mastering-shadowbanning-avoid-the-ultimate-2025-deep-dive/">Mastering Shadowbanning Avoid: The Ultimate 2025 Deep Dive. | MyIPNow</a></li><li><a href="/mastering-parental-control-software-the-ultimate-2025-deep-dive/">Mastering Parental Control Software: The Ultimate 2025 Deep Dive. | MyIPNow</a></li></ul></section><p class="updated-date">Last updated: November 1, 2025</p></article><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><div class="article-pagination" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;"><a href="/best-practices-for-dynamic-dns-protection-in-the-remote-era/" style="justify-self:start;">← Previous Article</a><a href="/online-safety/page5.html" id="returnToCategory" style="justify-self:center;">↑ Return to Category</a><a href="/best-practices-for-find-protection-in-the-remote-era/" style="justify-self:end;">Next Article →</a></div><footer class="footer">
+<ul class="footer-nav">
+<li>
+<a href="/about.html">
+       About
+      </a>
+</li>
+<li>
+<a href="/contact.html">
+       Contact
+      </a>
+</li>
+<li>
+<a href="/privacy-policy.html">
+       Privacy Policy
+      </a>
+</li>
+<li>
+<a href="/terms-of-use.html">
+       Terms of Use
+      </a>
+</li>
+<li>
+<a href="/affiliate-disclosure.html">
+       Affiliate Disclosure
+      </a>
+</li>
+</ul>
+<div class="footer-copyright">
+     © 2025 MyIPNow. All Rights Reserved.
+    </div>
+</footer><!-- Related Articles --></div>
+<script id="article-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+    var btn = document.getElementById('returnToCategory');
+    if (!btn) return;
+
+    var raw = null, url=null;
+    try {
+      raw = sessionStorage.getItem(KEY);
+      if (raw){
+        var st = JSON.parse(raw);
+        url = st && st.url;
+      }
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+    if (url && CAT_RE.test(url)) {
+      btn.setAttribute('href', url);
+      return;
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index.html
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      var cat = '/' + parts[0] + '/';
+      if (CAT_RE.test(cat)) {
+        btn.setAttribute('href', cat + 'index.html');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768)dropdown.style.display='block';});
+  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768)dropdown.style.display='none';});
+
+  function closeMenu(){ if(menu){menu.remove();menu=null;} if(backdrop){backdrop.remove();backdrop=null;} document.body.classList.remove('menu-open'); open=false; }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+    if(open){ closeMenu(); return; }
+    const rect=trigger.getBoundingClientRect();
+    backdrop=document.createElement('div');
+    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
+    backdrop.addEventListener('click',closeMenu);
+    document.body.appendChild(backdrop);
+    menu=dropdown.cloneNode(true);
+    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom + window.scrollY + 8}px`,left:`${rect.left + window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,maxHeight:'70vh',overflowY:'auto'});
+    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{if(!open||!menu)return;const rect=trigger.getBoundingClientRect();menu.style.top=`${rect.bottom + window.scrollY + 8}px`;menu.style.left=`${rect.left + window.scrollX}px`;});
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+</body>
+</html>

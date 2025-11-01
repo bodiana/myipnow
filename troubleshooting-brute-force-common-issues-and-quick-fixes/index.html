@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   Troubleshooting Brute Force: Common Issues and Quick Fixes. | MyIPNow
+  </title>
+<meta content="Learn about Troubleshooting Brute Force: Common Issues and Quick Fixes. in this detailed guide on Home Computing." name="description"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;text y=%22.9em%22 x=%2228%22 font-size=%2255%22&gt;📍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; background:#f7f8f9; margin:0; color:#1e293b; line-height:1.7; }
+    .container { max-width:900px; margin:0 auto; padding:1rem; }
+    .site-header { background:#fff; padding:1rem; margin-bottom:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    .header-top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; padding-bottom:1rem; border-bottom:1px solid #e2e8f0; }
+    .logo { font-size:1.5rem; font-weight:700; color:#1e293b; text-decoration:none; }
+    .search-form { display:flex; flex-grow:1; max-width:400px; }
+    .search-form input { width:100%; padding:0.75rem 1rem; border:1px solid #e2e8f0; border-radius:8px 0 0 8px; font-size:0.9rem; }
+    .search-form button { padding:0.75rem 1rem; border:none; background:#10b981; color:white; border-radius:0 8px 8px 0; cursor:pointer; font-weight:500; }
+    .category-nav { padding-top:1rem; }
+    .category-nav ul {
+  display:flex;
+  gap:1.5rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center !important;
+}
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+
+@media(max-width:768px){
+  .category-nav ul {
+    overflow-x:auto;
+    white-space:nowrap;
+    padding-bottom:10px;
+  }
+
+.nav-tools { position: relative; }
+.nav-tools > a { cursor: default; }
+.nav-tools ul {
+  display: none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  list-style:none;
+  padding:.5rem 0;
+  margin:0;
+  min-width:220px;
+  z-index:999;
+}
+.nav-tools ul li a {
+  display:block;
+  padding:.5rem 1rem;
+  color:#1e293b;
+  text-decoration:none;
+}
+.nav-tools ul li a:hover { color:#4f46e5; }
+.nav-tools:hover ul { display:block; }
+
+}
+
+.category-nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.category-nav a:hover {
+  color: var(--accent-color);
+}
+    .page-header { background:#fff; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; text-align:center; }
+    .page-header h1 { font-size:2.2rem; margin:0 0 0.5rem; }
+    .page-header p { font-size:1rem; color:#64748b; margin:0; }
+    .article-body { background:#fff; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; }
+    .article-body h2 { margin-top:2rem; font-size:1.5rem; }
+    .article-body h3 { margin-top:1.2rem; font-size:1.2rem; }
+    .related { background:#fff; padding:1.5rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); margin-bottom:2rem; }
+    .related h3 { margin-top:0; }
+    .related ul { list-style:none; padding:0; }
+    .related li { margin-bottom:0.5rem; }
+    .related a { text-decoration:none; color:#4f46e5; }
+    .article-pagination { display:flex; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
+    .article-pagination a { background:#fff; padding:0.75rem 1rem; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.05); text-decoration:none; color:#1e293b; font-weight:500; }
+    .article-pagination a:hover { background:#4f46e5; color:white; }
+    .footer { text-align:center; padding:2rem 1rem; margin:2rem auto 0; background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    .footer-nav { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem 1.5rem; list-style:none; padding:0; margin:0 0 1rem; }
+    .footer-nav a { color:#64748b; text-decoration:none; font-size:0.9rem; }
+    .footer-nav a:hover { color:#4f46e5; }
+    .footer-copyright { font-size:0.85rem; color:#64748b; }
+   
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+}
+.related-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.related-card-content {
+  padding: 1rem;
+}
+.related-card-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.related-card-content p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+.related-card-content a {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+.related-card-content a:hover {
+  color: #1e293b;
+}
+</style>
+<style>
+.nav {
+  text-align: center !important;
+}
+.nav li {
+  display: inline-block !important;
+  float: none !important;
+}
+</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/troubleshooting-brute-force-common-issues-and-quick-fixes/" rel="canonical"/><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://myipnow.net/#website","url":"https://myipnow.net/","name":"MyIPNow"},{"@type":"Organization","@id":"https://myipnow.net/#organization","name":"MyIPNow","url":"https://myipnow.net/"},{"@type":"WebPage","@id":"https://myipnow.net/troubleshooting-brute-force-common-issues-and-quick-fixes/","url":"https://myipnow.net/troubleshooting-brute-force-common-issues-and-quick-fixes/","name":"Troubleshooting Brute Force: Common Issues and Quick Fixes. | MyIPNow","description":"Learn about Troubleshooting Brute Force: Common Issues and Quick Fixes. in this detailed guide on Home Computing.","isPartOf":{"@id":"https://myipnow.net/#website"},"keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup"},{"@type":"Article","@id":"https://myipnow.net/troubleshooting-brute-force-common-issues-and-quick-fixes/#article","headline":"Troubleshooting Brute Force: Common Issues and Quick Fixes.","description":"Learn about Troubleshooting Brute Force: Common Issues and Quick Fixes. in this detailed guide on Home Computing.","mainEntityOfPage":"https://myipnow.net/troubleshooting-brute-force-common-issues-and-quick-fixes/","isPartOf":{"@id":"https://myipnow.net/#website"},"author":{"@type":"Organization","name":"MyIPNow"},"publisher":{"@id":"https://myipnow.net/#organization"},"datePublished":"2025-10-08","dateModified":"2025-10-08","keywords":"my ip, what is my ip, ip lookup, ip address lookup, free ip lookup tool, ipv4, ipv6, ipv6 lookup, ip geolocation, ip location, check ip, ip tools, public ip, website ip lookup, dns checker ip location, ip proxy checker, whatismyipaddress.com, whatsmyip, whatismyip, networking, privacy, security, myipnow, whatis my ip address, IP address tracker, check IP address, best IP lookup 2025, WhatIsMyIPAddress alternative, online IP checker, internet privacy, network security, online ip lookup tool, ip geolocation tool, website ip checker, website ip address lookup, ip address lookup tool, ip look up tool, ip address search tool, search ip tool, ipv6 ip lookup","url":"https://myipnow.net/troubleshooting-brute-force-common-issues-and-quick-fixes/"}]}</script><style>
+@media (max-width: 768px) {
+  .category-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+  .category-nav ul {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem;
+  }
+  .category-nav::-webkit-scrollbar { height: 6px; }
+  .category-nav::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  .nav-tools ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    list-style: none;
+    padding: .5rem 0;
+    margin: 0;
+    min-width: 220px;
+    z-index: 999;
+  }
+  .nav-tools.open ul { display: block; }
+}
+</style>
+
+
+
+<style>
+@media (max-width: 768px) {
+  .nav-tools {
+    position: static !important;
+  }
+  .nav-tools ul {
+    position: fixed !important;
+    top: 60px !important;
+    left: 10px;
+    right: 10px;
+    display: none;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 10000;
+  }
+  .nav-tools.open ul {
+    display: block !important;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+</style>
+
+
+
+</head>
+<body>
+<script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="/index.html">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="#">Tools ▾</a>
+<ul>
+<li><a href="/index.html">IP Lookup</a></li>
+<li><a href="/dns-lookup.html">DNS Lookup</a></li>
+<li><a href="/whois-lookup.html">WHOIS Lookup</a></li>
+<li><a href="/internet-speed-test.html">Internet Speed Test</a></li>
+<li><a href="/generate-password.html">Generate Password</a></li>
+<li><a href="/ip-blacklist.html">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="/online-safety/index.html">Online Safety</a></li>
+<li><a href="/online-privacy/index.html">Online Privacy</a></li>
+<li><a href="/networking/index.html">Networking</a></li>
+<li><a href="/ip-addresses/index.html">IP Addresses</a></li>
+<li><a href="/home-computing/index.html">Home Computing</a></li>
+<li><a href="/general-topics/index.html">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<!-- Header -->
+<!-- Page Header --><!-- Article Body -->
+<header class="page-header">
+<h1>Troubleshooting Brute Force: Common Issues and Quick Fixes.</h1>
+</header>
+<article class="article-body"><p class="article-meta">🗓️ Published on October 08, 2025</p>
+<h2>
+     Troubleshooting Brute Force: Common Issues and Quick Fixes
+    </h2>
+<p>
+     Brute force attacks are a common method used by cybercriminals to gain unauthorized access to systems by systematically trying multiple password combinations until the correct one is found. Understanding how to troubleshoot issues related to brute force attacks is crucial for maintaining the security of your home computing environment. In this article, we will explore common problems associated with brute force attempts and provide quick fixes to enhance your security measures. </p>
+<h3>
+     Understanding Brute Force Attacks
+    </h3>
+<p>
+     A brute force attack is a trial-and-error method used to decode encrypted data, such as passwords. It can involve using automated software to generate and try numerous password combinations at high speeds. While brute force attacks can be effective, there are various ways to mitigate their risks. </p>
+<h2>
+     Common Issues Related to Brute Force Attacks
+    </h2>
+<p>When dealing with brute force attacks, several issues may arise. Here are some of the most common:
+    </p>
+<h3>
+     1. Account Lockouts
+    </h3>
+<p>Frequent brute force attempts can lead to account lockouts, where a user is temporarily or permanently denied access to their account after a certain number of failed login attempts. </p>
+<h3>
+     2. System Performance Degradation
+    </h3>
+<p>
+     Brute force attacks can consume substantial system resources. As multiple password attempts are made, server performance may degrade, resulting in slower response times for legitimate users. </p>
+<h3>
+     3. False Positives in Security Alerts
+    </h3>
+<p>
+     Security systems may trigger alerts or notifications for unusual login attempts that could be legitimate user behavior. This can lead to confusion and unnecessary panic among users. </p>
+<h3>
+     4. Increased Vulnerability to Other Attacks
+    </h3>
+<p>Continuous brute force attempts can make your system more vulnerable to other types of cyber attacks, such as denial-of-service (DoS) attacks, if attackers exploit the system's weaknesses. </p>
+<h2>
+     Quick Fixes for Brute Force Issues
+    </h2>
+<p>To effectively manage and mitigate the issues arising from brute force attacks, consider implementing the following quick fixes:</p>
+<h3>
+     1. Enable Account Lockout Policies
+    </h3>
+<p>
+     To prevent unauthorized access, implement account lockout policies that temporarily lock accounts after a specified number of failed login attempts. This discourages attackers by slowing their progress. </p>
+<ul>
+<li>
+<strong>
+       Set Thresholds:
+      </strong>
+      Define the number of failed attempts before an account is locked.
+     </li>
+<li>
+<strong>
+       Lockout Duration:
+      </strong>
+      Decide how long the account should remain locked, balancing security and user accessibility.
+     </li>
+</ul>
+<h3>
+     2. Utilize Strong Passwords
+    </h3>
+<p>
+     Encourage users to create complex passwords that are difficult to guess. Strong passwords typically include a mix of uppercase and lowercase letters, numbers, and special characters. </p>
+<ul>
+<li>
+<strong>
+       Minimum Length:
+      </strong>
+      Set a minimum password length of at least 12 characters.
+     </li>
+<li>
+<strong>
+       Regular Updates:
+      </strong>
+      Encourage users to change their passwords regularly.
+     </li>
+</ul>
+<h3>
+     3. Implement Two-Factor Authentication (2FA)
+    </h3>
+<p>
+     Two-factor authentication adds an extra layer of security by requiring a second form of verification, such as a code sent to a mobile device. This makes it much harder for attackers to gain access, even if they have the password. </p>
+<h3>
+     4. Use CAPTCHA Mechanisms
+    </h3>
+<p>
+     Implementing CAPTCHA mechanisms on login forms can help distinguish between human users and automated scripts. This can significantly reduce the volume of brute force attempts. </p>
+<h3>
+     5. Monitor Login Attempts
+    </h3>
+<p>Regularly review logs of login attempts to identify patterns or unusual activity. This information can help you respond promptly to potential brute force attacks. </p>
+<ul>
+<li>
+<strong>
+       Set Up Alerts:
+      </strong>
+      Configure alerts for multiple failed login attempts from a single IP address.
+     </li>
+<li>
+<strong>
+       Track Successful Logins:
+      </strong>
+      Monitor successful login attempts to identify unauthorized access to accounts.
+     </li>
+</ul>
+<h3>
+     6. Limit Login Attempts
+    </h3>
+<p>
+     Limit the number of login attempts from a single IP address within a given time frame. This helps to reduce the effectiveness of brute force attacks. </p>
+<h3>
+     7. Use IP Blacklisting
+    </h3>
+<p>
+     Implement IP blacklisting to block known malicious IP addresses that have been used for brute force attacks. This can help in reducing the number of unwanted login attempts. </p>
+<h3>
+     8. Regular Software Updates
+    </h3>
+<p>
+     Ensure that all software, including security systems, operating systems, and applications, are kept up to date. Regular updates patch known vulnerabilities that attackers may exploit. </p>
+<h2>
+     Best Practices for Ongoing Protection
+    </h2>
+<p>In addition to the quick fixes mentioned above, following best practices can help maintain security and protect against brute force attacks:</p>
+<h3>
+     1. Educate Users
+    </h3>
+<p>Provide training and resources for users about the importance of security measures, strong passwords, and how to recognize suspicious activity. An informed user base is a vital defense against cyber threats. </p>
+<h3>
+     2. Use Security Software
+    </h3>
+<p>
+     Invest in reputable security software that includes features designed to protect against brute force attacks. Firewalls, antivirus programs, and intrusion detection systems are essential components of a robust security strategy. </p>
+<h3>
+     3. Regular Backups
+    </h3>
+<p>Regularly back up important data to ensure that even in the event of a breach, data can be restored without significant loss. Keep backups in a secure location, separate from the primary system. </p>
+<h3>
+     4. Establish a Response Plan
+    </h3>
+<p>
+     Create an incident response plan that outlines steps to take in the event of a security breach. This plan should include communication strategies, containment procedures, and recovery steps. </p>
+<h2>
+     Conclusion
+    </h2>
+<p>
+     Brute force attacks pose a significant threat to home computing security, but with the right understanding and proactive measures, these threats can be effectively managed. By implementing quick fixes and adhering to best practices, you can significantly reduce the risk of unauthorized access and protect sensitive information. Stay vigilant, regularly update your security protocols, and educate users about the importance of maintaining strong security practices. </p>
+<div class="references"><p>References:</p><ul><li><a href="https://www.techradar.com/" rel="noopener noreferrer" target="_blank">TechRadar – Tech News and Reviews</a></li><li><a href="https://www.wired.com/" rel="noopener noreferrer" target="_blank">WIRED – Technology Insights</a></li><li><a href="https://www.theverge.com/" rel="noopener noreferrer" target="_blank">The Verge – Technology and Culture</a></li><li><a href="https://www.cnet.com/" rel="noopener noreferrer" target="_blank">CNET – Tech How-To and Reviews</a></li><li><a href="https://en.wikipedia.org/wiki/Technology" rel="noopener noreferrer" target="_blank">Wikipedia – Technology Overview</a></li></ul></div><section class="see-also"><h2>See Also</h2><ul><li><a href="/dont-fall-for-cybersecurity-risks-dangers-a-step-by-step-prevention-checklist/">Don't Fall for Cybersecurity Risks Dangers: A Step-by-Step Prevention Checklist. | MyIPNow</a></li><li><a href="/mastering-quick-linux-operating-the-ultimate-2025-deep-dive/">Mastering Quick Linux Operating: The Ultimate 2025 Deep Dive. | MyIPNow</a></li><li><a href="/beyond-signs-bullying-children-what-comes-next-in-digital-security/">Beyond Signs Bullying Children: What Comes Next in Digital Security? | MyIPNow</a></li><li><a href="/unlocking-the-power-of-detect-phishing-expert-tips-and-tricks/">Unlocking the Power of Detect Phishing: Expert Tips and Tricks. | MyIPNow</a></li><li><a href="/the-impact-of-ai-on-cloudflare-dns-a-2025-forecast/">The Impact of AI on Cloudflare Dns: A 2025 Forecast. | MyIPNow</a></li></ul></section><p class="updated-date">Last updated: November 1, 2025</p></article><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><!-- Pagination (Next / Prev / Back) --><!-- Related Articles --><div class="article-pagination" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;"><a href="/troubleshooting-adware-common-issues-and-quick-fixes/" style="justify-self:start;">← Previous Article</a><a href="/home-computing/page3.html" id="returnToCategory" style="justify-self:center;">↑ Return to Category</a><a href="/troubleshooting-buying-tech-common-issues-and-quick-fixes/" style="justify-self:end;">Next Article →</a></div><footer class="footer">
+<ul class="footer-nav">
+<li>
+<a href="/about.html">
+       About
+      </a>
+</li>
+<li>
+<a href="/contact.html">
+       Contact
+      </a>
+</li>
+<li>
+<a href="/privacy-policy.html">
+       Privacy Policy
+      </a>
+</li>
+<li>
+<a href="/terms-of-use.html">
+       Terms of Use
+      </a>
+</li>
+<li>
+<a href="/affiliate-disclosure.html">
+       Affiliate Disclosure
+      </a>
+</li>
+</ul>
+<div class="footer-copyright">
+     © 2025 MyIPNow. All Rights Reserved.
+    </div>
+</footer><!-- Related Articles --></div>
+<script id="article-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+    var btn = document.getElementById('returnToCategory');
+    if (!btn) return;
+
+    var raw = null, url=null;
+    try {
+      raw = sessionStorage.getItem(KEY);
+      if (raw){
+        var st = JSON.parse(raw);
+        url = st && st.url;
+      }
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+    if (url && CAT_RE.test(url)) {
+      btn.setAttribute('href', url);
+      return;
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index.html
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      var cat = '/' + parts[0] + '/';
+      if (CAT_RE.test(cat)) {
+        btn.setAttribute('href', cat + 'index.html');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768)dropdown.style.display='block';});
+  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768)dropdown.style.display='none';});
+
+  function closeMenu(){ if(menu){menu.remove();menu=null;} if(backdrop){backdrop.remove();backdrop=null;} document.body.classList.remove('menu-open'); open=false; }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+    if(open){ closeMenu(); return; }
+    const rect=trigger.getBoundingClientRect();
+    backdrop=document.createElement('div');
+    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
+    backdrop.addEventListener('click',closeMenu);
+    document.body.appendChild(backdrop);
+    menu=dropdown.cloneNode(true);
+    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom + window.scrollY + 8}px`,left:`${rect.left + window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,maxHeight:'70vh',overflowY:'auto'});
+    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{if(!open||!menu)return;const rect=trigger.getBoundingClientRect();menu.style.top=`${rect.bottom + window.scrollY + 8}px`;menu.style.left=`${rect.left + window.scrollX}px`;});
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+</body>
+</html>
