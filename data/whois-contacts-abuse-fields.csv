@@ -1,0 +1,5 @@
+Field,Description,Source
+Abuse Contact,Abuse reporting email,RIR/ICANN
+Registrar Abuse Email,Domain abuse contact,ICANN
+Tech Contact,Technical contact,WHOIS
+Admin Contact,Administrative contact,WHOIS

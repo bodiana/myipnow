@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6F8FV6T');</script>
+<meta charset="utf-8"/>
+<meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="/IP Subnet Calculator (IPv4 &amp; IPv6). Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools" name="description"/>
+<title>IP Subnet Calculator (IPv4 &amp; IPv6). | MyIPNow</title>
+<meta content="/IP Subnet Calculator (IPv4 &amp;amp; IPv6). | MyIPNow" property="og:title"/>
+<meta content="/IP Subnet Calculator (IPv4 &amp;amp; IPv6). Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools" property="og:description"/>
+<meta content="/website" property="og:type"/>
+<meta content="/preview.png" property="og:image"/>
+<meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>body {font-family: 'Inter', sans-serif; background: #f7f8f9; margin: 0; color: #1e293b; line-height: 1.7;}
+    .container {max-width: 900px; margin: 0 auto; padding: 1rem;}
+    .site-header {background: #fff; padding: 1rem; margin-bottom: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+    .header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
+    .logo {font-size: 1.5rem; font-weight: 700; color: #1e293b; text-decoration: none;}
+    .search-form {display: flex; flex-grow: 1; max-width: 400px;}
+    .search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 0.9rem;}
+    .search-form button {padding: 0.75rem 1rem; border: none; background: #10b981; color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+    .category-nav {padding-top: 1rem;}
+    .category-nav ul {display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: #1e293b; text-decoration: none;}
+.nav-tools ul li a:hover {color: #4f46e5;}
+.nav-tools:hover ul {display: block;}
+
+
+@media(max-width:768px){.category-nav ul {
+    overflow-x: auto; white-space: nowrap; padding-bottom: 10px;}
+
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: #1e293b; text-decoration: none;}
+.nav-tools ul li a:hover {color: #4f46e5;}
+.nav-tools:hover ul {display: block;}
+
+}
+
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 0.9rem; font-weight: 500; transition: color var(--transition-speed);}
+
+.category-nav a:hover {color: var(--accent-color);}
+    .page-header {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;}
+    .page-header h1 {font-size: 2.2rem; margin: 0 0 0.5rem;}
+    .page-header p {font-size: 1rem; color: #64748b; margin: 0;}
+    .article-body {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+    .article-body h2 {margin-top: 2rem; font-size: 1.5rem;}
+    .article-body h3 {margin-top: 1.2rem; font-size: 1.2rem;}
+    .related {background: #fff; padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+    .related h3 {margin-top: 0;}
+    .related ul {list-style: none; padding: 0;}
+    .related li {margin-bottom: 0.5rem;}
+    .related a {text-decoration: none; color: #4f46e5;}
+    .article-pagination {display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem;}
+    .article-pagination a {background: #fff; padding: 0.75rem 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; color: #1e293b; font-weight: 500;}
+    .article-pagination a:hover {background: #4f46e5; color: white;}
+    .footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+    .footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+    .footer-nav a {color: #64748b; text-decoration: none; font-size: 0.9rem;}
+    .footer-nav a:hover {color: #4f46e5;}
+    .footer-copyright {font-size: 0.85rem; color: #64748b;}
+   
+
+.related-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;}
+.related-card {display: flex; flex-direction: column; background: #f9fafb; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease;}
+.related-card:hover {transform: translateY(-4px);}
+.related-card img {width: 100%; height: 140px; object-fit: cover;}
+.related-card-content {padding: 1rem;}
+.related-card-content h4 {margin: 0 0 0.5rem; font-size: 1rem;}
+.related-card-content p {font-size: 0.9rem; color: #64748b; margin: 0;}
+.related-card-content a {text-decoration: none; color: #4f46e5; font-weight: 600;}
+.related-card-content a:hover {color: #1e293b;}</style>
+<style>.nav {text-align: center !important;}
+.nav li {display: inline-block !important; float: none !important;}</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<style>@media (max-width: 768px) {.category-nav {
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 10px;}
+  .category-nav ul {display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1rem;}
+  .category-nav::-webkit-scrollbar {height: 6px;}
+  .category-nav::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+  .nav-tools ul {display: none; position: absolute; top: 100%; left: 0; right: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+  .nav-tools.open ul {display: block;}
+}</style>
+<style>@media (max-width: 768px) {.nav-tools {
+    position: static !important;}
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+  .nav-tools.open ul {display: block !important;}
+  body.menu-open {overflow: hidden;}
+}</style>
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+<meta content="#ffffff" name="theme-color"/>
+<style>.tool-shell{margin: 18px 0 26px;}
+.tool-tabs{display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 14px;}
+.tool-tab{border: 1px solid rgba(148,163,184,.35); background: #fff; border-radius: 999px; padding: 10px 14px; font-weight: 700; cursor: pointer;}
+.tool-tab.is-active{background: rgba(15,23,42,.06);}
+.tool-panel{display: none;}
+.tool-panel.is-active{display: block;}
+.tool-grid{display: grid; grid-template-columns: 1fr; gap: 14px;}
+@media (min-width: 980px){.tool-grid{grid-template-columns: 1fr 1fr; gap: 16px;}}
+.tool-card{background: #fff; border: 1px solid rgba(148,163,184,.25); border-radius: 14px; padding: 14px 14px 12px; box-shadow: 0 1px 0 rgba(0,0,0,.02);}
+.tool-h2{margin: 0 0 6px; font-size: 1.15rem;}
+.tool-h3{margin: 0 0 10px; font-size: 1.05rem;}
+.tool-muted{color: rgba(15,23,42,.7); margin: 0 0 10px; line-height: 1.45;}
+.tool-row{margin: 10px 0 0;}
+.tool-row-split{display: grid; grid-template-columns: 1fr; gap: 10px;}
+@media (min-width: 680px){.tool-row-split{grid-template-columns: 1fr 1fr;}}
+.tool-label{display: block; font-weight: 700; margin: 0 0 6px;}
+.tool-input{width: 100%; border: 1px solid rgba(148,163,184,.35); border-radius: 12px; padding: 11px 12px; font-size: 1rem;}
+.tool-actions{display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 6px;}
+.tool-btn{border: 1px solid rgba(148,163,184,.35); background: #0f172a; color: #fff; border-radius: 12px; padding: 10px 12px; font-weight: 800; cursor: pointer;}
+.tool-btn-ghost{background: #fff; color: #0f172a;}
+.tool-note{margin: 8px 0 0; color: rgba(15,23,42,.8); min-height: 18px;}
+.kv{display: flex; flex-direction: column; gap: 12px;}
+.kv-row{display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; padding: 12px 12px; border: 1px solid rgba(148,163,184,.25); border-radius: 12px; background: rgba(248,250,252,.7);}
+.k{font-weight: 800; min-width: 140px;}
+.v{display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; text-align: right;}
+.copy{border: 1px solid rgba(148,163,184,.35); background: #fff; border-radius: 10px; padding: 6px 10px; font-weight: 800; cursor: pointer;}
+.explain{margin: 12px 0 0; line-height: 1.6;}
+.explain p{margin: 10px 0 0;}
+.pill{display: inline-block; margin: 0 0 8px; padding: 6px 10px; border: 1px solid rgba(148,163,184,.35); border-radius: 999px; background: #fff; font-weight: 800;}
+.article-body table.ref-table{width: 100%; border-collapse: separate; border-spacing: 0 14px; margin: 16px 0 18px;}
+.article-body th,.article-body td{padding: 12px 14px; vertical-align: top;}
+.article-body thead th{background: #f1f5f9;}
+.article-body tbody td{background: #fff; border: 1px solid rgba(148,163,184,.25);}
+.faq details{border: 1px solid rgba(148,163,184,.25); border-radius: 12px; padding: 10px 12px; background: #fff; margin: 10px 0;}
+.faq summary{cursor: pointer; font-weight: 900;}
+.faq p{margin: 8px 0 0; line-height: 1.6;}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"IP Subnet Calculator (IPv4 & IPv6) – CIDR, Range, Mask, Hosts","description":"Fast IP subnet calculator for IPv4 and IPv6. Convert CIDR to subnet mask, network/broadcast, first/last usable IP, host count, and IP range. Includes common subnet sizes and FAQ.","url":"https://myipnow.net/ip-subnet-calculator/","dateModified":"2026-01-04","mainEntityOfPage":"https://myipnow.net/ip-subnet-calculator/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many IPs are in a /24?","acceptedAnswer":{"@type":"Answer","text":"A /24 contains 256 total IPv4 addresses. Typically 254 are usable hosts (network and broadcast are reserved)."}},{"@type":"Question","name":"What’s the difference between CIDR and subnet mask?","acceptedAnswer":{"@type":"Answer","text":"They represent the same thing: how many bits belong to the network. CIDR uses a prefix length like /24, while a subnet mask uses dotted decimal like 255.255.255.0."}},{"@type":"Question","name":"Why does IPv6 have no broadcast address?","acceptedAnswer":{"@type":"Answer","text":"IPv6 was designed without broadcast. It uses multicast instead, and many operations that used broadcast in IPv4 work differently in IPv6."}},{"@type":"Question","name":"Why do /31 and /32 look unusual?","acceptedAnswer":{"@type":"Answer","text":"A /32 is a single IPv4 address. A /31 contains two addresses and is commonly used for point-to-point links; both addresses can be usable under modern standards."}}]}</script>
+<link href="https://myipnow.net/ip-subnet-calculator" rel="canonical"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"IP Subnet Calculator","description":"Calculate IPv4 and IPv6 subnet details including CIDR, subnet masks, usable IP ranges, and host counts.","applicationCategory":"NetworkingApplication","operatingSystem":"All","url":"https://myipnow.net/ip-subnet-calculator/","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style id="subnet-root-cause-fix">/* Guardrails: prevent grid items from shrinking oddly */
+.tool-grid > * {min-width: 0;}
+.tool-card {min-width: 0;}
+.kv-row .v {min-width: 0;}</style>
+<style id="ipv4-ipv6-edge-fix">/* Prevent IPv4 / IPv6 input overflow */
+#ipv4,
+#ipv6 {width: 100%; max-width: 100%; box-sizing: border-box;}
+
+/* Ensure tool cards never overflow container */
+.tool-card,
+.tool-grid,
+.tool-shell {max-width: 100%; box-sizing: border-box;}
+
+/* Extra safety for long IPv6 strings */
+#ipv6 {overflow-wrap: anywhere;}</style>
+<style id="quick-adjust-actually-fit">/*
+ACTUAL FIX (no hacks, no clipping):
+- Slider overlaps CIDR box because its visual thumb extends beyond track.
+- We intentionally make the slider TRACK shorter and offset it.
+- CIDR input is untouched.
+*/
+
+/* Ensure grid items can shrink */
+.tool-row-split > div {min-width: 0;}
+
+/* CIDR prefix input stays normal */
+#ipv4-prefix,
+#ipv6-prefix {width: 100%; box-sizing: border-box;}
+
+/* Quick adjust slider: shorter + shifted right */
+.tool-row-split input[type="range"] {width: calc(100% - 20px); /* shorten track */
+  margin-left: 10px; /* push away from CIDR box */
+  box-sizing: border-box;}
+
+/* Label follows slider */
+.tool-row-split label {padding-left: 10px;}</style>
+<style id="ipv6-expanded-wrap-fix">/* Make IPv6 Expanded value always fit: put value under label + wrap safely */
+.kv-row.is-expanded {flex-direction: column; align-items: stretch;}
+
+.kv-row.is-expanded .k {min-width: 0;}
+
+.kv-row.is-expanded .v {justify-content: space-between; text-align: left; width: 100%;}
+
+#o6-exp {display: block; flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; word-break: break-word;}</style>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="https://myipnow.net/">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="https://myipnow.net/#">Tools ▾</a>
+<ul>
+<li><a href="https://myipnow.net/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/dns-lookup">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/whois-lookup">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/internet-speed-test">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/generate-password">Generate Password</a></li>
+<li><a href="https://myipnow.net/ip-blacklist">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
+<li><a href="https://myipnow.net/online-privacy/">Online Privacy</a></li>
+<li><a href="https://myipnow.net/networking/">Networking</a></li>
+<li><a href="https://myipnow.net/ip-addresses/">IP Addresses</a></li>
+<li><a href="https://myipnow.net/home-computing/">Home Computing</a></li>
+<li><a href="https://myipnow.net/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<header class="page-header">
+<h1>IP Subnet Calculator (IPv4 &amp; IPv6)</h1>
+<p>Calculate network range, subnet mask, host count, and usable addresses from an IP + CIDR. Clean results, copy buttons, and a quick table of common subnet sizes. <strong>Updated: January 2026</strong></p>
+</header>
+<article class="article-body">
+<div class="tool-shell">
+<div aria-label="Subnet calculator mode" class="tool-tabs" role="tablist">
+<button aria-controls="panel-ipv4" aria-selected="true" class="tool-tab is-active" id="tab-ipv4" role="tab" type="button">IPv4</button>
+<button aria-controls="panel-ipv6" aria-selected="false" class="tool-tab" id="tab-ipv6" role="tab" type="button">IPv6</button>
+</div>
+<div aria-labelledby="tab-ipv4" class="tool-panel is-active" id="panel-ipv4" role="tabpanel">
+<div class="tool-grid">
+<div class="tool-card">
+<h2 class="tool-h2">IPv4 subnet calculator</h2>
+<p class="tool-muted">Enter an IPv4 address and CIDR prefix length to get the network range, mask, broadcast, and host counts.</p>
+<div class="tool-row">
+<label class="tool-label" for="ipv4">IPv4 address</label>
+<input class="tool-input" id="ipv4" inputmode="numeric" placeholder="e.g., 192.168.1.10" value="192.168.1.10"/>
+</div>
+<div aria-label="Common subnet sizes" class="subnet-presets">
+<button type="button">/24</button>
+<button type="button">/22</button>
+<button type="button">/16</button>
+<button type="button">/30</button>
+</div>
+<div class="tool-row tool-row-split">
+<div>
+<label class="tool-label" for="ipv4-prefix">CIDR prefix</label>
+<input class="tool-input" id="ipv4-prefix" inputmode="numeric" placeholder="0–32" value="24"/>
+</div>
+<div>
+<label class="tool-label" for="ipv4-slider">Quick adjust</label>
+<input id="ipv4-slider" max="32" min="0" type="range" value="24"/>
+</div>
+</div>
+<div class="tool-actions">
+<button class="tool-btn" id="btn-ipv4-calc" type="button">Calculate</button>
+<button class="tool-btn tool-btn-ghost" id="btn-ipv4-reset" type="button">Reset</button>
+</div>
+<p class="tool-note" id="ipv4-note"></p>
+</div>
+<div class="tool-card">
+<h3 class="tool-h3">Results</h3>
+<div class="kv">
+<div class="kv-row"><span class="k">CIDR</span><span class="v"><span id="o4-cidr"></span><button aria-label="Copy CIDR" class="copy" data-copy="o4-cidr">Copy</button></span></div>
+<div class="kv-row"><span class="k">Subnet mask</span><span class="v"><span id="o4-mask"></span><button class="copy" data-copy="o4-mask">Copy</button></span></div>
+<div class="kv-row"><span class="k">Network</span><span class="v"><span id="o4-net"></span><button class="copy" data-copy="o4-net">Copy</button></span></div>
+<div class="kv-row"><span class="k">Broadcast</span><span class="v"><span id="o4-bc"></span><button class="copy" data-copy="o4-bc">Copy</button></span></div>
+<div class="kv-row"><span class="k">First usable</span><span class="v"><span id="o4-first"></span><button class="copy" data-copy="o4-first">Copy</button></span></div>
+<div class="kv-row"><span class="k">Last usable</span><span class="v"><span id="o4-last"></span><button class="copy" data-copy="o4-last">Copy</button></span></div>
+<div class="kv-row"><span class="k">Total IPs</span><span class="v"><span id="o4-total"></span></span></div>
+<div class="kv-row"><span class="k">Usable hosts</span><span class="v"><span id="o4-usable"></span></span></div>
+<div class="kv-row"><span class="k">IP range</span><span class="v"><span id="o4-range"></span><button class="copy" data-copy="o4-range">Copy</button></span></div>
+</div>
+<div class="explain" id="o4-explain"></div>
+</div>
+</div>
+</div>
+<div aria-labelledby="tab-ipv6" class="tool-panel" id="panel-ipv6" role="tabpanel">
+<div class="tool-grid">
+<div class="tool-card">
+<h2 class="tool-h2">IPv6 subnet calculator</h2>
+<p class="tool-muted">Enter an IPv6 address and prefix length to get the network prefix, first/last address in the subnet, and size. (IPv6 has no broadcast address.)</p>
+<div class="tool-row">
+<label class="tool-label" for="ipv6">IPv6 address</label>
+<input class="tool-input" id="ipv6" placeholder="e.g., 2001:db8::1" value="2001:db8::1"/>
+</div>
+<div class="tool-row tool-row-split">
+<div>
+<label class="tool-label" for="ipv6-prefix">Prefix length</label>
+<input class="tool-input" id="ipv6-prefix" inputmode="numeric" placeholder="0–128" value="64"/>
+</div>
+<div>
+<label class="tool-label" for="ipv6-slider">Quick adjust</label>
+<input id="ipv6-slider" max="128" min="0" type="range" value="64"/>
+</div>
+</div>
+<div class="tool-actions">
+<button class="tool-btn" id="btn-ipv6-calc" type="button">Calculate</button>
+<button class="tool-btn tool-btn-ghost" id="btn-ipv6-reset" type="button">Reset</button>
+</div>
+<p class="tool-note" id="ipv6-note"></p>
+</div>
+<div class="tool-card">
+<h3 class="tool-h3">Results</h3>
+<div class="kv">
+<div class="kv-row"><span class="k">Prefix</span><span class="v"><span id="o6-cidr"></span><button class="copy" data-copy="o6-cidr">Copy</button></span></div>
+<div class="kv-row"><span class="k">Network prefix</span><span class="v"><span id="o6-net"></span><button class="copy" data-copy="o6-net">Copy</button></span></div>
+<div class="kv-row"><span class="k">First address</span><span class="v"><span id="o6-first"></span><button class="copy" data-copy="o6-first">Copy</button></span></div>
+<div class="kv-row"><span class="k">Last address</span><span class="v"><span id="o6-last"></span><button class="copy" data-copy="o6-last">Copy</button></span></div>
+<div class="kv-row"><span class="k">Subnet size</span><span class="v"><span id="o6-size"></span></span></div>
+<div class="kv-row"><span class="k">Compressed</span><span class="v"><span id="o6-comp"></span><button class="copy" data-copy="o6-comp">Copy</button></span></div>
+<div class="kv-row"><span class="k">Expanded</span><span class="v"><span id="o6-exp"></span><button class="copy" data-copy="o6-exp">Copy</button></span></div>
+</div>
+<div class="explain" id="o6-explain"></div>
+</div>
+</div>
+</div>
+</div>
+<h2>How subnetting works (in plain English)</h2>
+<p>
+A subnet is just a way to group IP addresses. The <strong>CIDR prefix</strong> tells you how large that group is.
+For IPv4, <code>/24</code> means “the first 24 bits define the network,” leaving 8 bits for hosts (256 addresses).
+For IPv6, prefixes work the same way — the numbers are bigger and subnets are usually much larger (often <code>/64</code>).
+</p>
+<h2>Common IPv4 subnet sizes</h2>
+<p>These are the CIDR sizes you’ll see most often in real networks. You can also download the table as a CSV.</p>
+<a class="btn" download="" href="https://myipnow.net/data/common-subnet-sizes.csv/">Download common subnet sizes (CSV)</a>
+<div class="table-wrap">
+<table class="ref-table">
+<thead>
+<tr><th>CIDR</th><th>Total IPs</th><th>Usable hosts</th><th>Typical use</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>/30</strong></td><td>4</td><td>2</td><td>Point-to-point links</td></tr>
+<tr><td><strong>/29</strong></td><td>8</td><td>6</td><td>Small network segment</td></tr>
+<tr><td><strong>/28</strong></td><td>16</td><td>14</td><td>Small office / VLAN</td></tr>
+<tr><td><strong>/27</strong></td><td>32</td><td>30</td><td>Small office / VLAN</td></tr>
+<tr><td><strong>/26</strong></td><td>64</td><td>62</td><td>Office / lab</td></tr>
+<tr><td><strong>/25</strong></td><td>128</td><td>126</td><td>Office / campus</td></tr>
+<tr><td><strong>/24</strong></td><td>256</td><td>254</td><td>Typical LAN</td></tr>
+<tr><td><strong>/23</strong></td><td>512</td><td>510</td><td>Larger LAN</td></tr>
+<tr><td><strong>/22</strong></td><td>1,024</td><td>1,022</td><td>Large office / VLAN</td></tr>
+<tr><td><strong>/21</strong></td><td>2,048</td><td>2,046</td><td>Campus / enterprise</td></tr>
+<tr><td><strong>/20</strong></td><td>4,096</td><td>4,094</td><td>Enterprise segment</td></tr>
+<tr><td><strong>/19</strong></td><td>8,192</td><td>8,190</td><td>Large enterprise</td></tr>
+<tr><td><strong>/16</strong></td><td>65,536</td><td>65,534</td><td>Very large network (legacy)</td></tr>
+</tbody>
+</table>
+</div>
+<h2>FAQ</h2>
+<div class="faq">
+<details>
+<summary>How many IPs are in a /24?</summary>
+<p>A /24 contains 256 total IPv4 addresses. Typically 254 are usable hosts (network + broadcast are reserved).</p>
+</details>
+<details>
+<summary>What’s the difference between CIDR and subnet mask?</summary>
+<p>They represent the same thing: how many bits belong to the network. CIDR uses a prefix length (like /24). A subnet mask uses dotted decimal (like 255.255.255.0).</p>
+</details>
+<details>
+<summary>Why does IPv6 have no broadcast address?</summary>
+<p>IPv6 was designed without broadcast. It uses multicast instead, and many operations that used broadcast in IPv4 work differently in IPv6.</p>
+</details>
+<details>
+<summary>Why do /31 and /32 look weird?</summary>
+<p>/32 is a single IPv4 address. /31 has two addresses and is commonly used for point-to-point links (both addresses can be used under modern standards).</p>
+</details>
+</div>
+<h2>Related tools</h2>
+<ul>
+<li><a href="https://myipnow.net/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/whois-lookup">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/ip-blacklist">IP Blacklist Check</a></li>
+<li><a href="https://myipnow.net/dns-lookup">DNS Lookup</a></li>
+</ul>
+</article>
+<script>
+(function() {
+  const tab4 = document.getElementById('tab-ipv4');
+  const tab6 = document.getElementById('tab-ipv6');
+  const panel4 = document.getElementById('panel-ipv4');
+  const panel6 = document.getElementById('panel-ipv6');
+  function setTab(which) {
+    const is4 = which === '4';
+    tab4.classList.toggle('is-active', is4);
+    tab6.classList.toggle('is-active', !is4);
+    tab4.setAttribute('aria-selected', String(is4));
+    tab6.setAttribute('aria-selected', String(!is4));
+    panel4.classList.toggle('is-active', is4);
+    panel6.classList.toggle('is-active', !is4);
+  }
+  tab4.addEventListener('click', () => setTab('4'));
+  tab6.addEventListener('click', () => setTab('6'));
+
+  function copyText(text) {
+    if (!text) return;
+    navigator.clipboard?.writeText(text).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    });
+  }
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.copy');
+    if (!btn) return;
+    const id = btn.getAttribute('data-copy');
+    const el = document.getElementById(id);
+    if (el) copyText(el.textContent.trim());
+    btn.textContent = 'Copied';
+    setTimeout(() => btn.textContent = 'Copy', 800);
+  });
+
+  function parseIPv4(s) {
+    const parts = s.trim().split('.');
+    if (parts.length !== 4) return null;
+    let n = 0;
+    for (const p of parts) {
+      if (p === '' || !/^[0-9]+$/.test(p)) return null;
+      const v = Number(p);
+      if (v < 0 || v > 255) return null;
+      n = (n << 8) | v;
+    }
+    return n >>> 0;
+  }
+  function fmtIPv4(n) {
+    return [(n>>>24)&255, (n>>>16)&255, (n>>>8)&255, n&255].join('.');
+  }
+  function maskFromPrefix4(prefix) {
+    if (prefix === 0) return 0 >>> 0;
+    return (0xFFFFFFFF << (32 - prefix)) >>> 0;
+  }
+  function hostCounts4(prefix) {
+    const total = 2 ** (32 - prefix);
+    if (prefix === 32) return { total: 1, usable: 1, note: "Single host (/32)." };
+    if (prefix === 31) return { total: 2, usable: 2, note: "Point-to-point /31 (both addresses usable)." };
+    return { total, usable: Math.max(total - 2, 0), note: "" };
+  }
+  function explainIPv4(prefix, total) {
+    if (prefix >= 24) return `This is a small subnet (/${prefix}). It contains ${total.toLocaleString()} IPv4 addresses and is commonly used for local networks and VLANs.`;
+    if (prefix >= 20) return `This is a medium subnet (/${prefix}) with ${total.toLocaleString()} addresses — often used for larger VLANs, offices, or internal service ranges.`;
+    if (prefix >= 16) return `This is a large subnet (/${prefix}) with ${total.toLocaleString()} addresses. These are common in legacy allocations and large enterprise environments.`;
+    return `This is a very large subnet (/${prefix}) with ${total.toLocaleString()} addresses. Ranges this large are typically used by providers or very large networks.`;
+  }
+
+  function expandIPv6(input) {
+    let s = input.trim().toLowerCase();
+    if (!s) return null;
+    if (s.includes('%')) s = s.split('%')[0];
+    const hasDouble = s.includes('::');
+    if (hasDouble && s.indexOf('::') !== s.lastIndexOf('::')) return null;
+
+    let left = [], right = [];
+    if (hasDouble) {
+      const parts = s.split('::');
+      left = parts[0] ? parts[0].split(':') : [];
+      right = parts[1] ? parts[1].split(':') : [];
+    } else {
+      left = s.split(':');
+    }
+
+    function convertIPv4Tail(arr) {
+      const last = arr[arr.length - 1];
+      if (last && last.includes('.')) {
+        const n = parseIPv4(last);
+        if (n === null) return null;
+        arr.pop();
+        const hi = ((n >>> 16) & 0xFFFF).toString(16);
+        const lo = (n & 0xFFFF).toString(16);
+        arr.push(hi, lo);
+      }
+      return arr;
+    }
+    left = convertIPv4Tail(left); if (left === null) return null;
+    right = convertIPv4Tail(right); if (right === null) return null;
+
+    const totalParts = left.length + right.length;
+    if (!hasDouble && totalParts !== 8) return null;
+    if (hasDouble && totalParts > 8) return null;
+
+    const zerosToInsert = hasDouble ? (8 - totalParts) : 0;
+    const parts = [...left, ...Array(zerosToInsert).fill('0'), ...right].map(p => p === '' ? '0' : p);
+
+    if (parts.length !== 8) return null;
+    const hextets = [];
+    for (const p of parts) {
+      if (!/^[0-9a-f]{1,4}$/.test(p)) return null;
+      hextets.push(p.padStart(4, '0'));
+    }
+    return hextets;
+  }
+
+  function ipv6ToBigInt(hextets) {
+    let n = 0n;
+    for (const h of hextets) n = (n << 16n) + BigInt('0x' + h);
+    return n;
+  }
+  function bigIntToIPv6(n) {
+    const parts = [];
+    for (let i = 0; i < 8; i++) {
+      const shift = BigInt(112 - i*16);
+      const h = Number((n >> shift) & 0xFFFFn).toString(16).padStart(4,'0');
+      parts.push(h);
+    }
+    return parts;
+  }
+  function compressIPv6(parts) {
+    const nums = parts.map(p => parseInt(p, 16));
+    let bestStart = -1, bestLen = 0;
+    let curStart = -1, curLen = 0;
+    for (let i=0;i<8;i++) {
+      if (nums[i] === 0) {
+        if (curStart === -1) curStart = i;
+        curLen++;
+        if (curLen > bestLen) { bestLen = curLen; bestStart = curStart; }
+      } else {
+        curStart = -1; curLen = 0;
+      }
+    }
+    if (bestLen < 2) return parts.map(p => p.replace(/^0+/, '') || '0').join(':');
+
+    const out = [];
+    for (let i=0;i<8;i++) {
+      if (i === bestStart) {
+        out.push('');
+        i += bestLen - 1;
+        if (i === 7) out.push('');
+        continue;
+      }
+      out.push(parts[i].replace(/^0+/, '') || '0');
+    }
+    return out.join(':').replace(/(^:)|(:$)/, '::').replace(/:::+/,'::');
+  }
+  function maskPrefix6(prefix) {
+    if (prefix === 0) return 0n;
+    return ((1n << BigInt(prefix)) - 1n) << BigInt(128 - prefix);
+  }
+  function formatBigPow(n) {
+    if (n <= 64) {
+      const val = 1n << BigInt(n);
+      return val.toString() + " (2^" + n + ")";
+    }
+    return "2^" + n + " addresses";
+  }
+  function explainIPv6(prefix) {
+    if (prefix >= 64) return `A /${prefix} is common in IPv6. Many networks use /64 for LANs, then assign /56 or /48 to sites or customers.`;
+    if (prefix >= 48) return `A /${prefix} is a large allocation, often used for organizations or sites. It contains many /64 subnets.`;
+    return `A /${prefix} is extremely large. In IPv6, even “small” prefixes represent huge address space.`;
+  }
+
+  const ipv4 = document.getElementById('ipv4');
+  const ipv4Prefix = document.getElementById('ipv4-prefix');
+  const ipv4Slider = document.getElementById('ipv4-slider');
+  const ipv4Note = document.getElementById('ipv4-note');
+
+  const ipv6 = document.getElementById('ipv6');
+  const ipv6Prefix = document.getElementById('ipv6-prefix');
+  const ipv6Slider = document.getElementById('ipv6-slider');
+  const ipv6Note = document.getElementById('ipv6-note');
+
+  function setText(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  function calcIPv4() {
+    const ipn = parseIPv4(ipv4.value);
+    const p = Number(ipv4Prefix.value);
+    if (!Number.isInteger(p) || p < 0 || p > 32) { ipv4Note.textContent = "Enter a CIDR prefix between 0 and 32."; return; }
+    ipv4Slider.value = String(p);
+    if (ipn === null) { ipv4Note.textContent = "Enter a valid IPv4 address (e.g., 203.0.113.10)."; return; }
+    ipv4Note.textContent = "";
+
+    const mask = maskFromPrefix4(p);
+    const net = (ipn & mask) >>> 0;
+    const bc = (net | (~mask >>> 0)) >>> 0;
+
+    const counts = hostCounts4(p);
+    let first = net, last = bc;
+    if (p <= 30) { first = (net + 1) >>> 0; last = (bc - 1) >>> 0; }
+    if (p === 31) { first = net; last = bc; }
+    if (p === 32) { first = ipn; last = ipn; }
+
+    setText('o4-cidr', `${fmtIPv4(ipn)}/${p}`);
+    setText('o4-mask', fmtIPv4(mask));
+    setText('o4-net', fmtIPv4(net));
+    setText('o4-bc', fmtIPv4(bc));
+    setText('o4-first', fmtIPv4(first));
+    setText('o4-last', fmtIPv4(last));
+    setText('o4-total', counts.total.toLocaleString());
+    setText('o4-usable', counts.usable.toLocaleString());
+    setText('o4-range', `${fmtIPv4(net)} – ${fmtIPv4(bc)}`);
+
+    const note = counts.note ? `<div class="pill">${counts.note}</div>` : "";
+    document.getElementById('o4-explain').innerHTML =
+      note + `<p>${explainIPv4(p, counts.total)}</p>` +
+      `<p class="tool-muted">Tip: troubleshooting blocks or “bad reputation”? Check the <a href="https://myipnow.net/ip-blacklist">IP blacklist</a> and run a <a href="https://myipnow.net/whois-lookup">WHOIS lookup</a> to see if the whole range (or ASN) is involved.</p>`;
+  }
+
+  function calcIPv6() {
+    const hextets = expandIPv6(ipv6.value);
+    const p = Number(ipv6Prefix.value);
+    if (!Number.isInteger(p) || p < 0 || p > 128) { ipv6Note.textContent = "Enter a prefix length between 0 and 128."; return; }
+    ipv6Slider.value = String(p);
+    if (!hextets) { ipv6Note.textContent = "Enter a valid IPv6 address (e.g., 2001:db8::1)."; return; }
+    ipv6Note.textContent = "";
+
+    const ipn = ipv6ToBigInt(hextets);
+    const mask = maskPrefix6(p);
+    const net = ipn & mask;
+    const hostBits = 128 - p;
+
+    const first = net;
+    const last = net | ((1n << BigInt(hostBits)) - 1n);
+
+    const compressed = compressIPv6(bigIntToIPv6(ipn));
+    const expanded = bigIntToIPv6(ipn).join(':');
+
+    setText('o6-cidr', `${compressed}/${p}`);
+    setText('o6-net', `${compressIPv6(bigIntToIPv6(net))}/${p}`);
+    setText('o6-first', compressIPv6(bigIntToIPv6(first)));
+    setText('o6-last', compressIPv6(bigIntToIPv6(last)));
+    setText('o6-size', formatBigPow(hostBits));
+    setText('o6-comp', compressed);
+    setText('o6-exp', expanded);
+
+    document.getElementById('o6-explain').innerHTML =
+      `<p>${explainIPv6(p)}</p>` +
+      `<p class="tool-muted">Note: IPv6 has no broadcast address. Many operations use multicast instead.</p>`;
+  }
+
+  document.getElementById('btn-ipv4-calc').addEventListener('click', calcIPv4);
+  document.getElementById('btn-ipv6-calc').addEventListener('click', calcIPv6);
+
+  document.getElementById('btn-ipv4-reset').addEventListener('click', () => {
+    ipv4.value = "192.168.1.10"; ipv4Prefix.value = "24"; ipv4Slider.value="24"; ipv4Note.textContent="";
+    calcIPv4();
+  });
+  document.getElementById('btn-ipv6-reset').addEventListener('click', () => {
+    ipv6.value = "2001:db8::1"; ipv6Prefix.value="64"; ipv6Slider.value="64"; ipv6Note.textContent="";
+    calcIPv6();
+  });
+
+  ipv4Slider.addEventListener('input', () => { ipv4Prefix.value = ipv4Slider.value; calcIPv4(); });
+  ipv6Slider.addEventListener('input', () => { ipv6Prefix.value = ipv6Slider.value; calcIPv6(); });
+
+  ipv4.addEventListener('keydown', (e)=>{ if (e.key==='Enter') calcIPv4(); });
+  ipv4Prefix.addEventListener('keydown', (e)=>{ if (e.key==='Enter') calcIPv4(); });
+  ipv6.addEventListener('keydown', (e)=>{ if (e.key==='Enter') calcIPv6(); });
+  ipv6Prefix.addEventListener('keydown', (e)=>{ if (e.key==='Enter') calcIPv6(); });
+
+  calcIPv4();
+  calcIPv6();
+})();
+</script>
+<footer class="footer">
+<ul class="footer-nav">
+<li>
+<a href="https://myipnow.net/about">
+       About
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/contact">
+       Contact
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/privacy-policy">
+       Privacy Policy
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/terms-of-use">
+       Terms of Use
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/affiliate-disclosure">
+       Affiliate Disclosure
+      </a>
+</li>
+</ul>
+<div class="footer-copyright">
+     © 2026 MyIPNow. All Rights Reserved.
+    </div>
+</footer></div>
+<script id="article-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+    var btn = document.getElementById('returnToCategory');
+    if (!btn) return;
+
+    var raw = null, url=null;
+    try {
+      raw = sessionStorage.getItem(KEY);
+      if (raw){
+        var st = JSON.parse(raw);
+        url = st && st.url;
+      }
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+    if (url && CAT_RE.test(url)) {
+      btn.setAttribute('href', url);
+      return;
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      var cat = '/' + parts[0] + '/';
+      if (CAT_RE.test(cat)) {
+        btn.setAttribute('href', cat + 'index');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+
+  // Desktop hover
+  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
+  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
+
+  function closeMenu(){
+    if(menu){ menu.remove(); menu=null; }
+    if(backdrop){ backdrop.remove(); backdrop=null; }
+    dropdown.style.display='none';
+    document.body.classList.remove('menu-open');
+    open=false;
+  }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+
+    dropdown.style.display='none'; // hide original header dropdown
+
+    if(open){ closeMenu(); return; }
+
+    const rect = trigger.getBoundingClientRect();
+    backdrop = document.createElement('div');
+    Object.assign(backdrop.style,{
+      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+      background:'transparent',zIndex:9998
+    });
+    backdrop.addEventListener('click', closeMenu);
+    document.body.appendChild(backdrop);
+
+    menu = dropdown.cloneNode(true);
+    Object.assign(menu.style,{
+      position:'absolute',
+      top:`${rect.bottom + window.scrollY + 8}px`,
+      left:`${rect.left + window.scrollX}px`,
+      minWidth:`${Math.max(rect.width,200)}px`,
+      background:'#fff',
+      border:'1px solid #e2e8f0',
+      borderRadius:'10px',
+      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+      listStyle:'none',
+      padding:'.5rem 0',
+      margin:0,
+      zIndex:9999,
+      maxHeight:'70vh',
+      overflowY:'auto',
+      display:'block',        /* ✅ ensures visible */
+      visibility:'visible',   /* ✅ fixes Safari hover ghost */
+      opacity:'1'             /* ✅ fully visible */
+    });
+    menu.querySelectorAll('a').forEach(a=>{
+      a.style.display='block';
+      a.style.padding='.6rem 1.2rem';
+      a.style.color='#1e293b';
+      a.style.textDecoration='none';
+      a.style.fontWeight='500';
+      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
+      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
+    });
+
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
+    const rect=trigger.getBoundingClientRect();
+    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
+    menu.style.left=`${rect.left + window.scrollX}px`;
+  });
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+<script id="cidr-preset-buttons-fix">
+/*
+Fix preset CIDR buttons (/24 /22 /16 /32 etc):
+- Inline onclicks referenced variables that are scoped inside an IIFE, so they do nothing.
+- This binds clicks properly and triggers the existing calculate logic.
+*/
+(function(){
+  function getVersion(btn){
+    const panel = btn.closest('.tool-panel');
+    if (!panel) return 4;
+    return panel.id === 'panel-ipv6' ? 6 : 4;
+  }
+  function parsePrefix(btn){
+    const t = (btn.textContent || '').trim();
+    const m = t.match(/\/\s*(\d{1,3})/);
+    return m ? parseInt(m[1],10) : NaN;
+  }
+  function applyPrefix(version, prefix){
+    const prefixId = version === 6 ? 'ipv6-prefix' : 'ipv4-prefix';
+    const sliderId = version === 6 ? 'ipv6-slider' : 'ipv4-slider';
+    const calcBtnId = version === 6 ? 'btn-ipv6-calc' : 'btn-ipv4-calc';
+
+    const prefixEl = document.getElementById(prefixId);
+    const sliderEl = document.getElementById(sliderId);
+    const calcBtn = document.getElementById(calcBtnId);
+    if (!prefixEl) return;
+
+    prefixEl.value = String(prefix);
+    if (sliderEl) sliderEl.value = String(prefix);
+
+    // Trigger your existing listeners (slider input triggers calc)
+    if (sliderEl) {
+      sliderEl.dispatchEvent(new Event('input', { bubbles: true }));
+    } else if (calcBtn) {
+      calcBtn.click();
+    }
+  }
+
+  document.querySelectorAll('.subnet-presets button').forEach(btn=>{
+    btn.type = 'button';
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const version = getVersion(btn);
+      const prefix = parsePrefix(btn);
+      if (!Number.isFinite(prefix)) return;
+      applyPrefix(version, prefix);
+    });
+  });
+})();
+</script>
+<script id="ipv6-expanded-row-classer">
+(function(){
+  var exp = document.getElementById('o6-exp');
+  if(!exp) return;
+  var row = exp.closest('.kv-row');
+  if(!row) return;
+  row.classList.add('is-expanded');
+})();
+</script>
+</body>
+</html>

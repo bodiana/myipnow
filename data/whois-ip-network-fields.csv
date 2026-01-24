@@ -1,0 +1,6 @@
+Field,Description,Source,Notes
+IP Range,Allocated IP block,RIR,CIDR notation
+ASN,Autonomous System Number,RIR/BGP,Most reliable ownership field
+Organization,Owning organization,RIR,More reliable than ISP
+NetName,Registry network name,RIR,Internal label
+Country,Allocation country,RIR,Not physical location

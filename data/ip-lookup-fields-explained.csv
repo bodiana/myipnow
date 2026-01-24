@@ -1,0 +1,19 @@
+Field Name,Description,Common Data Source,Typical Accuracy,Notes
+IP Address,The queried IPv4 or IPv6 address.,Network layer,Exact,IPv6 may be compressed (shortened) in display.
+IP Version,Whether the address is IPv4 or IPv6.,Network layer,Exact,Some users have both (dual-stack).
+ISP,Service provider associated with the IP allocation.,RIR WHOIS + commercial datasets,High,Often shows carrier or upstream provider.
+Organization,Entity that owns/uses the IP range.,RIR WHOIS,High,May differ from the ISP brand name.
+ASN,Autonomous System Number announcing the IP via BGP.,BGP routing data,Very high,Usually the most reliable ownership/routing field.
+AS Name,Human-readable name for the ASN.,BGP/RIR,High,May be abbreviated or outdated.
+Country,Country associated with the IP.,GeoIP databases + RIR hints,High,Country-level is typically the most accurate location field.
+Region/State,Region/state associated with the IP.,GeoIP databases,Medium,Can lag behind reassignment or routing changes.
+City,Estimated city associated with the IP.,GeoIP databases,Low–Medium,Often wrong; do not treat as precise.
+Latitude/Longitude,Approximate coordinates derived from GeoIP.,GeoIP databases,Low,Not GPS—often points to ISP hubs or city centers.
+Timezone,Timezone inferred from the location fields.,GeoIP databases,Medium,Depends on location accuracy.
+Postal Code,Estimated postal code (if provided).,GeoIP databases,Low,Commonly missing or inaccurate.
+Hostname (rDNS),Reverse DNS name mapped to the IP.,Reverse DNS (PTR),Medium,Often empty; depends on provider configuration.
+IP Type,Residential / Mobile / Hosting / Proxy classification.,Heuristics + network metadata,Medium,Different providers may classify differently.
+Proxy/VPN,Whether traffic appears to come from a proxy/VPN.,Reputation signals,Medium,False positives are possible.
+Blacklist Status,Whether the IP appears in public blocklists.,DNSBL/RBL sources,High,Results depend on which lists are checked.
+Abuse Category,"Likely abuse type: spam, proxy, malware, etc.",Reputation datasets,Medium,"Best used as a hint, not proof."
+Connection Type,"Broadband, mobile, datacenter, etc. (if available).",ISP + heuristics,Medium,May be missing.

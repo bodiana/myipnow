@@ -1,0 +1,9 @@
+Term,Description,Why it matters,Example
+ASN,Unique identifier for an autonomous system,Routing identity,AS13335
+IP Prefixes,IP ranges announced by ASN,Traffic ownership,104.16.0.0/12
+BGP,Routing protocol between ASNs,Path selection,AS_PATH
+Upstream,Provider ASN,Internet connectivity,Tier-1 ISP
+Downstream,Customer ASN,Traffic origin,Hosting provider
+Peering,ASN-to-ASN exchange,Direct routing,IXP peering
+RIR,ASN allocator,Governance,ARIN / RIPE
+AS-SET,Group of ASNs,Routing policy,IRR objects

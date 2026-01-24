@@ -1,0 +1,8 @@
+Abuse Type,Evidence Required,Who To Contact,Notes
+Spam email,Email headers,Mail provider / DNSBL,Include full headers
+Port scanning,Firewall logs,Hosting provider,Timestamp critical
+Brute-force login,Auth logs,ISP / hosting provider,Show repeated attempts
+DDoS traffic,Netflow / logs,Hosting provider,Volume evidence
+Malware C2,IDS alerts,Security org,High confidence needed
+Web scraping abuse,Web logs,Hosting provider,Rate & IPs
+Proxy/VPN abuse,Reputation signals,Blacklist operator,False positives possible

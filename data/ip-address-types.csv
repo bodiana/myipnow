@@ -1,0 +1,13 @@
+IP Type,Example,Scope,Primary Use,Notes
+Public IPv4,8.8.8.8,Public,Internet routing,Globally routable
+Private IPv4,192.168.1.1,Private,Local networks,Not routable
+CGNAT,100.64.0.1,Private,Carrier NAT,Shared by ISPs
+Loopback,127.0.0.1,Local,Testing,Never leaves device
+Link-local IPv4,169.254.1.1,Local,Auto configuration,APIPA
+Multicast IPv4,224.0.0.1,Special,Streaming / routing,One-to-many
+Broadcast,255.255.255.255,Special,Network broadcast,IPv4 only
+Public IPv6,2001:4860::8888,Public,Modern internet,Preferred protocol
+Unique Local IPv6,fc00::1,Private,Internal IPv6,Not internet routable
+Link-local IPv6,fe80::1,Local,Neighbor discovery,Interface-scoped
+Multicast IPv6,ff02::1,Special,Group communication,IPv6 only
+Documentation,192.0.2.1,Special,Docs / examples,RFC 5737

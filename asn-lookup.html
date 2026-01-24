@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="/ASN Lookup Tool. Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools" name="description"/>
+<title>ASN Lookup Tool. | MyIPNow</title>
+<meta content="/ASN Lookup Tool. | MyIPNow" property="og:title"/>
+<meta content="/ASN Lookup Tool. Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools" property="og:description"/>
+<meta content="/website" property="og:type"/>
+<meta content="/preview.png" property="og:image"/>
+<meta content="https://myipnow.net/asn-lookup" property="og:url"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>body {font-family: 'Inter', sans-serif; background: #f7f8f9; margin: 0; color: #1e293b; line-height: 1.7;}
+    .container {max-width: 900px; margin: 0 auto; padding: 1rem;}
+    .site-header {background: #fff; padding: 1rem; margin-bottom: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+    .header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
+    .logo {font-size: 1.5rem; font-weight: 700; color: #1e293b; text-decoration: none;}
+    .search-form {display: flex; flex-grow: 1; max-width: 400px;}
+    .search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 0.9rem;}
+    .search-form button {padding: 0.75rem 1rem; border: none; background: #10b981; color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+    .category-nav {padding-top: 1rem;}
+    .category-nav ul {display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: #1e293b; text-decoration: none;}
+.nav-tools ul li a:hover {color: #4f46e5;}
+.nav-tools:hover ul {display: block;}
+
+
+@media(max-width:768px){.category-nav ul {
+    overflow-x: auto; white-space: nowrap; padding-bottom: 10px;}
+
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: #1e293b; text-decoration: none;}
+.nav-tools ul li a:hover {color: #4f46e5;}
+.nav-tools:hover ul {display: block;}
+
+}
+
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 0.9rem; font-weight: 500; transition: color var(--transition-speed);}
+
+.category-nav a:hover {color: var(--accent-color);}
+    .page-header {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;}
+    .page-header h1 {font-size: 2.2rem; margin: 0 0 0.5rem;}
+    .page-header p {font-size: 1rem; color: #64748b; margin: 0;}
+    .article-body {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+    .article-body h2 {margin-top: 2rem; font-size: 1.5rem;}
+    .article-body h3 {margin-top: 1.2rem; font-size: 1.2rem;}
+    .related {background: #fff; padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+    .related h3 {margin-top: 0;}
+    .related ul {list-style: none; padding: 0;}
+    .related li {margin-bottom: 0.5rem;}
+    .related a {text-decoration: none; color: #4f46e5;}
+    .article-pagination {display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem;}
+    .article-pagination a {background: #fff; padding: 0.75rem 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; color: #1e293b; font-weight: 500;}
+    .article-pagination a:hover {background: #4f46e5; color: white;}
+    .footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+    .footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+    .footer-nav a {color: #64748b; text-decoration: none; font-size: 0.9rem;}
+    .footer-nav a:hover {color: #4f46e5;}
+    .footer-copyright {font-size: 0.85rem; color: #64748b;}
+   
+
+.related-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;}
+.related-card {display: flex; flex-direction: column; background: #f9fafb; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease;}
+.related-card:hover {transform: translateY(-4px);}
+.related-card img {width: 100%; height: 140px; object-fit: cover;}
+.related-card-content {padding: 1rem;}
+.related-card-content h4 {margin: 0 0 0.5rem; font-size: 1rem;}
+.related-card-content p {font-size: 0.9rem; color: #64748b; margin: 0;}
+.related-card-content a {text-decoration: none; color: #4f46e5; font-weight: 600;}
+.related-card-content a:hover {color: #1e293b;}</style>
+<style>.nav {text-align: center !important;}
+.nav li {display: inline-block !important; float: none !important;}</style>
+<style>@media (max-width: 768px) {.category-nav {
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 10px;}
+  .category-nav ul {display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1rem;}
+  .category-nav::-webkit-scrollbar {height: 6px;}
+  .category-nav::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+  .nav-tools ul {display: none; position: absolute; top: 100%; left: 0; right: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+  .nav-tools.open ul {display: block;}
+}</style>
+<style>@media (max-width: 768px) {.nav-tools {
+    position: static !important;}
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+  .nav-tools.open ul {display: block !important;}
+  body.menu-open {overflow: hidden;}
+}</style>
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+<meta content="#ffffff" name="theme-color"/>
+<style>.tool-shell{margin: 18px 0 26px;}
+.tool-tabs{display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 14px;}
+.tool-tab{border: 1px solid rgba(148,163,184,.35); background: #fff; border-radius: 999px; padding: 10px 14px; font-weight: 700; cursor: pointer;}
+.tool-tab.is-active{background: rgba(15,23,42,.06);}
+.tool-panel{display: none;}
+.tool-panel.is-active{display: block;}
+.tool-grid{display: grid; grid-template-columns: 1fr; gap: 14px;}
+@media (min-width: 980px){.tool-grid{grid-template-columns: 1fr 1fr; gap: 16px;}}
+.tool-card{background: #fff; border: 1px solid rgba(148,163,184,.25); border-radius: 14px; padding: 14px 14px 12px; box-shadow: 0 1px 0 rgba(0,0,0,.02);}
+.tool-h2{margin: 0 0 6px; font-size: 1.15rem;}
+.tool-h3{margin: 0 0 10px; font-size: 1.05rem;}
+.tool-muted{color: rgba(15,23,42,.7); margin: 0 0 10px; line-height: 1.45;}
+.tool-row{margin: 10px 0 0;}
+.tool-row-split{display: grid; grid-template-columns: 1fr; gap: 10px;}
+@media (min-width: 680px){.tool-row-split{grid-template-columns: 1fr 1fr;}}
+.tool-label{display: block; font-weight: 700; margin: 0 0 6px;}
+.tool-input{width: 100%; border: 1px solid rgba(148,163,184,.35); border-radius: 12px; padding: 11px 12px; font-size: 1rem;}
+.tool-actions{display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 6px;}
+.tool-btn{border: 1px solid rgba(148,163,184,.35); background: #0f172a; color: #fff; border-radius: 12px; padding: 10px 12px; font-weight: 800; cursor: pointer;}
+.tool-btn-ghost{background: #fff; color: #0f172a;}
+.tool-note{margin: 8px 0 0; color: rgba(15,23,42,.8); min-height: 18px;}
+.kv{display: flex; flex-direction: column; gap: 12px;}
+.kv-row{display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; padding: 12px 12px; border: 1px solid rgba(148,163,184,.25); border-radius: 12px; background: rgba(248,250,252,.7);}
+.k{font-weight: 800; min-width: 140px;}
+.v{display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; text-align: right;}
+.copy{border: 1px solid rgba(148,163,184,.35); background: #fff; border-radius: 10px; padding: 6px 10px; font-weight: 800; cursor: pointer;}
+.explain{margin: 12px 0 0; line-height: 1.6;}
+.explain p{margin: 10px 0 0;}
+.pill{display: inline-block; margin: 0 0 8px; padding: 6px 10px; border: 1px solid rgba(148,163,184,.35); border-radius: 999px; background: #fff; font-weight: 800;}
+.article-body table.ref-table{width: 100%; border-collapse: separate; border-spacing: 0 14px; margin: 16px 0 18px;}
+.article-body th,.article-body td{padding: 12px 14px; vertical-align: top;}
+.article-body thead th{background: #f1f5f9;}
+.article-body tbody td{background: #fff; border: 1px solid rgba(148,163,184,.25);}
+.faq details{border: 1px solid rgba(148,163,184,.25); border-radius: 12px; padding: 10px 12px; background: #fff; margin: 10px 0;}
+.faq summary{cursor: pointer; font-weight: 900;}
+.faq p{margin: 8px 0 0; line-height: 1.6;}</style>
+<link href="https://myipnow.net/asn-lookup" rel="canonical"/>
+<style id="subnet-root-cause-fix">/* Guardrails: prevent grid items from shrinking oddly */
+.tool-grid > * {min-width: 0;}
+.tool-card {min-width: 0;}
+.kv-row .v {min-width: 0;}</style>
+<style id="asn-spacing-patch">/* Keep tool from visually "sticking" to the hero */
+.page-header{margin-bottom: 1.5rem!important;}
+.tool-shell{margin: 18px 0 26px!important;}
+.tool-grid>*{min-width: 0;}
+.tool-card{min-width: 0;}
+.kv-row .v{min-width: 0;}</style>
+<style id="asn-tool-section-card">/* Tool should be a first-class section block like page-header/article-body */
+.tool-section{background: #fff; padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin: 0 0 2rem;}
+/* When wrapped, tool-shell shouldn't add its own outer margins */
+.tool-section .tool-shell{margin: 0 !important;}
+/* Tabs should never visually touch edges */
+.tool-section .tool-tabs{padding: 0; max-width: 100%;}
+/* Presets row styling (was missing) */
+.subnet-presets{display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0;}
+.subnet-presets button{border: 1px solid rgba(148,163,184,.35); background: #fff; border-radius: 999px; padding: 6px 12px; font-weight: 800; cursor: pointer;}
+.subnet-presets button:hover{background: rgba(15,23,42,.06);}</style>
+<style id="asn-ad-slot-safe">.ad-slot{max-width: 100%; overflow: hidden;}</style>
+<style id="asn-organization-patch">/* === ASN ORGANIZATION PATCH (layout-safe) === */
+
+/* Stop forced horizontal stretching */
+.tool-card .kv-row {justify-content: flex-start !important; align-items: flex-start;}
+
+/* Labels: shrink to content */
+.tool-card .kv-row .k {min-width: auto !important; flex: 0 0 auto;}
+
+/* Values: wrap instead of pushing container */
+.tool-card .kv-row .v {flex: 1 1 auto; min-width: 0; max-width: 100%; text-align: right; word-break: break-word; overflow-wrap: anywhere;}
+
+/* Group results visually (match reference organization) */
+.tool-card .kv {background: #f8fafc; border-radius: 12px; padding: 10px;}</style>
+<style id="asn-prefix-table-patch">/* === ASN PREFIX TABLE FIX === */
+.table-wrap {width: 100%; overflow-x: auto;}
+
+.ref-table {width: 100%; border-collapse: separate; border-spacing: 0 10px;}
+
+.ref-table thead th {background: #f1f5f9; padding: 10px 12px; text-align: left; font-weight: 800; font-size: 0.9rem;}
+
+.ref-table tbody td {background: #ffffff; border: 1px solid rgba(148,163,184,.25); padding: 10px 12px; font-size: 0.9rem;}
+
+.ref-table tbody tr {vertical-align: top;}
+
+.ref-table tbody tr td:first-child {border-top-left-radius: 12px; border-bottom-left-radius: 12px;}
+
+.ref-table tbody tr td:last-child {border-top-right-radius: 12px; border-bottom-right-radius: 12px;}
+
+/* Show more button row */
+#show-more-btn {margin: 6px auto; font-weight: 800;}</style>
+<style id="asn-input-frame-fix">/* === ASN INPUT FRAME FIX (minimal) === */
+.tool-card .tool-input {box-sizing: border-box; max-width: 100%;}
+.tool-row {min-width: 0;}</style>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="https://myipnow.net/">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="https://myipnow.net/#">Tools ▾</a>
+<ul>
+<li><a href="https://myipnow.net/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/dns-lookup">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/whois-lookup">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/internet-speed-test">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/generate-password">Generate Password</a></li>
+<li><a href="https://myipnow.net/ip-blacklist">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
+<li><a href="https://myipnow.net/online-privacy/">Online Privacy</a></li>
+<li><a href="https://myipnow.net/networking/">Networking</a></li>
+<li><a href="https://myipnow.net/ip-addresses/">IP Addresses</a></li>
+<li><a href="https://myipnow.net/home-computing/">Home Computing</a></li>
+<li><a href="https://myipnow.net/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<header class="page-header">
+<h1>ASN Lookup Tool</h1>
+<p>Look up an ASN (like <strong>AS13335</strong>) or an IP address to see the network owner, RIR, and announced prefixes. Export prefixes to CSV. <strong>Updated: January 2026</strong></p>
+</header>
+<section class="tool-section">
+<div class="tool-shell">
+<div aria-label="ASN lookup mode" class="tool-tabs" role="tablist">
+<button aria-controls="panel-asn" aria-selected="true" class="tool-tab is-active" id="tab-asn" role="tab" type="button">ASN → Details</button>
+<button aria-controls="panel-ip" aria-selected="false" class="tool-tab" id="tab-ip" role="tab" type="button">IP → ASN</button>
+</div>
+<div aria-labelledby="tab-asn" class="tool-panel is-active" id="panel-asn" role="tabpanel">
+<div class="tool-grid">
+<div class="tool-card">
+<h2 class="tool-h2">Search by ASN</h2>
+<p class="tool-muted">Enter an ASN like <code>AS13335</code> or just <code>13335</code>.</p>
+<div class="tool-row">
+<label class="tool-label" for="asn-input">ASN</label>
+<input class="tool-input" id="asn-input" placeholder="AS13335" value="AS13335"/>
+</div>
+<div class="tool-actions">
+<button class="tool-btn" id="btn-asn">Lookup ASN</button>
+<button class="tool-btn tool-btn-ghost" id="btn-asn-reset" type="button">Reset</button>
+</div>
+<p class="tool-note" id="asn-note"></p>
+<div aria-label="Quick examples" class="subnet-presets">
+<button data-asn="AS13335" type="button">AS13335 (Cloudflare)</button>
+<button data-asn="AS15169" type="button">AS15169 (Google)</button>
+<button data-asn="AS16509" type="button">AS16509 (Amazon)</button>
+<button data-asn="AS8075" type="button">AS8075 (Microsoft)</button>
+</div>
+</div>
+<div class="tool-card">
+<h3 class="tool-h3">ASN summary</h3>
+<div class="kv" id="asn-summary"></div>
+<div class="tool-actions" style="margin-top:12px">
+<button class="tool-btn tool-btn-ghost" disabled="" id="btn-download-prefixes" type="button">Download prefixes (CSV)</button>
+<button class="tool-btn tool-btn-ghost" disabled="" id="btn-download-json" type="button">Download raw JSON</button>
+</div>
+<div class="explain" id="asn-explain"></div>
+</div>
+</div>
+<div class="tool-card" style="margin-top:18px">
+<h3 class="tool-h3">Announced prefixes</h3>
+<p class="tool-muted">This is the list of prefixes announced on BGP (as seen by RIPE RIS). Use it for allowlists/blocklists, routing checks, and security analysis.</p>
+<div class="table-wrap">
+<table class="ref-table" id="prefix-table">
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Address family</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="prefix-tbody">
+<tr><td colspan="3">Run a lookup to load prefixes.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div aria-labelledby="tab-ip" class="tool-panel" id="panel-ip" role="tabpanel">
+<div class="tool-grid">
+<div class="tool-card">
+<h2 class="tool-h2">Find ASN from an IP</h2>
+<p class="tool-muted">Enter an IP address (IPv4 or IPv6). We’ll show the ASN, holder, and basic network info.</p>
+<div class="tool-row">
+<label class="tool-label" for="ip-input">IP address</label>
+<input class="tool-input" id="ip-input" placeholder="1.1.1.1" value="1.1.1.1"/>
+</div>
+<div class="tool-actions">
+<button class="tool-btn" id="btn-ip">Lookup IP</button>
+<button class="tool-btn tool-btn-ghost" id="btn-ip-reset" type="button">Reset</button>
+</div>
+<p class="tool-note" id="ip-note"></p>
+</div>
+<div class="tool-card">
+<h3 class="tool-h3">Network info</h3>
+<div class="kv" id="ip-summary"></div>
+<div class="explain" id="ip-explain"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<article class="article-body">
+<h2>What is an ASN?</h2>
+<p>
+An <strong>Autonomous System Number (ASN)</strong> is an ID used on the Internet to describe a network (usually an ISP, cloud provider, or large organization).
+ASNs announce IP prefixes over BGP, which is how the Internet knows where to route traffic.
+</p>
+<h2>Related tools on MyIPNow</h2>
+<ul>
+<li><a href="https://myipnow.net/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/whois-lookup">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/ip-blacklist">IP Blacklist Check</a></li>
+<li><a href="https://myipnow.net/dns-lookup">DNS Lookup</a></li>
+</ul>
+<h2>Data sources</h2>
+<ul>
+<li><a href="https://stat.ripe.net/docs/data-api/ripestat-data-api" rel="nofollow">RIPEstat Data API (documentation)</a></li>
+<li><a href="https://stat.ripe.net/docs/data-api/ripestat-data-api#api-endpoints" rel="nofollow">RIPEstat API endpoints list</a></li>
+</ul>
+</article>
+<footer class="footer">
+<ul class="footer-nav">
+<li>
+<a href="https://myipnow.net/about">
+       About
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/contact">
+       Contact
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/privacy-policy">
+       Privacy Policy
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/terms-of-use">
+       Terms of Use
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/affiliate-disclosure">
+       Affiliate Disclosure
+      </a>
+</li>
+</ul>
+<div class="footer-copyright">
+     © 2026 MyIPNow. All Rights Reserved.
+    </div>
+</footer></div>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"ASN Lookup Tool – Find ASN Details, IP Prefixes & Network Info","description":"Free ASN lookup tool. Search by ASN (AS13335) or IP address to find the organization, RIR, announced prefixes, and basic routing info. Includes CSV export.","url":"https://myipnow.net/asn-lookup/","dateModified":"2026-01-04","mainEntityOfPage":"https://myipnow.net/asn-lookup/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ASN Lookup Tool","applicationCategory":"NetworkUtility","operatingSystem":"Any","url":"https://myipnow.net/asn-lookup/","description":"Look up ASN details and announced prefixes by ASN or IP. Includes CSV and JSON export."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"ASN Lookup Tool","description":"Lookup Autonomous System Numbers to find network owners, announced IP prefixes, and routing information.","applicationCategory":"NetworkingApplication","operatingSystem":"All","url":"https://myipnow.net/asn-lookup/","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script>
+(function() {
+  // Tabs
+  var tabAsn = document.getElementById('tab-asn');
+  var tabIp = document.getElementById('tab-ip');
+  var panelAsn = document.getElementById('panel-asn');
+  var panelIp = document.getElementById('panel-ip');
+
+  function setTab(which) {
+    var isAsn = which === 'asn';
+    tabAsn.classList.toggle('is-active', isAsn);
+    tabIp.classList.toggle('is-active', !isAsn);
+    tabAsn.setAttribute('aria-selected', String(isAsn));
+    tabIp.setAttribute('aria-selected', String(!isAsn));
+    panelAsn.classList.toggle('is-active', isAsn);
+    panelIp.classList.toggle('is-active', !isAsn);
+  }
+  tabAsn.addEventListener('click', function(){ setTab('asn'); });
+  tabIp.addEventListener('click', function(){ setTab('ip'); });
+
+  // Copy helper (reuses your style)
+  function copyText(text) {
+    if (!text) return;
+    (navigator.clipboard && navigator.clipboard.writeText)
+      ? navigator.clipboard.writeText(text)
+      : (function() {
+          var ta=document.createElement('textarea');
+          ta.value=text; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+        })();
+  }
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.copy');
+    if (!btn) return;
+    var text = btn.getAttribute('data-copy-text');
+    if (!text) {
+      var id = btn.getAttribute('data-copy');
+      var el = document.getElementById(id);
+      text = el ? el.textContent.trim() : '';
+    }
+    copyText(text);
+    btn.textContent = 'Copied';
+    setTimeout(function(){ btn.textContent = 'Copy'; }, 800);
+  });
+
+  function normalizeASN(input) {
+    var s = (input || '').trim().toUpperCase();
+    if (!s) return null;
+    if (s.startsWith('AS')) s = s.slice(2);
+    if (!/^[0-9]+$/.test(s)) return null;
+    return 'AS' + s;
+  }
+
+  var SOURCEAPP = 'myipnow-asn-lookup';
+  var apiBase = 'https://stat.ripe.net/data/';
+
+  function fetchJSON(url) {
+    return fetch(url, { headers: { 'Accept': 'application/json' } }).then(function(r) {
+      if (!r.ok) throw new Error('Request failed (' + r.status + ')');
+      return r.json();
+    });
+  }
+
+  function kvRow(label, value, copyable) {
+    var safe = (value === null || value === undefined || value === '') ? '—' : String(value);
+    var copyBtn = copyable && safe !== '—' ? ' <button class="copy" data-copy-text="'+safe.replace(/"/g,'&quot;')+'">Copy</button>' : '';
+    return '<div class="kv-row"><span class="k">'+label+'</span><span class="v">'+safe + copyBtn + '</span></div>';
+  }
+
+  var asnInput = document.getElementById('asn-input');
+  var asnNote = document.getElementById('asn-note');
+  var asnSummary = document.getElementById('asn-summary');
+  var asnExplain = document.getElementById('asn-explain');
+  var prefixTbody = document.getElementById('prefix-tbody');
+  var btnCsv = document.getElementById('btn-download-prefixes');
+  var btnJson = document.getElementById('btn-download-json');
+
+  var lastPrefixes = [];
+  var lastRaw = null;
+  var showAll = false;
+
+  
+function renderPrefixes(list) {
+  prefixTbody.innerHTML = '';
+  if (!list.length) {
+    prefixTbody.innerHTML = '<tr><td colspan="3">No prefixes returned.</td></tr>';
+    return;
+  }
+
+  var SHOW_LIMIT = 10;
+  var visible = showAll ? list : list.slice(0, SHOW_LIMIT);
+
+  visible.forEach(function(p) {
+    var fam = p.prefix.indexOf(':') !== -1 ? 'IPv6' : 'IPv4';
+    prefixTbody.innerHTML += '<tr><td>' + p.prefix + '</td><td>' + fam + '</td><td>' + (p.status || 'announced') + '</td></tr>';
+  });
+
+  if (!showAll && list.length > SHOW_LIMIT) {
+    prefixTbody.innerHTML +=
+      '<tr><td colspan="3" style="text-align:center;">' +
+      '<button id="show-more-btn" style="padding:8px 12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;">' +
+      'Show all (' + list.length + ')' +
+      '</button></td></tr>';
+
+    setTimeout(function () {
+      var btn = document.getElementById('show-more-btn');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          showAll = true;
+          renderPrefixes(list);
+        });
+      }
+    }, 0);
+  }
+}
+
+
+  function downloadCSV(prefixes, filename) {
+    var rows = [['prefix','family','status']];
+    prefixes.forEach(function(p) {
+      var fam = (p.prefix && p.prefix.indexOf(':') !== -1) ? 'IPv6' : 'IPv4';
+      var status = p.status || (p.announced ? 'announced' : '');
+      rows.push([p.prefix || '', fam, status]);
+    });
+    var csv = rows.map(function(r) {
+      return r.map(function(cell) {
+        var s = String(cell === null || cell === undefined ? '' : cell);
+        if (s.indexOf('"') !== -1 || s.indexOf(',') !== -1 || s.indexOf('\n') !== -1) {
+          s = '"' + s.replace(/"/g,'""') + '"';
+        }
+        return s;
+      }).join(',');
+    }).join('\n');
+
+    var blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  }
+
+  function downloadJSON(obj, filename) {
+    var blob = new Blob([JSON.stringify(obj, null, 2)], {type:'application/json;charset=utf-8'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  }
+
+  function asnLookup() {
+    asnNote.textContent = '';
+    asnSummary.innerHTML = '';
+    asnExplain.innerHTML = '';
+    prefixTbody.innerHTML = '<tr><td colspan="3">Loading</td></tr>';
+    btnCsv.disabled = true; btnJson.disabled = true;
+    lastPrefixes = []; lastRaw = null; showAll = false;
+
+    var asn = normalizeASN(asnInput.value);
+    if (!asn) {
+      prefixTbody.innerHTML = '<tr><td colspan="3">Run a lookup to load prefixes.</td></tr>';
+      asnNote.textContent = 'Enter a valid ASN like AS13335 or 13335.';
+      return;
+    }
+
+    var overviewUrl = apiBase + 'as-overview/data.json?resource=' + encodeURIComponent(asn) + '&sourceapp=' + encodeURIComponent(SOURCEAPP);
+    var prefixesUrl = apiBase + 'announced-prefixes/data.json?resource=' + encodeURIComponent(asn) + '&sourceapp=' + encodeURIComponent(SOURCEAPP);
+
+    Promise.all([fetchJSON(overviewUrl), fetchJSON(prefixesUrl)]).then(function(arr) {
+      var ov = arr[0];
+      var px = arr[1];
+      lastRaw = { overview: ov, announced_prefixes: px };
+
+      var data = (ov && ov.data) ? ov.data : {};
+      // Fields vary a bit; handle common ones gracefully.
+      var holder = data.holder || data.as_name || data.name || '—';
+      var rir = data.rir || data.registry || '—';
+      var cc = data.country || data.country_code || '—';
+      var asnNum = (data.asn || asn).toString();
+
+      asnSummary.innerHTML =
+        kvRow('ASN', asn, true) +
+        kvRow('Holder', holder, false) +
+        kvRow('RIR / Registry', rir, false) +
+        kvRow('Country', cc, false);
+
+      // Prefixes list
+      var list = [];
+      try {
+        // RIPEstat announced-prefixes typically returns data.prefixes (array)
+        list = (px && px.data && px.data.prefixes) ? px.data.prefixes : [];
+      } catch(e) {
+        list = [];
+      }
+      lastPrefixes = list;
+      renderPrefixes(list);
+
+      btnCsv.disabled = !list.length;
+      btnJson.disabled = false;
+
+      asnExplain.innerHTML =
+        '<p><strong>' + asn + '</strong> currently announces <strong>' + (list.length || 0) + '</strong> prefix(es) as seen by RIPE RIS.</p>' +
+        '<p class="tool-muted">Tip: if you’re investigating abuse, also run <a href="https://myipnow.net/ip-blacklist">IP blacklist</a> and <a href="https://myipnow.net/whois-lookup">WHOIS lookup</a>.</p>';
+    }).catch(function(err) {
+      prefixTbody.innerHTML = '<tr><td colspan="3">Could not load prefixes.</td></tr>';
+      asnNote.textContent = 'Lookup failed: ' + (err && err.message ? err.message : String(err)) + '. If you’re testing locally, some browsers block cross-site requests from file://. Try on your domain (https) or localhost.';
+    });
+  }
+
+  document.getElementById('btn-asn').addEventListener('click', asnLookup);
+  document.getElementById('btn-asn-reset').addEventListener('click', function() {
+    asnInput.value = 'AS13335';
+    asnLookup();
+  });
+
+  document.querySelectorAll('[data-asn]').forEach(function(b) {
+    b.addEventListener('click', function() {
+      asnInput.value = b.getAttribute('data-asn');
+      asnLookup();
+    });
+  });
+
+  btnCsv.addEventListener('click', function() {
+    if (!lastPrefixes.length) return;
+    var asn = normalizeASN(asnInput.value) || 'AS';
+    downloadCSV(lastPrefixes, asn.toLowerCase() + '-announced-prefixes.csv');
+  });
+
+  btnJson.addEventListener('click', function() {
+    if (!lastRaw) return;
+    var asn = normalizeASN(asnInput.value) || 'AS';
+    downloadJSON(lastRaw, asn.toLowerCase() + '-ripestat.json');
+  });
+
+  // IP -> ASN
+  var ipInput = document.getElementById('ip-input');
+  var ipNote = document.getElementById('ip-note');
+  var ipSummary = document.getElementById('ip-summary');
+  var ipExplain = document.getElementById('ip-explain');
+
+  function ipLookup() {
+    ipNote.textContent = '';
+    ipSummary.innerHTML = '';
+    ipExplain.innerHTML = '';
+
+    var ip = (ipInput.value || '').trim();
+    if (!ip) { ipNote.textContent = 'Enter an IP address.'; return; }
+
+    var url = apiBase + 'network-info/data.json?resource=' + encodeURIComponent(ip) + '&sourceapp=' + encodeURIComponent(SOURCEAPP);
+
+    fetchJSON(url).then(function(r) {
+      var d = r && r.data ? r.data : {};
+      var asns = d.asns || (d.asn ? [d.asn] : []);
+      var asn = asns && asns.length ? asns[0] : '—';
+      var holder = d.holder || d.name || '—';
+      var prefix = d.prefix || d.resource || '—';
+      var rir = d.rir || d.registry || '—';
+
+      ipSummary.innerHTML =
+        kvRow('IP', ip, true) +
+        kvRow('ASN', asn, true) +
+        kvRow('Holder', holder, false) +
+        kvRow('Prefix', prefix, true) +
+        kvRow('RIR / Registry', rir, false);
+
+      ipExplain.innerHTML =
+        '<p>Want the full ASN details? Switch to the ASN tab and search for <strong>' + asn + '</strong>.</p>' +
+        '<p class="tool-muted">If this IP is blocked, check <a href="https://myipnow.net/ip-blacklist">myipnow.net/ip-blacklist</a> for reputation signals.</p>';
+    }).catch(function(err) {
+      ipNote.textContent = 'Lookup failed: ' + (err && err.message ? err.message : String(err)) + '. If you’re testing locally, browsers may block cross-site requests from file://.';
+    });
+  }
+
+  document.getElementById('btn-ip').addEventListener('click', ipLookup);
+  document.getElementById('btn-ip-reset').addEventListener('click', function() {
+    ipInput.value = '1.1.1.1';
+    ipLookup();
+  });
+
+  // Initial run disabled for file:// safety
+})();
+</script>
+<script id="article-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+    var btn = document.getElementById('returnToCategory');
+    if (!btn) return;
+
+    var raw = null, url=null;
+    try {
+      raw = sessionStorage.getItem(KEY);
+      if (raw){
+        var st = JSON.parse(raw);
+        url = st && st.url;
+      }
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+    if (url && CAT_RE.test(url)) {
+      btn.setAttribute('href', url);
+      return;
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      var cat = '/' + parts[0] + '/';
+      if (CAT_RE.test(cat)) {
+        btn.setAttribute('href', cat + 'index');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<script id="asn-url-prefill-safe">
+/* === SAFE ASN URL PREFILL (NO AUTORUN) === */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  let asn = params.get('asn');
+  if (!asn) return;
+
+  asn = asn.trim().toUpperCase();
+  if (!asn.startsWith('AS')) asn = 'AS' + asn;
+  if (!/^AS\d+$/.test(asn)) return;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('asn-input');
+    if (!input) return;
+    input.value = asn;
+  });
+})();
+</script>
+</body>
+</html>

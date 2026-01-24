@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6F8FV6T');</script>
+<meta charset="utf-8"/>
+<meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
+<title>What is a CNAME Record?. | MyIPNow</title>
+<meta content="/What is a CNAME Record?. | MyIPNow" property="og:title"/>
+<meta content="/What is a CNAME Record?. Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools" property="og:description"/>
+<meta content="/website" property="og:type"/>
+<meta content="/preview.png" property="og:image"/>
+<meta content="https://myipnow.net/what-is-a-cname-record" property="og:url"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>body {font-family: 'Inter', sans-serif; background: #f7f8f9; margin: 0; color: #1e293b; line-height: 1.7;}
+    .container {max-width: 900px; margin: 0 auto; padding: 1rem;}
+    .site-header {background: #fff; padding: 1rem; margin-bottom: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+    .header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
+    .logo {font-size: 1.5rem; font-weight: 700; color: #1e293b; text-decoration: none;}
+    .search-form {display: flex; flex-grow: 1; max-width: 400px;}
+    .search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 0.9rem;}
+    .search-form button {padding: 0.75rem 1rem; border: none; background: #10b981; color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+    .category-nav {padding-top: 1rem;}
+    .category-nav ul {display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: #1e293b; text-decoration: none;}
+.nav-tools ul li a:hover {color: #4f46e5;}
+.nav-tools:hover ul {display: block;}
+
+
+@media(max-width:768px){.category-nav ul {
+    overflow-x: auto; white-space: nowrap; padding-bottom: 10px;}
+
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: #1e293b; text-decoration: none;}
+.nav-tools ul li a:hover {color: #4f46e5;}
+.nav-tools:hover ul {display: block;}
+
+}
+
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 0.9rem; font-weight: 500; transition: color var(--transition-speed);}
+
+.category-nav a:hover {color: var(--accent-color);}
+    .page-header {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;}
+    .page-header h1 {font-size: 2.2rem; margin: 0 0 0.5rem;}
+    .page-header p {font-size: 1rem; color: #64748b; margin: 0;}
+    .article-body {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+    .article-body h2 {margin-top: 2rem; font-size: 1.5rem;}
+    .article-body h3 {margin-top: 1.2rem; font-size: 1.2rem;}
+    .related {background: #fff; padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+    .related h3 {margin-top: 0;}
+    .related ul {list-style: none; padding: 0;}
+    .related li {margin-bottom: 0.5rem;}
+    .related a {text-decoration: none; color: #4f46e5;}
+    .article-pagination {display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem;}
+    .article-pagination a {background: #fff; padding: 0.75rem 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; color: #1e293b; font-weight: 500;}
+    .article-pagination a:hover {background: #4f46e5; color: white;}
+    .footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+    .footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+    .footer-nav a {color: #64748b; text-decoration: none; font-size: 0.9rem;}
+    .footer-nav a:hover {color: #4f46e5;}
+    .footer-copyright {font-size: 0.85rem; color: #64748b;}
+   
+
+.related-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;}
+.related-card {display: flex; flex-direction: column; background: #f9fafb; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease;}
+.related-card:hover {transform: translateY(-4px);}
+.related-card img {width: 100%; height: 140px; object-fit: cover;}
+.related-card-content {padding: 1rem;}
+.related-card-content h4 {margin: 0 0 0.5rem; font-size: 1rem;}
+.related-card-content p {font-size: 0.9rem; color: #64748b; margin: 0;}
+.related-card-content a {text-decoration: none; color: #4f46e5; font-weight: 600;}
+.related-card-content a:hover {color: #1e293b;}</style>
+<style>.nav {text-align: center !important;}
+.nav li {display: inline-block !important; float: none !important;}</style>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<style>@media (max-width: 768px) {.category-nav {
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 10px;}
+  .category-nav ul {display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1rem;}
+  .category-nav::-webkit-scrollbar {height: 6px;}
+  .category-nav::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+  .nav-tools ul {display: none; position: absolute; top: 100%; left: 0; right: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+  .nav-tools.open ul {display: block;}
+}</style>
+<style>@media (max-width: 768px) {.nav-tools {
+    position: static !important;}
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+  .nav-tools.open ul {display: block !important;}
+  body.menu-open {overflow: hidden;}
+}</style>
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="/What is a CNAME Record?. Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools" name="description"/>
+<link href="https://myipnow.net/what-is-a-cname-record" rel="canonical"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"MyIPNow","url":"https://myipnow.net/","logo":{"@type":"ImageObject","url":"https://myipnow.net/favicon-96x96.png"}},{"@type":"WebSite","name":"MyIPNow","url":"https://myipnow.net/"},{"@type":"WebPage","name":"What is a CNAME Record?. | MyIPNow","description":"What is a CNAME Record?. Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools.","url":"https://myipnow.net/what-is-a-cname-record/","inLanguage":"en","mainEntityOfPage":"https://myipnow.net/what-is-a-cname-record/","@id":"https://myipnow.net/what-is-a-cname-record/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://myipnow.net/"},{"@type":"ListItem","position":2,"name":"What is a CNAME Record?. | MyIPNow","item":"https://myipnow.net/what-is-a-cname-record/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I use a CNAME record for my root domain?","acceptedAnswer":{"@type":"Answer","text":"No, DNS standards prohibit using CNAME records at the root domain (zone apex). Instead, use A or AAAA records for the root domain."}},{"@type":"Question","name":"What happens if I create a CNAME record that points to another CNAME?","acceptedAnswer":{"@type":"Answer","text":"This creates a CNAME chain, which is allowed but discouraged because it increases DNS lookup time and complexity."}},{"@type":"Question","name":"Can a CNAME record coexist with other DNS records?","acceptedAnswer":{"@type":"Answer","text":"No, a domain with a CNAME record cannot have any other DNS records such as MX, TXT, or A records."}},{"@type":"Question","name":"How can I verify if my CNAME record is set up correctly?","acceptedAnswer":{"@type":"Answer","text":"You can use a DNS checker tool to query your domain and confirm that the CNAME record resolves as intended."}}]}]}</script>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="https://myipnow.net/">🌐 MyIPNow</a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="https://myipnow.net/#">Tools ▾</a>
+<ul>
+<li><a href="https://myipnow.net/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/dns-lookup">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/whois-lookup">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/internet-speed-test">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/generate-password">Generate Password</a></li>
+<li><a href="https://myipnow.net/ip-blacklist">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
+<li><a href="https://myipnow.net/online-privacy/">Online Privacy</a></li>
+<li><a href="https://myipnow.net/networking/">Networking</a></li>
+<li><a href="https://myipnow.net/ip-addresses/">IP Addresses</a></li>
+<li><a href="https://myipnow.net/home-computing/">Home Computing</a></li>
+<li><a href="https://myipnow.net/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<header class="page-header">
+<h1>What is a CNAME Record?</h1>
+</header>
+<article class="article-body"><h2>Direct Answer: What is a CNAME Record?</h2><p>A CNAME record, or Canonical Name record, is a type of DNS (Domain Name System) record that maps an alias domain name to the canonical (true) domain name. It allows multiple domain names to point to a single domain, simplifying domain management and ensuring consistency across web addresses.</p><h2>Understanding DNS and the Role of CNAME Records</h2><p>The Domain Name System (DNS) translates human-readable domain names into IP addresses that computers use to identify each other on the network. DNS records are the instructions that tell DNS servers how to respond to queries for a domain.</p><p>Among various DNS record types, the CNAME record plays a critical role in domain aliasing. Unlike an A record, which maps a domain directly to an IP address, a CNAME record points one domain name to another domain name.</p><h3>How a CNAME Record Works</h3><p>When a DNS resolver encounters a CNAME record, it replaces the queried domain name with the canonical domain name specified in the CNAME record and then continues the DNS lookup process using the canonical name. This indirection allows multiple domain names to resolve to the same IP address without duplicating A or AAAA records.</p><h2>Structure of a CNAME Record</h2><p>A CNAME record consists of three main components:</p><ul><li><strong>Alias:</strong> The domain name that acts as an alias or nickname.</li><li><strong>Record Type:</strong> Always set to CNAME.</li><li><strong>Canonical Name:</strong> The true or canonical domain name that the alias points to.</li></ul><p>For example, a CNAME record might map <code>www.example.com</code> to <code>example.com</code>. When a user requests <code>www.example.com</code>, the DNS resolver sees the CNAME record and queries <code>example.com</code> to retrieve its IP address.</p><h2>Use Cases for CNAME Records</h2><p>CNAME records are widely used for several practical purposes in DNS management:</p><ul><li><strong>Domain Aliasing:</strong> Pointing multiple subdomains to a single domain to maintain consistency and reduce administrative overhead.</li><li><strong>Load Balancing and CDN Integration:</strong> Many content delivery networks (CDNs) require customers to create CNAME records pointing to their infrastructure.</li><li><strong>Service Provider Integration:</strong> When using third-party services (e.g., email, web hosting, SaaS platforms), CNAME records allow seamless domain mapping without exposing IP addresses.</li><li><strong>Simplifying DNS Management:</strong> By centralizing IP address management on the canonical domain, changes only need to be made once.</li></ul><h2>Best Practices and Limitations of CNAME Records</h2><h3>Best Practices</h3><ul><li><strong>Use CNAMEs for Subdomains Only:</strong> The DNS specification prohibits using CNAME records on the root domain (also called the zone apex). Instead, use A or AAAA records for the root domain.</li><li><strong>Minimize CNAME Chains:</strong> Avoid long chains of CNAME records (e.g., alias1 → alias2 → alias3) as they increase DNS resolution time and complexity.</li><li><strong>Combine with DNS Checker Tools:</strong> Use tools like a <a href="https://myipnow.net/dns-lookup">DNS checker</a> to verify CNAME record propagation and correctness.</li></ul><h3>Limitations</h3><ul><li><strong>No IP Address Mapping:</strong> CNAME records cannot point directly to IP addresses; they must point to another domain name.</li><li><strong>Cannot Coexist with Other Records:</strong> A domain with a CNAME record cannot have any other DNS records (e.g., MX, TXT) associated with it.</li><li><strong>Root Domain Restrictions:</strong> CNAME records are not allowed at the root domain level due to DNS protocol constraints.</li></ul><h2>Technical Example of a CNAME Record</h2><p>Consider the following DNS zone file snippet:</p><pre><code>www.example.com. 3600 IN CNAME example.com.</code></pre><p>This record states that <code>www.example.com</code> is an alias for <code>example.com</code>. When a DNS resolver looks up <code>www.example.com</code>, it will receive the canonical name <code>example.com</code> and then query for its A or AAAA record to obtain the IP address.</p><h2>Common Misconceptions About CNAME Records</h2><ul><li><strong>CNAME Does Not Redirect Traffic:</strong> CNAME is a DNS-level alias and does not perform HTTP redirects. The browser still requests the alias domain, but DNS resolves it to the canonical domain's IP.</li><li><strong>CNAME Is Not a Replacement for A Records:</strong> While CNAME points to a domain, the final resolution to an IP address still depends on A or AAAA records.</li><li><strong>Cannot Use CNAME for Email Servers:</strong> Since MX records cannot coexist with CNAMEs, email servers typically require direct MX records rather than CNAMEs.</li></ul><h2>Summary</h2><p>A CNAME record is an essential DNS record type that provides domain aliasing by mapping an alias domain to a canonical domain. It simplifies DNS management, supports third-party integrations, and enhances flexibility in domain configurations. However, it comes with specific limitations and best practices that must be followed to ensure optimal DNS performance and compliance with DNS standards.</p><h2>FAQ</h2><h3>Can I use a CNAME record for my root domain?</h3><p>No, DNS standards prohibit using CNAME records at the root domain (zone apex). Instead, use A or AAAA records for the root domain.</p><h3>What happens if I create a CNAME record that points to another CNAME?</h3><p>This creates a CNAME chain, which is allowed but discouraged because it increases DNS lookup time and complexity.</p><h3>Can a CNAME record coexist with other DNS records?</h3><p>No, a domain with a CNAME record cannot have any other DNS records such as MX, TXT, or A records.</p><h3>How can I verify if my CNAME record is set up correctly?</h3><p>You can use a <a href="https://myipnow.net/dns-lookup">DNS checker</a> tool to query your domain and confirm that the CNAME record resolves as intended.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/what-is-a-dns-leak">What Is A Dns Leak</a></li><li><a href="https://myipnow.net/how-long-does-dns-propagation-take">How Long Does Dns Propagation Take</a></li><li><a href="https://myipnow.net/how-to-check-dns-records">How To Check Dns Records</a></li><li><a href="https://myipnow.net/can-dns-leak-your-ip">Can Dns Leak Your Ip</a></li><li><a href="https://myipnow.net/what-is-a-txt-record">What Is A Txt Record</a></li></ul></section></article><footer class="footer">
+<ul class="footer-nav">
+<li>
+<a href="https://myipnow.net/about">
+       About
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/contact">
+       Contact
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/privacy-policy">
+       Privacy Policy
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/terms-of-use">
+       Terms of Use
+      </a>
+</li>
+<li>
+<a href="https://myipnow.net/affiliate-disclosure">
+       Affiliate Disclosure
+      </a>
+</li>
+</ul>
+<div class="footer-copyright">
+     © 2026 MyIPNow. All Rights Reserved.
+    </div>
+</footer></div>
+<script id="article-return-v3">
+(function(){
+  var KEY='catStateV3'; // { url, scroll }
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+    var btn = document.getElementById('returnToCategory');
+    if (!btn) return;
+
+    var raw = null, url=null;
+    try {
+      raw = sessionStorage.getItem(KEY);
+      if (raw){
+        var st = JSON.parse(raw);
+        url = st && st.url;
+      }
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+    if (url && CAT_RE.test(url)) {
+      btn.setAttribute('href', url);
+      return;
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      var cat = '/' + parts[0] + '/';
+      if (CAT_RE.test(cat)) {
+        btn.setAttribute('href', cat + 'index');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+
+  // Desktop hover
+  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
+  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
+
+  function closeMenu(){
+    if(menu){ menu.remove(); menu=null; }
+    if(backdrop){ backdrop.remove(); backdrop=null; }
+    dropdown.style.display='none';
+    document.body.classList.remove('menu-open');
+    open=false;
+  }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+
+    dropdown.style.display='none'; // hide original header dropdown
+
+    if(open){ closeMenu(); return; }
+
+    const rect = trigger.getBoundingClientRect();
+    backdrop = document.createElement('div');
+    Object.assign(backdrop.style,{
+      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+      background:'transparent',zIndex:9998
+    });
+    backdrop.addEventListener('click', closeMenu);
+    document.body.appendChild(backdrop);
+
+    menu = dropdown.cloneNode(true);
+    Object.assign(menu.style,{
+      position:'absolute',
+      top:`${rect.bottom + window.scrollY + 8}px`,
+      left:`${rect.left + window.scrollX}px`,
+      minWidth:`${Math.max(rect.width,200)}px`,
+      background:'#fff',
+      border:'1px solid #e2e8f0',
+      borderRadius:'10px',
+      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+      listStyle:'none',
+      padding:'.5rem 0',
+      margin:0,
+      zIndex:9999,
+      maxHeight:'70vh',
+      overflowY:'auto',
+      display:'block',        /* ✅ ensures visible */
+      visibility:'visible',   /* ✅ fixes Safari hover ghost */
+      opacity:'1'             /* ✅ fully visible */
+    });
+    menu.querySelectorAll('a').forEach(a=>{
+      a.style.display='block';
+      a.style.padding='.6rem 1.2rem';
+      a.style.color='#1e293b';
+      a.style.textDecoration='none';
+      a.style.fontWeight='500';
+      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
+      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
+    });
+
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
+    const rect=trigger.getBoundingClientRect();
+    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
+    menu.style.left=`${rect.left + window.scrollX}px`;
+  });
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+</body>
+</html>

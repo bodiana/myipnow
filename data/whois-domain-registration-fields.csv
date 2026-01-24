@@ -1,0 +1,8 @@
+Field,Description,Source,Notes
+Domain Name,Registered domain name,WHOIS,Primary identifier
+Registrar,Company managing registration,ICANN,Changes on transfer
+Registrant,Legal owner entity,WHOIS,Often redacted
+Creation Date,Initial registration date,WHOIS,Used for domain age
+Expiration Date,Domain expiry date,WHOIS,Renewal required
+Updated Date,Last WHOIS update,WHOIS,Not content change
+Status,Domain status codes,ICANN,"clientHold, etc"
