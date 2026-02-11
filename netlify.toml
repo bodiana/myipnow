@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/geo"
+  to = "http://46.225.88.32/geo.php"
+  status = 200
+  force = true
