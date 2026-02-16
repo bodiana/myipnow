@@ -137,12 +137,106 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .faq details{border: 1px solid rgba(148,163,184,.25); border-radius: 12px; padding: 10px 12px; background: #fff; margin: 10px 0;}
 .faq summary{cursor: pointer; font-weight: 900;}
 .faq p{margin: 8px 0 0; line-height: 1.6;}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"IP Subnet Calculator (IPv4 & IPv6) – CIDR, Range, Mask, Hosts","description":"Fast IP subnet calculator for IPv4 and IPv6. Convert CIDR to subnet mask, network/broadcast, first/last usable IP, host count, and IP range. Includes common subnet sizes and FAQ.","url":"https://myipnow.net/ip-subnet-calculator/","dateModified":"2026-01-04","mainEntityOfPage":"https://myipnow.net/ip-subnet-calculator/"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many IPs are in a /24?","acceptedAnswer":{"@type":"Answer","text":"A /24 contains 256 total IPv4 addresses. Typically 254 are usable hosts (network and broadcast are reserved)."}},{"@type":"Question","name":"What’s the difference between CIDR and subnet mask?","acceptedAnswer":{"@type":"Answer","text":"They represent the same thing: how many bits belong to the network. CIDR uses a prefix length like /24, while a subnet mask uses dotted decimal like 255.255.255.0."}},{"@type":"Question","name":"Why does IPv6 have no broadcast address?","acceptedAnswer":{"@type":"Answer","text":"IPv6 was designed without broadcast. It uses multicast instead, and many operations that used broadcast in IPv4 work differently in IPv6."}},{"@type":"Question","name":"Why do /31 and /32 look unusual?","acceptedAnswer":{"@type":"Answer","text":"A /32 is a single IPv4 address. A /31 contains two addresses and is commonly used for point-to-point links; both addresses can be usable under modern standards."}}]}</script>
-<link href="https://myipnow.net/ip-subnet-calculator" rel="canonical"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"IP Subnet Calculator","description":"Calculate IPv4 and IPv6 subnet details including CIDR, subnet masks, usable IP ranges, and host counts.","applicationCategory":"NetworkingApplication","operatingSystem":"All","url":"https://myipnow.net/ip-subnet-calculator/","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<style id="subnet-root-cause-fix">/* Guardrails: prevent grid items from shrinking oddly */
-.tool-grid > * {min-width: 0;}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "Organization",
+      "@id": "https://myipnow.net/#organization",
+      "name": "MyIPNow",
+      "url": "https://myipnow.net/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://myipnow.net/favicon-96x96.png"
+      }
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://myipnow.net/#website",
+      "url": "https://myipnow.net/",
+      "name": "MyIPNow",
+      "publisher": {
+        "@id": "https://myipnow.net/#organization"
+      }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://myipnow.net/ip-subnet-calculator/#webpage",
+      "url": "https://myipnow.net/ip-subnet-calculator/",
+      "name": "IP Subnet Calculator (IPv4 & IPv6)",
+      "description": "Fast IP subnet calculator for IPv4 and IPv6. Convert CIDR to subnet mask, network range, usable hosts, and IP ranges.",
+      "isPartOf": {
+        "@id": "https://myipnow.net/#website"
+      }
+    },
+
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://myipnow.net/ip-subnet-calculator/#app",
+      "name": "IP Subnet Calculator",
+      "applicationCategory": "WebApplication",
+      "applicationSubCategory": "Networking Tool",
+      "operatingSystem": "All",
+      "url": "https://myipnow.net/ip-subnet-calculator/",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Calculate IPv4 and IPv6 subnet details including CIDR, subnet masks, network ranges, and host counts.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://myipnow.net/#organization"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://myipnow.net/ip-subnet-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many IPs are in a /24?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A /24 contains 256 total IPv4 addresses. Typically 254 are usable hosts because the network and broadcast addresses are reserved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between CIDR and subnet mask?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CIDR and subnet mask represent the same concept. CIDR uses a prefix length like /24, while a subnet mask uses dotted decimal notation like 255.255.255.0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does IPv6 not use broadcast?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "IPv6 was designed without broadcast. It uses multicast instead, and many operations that relied on broadcast in IPv4 work differently in IPv6."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do /31 and /32 behave differently?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A /32 represents a single IPv4 address. A /31 contains two addresses and is commonly used for point-to-point links where both addresses can be usable."
+          }
+        }
+      ]
+    }
+
+  ]
+}
+</script>
+
 .tool-card {min-width: 0;}
 .kv-row .v {min-width: 0;}</style>
 <style id="ipv4-ipv6-edge-fix">/* Prevent IPv4 / IPv6 input overflow */
