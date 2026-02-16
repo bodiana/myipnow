@@ -14,6 +14,97 @@ f.parentNode.insertBefore(j,f);
 <meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="/website" property="og:type"/>
 <meta content="/preview.png" property="og:image"/>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "Organization",
+      "@id": "https://myipnow.net/#organization",
+      "name": "MyIPNow",
+      "url": "https://myipnow.net/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://myipnow.net/favicon-96x96.png"
+      }
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://myipnow.net/#website",
+      "url": "https://myipnow.net/",
+      "name": "MyIPNow",
+      "publisher": {
+        "@id": "https://myipnow.net/#organization"
+      }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://myipnow.net/asn-lookup/#webpage",
+      "url": "https://myipnow.net/asn-lookup/",
+      "name": "ASN Lookup Tool",
+      "description": "Look up an ASN or IP address to see the network owner, registry, and announced prefixes using the MyIPNow ASN Lookup tool.",
+      "isPartOf": {
+        "@id": "https://myipnow.net/#website"
+      }
+    },
+
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://myipnow.net/asn-lookup/#app",
+      "name": "ASN Lookup Tool",
+      "applicationCategory": "WebApplication",
+      "applicationSubCategory": "Network Intelligence Tool",
+      "operatingSystem": "All",
+      "url": "https://myipnow.net/asn-lookup/",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Lookup Autonomous System Numbers to find network owners, routing registry, and announced IP prefixes.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://myipnow.net/#organization"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://myipnow.net/asn-lookup/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an ASN?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An Autonomous System Number (ASN) is an identifier used on the Internet to describe a network such as an ISP, cloud provider, or organization. ASNs announce IP prefixes using BGP to route internet traffic."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What information can an ASN lookup show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An ASN lookup can show the network owner, registry, country, and the list of IP prefixes announced by that autonomous system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I find ASN from an IP address?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The ASN lookup tool can determine which autonomous system an IP address belongs to and show the related network information."
+          }
+        }
+      ]
+    }
+
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>body {font-family: 'Inter', sans-serif; background: #f7f8f9; margin: 0; color: #1e293b; line-height: 1.7;}
     .container {max-width: 900px; margin: 0 auto; padding: 1rem;}
@@ -362,9 +453,6 @@ ASNs announce IP prefixes over BGP, which is how the Internet knows where to rou
      © 2026 MyIPNow. All Rights Reserved.
     </div>
 </footer></div>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"ASN Lookup Tool – Find ASN Details, IP Prefixes & Network Info","description":"Free ASN lookup tool. Search by ASN (AS13335) or IP address to find the organization, RIR, announced prefixes, and basic routing info. Includes CSV export.","url":"https://myipnow.net/asn-lookup/","dateModified":"2026-01-04","mainEntityOfPage":"https://myipnow.net/asn-lookup/"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ASN Lookup Tool","applicationCategory":"NetworkUtility","operatingSystem":"Any","url":"https://myipnow.net/asn-lookup/","description":"Look up ASN details and announced prefixes by ASN or IP. Includes CSV and JSON export."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"ASN Lookup Tool","description":"Lookup Autonomous System Numbers to find network owners, announced IP prefixes, and routing information.","applicationCategory":"NetworkingApplication","operatingSystem":"All","url":"https://myipnow.net/asn-lookup/","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script>
 (function() {
   // Tabs
