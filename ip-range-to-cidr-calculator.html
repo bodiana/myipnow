@@ -21,9 +21,126 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
 <meta content="#ffffff" name="theme-color"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"IP Range to CIDR Calculator – Convert Start & End IP to CIDR Blocks","description":"Convert an IPv4 address range into the minimum set of CIDR blocks. Useful for firewall rules, access lists, and network planning.","url":"https://myipnow.net/ip-range-to-cidr-calculator/","dateModified":"2026-01-04","mainEntityOfPage":"https://myipnow.net/ip-range-to-cidr-calculator/"}</script>
 <link href="https://myipnow.net/ip-range-to-cidr-calculator" rel="canonical"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"IP Range to CIDR Calculator","description":"Convert IP address ranges into optimized CIDR blocks for networking and security configurations.","applicationCategory":"NetworkingApplication","operatingSystem":"All","url":"https://myipnow.net/ip-range-to-cidr-calculator/","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "Organization",
+      "@id": "https://myipnow.net/#organization",
+      "name": "MyIPNow",
+      "url": "https://myipnow.net/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://myipnow.net/favicon-96x96.png"
+      }
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://myipnow.net/#website",
+      "url": "https://myipnow.net/",
+      "name": "MyIPNow",
+      "publisher": {
+        "@id": "https://myipnow.net/#organization"
+      }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://myipnow.net/ip-range-to-cidr-calculator/#webpage",
+      "url": "https://myipnow.net/ip-range-to-cidr-calculator/",
+      "name": "IP Range to CIDR Calculator",
+      "description": "Convert a start and end IPv4 address into the smallest possible set of CIDR blocks for firewall rules, allowlists, and network planning.",
+      "isPartOf": {
+        "@id": "https://myipnow.net/#website"
+      }
+    },
+
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://myipnow.net/ip-range-to-cidr-calculator/#app",
+      "name": "IP Range to CIDR Calculator",
+      "applicationCategory": "WebApplication",
+      "applicationSubCategory": "Networking Tool",
+      "operatingSystem": "All",
+      "url": "https://myipnow.net/ip-range-to-cidr-calculator/",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Convert IPv4 address ranges into the smallest possible set of CIDR blocks. Useful for firewall rules, access lists, routing, and network design.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://myipnow.net/#organization"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://myipnow.net/ip-range-to-cidr-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is CIDR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CIDR (Classless Inter-Domain Routing) is a method of representing IP ranges using a network prefix, such as 192.168.1.0/24."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why convert an IP range to CIDR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Converting ranges to CIDR helps create efficient firewall rules, routing tables, and access control lists using the smallest possible number of network blocks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool support IPv6?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This calculator focuses on IPv4 range to CIDR conversion. IPv6 calculations use different methods due to the much larger address space."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this CIDR calculator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the IP Range to CIDR calculator is completely free and works instantly in your browser."
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://myipnow.net/ip-range-to-cidr-calculator/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://myipnow.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "IP Range to CIDR Calculator",
+          "item": "https://myipnow.net/ip-range-to-cidr-calculator/"
+        }
+      ]
+    }
+
+  ]
+}
+</script>
+
 <style>body {font-family: 'Inter', sans-serif; background: #f7f8f9; margin: 0; color: #1e293b; line-height: 1.7;}
     .container {max-width: 900px; margin: 0 auto; padding: 1rem;}
     .site-header {background: #fff; padding: 1rem; margin-bottom: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
