@@ -988,18 +988,20 @@ diagnosing network issues, or confirming security settings.
 <script>
 async function loadOwnIP(){
   try {
-    const v6 = await fetch('/geo.php').then(r=>r.json());
-const v4 = await fetch('/geo.php?force_ipv4=1').then(r=>r.json());
+    const v4 = await fetch('https://ipv4.myipnow.net/geo.php')
+      .then(r=>r.json()).catch(()=>null);
 
-document.getElementById('ipAddressIPv4').textContent =
-  (v4 && v4.ipv4) ? v4.ipv4 : '—';
+    const v6 = await fetch('https://ipv6.myipnow.net/geo.php')
+      .then(r=>r.json()).catch(()=>null);
 
-document.getElementById('ipAddressIPv6').textContent =
-  (v6 && v6.ipv6) ? v6.ipv6 : '—';
+    document.getElementById('ipAddressIPv4').textContent =
+      (v4 && v4.ipv4) ? v4.ipv4 : '—';
 
-const g = (v6 && v6.ipv6) ? v6 : v4;
-if(!g) return;
+    document.getElementById('ipAddressIPv6').textContent =
+      (v6 && v6.ipv6) ? v6.ipv6 : '—';
 
+    const g = v6 || v4;
+    if(!g) return;
 
     document.getElementById('city').textContent = g.city || '—';
     document.getElementById('region').textContent = g.region || '—';
