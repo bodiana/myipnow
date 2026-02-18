@@ -1,72 +1,71 @@
 User-agent: *
+Disallow:
+
+# --- GOOGLE ---
+User-agent: Googlebot
 Allow: /
 
-# --- OPENAI (ChatGPT & SearchGPT) ---
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# --- BING ---
+User-agent: Bingbot
+Allow: /
+
+# --- OPENAI ---
 User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-# --- ANTHROPIC (Claude) ---
+# --- ANTHROPIC ---
 User-agent: ClaudeBot
 Allow: /
 
-# --- GOOGLE (Search & Gemini) ---
-User-agent: Googlebot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-# --- MICROSOFT (Bing & Copilot) ---
-User-agent: Bingbot
-Allow: /
-
-# --- PERPLEXITY (AI Search Engine) ---
+# --- PERPLEXITY ---
 User-agent: PerplexityBot
 Allow: /
 
-# --- APPLE (Apple Intelligence) ---
+# --- APPLE ---
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# --- META (Facebook/Llama Training) ---
+# --- META ---
 User-agent: FacebookBot
 Allow: /
 
 User-agent: Meta-ExternalAgent
 Allow: /
 
-# --- AMAZON (Alexa & Training) ---
+# --- AMAZON ---
 User-agent: Amazonbot
 Allow: /
 
-# --- COMMON CRAWL (Feeds 1000s of open source AIs) ---
+# --- COMMON CRAWL ---
 User-agent: CCBot
 Allow: /
 
-# --- TIKTOK / BYTEDANCE (ByteDance AI) ---
+# --- TIKTOK ---
 User-agent: Bytespider
 Allow: /
 
-# --- COHERE (Enterprise AI) ---
+# --- COHERE ---
 User-agent: cohere-ai
 Allow: /
 
-# --- OTHER AI CRAWLERS ---
+# --- OTHER ---
 User-agent: Diffbot
 Allow: /
 
 User-agent: ImagesiftBot
 Allow: /
 
-# --- SITEMAPS ---
+# --- SITEMAP ---
 Sitemap: https://myipnow.net/sitemap.xml
-Sitemap: https://myipnow.net/llms.txt
