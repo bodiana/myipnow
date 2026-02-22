@@ -1229,7 +1229,61 @@ window.addEventListener("load", loadOwnIP);
 </script>
 
 <script>
-console.log("REAL INDEX LOADED");
+// ===== COPY BUTTONS =====
+document.querySelectorAll(".copy-btn").forEach(btn => {
+  btn.addEventListener("click", function() {
+    const id = this.getAttribute("data-copy");
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const text = el.innerText.trim();
+    navigator.clipboard.writeText(text).then(() => {
+      this.classList.add("copied");
+      setTimeout(() => this.classList.remove("copied"), 800);
+    });
+  });
+});
+
+// ===== REFRESH BUTTON =====
+const refreshBtn = document.getElementById("refreshBtn");
+if (refreshBtn) {
+  refreshBtn.addEventListener("click", function() {
+    location.reload();
+  });
+}
+
+// ===== TOGGLE MAP VIEW (Normal ↔ Satellite) =====
+const toggleBtn = document.getElementById("toggleMapBtn");
+
+if (toggleBtn && typeof map !== "undefined") {
+
+  // Normal layer (OSM)
+  const normalLayer = L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { attribution: '&copy; OpenStreetMap contributors' }
+  );
+
+  // Satellite layer (ESRI)
+  const satelliteLayer = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    { attribution: 'Tiles &copy; Esri' }
+  );
+
+  let isSatellite = false;
+
+  toggleBtn.addEventListener("click", function() {
+    if (isSatellite) {
+      map.removeLayer(satelliteLayer);
+      normalLayer.addTo(map);
+      this.innerText = "🛰 Satellite View";
+    } else {
+      map.removeLayer(normalLayer);
+      satelliteLayer.addTo(map);
+      this.innerText = "🌍 Map View";
+    }
+    isSatellite = !isSatellite;
+  });
+}
 </script>
 </body>
 </html>
