@@ -1,0 +1,10 @@
+Factor,What it measures,Impact on score,Data source
+Spam activity,Email spam volume,Very high,DNSBL / reputation feeds
+Malware traffic,C2 or payload hosting,Very high,Threat intel feeds
+Open ports,Exposed services,Medium,Port scans
+Proxy / VPN usage,Anonymization signals,Medium,Heuristics
+Shared hosting,Multiple tenants,Low–Medium,ASN analysis
+IP age,Newly allocated IP,Medium,RIR data
+User reports,Manual abuse reports,Medium,Abuse desks
+Blacklist listings,Active DNSBLs,High,Blacklist aggregation
+Traffic patterns,Request frequency,Medium,Behavioral models
