@@ -977,64 +977,64 @@ diagnosing network issues, or confirming security settings.
   </script>
 
 <script>
-async function loadOwnIP(ip = '') {
+async function loadOwnIP() {
   try {
-    const v4 = await fetch('https://ipv4.myipnow.net/geo.php' + (ip ? '?ip=' + ip : ''))
-      .then(r => r.json())
-      .catch(() => null);
-
-    const v6 = await fetch('https://ipv6.myipnow.net/geo.php' + (ip ? '?ip=' + ip : ''))
-      .then(r => r.json())
-      .catch(() => null);
-
-    document.getElementById('ipAddressIPv4').textContent =
-      (v4 && v4.ipv4) ? v4.ipv4 : '—';
-
-    document.getElementById('ipAddressIPv6').textContent =
-      (v6 && v6.ipv6) ? v6.ipv6 : '—';
-
+    // Load visitor IP from your server
+    const v4 = await fetch('https://ipv4.myipnow.net/geo.php').then(r => r.json()).catch(() => null);
+    const v6 = await fetch('https://ipv6.myipnow.net/geo.php').then(r => r.json()).catch(() => null);
     const g = v6 || v4;
-    if (!g) return;
+    if(!g) return;
 
+    document.getElementById('ipAddressIPv4').textContent = (v4 && v4.ipv4) ? v4.ipv4 : '—';
+    document.getElementById('ipAddressIPv6').textContent = (v6 && v6.ipv6) ? v6.ipv6 : '—';
     document.getElementById('city').textContent = g.city || '—';
     document.getElementById('region').textContent = g.region || '—';
     document.getElementById('postal').textContent = g.postal || '—';
     document.getElementById('country').textContent = g.country || '—';
     document.getElementById('isp').textContent = g.isp || '—';
-
-    if (g.asn) {
-      const asnEl = document.getElementById('asnLink');
-      if (asnEl) {
-        asnEl.textContent = g.asn;
-        asnEl.href = "/asn-lookup?asn=" + g.asn.replace("AS", "");
-      }
-    }
-
     document.getElementById('timezone').textContent = g.timezone || '—';
     document.getElementById('latitude').textContent = g.latitude || '—';
     document.getElementById('longitude').textContent = g.longitude || '—';
-
-    if (g.latitude && g.longitude) {
-      const map = L.map('map').setView([g.latitude, g.longitude], 10);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-      }).addTo(map);
-      L.marker([g.latitude, g.longitude]).addTo(map);
-    }
-  } catch (e) {
+  } catch(e) {
     console.error("IP LOAD ERROR", e);
   }
 }
 
-// Search box handler
+async function loadTypedIP(ip) {
+  try {
+    // Only called when user types IP and presses search
+    const res = await fetch(`https://ipwhois.app/json/${ip}`);
+    const data = await res.json();
+    if (data.success === false) {
+      alert('IP not found: ' + data.message);
+      return;
+    }
+
+    document.getElementById('ipAddressIPv4').textContent = data.ip || '—';
+    document.getElementById('ipAddressIPv6').textContent = '—'; // ipwhois.app returns only one IP
+    document.getElementById('city').textContent = data.city || '—';
+    document.getElementById('region').textContent = data.region || '—';
+    document.getElementById('postal').textContent = data.postal || '—';
+    document.getElementById('country').textContent = data.country || '—';
+    document.getElementById('isp').textContent = data.isp || data.org || '—';
+    document.getElementById('timezone').textContent = data.timezone || '—';
+    document.getElementById('latitude').textContent = data.latitude || '—';
+    document.getElementById('longitude').textContent = data.longitude || '—';
+  } catch(err) {
+    console.error('Error loading typed IP:', err);
+    alert('Failed to load IP info');
+  }
+}
+
+// Load visitor IP on page load
+window.addEventListener('load', loadOwnIP);
+
+// Handle search form
 document.getElementById('ipLookupForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const ip = document.getElementById('ipLookupInput').value.trim();
-  if (ip) loadOwnIP(ip);
+  if(ip) loadTypedIP(ip);
 });
-
-// Load your own IP on page load
-window.addEventListener("load", () => loadOwnIP());
 </script>
 <script>
 // ===== COPY BUTTONS =====
