@@ -979,62 +979,43 @@ diagnosing network issues, or confirming security settings.
 <script>
 async function loadOwnIP(ip = '') {
   try {
-   const v4 = await fetch('https://ipv4.myipnow.net/geo.php?ip=' + encodeURIComponent(ip))
-  .then(r => r.json())
-  .catch(() => null);
+    // If ip is provided, add ?ip= to the API request
+    const v4 = await fetch('https://ipv4.myipnow.net/geo.php' + (ip ? '?ip=' + encodeURIComponent(ip) : ''))
+      .then(r => r.json()).catch(() => null);
 
-const v6 = await fetch('https://ipv6.myipnow.net/geo.php?ip=' + encodeURIComponent(ip))
-  .then(r => r.json())
-  .catch(() => null);
+    const v6 = await fetch('https://ipv6.myipnow.net/geo.php' + (ip ? '?ip=' + encodeURIComponent(ip) : ''))
+      .then(r => r.json()).catch(() => null);
 
-    document.getElementById('ipAddressIPv4').textContent =
-      (v4 && v4.ipv4) ? v4.ipv4 : '—';
+    // Pick whichever returned data
+    const g = v4 || v6;
+    if (!g || (!g.ipv4 && !g.ipv6)) {
+      alert('No information found for this IP');
+      return;
+    }
 
-    document.getElementById('ipAddressIPv6').textContent =
-      (v6 && v6.ipv6) ? v6.ipv6 : '—';
-
-    const g = v6 || v4;
-    if(!g || (!g.ipv4 && !g.ipv6)) return;
-
+    // Show the IP info in your HTML (replace these with your actual element IDs)
+    document.getElementById('ipAddressIPv4').textContent = g.ipv4 || '—';
+    document.getElementById('ipAddressIPv6').textContent = g.ipv6 || '—';
     document.getElementById('city').textContent = g.city || '—';
     document.getElementById('region').textContent = g.region || '—';
     document.getElementById('postal').textContent = g.postal || '—';
     document.getElementById('country').textContent = g.country || '—';
     document.getElementById('isp').textContent = g.isp || '—';
-
-    if (g.asn) {
-      const asnEl = document.getElementById('asnLink');
-      if (asnEl) {
-        asnEl.textContent = g.asn;
-        asnEl.href = "/asn-lookup?asn=" + g.asn.replace("AS", "");
-      }
-    }
-
     document.getElementById('timezone').textContent = g.timezone || '—';
     document.getElementById('latitude').textContent = g.latitude || '—';
     document.getElementById('longitude').textContent = g.longitude || '—';
 
-    if (g.latitude && g.longitude) {
-      const map = L.map('map').setView([g.latitude, g.longitude], 10);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-      }).addTo(map);
-      L.marker([g.latitude, g.longitude]).addTo(map);
-    }
   } catch (e) {
     console.error("IP LOAD ERROR", e);
   }
 }
 
-// Search box handler
+// Hook up the search form
 document.getElementById('ipLookupForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const ip = document.getElementById('ipLookupInput').value.trim();
   if (ip) loadOwnIP(ip);
 });
-
-// Load your own IP on page load
-window.addEventListener("load", () => loadOwnIP());
 </script>
 <script>
 // ===== COPY BUTTONS =====
