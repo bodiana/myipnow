@@ -979,13 +979,13 @@ diagnosing network issues, or confirming security settings.
 <script>
 async function loadOwnIP(ip = '') {
   try {
-    const v4 = await fetch('https://ipv4.myipnow.net/geo.php' + (ip ? '?ip=' + ip : ''))
-      .then(r => r.json())
-      .catch(() => null);
+   const v4 = await fetch('https://ipv4.myipnow.net/geo.php?ip=' + encodeURIComponent(ip))
+  .then(r => r.json())
+  .catch(() => null);
 
-    const v6 = await fetch('https://ipv6.myipnow.net/geo.php' + (ip ? '?ip=' + ip : ''))
-      .then(r => r.json())
-      .catch(() => null);
+const v6 = await fetch('https://ipv6.myipnow.net/geo.php?ip=' + encodeURIComponent(ip))
+  .then(r => r.json())
+  .catch(() => null);
 
     document.getElementById('ipAddressIPv4').textContent =
       (v4 && v4.ipv4) ? v4.ipv4 : '—';
@@ -994,7 +994,7 @@ async function loadOwnIP(ip = '') {
       (v6 && v6.ipv6) ? v6.ipv6 : '—';
 
     const g = v6 || v4;
-    if (!g) return;
+    if(!g || (!g.ipv4 && !g.ipv6)) return;
 
     document.getElementById('city').textContent = g.city || '—';
     document.getElementById('region').textContent = g.region || '—';
