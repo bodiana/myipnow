@@ -1026,6 +1026,55 @@ window.addEventListener("load", loadOwnIP);
 </script>
 
 <script>
+document.getElementById('ipLookupForm').addEventListener('submit', async function(e){
+  e.preventDefault(); // stop page reload
+  const ip = document.getElementById('ipLookupInput').value.trim();
+  if(!ip) return;
+
+  try {
+    const data = await fetch(`/geo.php?ip=${encodeURIComponent(ip)}`)
+      .then(r => r.json())
+      .catch(()=>null);
+    if(!data) return;
+
+    document.getElementById('ipAddressIPv4').textContent = data.ipv4 || '—';
+    document.getElementById('ipAddressIPv6').textContent = data.ipv6 || '—';
+    document.getElementById('city').textContent = data.city || '—';
+    document.getElementById('region').textContent = data.region || '—';
+    document.getElementById('postal').textContent = data.postal || '—';
+    document.getElementById('country').textContent = data.country || '—';
+    document.getElementById('isp').textContent = data.isp || '—';
+    document.getElementById('timezone').textContent = data.timezone || '—';
+    document.getElementById('latitude').textContent = data.latitude || '—';
+    document.getElementById('longitude').textContent = data.longitude || '—';
+
+    if(data.asn){
+      const asnEl = document.getElementById('asnLink');
+      if(asnEl){
+        asnEl.textContent = data.asn;
+        asnEl.href = "/asn-lookup?asn=" + data.asn.replace("AS","");
+      }
+    }
+
+    if(data.latitude && data.longitude){
+      const mapEl = document.getElementById('map');
+      mapEl.innerHTML = ""; // clear old map
+      const map = L.map('map').setView([data.latitude, data.longitude], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+      }).addTo(map);
+      L.marker([data.latitude, data.longitude]).addTo(map);
+
+      window.map = map; // save map globally for toggle
+    }
+
+  } catch(e){
+    console.error("IP SEARCH ERROR", e);
+  }
+});
+</script>
+
+<script>
 // ===== COPY BUTTONS =====
 document.querySelectorAll(".copy-btn").forEach(btn => {
   btn.addEventListener("click", function() {
