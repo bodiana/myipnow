@@ -1022,7 +1022,85 @@ if(g.asn){
   }
 }
 
-window.addEventListener("load", loadOwnIP);
+</script>
+
+<script>
+window.addEventListener("load", () => {
+  const params = new URLSearchParams(window.location.search);
+  const ip = params.get("ip"); // ?ip=1.2.3.4
+
+  if (ip) {
+    loadIP(ip);      // loads the IP the user typed
+  } else {
+    loadOwnIP();     // loads the visitor's own IP
+  }
+});
+</script>
+
+<script>
+async function loadIP(ip) {
+  try {
+    // Try IPv4 first
+    let data = null;
+    if(ip.includes(":")) {
+      // IPv6
+      data = await fetch(`https://ipv6.myipnow.net/geo.php?ip=${ip}`)
+        .then(r => r.json()).catch(()=>null);
+    } else {
+      // IPv4
+      data = await fetch(`https://ipv4.myipnow.net/geo.php?ip=${ip}`)
+        .then(r => r.json()).catch(()=>null);
+    }
+
+    if(!data) {
+      alert("IP not found");
+      return;
+    }
+
+    document.getElementById('ipAddressIPv4').textContent = data.ipv4 || '—';
+    document.getElementById('ipAddressIPv6').textContent = data.ipv6 || '—';
+    document.getElementById('city').textContent = data.city || '—';
+    document.getElementById('region').textContent = data.region || '—';
+    document.getElementById('postal').textContent = data.postal || '—';
+    document.getElementById('country').textContent = data.country || '—';
+    document.getElementById('isp').textContent = data.isp || '—';
+    document.getElementById('timezone').textContent = data.timezone || '—';
+    document.getElementById('latitude').textContent = data.latitude || '—';
+    document.getElementById('longitude').textContent = data.longitude || '—';
+
+    // Optional ASN link
+    if(data.asn){
+      const asnEl = document.getElementById('asnLink');
+      if(asnEl){
+        asnEl.textContent = data.asn;
+        asnEl.href = "/asn-lookup?asn=" + data.asn.replace("AS","");
+      }
+    }
+
+    // Map
+    if(data.latitude && data.longitude){
+      const map = L.map('map').setView([data.latitude, data.longitude], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        attribution:'© OpenStreetMap'
+      }).addTo(map);
+      L.marker([data.latitude, data.longitude]).addTo(map);
+    }
+
+  } catch(e) {
+    console.error("IP LOAD ERROR", e);
+  }
+}
+</script>
+
+<script>
+document.getElementById("ipLookupForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const ip = document.getElementById("ipLookupInput").value.trim();
+  if(!ip) return;
+
+  // Redirect to same page with ?ip=IP
+  window.location.href = "?ip=" + encodeURIComponent(ip);
+});
 </script>
 
 <script>
