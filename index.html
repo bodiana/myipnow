@@ -977,20 +977,18 @@ diagnosing network issues, or confirming security settings.
   </script>
 
 <script>
+let map, marker; // global variables for map and marker
+
 async function loadOwnIP(ip = '') {
   try {
-    // Append ?ip= only if the user typed one
     const v4 = await fetch('https://ipv4.myipnow.net/geo.php' + (ip ? '?ip=' + ip : ''))
       .then(r => r.json()).catch(() => null);
 
     const v6 = await fetch('https://ipv6.myipnow.net/geo.php' + (ip ? '?ip=' + ip : ''))
       .then(r => r.json()).catch(() => null);
 
-    // Show whichever exists
-    document.getElementById('ipAddressIPv4').textContent =
-      (v4 && v4.ipv4) ? v4.ipv4 : '—';
-    document.getElementById('ipAddressIPv6').textContent =
-      (v6 && v6.ipv6) ? v6.ipv6 : '—';
+    document.getElementById('ipAddressIPv4').textContent = (v4 && v4.ipv4) ? v4.ipv4 : '—';
+    document.getElementById('ipAddressIPv6').textContent = (v6 && v6.ipv6) ? v6.ipv6 : '—';
 
     const g = v6 || v4;
     if (!g) return;
@@ -1011,13 +1009,18 @@ async function loadOwnIP(ip = '') {
     document.getElementById('latitude').textContent = g.latitude || '—';
     document.getElementById('longitude').textContent = g.longitude || '—';
 
-    // Map updates only if latitude/longitude exist
+    // Initialize map only once, then move marker for each IP
     if (g.latitude && g.longitude) {
-      const map = L.map('map').setView([g.latitude, g.longitude], 10);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-      }).addTo(map);
-      L.marker([g.latitude, g.longitude]).addTo(map);
+      if (!map) {
+        map = L.map('map').setView([g.latitude, g.longitude], 10);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap'
+        }).addTo(map);
+        marker = L.marker([g.latitude, g.longitude]).addTo(map);
+      } else {
+        map.setView([g.latitude, g.longitude], 10);
+        marker.setLatLng([g.latitude, g.longitude]);
+      }
     }
 
   } catch (e) {
@@ -1025,16 +1028,17 @@ async function loadOwnIP(ip = '') {
   }
 }
 
-// Hook up the search form
+// Search form
 document.getElementById('ipLookupForm').addEventListener('submit', function (e) {
   e.preventDefault();
   const ip = document.getElementById('ipLookupInput').value.trim();
-  if (ip) loadOwnIP(ip); // call with typed IP
+  if (ip) loadOwnIP(ip);
 });
 
-// Load visitor IP automatically on page load
+// Load visitor IP on page load
 window.addEventListener("load", () => loadOwnIP());
 </script>
+    
 <script>
 // ===== COPY BUTTONS =====
 document.querySelectorAll(".copy-btn").forEach(btn => {
