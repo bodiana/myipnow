@@ -1,0 +1,26 @@
+To: abuse@provider.com
+Subject: Abuse report for IP [IP_ADDRESS] – [ABUSE_TYPE]
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Hello Abuse Team,
+
+I am reporting suspected abuse originating from IP address: [IP_ADDRESS]
+
+Abuse type: [spam / brute-force / scanning / DDoS / malware]
+Date/time (UTC): [YYYY-MM-DD HH:MM:SS]
+Target/Service: [e.g., SSH on port 22, SMTP, HTTP]
+Affected host: [your hostname/IP] (optional)
+
+Summary:
+[1–2 sentences describing what happened]
+
+Evidence:
+[Paste full email headers OR log excerpts here]
+
+Requested action:
+Please investigate and take appropriate action per your policy.
+
+Thank you,
+[Your name / Org]
+[Contact email]

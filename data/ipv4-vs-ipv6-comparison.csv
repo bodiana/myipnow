@@ -1,0 +1,14 @@
+Feature,IPv4,IPv6,Notes
+Address size,32-bit,128-bit,IPv6 vastly larger
+Address space,~4.3 billion,~3.4×10³⁸,IPv6 exhaustion unlikely
+Notation,Decimal dotted,Hexadecimal,IPv6 uses colons
+NAT requirement,Common,Not required,IPv6 restores end-to-end
+Security (IPsec),Optional,Built-in support,Implementation varies
+Broadcast,Supported,Not used,IPv6 uses multicast
+Multicast,Limited,Native,Better scalability
+Configuration,Manual/DHCP,SLAAC/DHCPv6,IPv6 auto-config
+Performance,Indirect,Indirect,Depends on network
+Adoption,Legacy dominant,Growing,Dual-stack common
+Mobile networks,Partial,Primary,IPv6-first carriers
+IoT suitability,Limited,High,Huge address pool
+Backward compatibility,N/A,No,Requires transition mechanisms
