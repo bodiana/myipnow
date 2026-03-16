@@ -1,99 +1,49 @@
 import os
 import re
-import json
 
-# === CONFIG ===
-BASE_DOMAIN = "https://myipnow.net"
-ROOT_FOLDER = r"C:\Users\Bodia\OneDrive\Робочий стіл\myipnow-main"
+FOLDER_PATH = r"C:\Users\Bodia\OneDrive\Робочий стіл\myipnow-main"
+SITE_DOMAIN = "https://myipnow.net"
 
-def ensure_trailing_slash(url):
-    if url.startswith(BASE_DOMAIN) and not url.endswith("/"):
-        return url + "/"
-    return url
+# Regex patterns
+canonical_pattern = re.compile(r'(<link\s+rel=["\']canonical["\']\s+href=["\'])(https://myipnow\.net[^"\']*?)(["\'])', re.IGNORECASE)
+url_pattern = re.compile(r'((?:href|src)=["\'])(https://myipnow\.net[^"\']*?)(["\'])', re.IGNORECASE)
 
-def fix_html_file(filepath):
-    with open(filepath, "r", encoding="utf-8") as f:
-        content = f.read()
+fixed_files = []
+correct_files = []
 
-    original_content = content
-
-    # ----------------------------
-    # Fix Canonical Tag
-    # ----------------------------
-    def fix_canonical(match):
-        url = match.group(1)
-        return f'<link rel="canonical" href="{ensure_trailing_slash(url)}"/>'
-
-    content = re.sub(
-        r'<link\s+rel="canonical"\s+href="([^"]+)"\s*/?>',
-        fix_canonical,
-        content
-    )
-
-    # ----------------------------
-    # Fix og:url
-    # ----------------------------
-    def fix_og(match):
-        url = match.group(1)
-        return f'<meta property="og:url" content="{ensure_trailing_slash(url)}"/>'
-
-    content = re.sub(
-        r'<meta\s+property="og:url"\s+content="([^"]+)"\s*/?>',
-        fix_og,
-        content
-    )
-
-    # ----------------------------
-    # Fix JSON-LD URLs
-    # ----------------------------
-    def fix_json_ld(match):
+# Walk through all subfolders
+for root, dirs, files in os.walk(FOLDER_PATH):
+    html_files = [f for f in files if f.lower().endswith(".html")]
+    for file in html_files:
+        file_path = os.path.join(root, file)
         try:
-            data = json.loads(match.group(1))
-        except:
-            return match.group(0)
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except Exception as e:
+            print(f"⚠️ Skipping {file_path}: {e}")
+            continue
 
-        def recursive_fix(obj):
-            if isinstance(obj, dict):
-                for k, v in obj.items():
-                    if k == "url" and isinstance(v, str):
-                        obj[k] = ensure_trailing_slash(v)
-                    else:
-                        recursive_fix(v)
-            elif isinstance(obj, list):
-                for item in obj:
-                    recursive_fix(item)
+        original_content = content
 
-        recursive_fix(data)
+        # Fix canonical
+        content = canonical_pattern.sub(lambda m: m.group(1) + (m.group(2) if m.group(2).endswith("/") else m.group(2)+"/") + m.group(3), content)
 
-        fixed_json = json.dumps(data, ensure_ascii=False)
-        return f'<script type="application/ld+json">{fixed_json}</script>'
+        # Fix href/src URLs
+        content = url_pattern.sub(lambda m: m.group(1) + (m.group(2) if m.group(2).endswith("/") else m.group(2)+"/") + m.group(3), content)
 
-    content = re.sub(
-        r'<script type="application/ld\+json">(.*?)</script>',
-        fix_json_ld,
-        content,
-        flags=re.DOTALL
-    )
+        if content != original_content:
+            try:
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(content)
+                fixed_files.append(file_path)
+                print(f"✅ Fixed: {file_path}")
+            except Exception as e:
+                print(f"⚠️ Could not write {file_path}: {e}")
+        else:
+            correct_files.append(file_path)
+            print(f"✔️ Correct: {file_path}")
 
-    # ----------------------------
-    # Fix broken <pto> tag
-    # ----------------------------
-    content = re.sub(r'<pto[^>]*>', '<p>', content)
-
-    # Save only if changed
-    if content != original_content:
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(content)
-        print(f"Fixed: {filepath}")
-    else:
-        print(f"No change: {filepath}")
-
-def scan_folder(folder):
-    for root, dirs, files in os.walk(folder):
-        for file in files:
-            if file.endswith(".html"):
-                fix_html_file(os.path.join(root, file))
-
-if __name__ == "__main__":
-    scan_folder(ROOT_FOLDER)
-    print("Done.")
+# Summary
+print("\nDone!")
+print(f"Files fixed: {len(fixed_files)}")
+print(f"Files correct: {len(correct_files)}")
