@@ -241,7 +241,20 @@ function lookupBlacklist(){
 }
 </script>
 </div>
-<script id="mobile-header-fix-final">
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var ip = params.get("ip");
+  if (!ip) return;
+  window.addEventListener("DOMContentLoaded", function() {
+    var input = document.getElementById("blacklistIP");
+    if (input) {
+      input.value = ip;
+      if (typeof window.lookupBlacklist === "function") window.lookupBlacklist();
+    }
+  });
+})();
+</script>
 (function(){
   const tools = document.querySelector('.nav-tools');
   if(!tools) return;
