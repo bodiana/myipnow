@@ -1,0 +1,71 @@
+User-agent: *
+Disallow:
+
+# --- GOOGLE ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# --- BING ---
+User-agent: Bingbot
+Allow: /
+
+# --- OPENAI ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# --- ANTHROPIC ---
+User-agent: ClaudeBot
+Allow: /
+
+# --- PERPLEXITY ---
+User-agent: PerplexityBot
+Allow: /
+
+# --- APPLE ---
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# --- META ---
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# --- AMAZON ---
+User-agent: Amazonbot
+Allow: /
+
+# --- COMMON CRAWL ---
+User-agent: CCBot
+Allow: /
+
+# --- TIKTOK ---
+User-agent: Bytespider
+Allow: /
+
+# --- COHERE ---
+User-agent: cohere-ai
+Allow: /
+
+# --- OTHER ---
+User-agent: Diffbot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+# --- SITEMAP ---
+Sitemap: https://myipnow.net/sitemap.xml

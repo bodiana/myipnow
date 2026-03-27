@@ -1,0 +1,9 @@
+BGP Attribute,Description,Why it matters,Example
+AS_PATH,List of ASNs a route traverses,Prevents routing loops,Shorter paths preferred
+NEXT_HOP,Next router for a route,Determines forwarding,Neighbor IP
+LOCAL_PREF,Internal preference value,Controls outbound routing,Higher wins
+MED,Multi-exit discriminator,Inbound path hint,Lower wins
+ORIGIN,How route was learned,Trust indicator,IGP preferred
+COMMUNITY,Route tags,Policy control,No-export
+PREFIX,Advertised IP range,Traffic destination,203.0.113.0/24
+PEERING,BGP neighbor relationship,Route exchange,IXP peering
