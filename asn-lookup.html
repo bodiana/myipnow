@@ -541,19 +541,33 @@ function renderPrefixes(list) {
       var ov = arr[0];
       var px = arr[1];
       lastRaw = { overview: ov, announced_prefixes: px };
-
       var data = (ov && ov.data) ? ov.data : {};
-      // Fields vary a bit; handle common ones gracefully.
       var holder = data.holder || data.as_name || data.name || '—';
       var rir = data.rir || data.registry || '—';
       var cc = data.country || data.country_code || '—';
       var asnNum = (data.asn || asn).toString();
-
-      asnSummary.innerHTML =
-        kvRow('ASN', asn, true) +
-        kvRow('Holder', holder, false) +
-        kvRow('RIR / Registry', rir, false) +
-        kvRow('Country', cc, false);
+      var asnNumOnly = asn.replace(/^AS/i, '');
+      function renderSummary(r, c, h) {
+        asnSummary.innerHTML =
+          kvRow('ASN', asn, true) +
+          kvRow('Holder', h || holder, false) +
+          kvRow('RIR / Registry', r, false) +
+          kvRow('Country', c, false);
+      }
+      if (rir === '—' || cc === '—') {
+        fetch('https://api.bgpview.io/asn/' + asnNumOnly)
+          .then(function(r) { return r.json(); })
+          .then(function(bg) {
+            var d = (bg && bg.data) ? bg.data : {};
+            if (rir === '—') rir = (d.rir_allocation && d.rir_allocation.rir_name) ? d.rir_allocation.rir_name : (d.rir || '—');
+            if (cc === '—') cc = d.country_code || '—';
+            if (holder === '—') holder = d.name || d.description_short || holder;
+            renderSummary(rir, cc, holder);
+          })
+          .catch(function() { renderSummary(rir, cc, holder); });
+      } else {
+        renderSummary(rir, cc, holder);
+      }
 
       // Prefixes list
       var list = [];
