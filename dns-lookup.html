@@ -153,20 +153,18 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <section aria-label="DNS Lookup Definition" class="snippet-section">
 <h2>What Is a DNS Lookup?</h2>
 <p>
-    A DNS lookup is a query that asks the Domain Name System which records a domain publishes — such as A/AAAA (IP addresses),
-    MX (mail servers), NS (authoritative name servers), and TXT (verification/SPF/DKIM). It’s used to troubleshoot routing,
-    email delivery, and domain ownership verification.
+    A DNS lookup is basically just a query you send to the Domain Name System asking what records a domain has published — things like A/AAAA (IP addresses), MX (mail servers), NS (name servers), and TXT (verification/SPF/DKIM). You'll use it to troubleshoot routing issues, figure out why email isn't delivering, and verify domain ownership.
   </p>
 <div aria-label="How to use DNS Lookup" class="howto">
 <h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">How to use this DNS Lookup</h3>
 <ol>
-<li>Enter a domain (example.com).</li>
-<li>Select a record type (A, AAAA, MX, NS, TXT).</li>
-<li>Click <strong>Lookup</strong> to see live DNS results.</li>
+<li>Enter a domain (like example.com).</li>
+<li>Pick a record type (A, AAAA, MX, NS, or TXT).</li>
+<li>Click <strong>Lookup</strong> and you'll get live DNS results right away.</li>
 </ol>
 </div>
 </section>
-<p>Use this DNS Lookup tool to instantly check the DNS records of any domain. This helps identify IP addresses, mail servers, authoritative name servers, and verification records for your domain.</p>
+<p>This DNS Lookup tool lets you instantly check the DNS records for any domain. You can find IP addresses, mail servers, name servers, and verification records all in one place.</p>
 <div class="dns-tool">
 <input id="dnsDomain" placeholder="Enter domain, e.g. example.com" type="text"/>
 <select id="dnsType">
@@ -188,11 +186,11 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <section class="explanation-section">
 <h3>DNS Record Types Explained</h3>
 <ul>
-<li><strong>A:</strong> Maps a domain name to an IPv4 address.</li>
-<li><strong>AAAA:</strong> Maps a domain name to an IPv6 address.</li>
-<li><strong>MX:</strong> Mail Exchange record, used for email servers.</li>
-<li><strong>NS:</strong> Name Server record, identifies authoritative DNS servers.</li>
-<li><strong>TXT:</strong> Text record, often used for verification or SPF/DKIM settings.</li>
+<li><strong>A:</strong> Points a domain to an IPv4 address.</li>
+<li><strong>AAAA:</strong> Points a domain to an IPv6 address.</li>
+<li><strong>MX:</strong> Mail Exchange record — this is what handles your email servers.</li>
+<li><strong>NS:</strong> Name Server record that shows which DNS servers are in charge.</li>
+<li><strong>TXT:</strong> Text record, commonly used for verification or setting up SPF/DKIM.</li>
 </ul>
 </section>
 <section class="faq-section">

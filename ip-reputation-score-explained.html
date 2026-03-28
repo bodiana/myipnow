@@ -165,12 +165,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 <article class="article-body">
 <div class="callout">
-<p><strong>Quick check:</strong> See if an IP shows risk signals using the <a href="https://myipnow.net/ip-blacklist/">MyIPNow IP Blacklist Check</a>.</p>
+<p><strong>Quick check:</strong> Want to see if an IP has red flags? Try the <a href="https://myipnow.net/ip-blacklist/">MyIPNow IP Blacklist Check</a>.</p>
 </div>
 <h2>What is an IP reputation score?</h2>
 <p>
-An IP reputation score is a risk-based assessment used by security systems, email providers,
-and web services to evaluate whether an IP address is likely to be abusive or trustworthy.
+An IP reputation score is basically a risk rating that security systems, email providers, and web services use to figure out if an IP address is trustworthy or likely to cause problems.
 </p>
 <h2>Factors that influence IP reputation</h2>
 <a class="btn" download="" href="https://myipnow.net/data/ip-reputation-factors.csv">Download CSV</a>
@@ -182,29 +181,29 @@ and web services to evaluate whether an IP address is likely to be abusive or tr
 </tr>
 </thead>
 <tbody>
-<tr><td><strong>Spam activity</strong></td><td>Email spam volume</td><td>Very high</td><td>DNSBL / reputation feeds</td></tr>
-<tr><td><strong>Malware traffic</strong></td><td>C2 or payload hosting</td><td>Very high</td><td>Threat intel feeds</td></tr>
-<tr><td><strong>Open ports</strong></td><td>Exposed services</td><td>Medium</td><td>Port scans</td></tr>
-<tr><td><strong>Proxy / VPN usage</strong></td><td>Anonymization signals</td><td>Medium</td><td>Heuristics</td></tr>
-<tr><td><strong>Shared hosting</strong></td><td>Multiple tenants</td><td>Low–Medium</td><td>ASN analysis</td></tr>
-<tr><td><strong>IP age</strong></td><td>Newly allocated IP</td><td>Medium</td><td>RIR data</td></tr>
-<tr><td><strong>User reports</strong></td><td>Manual abuse reports</td><td>Medium</td><td>Abuse desks</td></tr>
-<tr><td><strong>Blacklist listings</strong></td><td>Active DNSBLs</td><td>High</td><td>Blacklist aggregation</td></tr>
-<tr><td><strong>Traffic patterns</strong></td><td>Request frequency</td><td>Medium</td><td>Behavioral models</td></tr>
+<tr><td><strong>Spam activity</strong></td><td>How much email spam is coming from it</td><td>Very high</td><td>DNSBL / reputation feeds</td></tr>
+<tr><td><strong>Malware traffic</strong></td><td>Command & control servers or hosting malware</td><td>Very high</td><td>Threat intel feeds</td></tr>
+<tr><td><strong>Open ports</strong></td><td>Services that are exposed</td><td>Medium</td><td>Port scans</td></tr>
+<tr><td><strong>Proxy / VPN usage</strong></td><td>Signs of anonymization</td><td>Medium</td><td>Heuristics</td></tr>
+<tr><td><strong>Shared hosting</strong></td><td>Multiple users on the same IP</td><td>Low–Medium</td><td>ASN analysis</td></tr>
+<tr><td><strong>IP age</strong></td><td>Recently assigned IP addresses</td><td>Medium</td><td>RIR data</td></tr>
+<tr><td><strong>User reports</strong></td><td>Complaints from actual people</td><td>Medium</td><td>Abuse desks</td></tr>
+<tr><td><strong>Blacklist listings</strong></td><td>On active blocklists</td><td>High</td><td>Blacklist aggregation</td></tr>
+<tr><td><strong>Traffic patterns</strong></td><td>How often requests come in</td><td>Medium</td><td>Behavioral models</td></tr>
 </tbody>
 </table>
 </div>
 <h2>IP reputation vs IP blacklists</h2>
 <ul>
-<li>Blacklists are binary (listed or not).</li>
-<li>Reputation scores are continuous risk assessments.</li>
-<li>An IP may have poor reputation without blacklist listings.</li>
+<li>Blacklists are straightforward—you're either on it or you're not.</li>
+<li>Reputation scores give you a sliding scale of risk.</li>
+<li>An IP can have a bad reputation even if it's not on any blacklist.</li>
 </ul>
 <h2>How reputation scores are used</h2>
 <ul>
-<li>Email filtering and deliverability</li>
-<li>Fraud detection and bot mitigation</li>
-<li>Rate limiting and access control</li>
+<li>Email filtering and making sure your mail gets delivered</li>
+<li>Catching fraud and stopping bots</li>
+<li>Throttling requests and controlling who gets access</li>
 </ul>
 <h2>Related tools</h2>
 <ul>

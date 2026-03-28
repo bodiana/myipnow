@@ -165,13 +165,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 <article class="article-body">
 <div class="callout">
-<p><strong>Quick lookup:</strong> Find the ASN for any IP using the <a href="https://myipnow.net/whois-lookup/">MyIPNow WHOIS Lookup</a>.</p>
+<p><strong>Quick lookup:</strong> Need to find the ASN for an IP? Use the <a href="https://myipnow.net/whois-lookup/">MyIPNow WHOIS Lookup</a>.</p>
 </div>
 <h2>What is an Autonomous System (ASN)?</h2>
 <p>
-An Autonomous System (AS) is a collection of IP networks under the control of a single organization
-that presents a common routing policy to the internet.
-Each AS is assigned a unique Autonomous System Number (ASN).
+An Autonomous System (AS) is basically a bunch of IP networks that one organization controls and manages together. They all follow the same routing rules and policies. Each AS gets assigned its own unique number, called an Autonomous System Number (ASN).
 </p>
 <h2>Key ASN concepts</h2>
 <a class="btn" download="" href="https://myipnow.net/data/asn-terms-reference.csv">Download CSV</a>
@@ -183,28 +181,28 @@ Each AS is assigned a unique Autonomous System Number (ASN).
 </tr>
 </thead>
 <tbody>
-<tr><td><strong>ASN</strong></td><td>Unique identifier for an autonomous system</td><td>Routing identity</td><td>AS13335</td></tr>
-<tr><td><strong>IP Prefixes</strong></td><td>IP ranges announced by ASN</td><td>Traffic ownership</td><td>104.16.0.0/12</td></tr>
-<tr><td><strong>BGP</strong></td><td>Routing protocol between ASNs</td><td>Path selection</td><td>AS_PATH</td></tr>
-<tr><td><strong>Upstream</strong></td><td>Provider ASN</td><td>Internet connectivity</td><td>Tier-1 ISP</td></tr>
-<tr><td><strong>Downstream</strong></td><td>Customer ASN</td><td>Traffic origin</td><td>Hosting provider</td></tr>
-<tr><td><strong>Peering</strong></td><td>ASN-to-ASN exchange</td><td>Direct routing</td><td>IXP peering</td></tr>
-<tr><td><strong>RIR</strong></td><td>ASN allocator</td><td>Governance</td><td>ARIN / RIPE</td></tr>
-<tr><td><strong>AS-SET</strong></td><td>Group of ASNs</td><td>Routing policy</td><td>IRR objects</td></tr>
+<tr><td><strong>ASN</strong></td><td>The unique ID for an autonomous system</td><td>How it's identified for routing</td><td>AS13335</td></tr>
+<tr><td><strong>IP Prefixes</strong></td><td>The IP ranges that an ASN announces</td><td>Shows who owns which traffic</td><td>104.16.0.0/12</td></tr>
+<tr><td><strong>BGP</strong></td><td>The protocol that handles routing between ASNs</td><td>Decides how traffic gets routed</td><td>AS_PATH</td></tr>
+<tr><td><strong>Upstream</strong></td><td>Your provider's ASN</td><td>Gets you connected to the internet</td><td>Tier-1 ISP</td></tr>
+<tr><td><strong>Downstream</strong></td><td>Your customer's ASN</td><td>Where traffic originally comes from</td><td>Hosting provider</td></tr>
+<tr><td><strong>Peering</strong></td><td>Direct connection between two ASNs</td><td>Traffic goes straight between them</td><td>IXP peering</td></tr>
+<tr><td><strong>RIR</strong></td><td>The organization that gives out ASNs</td><td>Controls who gets what</td><td>ARIN / RIPE</td></tr>
+<tr><td><strong>AS-SET</strong></td><td>A collection of multiple ASNs</td><td>Used for setting routing policies</td><td>IRR objects</td></tr>
 </tbody>
 </table>
 </div>
 <h2>How ASNs are used</h2>
 <ul>
-<li>Routing traffic across the global internet</li>
-<li>Identifying IP ownership and responsibility</li>
-<li>Applying security and routing policies</li>
+<li>Moving traffic around the internet</li>
+<li>Figuring out who owns which IPs and who's responsible</li>
+<li>Setting up security rules and routing policies</li>
 </ul>
 <h2>ASN vs IP address vs ISP</h2>
 <ul>
-<li>An <strong>IP address</strong> identifies a device or endpoint.</li>
-<li>An <strong>ASN</strong> identifies the network announcing IP ranges.</li>
-<li>An <strong>ISP</strong> is a business entity that may operate one or more ASNs.</li>
+<li>An <strong>IP address</strong> is what identifies a specific device.</li>
+<li>An <strong>ASN</strong> identifies the network that's announcing those IP ranges.</li>
+<li>An <strong>ISP</strong> is the actual company running things—they might operate one or more ASNs.</li>
 </ul>
 <h2>Related tools</h2>
 <ul>

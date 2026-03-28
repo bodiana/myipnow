@@ -163,42 +163,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 <article class="article-body">
 <div class="callout">
-<p><strong>Quick link:</strong> See these fields live using the <a href="https://myipnow.net/whois-lookup/">MyIPNow WHOIS Lookup</a>.</p>
+<p><strong>Quick link:</strong> Want to see what these look like? Check out the <a href="https://myipnow.net/whois-lookup/">MyIPNow WHOIS Lookup</a>.</p>
 </div>
 <h2>Domain WHOIS – Registration Fields</h2>
-<p>Fields related to domain registration, ownership, and lifecycle.</p>
+<p>Here's the stuff related to domain registration, who owns it, and what happens over its lifetime.</p>
 <a download="" href="https://myipnow.net/data/whois-domain-registration-fields.csv">Download CSV</a>
-<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th><th>Notes</th></tr></thead><tbody><tr><td>Domain Name</td><td>Registered domain name</td><td>WHOIS</td><td>Primary identifier</td></tr>
-<tr><td>Registrar</td><td>Company managing registration</td><td>ICANN</td><td>Changes on transfer</td></tr>
-<tr><td>Registrant</td><td>Legal owner entity</td><td>WHOIS</td><td>Often redacted</td></tr>
-<tr><td>Creation Date</td><td>Initial registration date</td><td>WHOIS</td><td>Used for domain age</td></tr>
-<tr><td>Expiration Date</td><td>Domain expiry date</td><td>WHOIS</td><td>Renewal required</td></tr>
-<tr><td>Updated Date</td><td>Last WHOIS update</td><td>WHOIS</td><td>Not content change</td></tr>
-<tr><td>Status</td><td>Domain status codes</td><td>ICANN</td><td>clientHold, etc</td></tr>
+<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th><th>Notes</th></tr></thead><tbody><tr><td>Domain Name</td><td>The registered domain name</td><td>WHOIS</td><td>Your main identifier</td></tr>
+<tr><td>Registrar</td><td>The company handling the registration</td><td>ICANN</td><td>This changes if you transfer it</td></tr>
+<tr><td>Registrant</td><td>The actual owner of the domain</td><td>WHOIS</td><td>Usually hidden, honestly</td></tr>
+<tr><td>Creation Date</td><td>When the domain was first registered</td><td>WHOIS</td><td>Tells you how old the domain is</td></tr>
+<tr><td>Expiration Date</td><td>When the domain runs out</td><td>WHOIS</td><td>You've gotta renew it before this</td></tr>
+<tr><td>Updated Date</td><td>Last time the WHOIS record changed</td><td>WHOIS</td><td>Doesn't mean the website changed</td></tr>
+<tr><td>Status</td><td>Current status codes for the domain</td><td>ICANN</td><td>Things like clientHold, etc</td></tr>
 </tbody></table>
 <h2>Domain WHOIS – DNS &amp; Security</h2>
-<p>DNS configuration and security-related WHOIS fields.</p>
+<p>DNS setup and the security-related stuff you'll find in WHOIS records.</p>
 <a download="" href="https://myipnow.net/data/whois-dns-security-fields.csv">Download CSV</a>
-<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th></tr></thead><tbody><tr><td>Name Servers</td><td>Authoritative DNS servers</td><td>DNS/WHOIS</td></tr>
-<tr><td>DNSSEC</td><td>DNSSEC enabled/disabled</td><td>DNS</td></tr>
-<tr><td>DS Record</td><td>DNSSEC delegation signer</td><td>DNSSEC</td></tr>
+<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th></tr></thead><tbody><tr><td>Name Servers</td><td>The DNS servers handling the domain</td><td>DNS/WHOIS</td></tr>
+<tr><td>DNSSEC</td><td>Whether DNSSEC is turned on or off</td><td>DNS</td></tr>
+<tr><td>DS Record</td><td>The DNSSEC delegation signer record</td><td>DNSSEC</td></tr>
 </tbody></table>
 <h2>IP WHOIS – Network &amp; Ownership</h2>
-<p>Fields describing IP address allocation, routing, and ownership.</p>
+<p>These fields tell you about IP address blocks, how traffic routes, and who actually owns them.</p>
 <a download="" href="https://myipnow.net/data/whois-ip-network-fields.csv">Download CSV</a>
-<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th><th>Notes</th></tr></thead><tbody><tr><td>IP Range</td><td>Allocated IP block</td><td>RIR</td><td>CIDR notation</td></tr>
-<tr><td>ASN</td><td>Autonomous System Number</td><td>RIR/BGP</td><td>Most reliable ownership field</td></tr>
-<tr><td>Organization</td><td>Owning organization</td><td>RIR</td><td>More reliable than ISP</td></tr>
-<tr><td>NetName</td><td>Registry network name</td><td>RIR</td><td>Internal label</td></tr>
-<tr><td>Country</td><td>Allocation country</td><td>RIR</td><td>Not physical location</td></tr>
+<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th><th>Notes</th></tr></thead><tbody><tr><td>IP Range</td><td>The block of IPs that were allocated</td><td>RIR</td><td>Shows in CIDR notation</td></tr>
+<tr><td>ASN</td><td>Autonomous System Number</td><td>RIR/BGP</td><td>Honestly, this is your most reliable ownership indicator</td></tr>
+<tr><td>Organization</td><td>The organization that owns the IPs</td><td>RIR</td><td>Better than just going by ISP</td></tr>
+<tr><td>NetName</td><td>What the registry calls the network</td><td>RIR</td><td>It's an internal label</td></tr>
+<tr><td>Country</td><td>Which country the IPs were assigned to</td><td>RIR</td><td>Not necessarily where the server actually sits</td></tr>
 </tbody></table>
 <h2>WHOIS Contacts &amp; Abuse</h2>
-<p>Contacts used for technical issues and abuse reporting.</p>
+<p>Where to reach out if there are technical problems or you need to report abuse.</p>
 <a download="" href="https://myipnow.net/data/whois-contacts-abuse-fields.csv">Download CSV</a>
-<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th></tr></thead><tbody><tr><td>Abuse Contact</td><td>Abuse reporting email</td><td>RIR/ICANN</td></tr>
-<tr><td>Registrar Abuse Email</td><td>Domain abuse contact</td><td>ICANN</td></tr>
-<tr><td>Tech Contact</td><td>Technical contact</td><td>WHOIS</td></tr>
-<tr><td>Admin Contact</td><td>Administrative contact</td><td>WHOIS</td></tr>
+<table class="ref-table"><thead><tr><th>Field</th><th>Description</th><th>Source</th></tr></thead><tbody><tr><td>Abuse Contact</td><td>Email for reporting abuse</td><td>RIR/ICANN</td></tr>
+<tr><td>Registrar Abuse Email</td><td>The domain registrar's abuse contact</td><td>ICANN</td></tr>
+<tr><td>Tech Contact</td><td>Who to contact for tech issues</td><td>WHOIS</td></tr>
+<tr><td>Admin Contact</td><td>Administrative contact for the domain</td><td>WHOIS</td></tr>
 </tbody></table>
 <h2>Related tools</h2>
 <ul>

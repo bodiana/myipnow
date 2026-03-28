@@ -167,15 +167,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 <article class="article-body">
 <div class="callout">
-<p><strong>Step 1:</strong> Identify the IP owner using the <a href="https://myipnow.net/whois-lookup/">MyIPNow WHOIS Lookup</a>.</p>
+<p><strong>Step 1:</strong> Figure out who owns the IP using the <a href="https://myipnow.net/whois-lookup/">MyIPNow WHOIS Lookup</a>.</p>
 </div>
 <h2>How to report IP-based abuse</h2>
 <p>
-Effective abuse reports must be sent to the correct authority and include verifiable technical evidence.
+Here's the thing—you need to send your abuse report to the right place and back it up with real technical evidence that actually proves something happened.
 </p>
 <a class="btn" download="" href="https://myipnow.net/data/ip-abuse-reporting-reference.csv">Download CSV</a>
 <h2>Downloadable templates</h2>
-<p>Use these copy-paste templates to file abuse reports faster. Replace placeholders like <code>[IP_ADDRESS]</code> and <code>[ABUSE_TYPE]</code>.</p>
+<p>Got some ready-made templates here so you can bang out abuse reports faster. Just swap in the details like <code>[IP_ADDRESS]</code> and <code>[ABUSE_TYPE]</code> where you see them.</p>
 <div class="actions">
 <a class="btn" download="" href="https://myipnow.net/data/ip-abuse-report-template.txt">Download TXT template</a>
 <a class="btn btn-secondary" download="" href="https://myipnow.net/data/ip-abuse-report-template.eml">Download EML template</a>
@@ -191,13 +191,13 @@ Effective abuse reports must be sent to the correct authority and include verifi
 </tr>
 </thead>
 <tbody>
-<tr><td><strong>Spam email</strong></td><td>Full email headers</td><td>Mail provider / DNSBL</td><td>Include full headers</td></tr>
-<tr><td><strong>Port scanning</strong></td><td>Firewall logs</td><td>Hosting provider</td><td>Timestamps required</td></tr>
-<tr><td><strong>Brute-force login</strong></td><td>Auth logs</td><td>ISP / hosting provider</td><td>Repeated attempts</td></tr>
-<tr><td><strong>DDoS traffic</strong></td><td>Traffic graphs / logs</td><td>Hosting provider</td><td>Volume evidence</td></tr>
-<tr><td><strong>Malware C2</strong></td><td>IDS alerts</td><td>Security org</td><td>High confidence</td></tr>
-<tr><td><strong>Web scraping abuse</strong></td><td>Web server logs</td><td>Hosting provider</td><td>Show request rate</td></tr>
-<tr><td><strong>Proxy/VPN abuse</strong></td><td>Reputation signals</td><td>Blacklist operator</td><td>False positives possible</td></tr>
+<tr><td><strong>Spam email</strong></td><td>Full email headers</td><td>Mail provider / DNSBL</td><td>Make sure you include the full headers</td></tr>
+<tr><td><strong>Port scanning</strong></td><td>Firewall logs</td><td>Hosting provider</td><td>Gotta have timestamps</td></tr>
+<tr><td><strong>Brute-force login</strong></td><td>Auth logs</td><td>ISP / hosting provider</td><td>Show multiple failed attempts</td></tr>
+<tr><td><strong>DDoS traffic</strong></td><td>Traffic graphs / logs</td><td>Hosting provider</td><td>Prove the traffic volume</td></tr>
+<tr><td><strong>Malware C2</strong></td><td>IDS alerts</td><td>Security org</td><td>Need solid confidence on this one</td></tr>
+<tr><td><strong>Web scraping abuse</strong></td><td>Web server logs</td><td>Hosting provider</td><td>Show how fast the requests are coming in</td></tr>
+<tr><td><strong>Proxy/VPN abuse</strong></td><td>Reputation signals</td><td>Blacklist operator</td><td>Watch out for false positives here</td></tr>
 </tbody>
 </table>
 </div>
@@ -209,9 +209,9 @@ Received: from unknown (203.0.113.45)
     Tue, 02 Jan 2026 10:14:32 +0000
 </pre>
 <p>
-1. Extract full email headers.<br/>
-2. Identify the IP owner using WHOIS.<br/>
-3. Send a concise report including headers and timestamps.
+1. Grab the full email headers.<br/>
+2. Look up who owns that IP using WHOIS.<br/>
+3. Send them a short, clear report with the headers and when it happened.
 </p>
 <pre>
 Subject: Spam originating from 203.0.113.45
@@ -226,19 +226,19 @@ Jan 02 09:33:21 sshd[4123]: Failed password for root from 198.51.100.72
 Jan 02 09:33:25 sshd[4123]: Failed password for root from 198.51.100.72
 </pre>
 <p>
-Include logs, frequency, and service targeted (e.g., SSH).
+Throw in your logs, how often it's happening, and what service they were going after (like SSH).
 </p>
 <h3>Example 3: Reporting false blacklist listings</h3>
 <p>
-1. Check blacklist status using the IP Blacklist tool.<br/>
-2. Identify the listing source.<br/>
-3. Follow the blacklist’s official delisting procedure.
+1. Check if your IP's on any blacklists using the IP Blacklist tool.<br/>
+2. Figure out which blacklist has you listed.<br/>
+3. Contact them and follow their delisting steps.
 </p>
 <h2>What NOT to do</h2>
 <ul>
-<li>Do not contact end users directly.</li>
-<li>Do not submit reports without evidence.</li>
-<li>Do not assume IP location equals physical location.</li>
+<li>Don't try to call the actual users involved.</li>
+<li>Don't submit a report if you've got no proof.</li>
+<li>Don't assume an IP's location is where the person physically is.</li>
 </ul>
 <h2>Related tools</h2>
 <ul>

@@ -6,42 +6,12 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://myipnow.net/10-5-50-1/</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://myipnow.net/172-16-1/</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://myipnow.net/192-168-10-0/</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://myipnow.net/192-168-100-0/</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://myipnow.net/24-subnet/</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://myipnow.net/29-subnet/</loc>
-    <lastmod>2026-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  
+  
+  
+  
+  
+  
   <url>
     <loc>https://myipnow.net/about/</loc>
     <lastmod>2026-01-16</lastmod>

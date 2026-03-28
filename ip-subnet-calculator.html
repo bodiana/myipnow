@@ -243,7 +243,7 @@ ACTUAL FIX (no hacks, no clipping):
 <div class="tool-grid">
 <div class="tool-card">
 <h2 class="tool-h2">IPv4 subnet calculator</h2>
-<p class="tool-muted">Enter an IPv4 address and CIDR prefix length to get the network range, mask, broadcast, and host counts.</p>
+<p class="tool-muted">Plug in an IPv4 address and CIDR prefix length, and you'll get back the network range, mask, broadcast, and how many hosts fit.</p>
 <div class="tool-row">
 <label class="tool-label" for="ipv4">IPv4 address</label>
 <input class="tool-input" id="ipv4" inputmode="numeric" placeholder="e.g., 192.168.1.10" value="192.168.1.10"/>
@@ -291,7 +291,7 @@ ACTUAL FIX (no hacks, no clipping):
 <div class="tool-grid">
 <div class="tool-card">
 <h2 class="tool-h2">IPv6 subnet calculator</h2>
-<p class="tool-muted">Enter an IPv6 address and prefix length to get the network prefix, first/last address in the subnet, and size. (IPv6 has no broadcast address.)</p>
+<p class="tool-muted">Throw in an IPv6 address and prefix length to see the network prefix, first and last address in the subnet, and the size. Fair warning: IPv6 doesn't have broadcast addresses.</p>
 <div class="tool-row">
 <label class="tool-label" for="ipv6">IPv6 address</label>
 <input class="tool-input" id="ipv6" placeholder="e.g., 2001:db8::1" value="2001:db8::1"/>
@@ -330,12 +330,12 @@ ACTUAL FIX (no hacks, no clipping):
 </div>
 <h2>How subnetting works (in plain English)</h2>
 <p>
-A subnet is just a way to group IP addresses. The <strong>CIDR prefix</strong> tells you how large that group is.
-For IPv4, <code>/24</code> means “the first 24 bits define the network,” leaving 8 bits for hosts (256 addresses).
-For IPv6, prefixes work the same way — the numbers are bigger and subnets are usually much larger (often <code>/64</code>).
+Here's the thing: a subnet is basically a way to split up IP addresses into groups. The <strong>CIDR prefix</strong> tells you how big that group is.
+With IPv4, <code>/24</code> means "the first 24 bits are the network part," and that leaves 8 bits for the actual hosts (256 addresses total).
+IPv6 works the same way — just with bigger numbers, and you're usually dealing with way larger subnets (often <code>/64</code>).
 </p>
 <h2>Common IPv4 subnet sizes</h2>
-<p>These are the CIDR sizes you’ll see most often in real networks. You can also download the table as a CSV.</p>
+<p>These are the CIDR blocks you'll run into most in real life. If you want, you can download this table as a CSV.</p>
 <a class="btn" download="" href="https://myipnow.net/data/common-subnet-sizes.csv">Download common subnet sizes (CSV)</a>
 <div class="table-wrap">
 <table class="ref-table">
@@ -366,7 +366,7 @@ For IPv6, prefixes work the same way — the numbers are bigger and subnets are 
 <p>A /24 contains 256 total IPv4 addresses. Typically 254 are usable hosts (network + broadcast are reserved).</p>
 </details>
 <details>
-<summary>What’s the difference between CIDR and subnet mask?</summary>
+<summary>What's the difference between CIDR and subnet mask?</summary>
 <p>They represent the same thing: how many bits belong to the network. CIDR uses a prefix length (like /24). A subnet mask uses dotted decimal (like 255.255.255.0).</p>
 </details>
 <details>

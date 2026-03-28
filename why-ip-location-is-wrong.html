@@ -164,12 +164,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 <article class="article-body">
 <div class="callout">
-<p><strong>Quick test:</strong> Check how your IP is located using the <a href="https://myipnow.net/">MyIPNow IP Lookup</a>.</p>
+<p><strong>Quick test:</strong> Want to see where your IP thinks you are? Try the <a href="https://myipnow.net/">MyIPNow IP Lookup</a>.</p>
 </div>
 <h2>Common reasons IP location is inaccurate</h2>
 <p>
-IP geolocation databases estimate location based on network data — not GPS.
-As a result, the displayed city or country can be significantly wrong.
+Here's the thing: IP geolocation databases make educated guesses based on network data — they're not using GPS or anything like that.
+So the city or country they show can be way off sometimes.
 </p>
 <a class="btn" download="" href="https://myipnow.net/data/ip-geolocation-inaccuracy-causes.csv">Download CSV</a>
 <div class="table-wrap">
@@ -180,30 +180,30 @@ As a result, the displayed city or country can be significantly wrong.
 </tr>
 </thead>
 <tbody>
-<tr><td><strong>Carrier-Grade NAT (CGNAT)</strong></td><td>Mobile users share IPs</td><td>Mobile ISP IP mapped to HQ</td><td>50–500 km</td><td>Common on 4G/5G</td></tr>
-<tr><td><strong>Cloud Hosting</strong></td><td>IP belongs to data center</td><td>AWS IP shown as US</td><td>Country-level</td><td>Not user location</td></tr>
-<tr><td><strong>VPN Services</strong></td><td>Traffic exits elsewhere</td><td>User in EU exits via US</td><td>Country-level</td><td>Intentional masking</td></tr>
-<tr><td><strong>Proxy Networks</strong></td><td>Shared exit nodes</td><td>Residential proxy pool</td><td>100–1000 km</td><td>High churn</td></tr>
-<tr><td><strong>Outdated GeoIP DB</strong></td><td>Stale assignments</td><td>Reallocated IP</td><td>City/region</td><td>Update lag</td></tr>
-<tr><td><strong>Anycast Routing</strong></td><td>Same IP in many places</td><td>CDN edge IP</td><td>City-level</td><td>Normal behavior</td></tr>
-<tr><td><strong>ISP Centralization</strong></td><td>Traffic routed centrally</td><td>Rural user → capital</td><td>50–200 km</td><td>Common in small countries</td></tr>
-<tr><td><strong>Corporate Networks</strong></td><td>Office egress points</td><td>Remote worker</td><td>City/region</td><td>VPN backhaul</td></tr>
-<tr><td><strong>Satellite Internet</strong></td><td>Ground station mapping</td><td>Starlink user</td><td>Country/region</td><td>Emerging issue</td></tr>
-<tr><td><strong>IPv6 Transition</strong></td><td>IPv4 mapped via tunnel</td><td>6to4 relay</td><td>Country</td><td>Legacy setups</td></tr>
+<tr><td><strong>Carrier-Grade NAT (CGNAT)</strong></td><td>Mobile users share the same IPs</td><td>Mobile ISP IP mapped to HQ</td><td>50–500 km</td><td>Super common on 4G/5G</td></tr>
+<tr><td><strong>Cloud Hosting</strong></td><td>The IP actually belongs to a data center</td><td>AWS IP shown as US</td><td>Country-level</td><td>Not the actual user location</td></tr>
+<tr><td><strong>VPN Services</strong></td><td>Your traffic comes out somewhere else</td><td>User in EU exits via US</td><td>Country-level</td><td>That's kind of the point</td></tr>
+<tr><td><strong>Proxy Networks</strong></td><td>People share the same exit nodes</td><td>Residential proxy pool</td><td>100–1000 km</td><td>Lots of turnover</td></tr>
+<tr><td><strong>Outdated GeoIP DB</strong></td><td>The database hasn't been updated</td><td>Reallocated IP</td><td>City/region</td><td>Updates take time to roll out</td></tr>
+<tr><td><strong>Anycast Routing</strong></td><td>One IP exists in multiple locations</td><td>CDN edge IP</td><td>City-level</td><td>It's how it's supposed to work</td></tr>
+<tr><td><strong>ISP Centralization</strong></td><td>Traffic gets routed through a central hub</td><td>Rural user → capital</td><td>50–200 km</td><td>Happens a lot in smaller countries</td></tr>
+<tr><td><strong>Corporate Networks</strong></td><td>Traffic leaves through the office</td><td>Remote worker</td><td>City/region</td><td>VPN backhaul</td></tr>
+<tr><td><strong>Satellite Internet</strong></td><td>They map it to the ground station</td><td>Starlink user</td><td>Country/region</td><td>Getting more common</td></tr>
+<tr><td><strong>IPv6 Transition</strong></td><td>IPv4 gets tunneled through IPv6</td><td>6to4 relay</td><td>Country</td><td>Old setups still around</td></tr>
 </tbody>
 </table>
 </div>
-<h2>What IP location is good for</h2>
+<h2>What IP location is actually useful for</h2>
 <ul>
-<li>Country-level content localization</li>
-<li>Fraud and abuse heuristics</li>
-<li>Rough regional analytics</li>
+<li>Showing different content based on country</li>
+<li>Spotting fraud and abuse patterns</li>
+<li>Getting a rough idea of where users are</li>
 </ul>
-<h2>What IP location should NOT be used for</h2>
+<h2>What you shouldn't use IP location for</h2>
 <ul>
-<li>Exact user location</li>
-<li>Legal residence determination</li>
-<li>Emergency services</li>
+<li>Pinpointing someone's exact location</li>
+<li>Figuring out where someone legally lives</li>
+<li>Emergency services or safety-critical stuff</li>
 </ul>
 <h2>Related tools</h2>
 <ul>

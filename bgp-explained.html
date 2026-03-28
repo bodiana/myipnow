@@ -169,13 +169,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <h2>What is BGP?</h2>
 <p>
-Border Gateway Protocol (BGP) is the routing protocol used to exchange reachability information
-between autonomous systems on the internet. It decides <em>which paths traffic takes</em> between networks.
+Border Gateway Protocol (BGP) is basically the routing protocol that lets different networks talk to each other and share information about what IP addresses they can reach. It's what decides <em>which paths your traffic takes</em> when it moves between networks.
 </p>
 <h2>Why BGP exists</h2>
 <p>
-The internet is made up of thousands of independent networks. BGP allows these networks
-to advertise which IP prefixes they can reach and to apply routing policies.
+Here's the thing—the internet is made up of thousands of independent networks. And they all need a way to tell each other "hey, we can reach this IP range" and set their own routing rules. That's what BGP does.
 </p>
 <h2>Core BGP attributes</h2>
 <a class="btn" download="" href="https://myipnow.net/data/bgp-attributes-reference.csv">Download CSV</a>
@@ -187,14 +185,14 @@ to advertise which IP prefixes they can reach and to apply routing policies.
 </tr>
 </thead>
 <tbody>
-<tr><td><strong>AS_PATH</strong></td><td>List of ASNs a route traverses</td><td>Prevents routing loops</td><td>Shorter paths preferred</td></tr>
-<tr><td><strong>NEXT_HOP</strong></td><td>Next router for a route</td><td>Determines forwarding</td><td>Neighbor IP</td></tr>
-<tr><td><strong>LOCAL_PREF</strong></td><td>Internal preference value</td><td>Controls outbound routing</td><td>Higher wins</td></tr>
-<tr><td><strong>MED</strong></td><td>Multi-exit discriminator</td><td>Inbound path hint</td><td>Lower wins</td></tr>
-<tr><td><strong>ORIGIN</strong></td><td>How route was learned</td><td>Trust indicator</td><td>IGP preferred</td></tr>
-<tr><td><strong>COMMUNITY</strong></td><td>Route tags</td><td>Policy control</td><td>No-export</td></tr>
-<tr><td><strong>PREFIX</strong></td><td>Advertised IP range</td><td>Traffic destination</td><td>203.0.113.0/24</td></tr>
-<tr><td><strong>PEERING</strong></td><td>BGP neighbor relationship</td><td>Route exchange</td><td>IXP peering</td></tr>
+<tr><td><strong>AS_PATH</strong></td><td>The list of ASNs that a route travels through</td><td>Stops routing loops from happening</td><td>Shorter paths get picked first</td></tr>
+<tr><td><strong>NEXT_HOP</strong></td><td>The next router in the path for a route</td><td>Tells the router where to send traffic</td><td>Neighbor IP</td></tr>
+<tr><td><strong>LOCAL_PREF</strong></td><td>A preference value used internally</td><td>Controls how traffic gets routed outbound</td><td>Higher number wins</td></tr>
+<tr><td><strong>MED</strong></td><td>Multi-exit discriminator</td><td>Hints at the best inbound path</td><td>Lower number wins</td></tr>
+<tr><td><strong>ORIGIN</strong></td><td>Shows how the route was originally learned</td><td>Helps you know if it's trustworthy</td><td>IGP is preferred</td></tr>
+<tr><td><strong>COMMUNITY</strong></td><td>Tags attached to routes</td><td>Lets you control routing policies</td><td>No-export</td></tr>
+<tr><td><strong>PREFIX</strong></td><td>The IP range being advertised</td><td>Where traffic is actually headed</td><td>203.0.113.0/24</td></tr>
+<tr><td><strong>PEERING</strong></td><td>The BGP neighbor relationship</td><td>How routes get exchanged</td><td>IXP peering</td></tr>
 </tbody>
 </table>
 </div>
@@ -208,14 +206,13 @@ to advertise which IP prefixes they can reach and to apply routing policies.
 </ol>
 <h2>BGP and security risks</h2>
 <p>
-Because BGP trusts announcements from neighbors, misconfigurations or malicious announcements
-can lead to traffic hijacking or blackholing.
+The problem is that BGP basically trusts what its neighbors tell it. So if someone misconfigures something or announces a route they shouldn't, traffic can get hijacked or just disappear into a black hole.
 </p>
 <h2>How BGP relates to IP reputation and abuse</h2>
 <ul>
-<li>Abusive traffic often originates from specific ASNs.</li>
-<li>Route leaks can expose traffic to unexpected networks.</li>
-<li>ASN-level filtering is common in security systems.</li>
+<li>Bad traffic usually comes from specific ASNs.</li>
+<li>Route leaks can accidentally send traffic through networks you don't want it in.</li>
+<li>Lots of security systems filter things at the ASN level.</li>
 </ul>
 <h2>Related tools</h2>
 <ul>

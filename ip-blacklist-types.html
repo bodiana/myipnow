@@ -164,12 +164,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 <article class="article-body">
 <div class="callout">
-<p><strong>Quick check:</strong> Test any IP against multiple lists using the <a href="https://myipnow.net/ip-blacklist/">MyIPNow IP Blacklist Check</a>.</p>
+<p><strong>Quick check:</strong> Want to test an IP against multiple lists? Use the <a href="https://myipnow.net/ip-blacklist/">MyIPNow IP Blacklist Check</a>.</p>
 </div>
 <h2>Types of IP blacklists</h2>
 <p>
-IP blacklists are used to identify and block abusive or risky IP addresses.
-Different blacklist types serve different purposes depending on the system using them.
+IP blacklists help identify and block IPs that are being used for abuse or pose a risk. Honestly, different blacklist types exist because different systems need different things.
 </p>
 <a class="btn" download="" href="https://myipnow.net/data/ip-blacklist-types.csv">Download CSV</a>
 <div class="table-wrap">
@@ -185,28 +184,28 @@ Different blacklist types serve different purposes depending on the system using
 </tr>
 </thead>
 <tbody>
-<tr><td><strong>DNSBL (DNS-based Blacklist)</strong></td><td>Email servers</td><td>Spam filtering</td><td>Real-time DNS queries</td><td>Spamhaus ZEN</td><td>Fast, email-focused</td></tr>
-<tr><td><strong>RBL (Realtime Blackhole List)</strong></td><td>Firewalls / mail</td><td>Block abusive IPs</td><td>Centralized lookup</td><td>SORBS</td><td>General abuse</td></tr>
-<tr><td><strong>Reputation Database</strong></td><td>Web apps / CDNs</td><td>Risk scoring</td><td>Behavior analysis</td><td>Google Safe Browsing</td><td>Score-based</td></tr>
-<tr><td><strong>Proxy/VPN List</strong></td><td>Fraud prevention</td><td>Detect anonymizers</td><td>Heuristic detection</td><td>IP2Proxy</td><td>False positives</td></tr>
-<tr><td><strong>Botnet List</strong></td><td>Security systems</td><td>Block malware C2</td><td>Threat intelligence</td><td>Abuse.ch</td><td>High confidence</td></tr>
-<tr><td><strong>Hosting Abuse List</strong></td><td>Web security</td><td>Block datacenters</td><td>ASN/IP grouping</td><td>Spamhaus DROP</td><td>Aggressive</td></tr>
-<tr><td><strong>Dynamic IP List</strong></td><td>Web apps</td><td>Identify residential IPs</td><td>ISP heuristics</td><td>Various</td><td>Contextual</td></tr>
-<tr><td><strong>TOR Exit Nodes</strong></td><td>Security / censorship</td><td>Block Tor traffic</td><td>Published node list</td><td>Tor Project</td><td>Public list</td></tr>
+<tr><td><strong>DNSBL (DNS-based Blacklist)</strong></td><td>Email servers</td><td>Spam filtering</td><td>Real-time DNS queries</td><td>Spamhaus ZEN</td><td>Fast, built for email</td></tr>
+<tr><td><strong>RBL (Realtime Blackhole List)</strong></td><td>Firewalls / mail</td><td>Block abusive IPs</td><td>Centralized lookup</td><td>SORBS</td><td>Catches general abuse</td></tr>
+<tr><td><strong>Reputation Database</strong></td><td>Web apps / CDNs</td><td>Risk scoring</td><td>Behavior analysis</td><td>Google Safe Browsing</td><td>Uses scores, not just yes/no</td></tr>
+<tr><td><strong>Proxy/VPN List</strong></td><td>Fraud prevention</td><td>Detect anonymizers</td><td>Heuristic detection</td><td>IP2Proxy</td><td>Can flag legit VPNs too</td></tr>
+<tr><td><strong>Botnet List</strong></td><td>Security systems</td><td>Block malware C2</td><td>Threat intelligence</td><td>Abuse.ch</td><td>Pretty accurate stuff</td></tr>
+<tr><td><strong>Hosting Abuse List</strong></td><td>Web security</td><td>Block datacenters</td><td>ASN/IP grouping</td><td>Spamhaus DROP</td><td>Can be strict</td></tr>
+<tr><td><strong>Dynamic IP List</strong></td><td>Web apps</td><td>Identify residential IPs</td><td>ISP heuristics</td><td>Various</td><td>Depends on context</td></tr>
+<tr><td><strong>TOR Exit Nodes</strong></td><td>Security / censorship</td><td>Block Tor traffic</td><td>Published node list</td><td>Tor Project</td><td>Publicly available list</td></tr>
 </tbody>
 </table>
 </div>
 <h2>How blacklists are used</h2>
 <ul>
-<li>Email servers rely heavily on DNSBLs to block spam.</li>
-<li>Web applications use reputation databases for fraud prevention.</li>
-<li>Firewalls may block entire IP ranges based on abuse history.</li>
+<li>Email servers lean on DNSBLs pretty heavily to stop spam.</li>
+<li>Web apps use reputation databases to catch fraud.</li>
+<li>Firewalls can block whole IP ranges if they've got a bad history.</li>
 </ul>
 <h2>Limitations &amp; false positives</h2>
 <ul>
-<li>Shared IPs may be listed due to other users' behavior.</li>
-<li>VPN and proxy detection is not always accurate.</li>
-<li>Blacklist removal policies vary by provider.</li>
+<li>Shared IPs might get blacklisted because of what someone else did on that IP.</li>
+<li>VPN and proxy detection isn't always spot-on.</li>
+<li>Getting removed from a blacklist depends on who runs it—policies are all over the place.</li>
 </ul>
 <h2>Related tools</h2>
 <ul>
