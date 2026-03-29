@@ -275,6 +275,7 @@ ACTUAL FIX (no hacks, no clipping):
 <div class="kv">
 <div class="kv-row"><span class="k">CIDR</span><span class="v"><span id="o4-cidr"></span><button aria-label="Copy CIDR" class="copy" data-copy="o4-cidr">Copy</button></span></div>
 <div class="kv-row"><span class="k">Subnet mask</span><span class="v"><span id="o4-mask"></span><button class="copy" data-copy="o4-mask">Copy</button></span></div>
+<div class="kv-row"><span class="k">Wildcard mask</span><span class="v"><span id="o4-wildcard"></span><button class="copy" data-copy="o4-wildcard">Copy</button></span></div>
 <div class="kv-row"><span class="k">Network</span><span class="v"><span id="o4-net"></span><button class="copy" data-copy="o4-net">Copy</button></span></div>
 <div class="kv-row"><span class="k">Broadcast</span><span class="v"><span id="o4-bc"></span><button class="copy" data-copy="o4-bc">Copy</button></span></div>
 <div class="kv-row"><span class="k">First usable</span><span class="v"><span id="o4-first"></span><button class="copy" data-copy="o4-first">Copy</button></span></div>
@@ -602,6 +603,7 @@ IPv6 works the same way — just with bigger numbers, and you're usually dealing
 
     setText('o4-cidr', `${fmtIPv4(ipn)}/${p}`);
     setText('o4-mask', fmtIPv4(mask));
+    setText('o4-wildcard', fmtIPv4((~mask) >>> 0));
     setText('o4-net', fmtIPv4(net));
     setText('o4-bc', fmtIPv4(bc));
     setText('o4-first', fmtIPv4(first));
