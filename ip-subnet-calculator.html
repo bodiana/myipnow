@@ -264,13 +264,6 @@ ACTUAL FIX (no hacks, no clipping):
 <input id="ipv4-slider" max="32" min="0" type="range" value="24"/>
 </div>
 </div>
-<div class="tool-row" style="margin-top:10px;">
-<label class="tool-label" for="o4-subnetbits">Subnet bits <span style="font-weight:400;color:#64748b;font-size:0.85rem;">(for allocation table)</span></label>
-<div style="display:flex;align-items:center;gap:10px;">
-  <input class="tool-input" id="o4-subnetbits" max="8" min="1" style="width:80px;" type="number" value="1"/>
-  <span id="o4-subnetinfo" style="font-size:0.85rem;color:#64748b;"></span>
-</div>
-</div>
 <div class="tool-actions">
 <button class="tool-btn" id="btn-ipv4-calc" type="button">Calculate</button>
 <button class="tool-btn tool-btn-ghost" id="btn-ipv4-reset" type="button">Reset</button>
@@ -294,7 +287,7 @@ ACTUAL FIX (no hacks, no clipping):
 <div class="explain" id="o4-explain"></div>
 
 <!-- ADVANCED SECTION -->
-<div id="o4-advanced" style="display:block; margin-top:16px;">
+<div id="o4-advanced" style="display:none; margin-top:16px;">
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;"/>
   <h3 style="margin:0 0 12px;font-size:1rem;">Binary Breakdown</h3>
   <div id="o4-binary" style="font-family:monospace;font-size:0.85rem;overflow-x:auto;"></div>
@@ -320,27 +313,7 @@ ACTUAL FIX (no hacks, no clipping):
     </table>
   </div>
 </div>
-<button id="o4-advbtn" style="margin-top:14px;background:none;border:1px solid #e2e8f0;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:0.9rem;font-weight:600;color:#4f46e5;display:inline-block;" onclick="toggleAdvanced()">⚙️ Hide Advanced</button>
-</div>
-</div>
-<!-- SUBNET ALLOCATION TABLE - full width below both cards -->
-<div style="margin-top:16px;background:#fff;border:1px solid rgba(148,163,184,.25);border-radius:14px;padding:14px;">
-  <h3 style="margin:0 0 10px;font-size:1rem;">Subnet Allocation</h3>
-  <div style="overflow-x:auto;">
-    <table id="o4-subnettable" style="width:100%;border-collapse:collapse;font-size:0.85rem;">
-      <thead>
-        <tr style="background:#f1f5f9;">
-          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Subnet</th>
-          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Network</th>
-          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">First IP</th>
-          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Last IP</th>
-          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Broadcast</th>
-          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Usable hosts</th>
-        </tr>
-      </thead>
-      <tbody id="o4-subnetbody"><tr><td colspan="6" style="padding:12px;text-align:center;color:#64748b;">Run a calculation to see subnet allocation.</td></tr></tbody>
-    </table>
-  </div>
+<button id="o4-advbtn" style="margin-top:14px;background:none;border:1px solid #e2e8f0;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:0.9rem;font-weight:600;color:#4f46e5;display:none;" onclick="toggleAdvanced()">⚙️ Show Advanced</button>
 </div>
 </div>
 </div>
@@ -667,11 +640,6 @@ IPv6 works the same way — just with bigger numbers, and you're usually dealing
     setText('o4-total', counts.total.toLocaleString());
     setText('o4-usable', counts.usable.toLocaleString());
     setText('o4-range', `${fmtIPv4(net)} – ${fmtIPv4(bc)}`);
-    setText('o4-decimal', ipn >>> 0);
-    setText('o4-hex', '0x' + (ipn >>> 0).toString(16).toUpperCase().padStart(8, '0'));
-    var firstOctet = (ipn >>> 24) & 0xFF;
-    var ipClass = firstOctet < 128 ? 'A' : firstOctet < 192 ? 'B' : firstOctet < 224 ? 'C' : firstOctet < 240 ? 'D (Multicast)' : 'E (Reserved)';
-    setText('o4-class', ipClass);
 
     const note = counts.note ? `<div class="pill">${counts.note}</div>` : "";
     document.getElementById('o4-explain').innerHTML =
