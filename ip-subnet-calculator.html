@@ -196,7 +196,7 @@ ACTUAL FIX (no hacks, no clipping):
 .kv-row.is-expanded .v {justify-content: space-between; text-align: left; width: 100%;}
 
 #o6-exp {display: block; flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; word-break: break-word;}</style>
-<title>IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow</title><meta content="Calculate subnets, CIDR notation, and network masks instantly. Plan IP addresses for enterprise networks with precision." name="description"/><meta content="IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow" property="og:title"/><meta content="Calculate subnets, CIDR notation, and network masks instantly. Plan IP addresses for enterprise networks with precision." property="og:description"/><meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/></head>
+<title>IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow</title><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." name="description"/><meta content="IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow" property="og:title"/><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." property="og:description"/><meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/></head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <div class="container">
@@ -230,8 +230,8 @@ ACTUAL FIX (no hacks, no clipping):
 </nav>
 </header>
 <header class="page-header">
-<h1>IP Subnet Calculator (IPv4 &amp; IPv6)</h1>
-<p>Calculate network range, subnet mask, host count, and usable addresses from an IP + CIDR. Clean results, copy buttons, and a quick table of common subnet sizes. <strong>Updated: January 2026</strong></p>
+<h1>IP Subnet Calculator — Advanced IPv4 &amp; IPv6 Tool</h1>
+<p>Calculate subnet mask, wildcard mask, network range, broadcast, and usable hosts from any IP + CIDR. Includes binary breakdown and subnet allocation table for network engineers. <strong>Updated: January 2026</strong></p>
 </header>
 <article class="article-body">
 <div class="tool-shell">
@@ -285,6 +285,35 @@ ACTUAL FIX (no hacks, no clipping):
 <div class="kv-row"><span class="k">IP range</span><span class="v"><span id="o4-range"></span><button class="copy" data-copy="o4-range">Copy</button></span></div>
 </div>
 <div class="explain" id="o4-explain"></div>
+
+<!-- ADVANCED SECTION -->
+<div id="o4-advanced" style="display:none; margin-top:16px;">
+  <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;"/>
+  <h3 style="margin:0 0 12px;font-size:1rem;">Binary Breakdown</h3>
+  <div id="o4-binary" style="font-family:monospace;font-size:0.85rem;overflow-x:auto;"></div>
+  <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;"/>
+  <h3 style="margin:0 0 8px;font-size:1rem;">Subnet Allocation</h3>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
+    <label style="font-weight:700;font-size:0.9rem;">Subnet bits:</label>
+    <input id="o4-subnetbits" type="number" min="1" max="8" value="1" style="width:60px;padding:6px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.9rem;"/>
+    <span id="o4-subnetinfo" style="font-size:0.85rem;color:#64748b;"></span>
+  </div>
+  <div style="overflow-x:auto;">
+    <table id="o4-subnettable" style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+      <thead>
+        <tr style="background:#f1f5f9;">
+          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Subnet</th>
+          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Network</th>
+          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">First IP</th>
+          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Last IP</th>
+          <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Broadcast</th>
+        </tr>
+      </thead>
+      <tbody id="o4-subnetbody"></tbody>
+    </table>
+  </div>
+</div>
+<button id="o4-advbtn" style="margin-top:14px;background:none;border:1px solid #e2e8f0;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:0.9rem;font-weight:600;color:#4f46e5;display:none;" onclick="toggleAdvanced()">⚙️ Show Advanced</button>
 </div>
 </div>
 </div>
@@ -617,6 +646,80 @@ IPv6 works the same way — just with bigger numbers, and you're usually dealing
       note + `<p>${explainIPv4(p, counts.total)}</p>` +
       `<p class="tool-muted">Tip: troubleshooting blocks or “bad reputation”? Check the <a href="https://myipnow.net/ip-blacklist/">IP blacklist</a> and run a <a href="https://myipnow.net/whois-lookup/">WHOIS lookup</a> to see if the whole range (or ASN) is involved.</p>`;
   }
+
+  // ===== ADVANCED FEATURES =====
+  var _advNet = 0, _advPrefix = 0;
+
+  function toggleAdvanced() {
+    var adv = document.getElementById('o4-advanced');
+    var btn = document.getElementById('o4-advbtn');
+    if (adv.style.display === 'none') {
+      adv.style.display = 'block';
+      btn.textContent = '⚙️ Hide Advanced';
+      renderSubnetTable();
+    } else {
+      adv.style.display = 'none';
+      btn.textContent = '⚙️ Show Advanced';
+    }
+  }
+
+  function renderBinary(ipn, mask, prefix) {
+    var ipBits = ipn.toString(2).padStart(32, '0');
+    var maskBits = mask.toString(2).padStart(32, '0');
+    var rows = ['<table style="border-collapse:collapse;width:100%;">'];
+    rows.push('<tr><td style="padding:2px 6px;font-weight:700;white-space:nowrap;">IP</td><td>');
+    var ipCells = '';
+    for (var i = 0; i < 32; i++) {
+      var isNet = i < prefix;
+      var bg = isNet ? '#dbeafe' : '#fef3c7';
+      var border = (i === 7 || i === 15 || i === 23) ? 'border-right:2px solid #94a3b8;' : '';
+      ipCells += '<span style="display:inline-block;width:18px;text-align:center;background:' + bg + ';' + border + 'border:1px solid #e2e8f0;margin:1px;">' + ipBits[i] + '</span>';
+    }
+    rows.push(ipCells + '</td></tr>');
+    rows.push('<tr><td style="padding:2px 6px;font-weight:700;white-space:nowrap;">Mask</td><td>');
+    var maskCells = '';
+    for (var j = 0; j < 32; j++) {
+      var border2 = (j === 7 || j === 15 || j === 23) ? 'border-right:2px solid #94a3b8;' : '';
+      maskCells += '<span style="display:inline-block;width:18px;text-align:center;background:' + (maskBits[j]==='1'?'#dbeafe':'#fef3c7') + ';' + border2 + 'border:1px solid #e2e8f0;margin:1px;">' + maskBits[j] + '</span>';
+    }
+    rows.push(maskCells + '</td></tr>');
+    rows.push('<tr><td></td><td><span style="display:inline-block;background:#dbeafe;padding:2px 6px;border-radius:4px;font-size:0.8rem;margin-top:4px;">Network bits (' + prefix + ')</span>&nbsp;<span style="display:inline-block;background:#fef3c7;padding:2px 6px;border-radius:4px;font-size:0.8rem;margin-top:4px;">Host bits (' + (32-prefix) + ')</span></td></tr>');
+    rows.push('</table>');
+    document.getElementById('o4-binary').innerHTML = rows.join('');
+  }
+
+  function renderSubnetTable() {
+    var sbInput = document.getElementById('o4-subnetbits');
+    var sb = Math.max(1, Math.min(8, parseInt(sbInput.value) || 1));
+    var newPrefix = _advPrefix + sb;
+    if (newPrefix > 32) { newPrefix = 32; sb = 32 - _advPrefix; }
+    var numSubnets = Math.pow(2, sb);
+    var hostsPerSubnet = Math.pow(2, 32 - newPrefix);
+    document.getElementById('o4-subnetinfo').textContent =
+      numSubnets + ' subnets × ' + Math.max(0, hostsPerSubnet - 2) + ' usable hosts each';
+    var tbody = document.getElementById('o4-subnetbody');
+    var rows = '';
+    var limit = Math.min(numSubnets, 256);
+    for (var i = 0; i < limit; i++) {
+      var subNet = (_advNet + i * hostsPerSubnet) >>> 0;
+      var subBc = (subNet + hostsPerSubnet - 1) >>> 0;
+      var subFirst = newPrefix <= 30 ? (subNet + 1) >>> 0 : subNet;
+      var subLast = newPrefix <= 30 ? (subBc - 1) >>> 0 : subBc;
+      rows += '<tr style="' + (i%2?'background:#f8fafc':'') + '">' +
+        '<td style="padding:6px 8px;border:1px solid #e2e8f0;">' + fmtIPv4(subNet) + '/' + newPrefix + '</td>' +
+        '<td style="padding:6px 8px;border:1px solid #e2e8f0;">' + fmtIPv4(subNet) + '</td>' +
+        '<td style="padding:6px 8px;border:1px solid #e2e8f0;">' + fmtIPv4(subFirst) + '</td>' +
+        '<td style="padding:6px 8px;border:1px solid #e2e8f0;">' + fmtIPv4(subLast) + '</td>' +
+        '<td style="padding:6px 8px;border:1px solid #e2e8f0;">' + fmtIPv4(subBc) + '</td>' +
+        '</tr>';
+    }
+    if (numSubnets > 256) rows += '<tr><td colspan="5" style="padding:8px;text-align:center;color:#64748b;">Showing first 256 of ' + numSubnets + ' subnets</td></tr>';
+    tbody.innerHTML = rows;
+  }
+
+  document.getElementById('o4-subnetbits').addEventListener('input', function() {
+    if (document.getElementById('o4-advanced').style.display !== 'none') renderSubnetTable();
+  });
 
   function calcIPv6() {
     const hextets = expandIPv6(ipv6.value);
