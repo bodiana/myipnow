@@ -286,7 +286,10 @@ ACTUAL FIX (no hacks, no clipping):
   </div>
   <!-- Full width subnet table -->
   <div class="tool-card">
-    <h3 class="tool-h3">All Subnets</h3>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <h3 class="tool-h3" style="margin:0;">All Subnets</h3>
+      <button onclick="advDownloadCSV()" style="padding:6px 14px;border:1px solid #e2e8f0;border-radius:8px;background:#0f172a;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;">⬇ Download CSV</button>
+    </div>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
         <thead>
@@ -371,7 +374,10 @@ ACTUAL FIX (no hacks, no clipping):
 
   <!-- All Subnets card -->
   <div class="tool-card">
-    <h3 class="tool-h3">All Subnets</h3>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <h3 class="tool-h3" style="margin:0;">All Subnets</h3>
+      <button onclick="advDownloadCSV()" style="padding:6px 14px;border:1px solid #e2e8f0;border-radius:8px;background:#0f172a;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;">⬇ Download CSV</button>
+    </div>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
         <thead>
@@ -518,36 +524,40 @@ Here's the thing: a subnet is basically a way to split up IP addresses into grou
 With IPv4, <code>/24</code> means "the first 24 bits are the network part," and that leaves 8 bits for the actual hosts (256 addresses total).
 IPv6 works the same way — just with bigger numbers, and you're usually dealing with way larger subnets (often <code>/64</code>).
 </p>
-<h2>Common IPv4 subnet sizes</h2>
-<p>These are the CIDR blocks you'll run into most in real life. If you want, you can download this table as a CSV.</p>
-<a class="btn" download="" href="https://myipnow.net/data/common-subnet-sizes.csv">Download common subnet sizes (CSV)</a>
-<div class="table-wrap">
-<table class="ref-table">
-<thead>
-<tr><th>CIDR</th><th>Subnet Mask</th><th>Wildcard Mask</th><th>Total IPs</th><th>Usable hosts</th><th>Typical use</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>/32</strong></td><td>255.255.255.255</td><td>0.0.0.0</td><td>1</td><td>1</td><td>Single host / loopback</td></tr>
-<tr><td><strong>/31</strong></td><td>255.255.255.254</td><td>0.0.0.1</td><td>2</td><td>2</td><td>Point-to-point (RFC 3021)</td></tr>
-<tr><td><strong>/30</strong></td><td>255.255.255.252</td><td>0.0.0.3</td><td>4</td><td>2</td><td>Point-to-point links</td></tr>
-<tr><td><strong>/29</strong></td><td>255.255.255.248</td><td>0.0.0.7</td><td>8</td><td>6</td><td>Small network segment</td></tr>
-<tr><td><strong>/28</strong></td><td>255.255.255.240</td><td>0.0.0.15</td><td>16</td><td>14</td><td>Small office / VLAN</td></tr>
-<tr><td><strong>/27</strong></td><td>255.255.255.224</td><td>0.0.0.31</td><td>32</td><td>30</td><td>Small office / VLAN</td></tr>
-<tr><td><strong>/26</strong></td><td>255.255.255.192</td><td>0.0.0.63</td><td>64</td><td>62</td><td>Office / lab</td></tr>
-<tr><td><strong>/25</strong></td><td>255.255.255.128</td><td>0.0.0.127</td><td>128</td><td>126</td><td>Office / campus</td></tr>
-<tr><td><strong>/24</strong></td><td>255.255.255.0</td><td>0.0.0.255</td><td>256</td><td>254</td><td>Typical LAN</td></tr>
-<tr><td><strong>/23</strong></td><td>255.255.254.0</td><td>0.0.1.255</td><td>512</td><td>510</td><td>Larger LAN</td></tr>
-<tr><td><strong>/22</strong></td><td>255.255.252.0</td><td>0.0.3.255</td><td>1,024</td><td>1,022</td><td>Large office / VLAN</td></tr>
-<tr><td><strong>/21</strong></td><td>255.255.248.0</td><td>0.0.7.255</td><td>2,048</td><td>2,046</td><td>Campus / enterprise</td></tr>
-<tr><td><strong>/20</strong></td><td>255.255.240.0</td><td>0.0.15.255</td><td>4,096</td><td>4,094</td><td>Enterprise segment</td></tr>
-<tr><td><strong>/19</strong></td><td>255.255.224.0</td><td>0.0.31.255</td><td>8,192</td><td>8,190</td><td>Large enterprise</td></tr>
-<tr><td><strong>/18</strong></td><td>255.255.192.0</td><td>0.0.63.255</td><td>16,384</td><td>16,382</td><td>Large enterprise</td></tr>
-<tr><td><strong>/17</strong></td><td>255.255.128.0</td><td>0.0.127.255</td><td>32,768</td><td>32,766</td><td>Large enterprise</td></tr>
-<tr><td><strong>/16</strong></td><td>255.255.0.0</td><td>0.0.255.255</td><td>65,536</td><td>65,534</td><td>Very large network</td></tr>
-<tr><td><strong>/8</strong></td><td>255.0.0.0</td><td>0.255.255.255</td><td>16,777,216</td><td>16,777,214</td><td>Class A / ISP block</td></tr>
-</tbody>
-</table>
-</div>
+<h2>CIDR Subnet Sizes Explained</h2>
+<p>
+CIDR (Classless Inter-Domain Routing) notation expresses a network as an IP address followed by a prefix length — for example, <code>192.168.1.0/24</code>. The prefix length tells you how many bits are reserved for the network, and the remaining bits are available for hosts. The formula is simple: a <strong>/24</strong> has 32 − 24 = 8 host bits, giving 2<sup>8</sup> = 256 total addresses and 254 usable hosts (network and broadcast are reserved).
+</p>
+
+<h3>How many IPs are in a /24, /16, or /8?</h3>
+<p>
+A <strong>/24</strong> contains 256 total addresses (254 usable) and is the most common subnet in home and office networks — it maps directly to the familiar <code>255.255.255.0</code> subnet mask. A <strong>/16</strong> contains 65,536 addresses and is often used inside large enterprises or cloud VPCs where room to grow matters. A <strong>/8</strong> holds over 16 million addresses and is reserved for large ISPs or legacy Class A allocations like <code>10.0.0.0/8</code> used in private networks.
+</p>
+
+<h3>Small subnets: /30, /29, /28</h3>
+<p>
+When you only need a handful of addresses, small prefixes are the right tool. A <strong>/30</strong> gives exactly 4 addresses (2 usable) and is the classic choice for point-to-point router links — just enough for each end. A <strong>/29</strong> offers 8 addresses (6 usable), useful for small server clusters or DMZ segments. A <strong>/28</strong> with 16 addresses (14 usable) works well for small VLANs, lab environments, or cloud subnets where you want to keep the blast radius small.
+</p>
+
+<h3>Special cases: /32 and /31</h3>
+<p>
+A <strong>/32</strong> represents a single host — no network, no broadcast, just one IP. It is widely used in routing to advertise specific host routes, in firewall rules to target one machine, and in loopback interface configurations. A <strong>/31</strong> is a two-address subnet defined in RFC 3021 for point-to-point links: both addresses are usable, eliminating the waste of a /30. Modern routers and cloud providers fully support /31 links.
+</p>
+
+<h3>Subnet mask vs CIDR: what is the difference?</h3>
+<p>
+Subnet masks and CIDR prefix lengths represent the same concept in two different formats. The mask <code>255.255.255.0</code> is identical to <code>/24</code> — both mean the first 24 bits identify the network. CIDR notation is more compact and is preferred in routing protocols, cloud consoles, and firewall rules, while subnet masks still appear in older equipment and Windows network settings. This calculator supports both: enter any IP and prefix length and it will show you the corresponding subnet mask, wildcard mask, and full network range.
+</p>
+
+<h3>Wildcard masks and how they differ from subnet masks</h3>
+<p>
+A wildcard mask is the bitwise inverse of a subnet mask. Where a subnet mask uses 1s to mark network bits, a wildcard mask uses 0s — and 1s mark the bits that are "don't care." For <code>/24</code>, the subnet mask is <code>255.255.255.0</code> and the wildcard is <code>0.0.0.255</code>. Wildcard masks are used heavily in Cisco ACLs and OSPF area configurations to match ranges of addresses flexibly. Use the calculator above to instantly see the wildcard mask for any prefix length.
+</p>
+
+<h3>Choosing the right subnet size</h3>
+<p>
+For home and small office networks, a <strong>/24</strong> is almost always the right answer — it is simple, well-supported, and gives you 254 hosts. For cloud environments, start with the largest subnet you can justify (often a <strong>/16</strong> for a VPC) and carve it into smaller subnets per availability zone or tier. For point-to-point links between routers, use <strong>/31</strong> to save addresses. For loopbacks and host routes, use <strong>/32</strong>. When designing enterprise networks, plan for growth: a department that needs 50 hosts today should get a <strong>/25</strong> (126 hosts) rather than a /26, so you have room to expand without renumbering.
+</p>
 <h2>FAQ</h2>
 <div class="faq">
 <details>
@@ -1168,6 +1178,7 @@ function getMask(p) {
 }
 
 window.setMode = function(mode) {
+  location.hash = mode === 'advanced' ? 'advanced' : '';
   var simple = document.getElementById('panel-ipv4').parentElement;
   var advDiv = document.getElementById('advanced-mode');
   var tabs = document.querySelector('.tool-tabs');
@@ -1414,6 +1425,7 @@ window.addEventListener('load', function() {
 </script>
 <script id="mode-switcher">
 window.setMode = function(mode) {
+  location.hash = mode === 'advanced' ? 'advanced' : '';
   var tabs = document.querySelector('.tool-tabs');
   var panels = document.querySelectorAll('.tool-panel');
   var advDiv = document.getElementById('advanced-mode');
@@ -1575,6 +1587,66 @@ function advRenderSubnets(net, prefix, sb, showAll) {
   }
   tbody.innerHTML = rows;
 }
+
+function advDownloadCSV() {
+  var ipn = advParseIP(document.getElementById('adv-ip').value);
+  var p = parseInt(document.getElementById('adv-maskbits').value);
+  var sb = parseInt(document.getElementById('adv-subnetbits').value);
+  if (ipn===null||isNaN(p)||isNaN(sb)) return;
+  var mask = advGetMask(p);
+  var net = (ipn & mask) >>> 0;
+  var effectiveSb = Math.min(sb, 32-p);
+  var newPrefix = p + effectiveSb;
+  var hostsPerSubnet = Math.pow(2, 32-newPrefix);
+  var numSubnets = Math.pow(2, sb);
+  var limit = Math.min(numSubnets, 65536);
+  var rows = ['Subnet,Network,First IP,Last IP,Broadcast'];
+  for (var i=0;i<limit;i++) {
+    var sn = (net + i*hostsPerSubnet) >>> 0;
+    var bc = (sn + hostsPerSubnet - 1) >>> 0;
+    var first = newPrefix<=30 ? (sn+1)>>>0 : sn;
+    var last  = newPrefix<=30 ? (bc-1)>>>0 : bc;
+    rows.push(advFmtIP(sn)+'/'+newPrefix+','+advFmtIP(sn)+','+advFmtIP(first)+','+advFmtIP(last)+','+advFmtIP(bc));
+  }
+  var csv = rows.join('\n');
+  var blob = new Blob([csv], {type:'text/csv'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'subnets-'+advFmtIP(net)+'_'+newPrefix+'bit_'+numSubnets+'nets.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function advDownloadCSV() {
+  var ipn = advParseIP(document.getElementById('adv-ip').value);
+  var p = parseInt(document.getElementById('adv-maskbits').value);
+  var sb = parseInt(document.getElementById('adv-subnetbits').value);
+  if (ipn===null||isNaN(p)||isNaN(sb)) return;
+  var mask = advGetMask(p);
+  var net = (ipn & mask) >>> 0;
+  var effectiveSb = Math.min(sb, 32-p);
+  var newPrefix = p + effectiveSb;
+  var hostsPerSubnet = Math.pow(2, 32-newPrefix);
+  var numSubnets = Math.pow(2, sb);
+  var limit = Math.min(numSubnets, 65536);
+  var rows = ['Subnet,Network,First IP,Last IP,Broadcast'];
+  for (var i=0;i<limit;i++) {
+    var sn = (net + i*hostsPerSubnet) >>> 0;
+    var bc = (sn + hostsPerSubnet - 1) >>> 0;
+    var first = newPrefix<=30 ? (sn+1)>>>0 : sn;
+    var last  = newPrefix<=30 ? (bc-1)>>>0 : bc;
+    rows.push(advFmtIP(sn)+'/'+newPrefix+','+advFmtIP(sn)+','+advFmtIP(first)+','+advFmtIP(last)+','+advFmtIP(bc));
+  }
+  var csv = rows.join('\n');
+  var blob = new Blob([csv], {type:'text/csv'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'subnets-'+advFmtIP(net)+'_'+newPrefix+'bit_'+numSubnets+'nets.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
 function advShowAll() {
   var ipn = advParseIP(document.getElementById('adv-ip').value);
   var p = parseInt(document.getElementById('adv-maskbits').value);
@@ -1604,6 +1676,9 @@ function updateAdvanced() {
 window.addEventListener('load', function() {
   document.getElementById('adv-ip').addEventListener('input', updateAdvanced);
   updateAdvanced();
+  if (location.hash === '#advanced') {
+    setMode('advanced');
+  }
 });
 </script>
 
