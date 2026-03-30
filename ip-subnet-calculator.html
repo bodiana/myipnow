@@ -1550,7 +1550,8 @@ function advCalcFromSubnets() {
   document.getElementById('adv-subnetbits-sl').value = sb;
   updateAdvanced();
 }
-function advRenderBinary(ipn, prefix) {
+function advRenderBinary(ipn, prefix, sb) {
+  sb = sb || 0;
   var ipBits = ipn.toString(2).padStart(32,'0');
   var octets = [(ipn>>>24)&255,(ipn>>>16)&255,(ipn>>>8)&255,ipn&255];
   var hexOctets = octets.map(function(o){ return o.toString(16).toUpperCase().padStart(2,'0'); });
@@ -1595,11 +1596,13 @@ function advRenderBinary(ipn, prefix) {
     html += '<td style="text-align:center;padding:3px 1px;font-size:0.7rem;color:#94a3b8;border:1px solid #e2e8f0;'+br+'">'+(i+1)+'</td>';
   }
   html += '</tr>';
-
-  // Bit Value - green for network, yellow for host
+  // Bit Value - green=network, blue=subnet, yellow=host
   html += '<tr>'+lbl('Bit Value');
   for (var i=0;i<32;i++) {
-    var bg = i < prefix ? '#86efac' : '#fef08a';
+    var bg;
+    if (i < prefix) bg = '#86efac';
+    else if (i < prefix + sb) bg = '#93c5fd';
+    else bg = '#fef08a';
     var br = (i===7||i===15||i===23) ? 'border-right:2px solid #94a3b8;' : '';
     html += '<td style="text-align:center;padding:3px 1px;background:'+bg+';font-weight:700;border:1px solid #e2e8f0;'+br+'">'+ipBits[i]+'</td>';
   }
@@ -1608,7 +1611,8 @@ function advRenderBinary(ipn, prefix) {
   html += '</tbody></table>';
   html += '<div style="margin-top:8px;">';
   html += '<span style="display:inline-block;background:#86efac;padding:2px 10px;border-radius:4px;font-size:0.8rem;margin-right:6px;">Network bits ('+prefix+')</span>';
-  html += '<span style="display:inline-block;background:#fef08a;padding:2px 10px;border-radius:4px;font-size:0.8rem;">Host bits ('+(32-prefix)+')</span>';
+  html += '<span style="display:inline-block;background:#93c5fd;padding:2px 10px;border-radius:4px;font-size:0.8rem;margin-right:6px;">Subnet bits ('+sb+')</span>';
+  html += '<span style="display:inline-block;background:#fef08a;padding:2px 10px;border-radius:4px;font-size:0.8rem;">Host bits ('+(32-prefix-sb)+')</span>';
   html += '</div>';
   document.getElementById('adv-binary').innerHTML = html;
 }
@@ -1725,7 +1729,7 @@ function updateAdvanced() {
   document.getElementById('adv-networkmask').textContent = advFmtIP(mask);
   document.getElementById('adv-numsubnets').value = numSubnets;
   document.getElementById('adv-addrpersubnet').textContent = hostsPerSubnet.toLocaleString();
-  advRenderBinary(ipn, p);
+  advRenderBinary(ipn, p, sb);
   advRenderSubnets(net, p, sb, false);
 }
 window.addEventListener('load', function() {
