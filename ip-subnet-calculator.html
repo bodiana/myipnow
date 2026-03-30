@@ -199,22 +199,7 @@ ACTUAL FIX (no hacks, no clipping):
 <title>IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow</title><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." name="description"/><meta content="IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow" property="og:title"/><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." property="og:description"/><meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/><style id="mobile-fixes">
 @media (max-width: 680px) {
 
-  /* Advanced mode inputs - stack label above control */
-  #advanced-mode .tool-card > div > div[style*="display:flex"] {
-    flex-wrap: wrap;
-  }
-  #advanced-mode div[style*="width:160px"] {
-    width: 100% !important;
-    margin-bottom: 4px;
-  }
-
-  /* Sliders in advanced mode - full width */
-  #adv-maskbits-sl, #adv-subnetbits-sl {
-    width: 100% !important;
-    margin-top: 6px;
-  }
-
-  /* Binary breakdown - scroll horizontally, don't wrap */
+  /* Binary breakdown - scroll horizontally */
   #adv-binary {
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch;
@@ -229,19 +214,19 @@ ACTUAL FIX (no hacks, no clipping):
     grid-template-columns: 1fr !important;
   }
 
-  /* Slider row on simple calc - stack */
-  .tool-row-split {
-    grid-template-columns: 1fr !important;
+  /* Advanced mode: hide sliders on mobile - +/- buttons + number input is enough */
+  #adv-maskbits-sl,
+  #adv-subnetbits-sl {
+    display: none !important;
   }
 
-  /* Advanced mode number+slider rows - wrap slider to next line */
-  #advanced-mode div[style*="display:flex;align-items:center;gap:6px"] {
-    flex-wrap: wrap;
-  }
-  #advanced-mode input[type="range"] {
+  /* Advanced mode: label full width, stacked above control */
+  #advanced-mode div[style*="width:160px"] {
     width: 100% !important;
-    flex: none !important;
-    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  #advanced-mode > div > div.tool-card > div > div {
+    flex-wrap: wrap;
   }
 }
 </style>
