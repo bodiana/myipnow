@@ -196,7 +196,11 @@ ACTUAL FIX (no hacks, no clipping):
 .kv-row.is-expanded .v {justify-content: space-between; text-align: left; width: 100%;}
 
 #o6-exp {display: block; flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; word-break: break-word;}</style>
-<title>IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow</title><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." name="description"/><meta content="IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow" property="og:title"/><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." property="og:description"/><meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/></head>
+<title>IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow</title><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." name="description"/><meta content="IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow" property="og:title"/><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." property="og:description"/><meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/><style id="subnet-layout-fix">
+#panel-ipv4 .tool-grid { grid-template-columns: 1fr !important; }
+#panel-ipv6 .tool-grid { grid-template-columns: 1fr !important; }
+</style>
+</head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <div class="container">
@@ -242,7 +246,7 @@ ACTUAL FIX (no hacks, no clipping):
 
 <!-- ADVANCED MODE -->
 <div id="advanced-mode" style="display:none;">
-  <div style="display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:14px;">
+  <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:14px;">
     <!-- Left: inputs -->
     <div class="tool-card">
       <h3 class="tool-h3">Address Block</h3>
@@ -251,8 +255,13 @@ ACTUAL FIX (no hacks, no clipping):
         <input class="tool-input" id="adv-ip" value="192.168.1.1" placeholder="e.g. 192.168.1.1"/>
       </div>
       <div class="tool-row">
-        <label class="tool-label">Mask bits: <span id="adv-maskbits-label">24</span></label>
-        <input type="range" min="0" max="32" value="24" id="adv-maskbits" style="width:100%;"/>
+        <label class="tool-label">Mask bits</label>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,-1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">-</button>
+          <input type="number" min="0" max="32" value="24" id="adv-maskbits" style="width:60px;padding:8px;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:1rem;text-align:center;" oninput="advSync('adv-maskbits','adv-maskbits-sl');updateAdvanced();"/>
+          <button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">+</button>
+          <input type="range" min="0" max="32" value="24" id="adv-maskbits-sl" style="flex:1;" oninput="advSync('adv-maskbits-sl','adv-maskbits');updateAdvanced();"/>
+        </div>
       </div>
       <div class="tool-row">
         <label class="tool-label">Network Mask</label>
@@ -261,13 +270,22 @@ ACTUAL FIX (no hacks, no clipping):
       <hr style="border:none;border-top:1px solid #e2e8f0;margin:12px 0;"/>
       <div style="font-weight:700;margin-bottom:8px;">Subnet Allocation</div>
       <div class="tool-row">
-        <label class="tool-label">Subnet bits: <span id="adv-subnetbits-label">1</span></label>
-        <input type="range" min="1" max="16" value="1" id="adv-subnetbits" style="width:100%;"/>
+        <label class="tool-label">Subnet bits</label>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">-</button>
+          <input type="number" min="1" max="23" value="1" id="adv-subnetbits" style="width:60px;padding:8px;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:1rem;text-align:center;" oninput="advSync('adv-subnetbits','adv-subnetbits-sl');updateAdvanced();"/>
+          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">+</button>
+          <input type="range" min="1" max="23" value="1" id="adv-subnetbits-sl" style="flex:1;" oninput="advSync('adv-subnetbits-sl','adv-subnetbits');updateAdvanced();"/>
+        </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
         <div>
           <div class="tool-label">Number of subnets</div>
-          <div id="adv-numsubnets" style="padding:10px 12px;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:12px;font-weight:700;">2</div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">-</button>
+            <input type="number" id="adv-numsubnets" value="2" style="width:60px;padding:8px;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:1rem;text-align:center;" oninput="advCalcFromSubnets()"/>
+            <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">+</button>
+          </div>
         </div>
         <div>
           <div class="tool-label">Addresses per subnet</div>
@@ -1186,6 +1204,21 @@ function renderSubnetsAdv(net, prefix, sb) {
   tbody.innerHTML = rows;
 }
 
+function advSync(fromId, toId) {
+  var from = document.getElementById(fromId);
+  var to = document.getElementById(toId);
+  if (from && to) to.value = from.value;
+}
+function advAdj(numId, slId, min, max, delta) {
+  var el = document.getElementById(numId);
+  var val = (parseInt(el.value) || 0) + delta;
+  if (val < min) val = min;
+  if (val > max) val = max;
+  el.value = val;
+  var sl = document.getElementById(slId);
+  if (sl) sl.value = val;
+  updateAdvanced();
+}
 function updateAdvanced() {
   var ipn = parseIP(document.getElementById('adv-ip').value);
   var p = parseInt(document.getElementById('adv-maskbits').value);
@@ -1198,10 +1231,8 @@ function updateAdvanced() {
   var numSubnets = Math.pow(2, newPrefix - p);
   var hostsPerSubnet = Math.max(0, Math.pow(2, 32 - newPrefix) - 2);
 
-  document.getElementById('adv-maskbits-label').textContent = p;
-  document.getElementById('adv-subnetbits-label').textContent = sb;
   document.getElementById('adv-networkmask').textContent = fmtIP(mask);
-  document.getElementById('adv-numsubnets').textContent = numSubnets.toLocaleString();
+  document.getElementById('adv-numsubnets').value = numSubnets;
   document.getElementById('adv-addrpersubnet').textContent = hostsPerSubnet.toLocaleString();
 
   renderBinaryAdv(ipn, mask, p);
