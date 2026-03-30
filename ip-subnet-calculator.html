@@ -1111,31 +1111,45 @@ window.setMode = function(mode) {
 
 function renderBinaryAdv(ipn, mask, prefix) {
   var ipBits = ipn.toString(2).padStart(32, '0');
-  var maskBits = mask.toString(2).padStart(32, '0');
-  var html = '<table style="border-collapse:collapse;width:100%;font-size:0.78rem;">';
+  var octets = [(ipn>>>24)&255,(ipn>>>16)&255,(ipn>>>8)&255,ipn&255];
+  var hexOctets = octets.map(function(o){ return o.toString(16).toUpperCase().padStart(2,'0'); });
+  var html = '<table style="border-collapse:collapse;font-size:0.78rem;">';
 
-  // Bit numbers row
-  html += '<tr><td style="padding:2px 4px;font-weight:700;white-space:nowrap;"></td><td>';
-  for (var i = 1; i <= 32; i++) {
-    var border = (i === 8 || i === 16 || i === 24) ? 'border-right:2px solid #94a3b8;' : '';
-    html += '<span style="display:inline-block;width:16px;text-align:center;font-size:0.65rem;color:#94a3b8;' + border + '">' + i + '</span>';
+  // IP Address row
+  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">IP Address</td><td style="white-space:nowrap;">';
+  for (var o = 0; o < 4; o++) {
+    html += '<span style="display:inline-block;width:128px;text-align:center;padding:3px 0;background:#f1f5f9;font-weight:700;border:1px solid #e2e8f0;">' + octets[o] + '</span>';
   }
   html += '</td></tr>';
 
-  // IP row
-  html += '<tr><td style="padding:2px 4px;font-weight:700;white-space:nowrap;">IP</td><td>';
+  // Octet Value row (hex)
+  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Octet Value</td><td style="white-space:nowrap;">';
+  for (var o = 0; o < 4; o++) {
+    html += '<span style="display:inline-block;width:128px;text-align:center;padding:3px 0;background:#e0f2fe;font-weight:700;border:1px solid #e2e8f0;">' + hexOctets[o] + '</span>';
+  }
+  html += '</td></tr>';
+
+  // Octet Number row
+  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Octet Number</td><td style="white-space:nowrap;">';
+  for (var o = 0; o < 4; o++) {
+    html += '<span style="display:inline-block;width:128px;text-align:center;padding:3px 0;border:1px solid #e2e8f0;">' + (o+1) + '</span>';
+  }
+  html += '</td></tr>';
+
+  // Bit Number row
+  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Bit Number</td><td style="white-space:nowrap;">';
+  for (var i = 0; i < 32; i++) {
+    var border = (i === 7 || i === 15 || i === 23) ? 'border-right:2px solid #94a3b8;' : '';
+    html += '<span style="display:inline-block;width:16px;text-align:center;font-size:0.65rem;color:#94a3b8;' + border + '">' + (i+1) + '</span>';
+  }
+  html += '</td></tr>';
+
+  // Bit Value row
+  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Bit Value</td><td style="white-space:nowrap;">';
   for (var i = 0; i < 32; i++) {
     var bg = i < prefix ? '#dbeafe' : '#fef3c7';
     var border = (i === 7 || i === 15 || i === 23) ? 'border-right:2px solid #94a3b8;' : '';
-    html += '<span style="display:inline-block;width:16px;text-align:center;background:' + bg + ';' + border + 'border:1px solid #e2e8f0;margin:1px;">' + ipBits[i] + '</span>';
-  }
-  html += '</td></tr>';
-
-  // Mask row
-  html += '<tr><td style="padding:2px 4px;font-weight:700;white-space:nowrap;">Mask</td><td>';
-  for (var j = 0; j < 32; j++) {
-    var border = (j === 7 || j === 15 || j === 23) ? 'border-right:2px solid #94a3b8;' : '';
-    html += '<span style="display:inline-block;width:16px;text-align:center;background:' + (maskBits[j]==='1'?'#dbeafe':'#fef3c7') + ';' + border + 'border:1px solid #e2e8f0;margin:1px;">' + maskBits[j] + '</span>';
+    html += '<span style="display:inline-block;width:16px;text-align:center;background:' + bg + ';' + border + 'border:1px solid #e2e8f0;margin:1px;font-weight:700;">' + ipBits[i] + '</span>';
   }
   html += '</td></tr>';
 
