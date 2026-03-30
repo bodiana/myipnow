@@ -244,7 +244,6 @@ ACTUAL FIX (no hacks, no clipping):
   <button id="mode-advanced" onclick="setMode('advanced')" style="padding:8px 20px;border-radius:999px;border:1px solid rgba(148,163,184,.35);background:#fff;color:#0f172a;font-weight:700;cursor:pointer;">Advanced</button>
 </div>
 
-<!-- ADVANCED MODE -->
 <div id="advanced-mode" style="display:none;">
   <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:14px;">
     <!-- Left: inputs -->
@@ -303,6 +302,92 @@ ACTUAL FIX (no hacks, no clipping):
       </table>
     </div>
   </div>
+</div>
+
+<!-- ADVANCED MODE -->
+<div id="advanced-mode" style="display:none;">
+
+  <!-- Inputs card -->
+  <div class="tool-card" style="margin-bottom:14px;">
+    <div style="display:flex;flex-direction:column;gap:6px;">
+
+      <div style="font-weight:700;font-size:0.9rem;color:#374151;padding-bottom:4px;">Address Block</div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">IP Address (IPv4)</div>
+        <input class="tool-input" id="adv-ip" value="192.168.1.1" placeholder="e.g. 192.168.1.1" style="padding:7px 10px;flex:1;"/>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Mask bits</div>
+        <div style="display:flex;align-items:center;gap:6px;flex:1;">
+          <button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,-1)" style="width:28px;height:28px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;flex-shrink:0;">-</button>
+          <input type="number" min="0" max="32" value="24" id="adv-maskbits" style="width:60px;padding:6px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advSync('adv-maskbits','adv-maskbits-sl');updateAdvanced();"/>
+          <button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,1)" style="width:28px;height:28px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;flex-shrink:0;">+</button>
+          <input type="range" min="0" max="32" value="24" id="adv-maskbits-sl" style="flex:1;" oninput="advSync('adv-maskbits-sl','adv-maskbits');updateAdvanced();"/>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Network Mask</div>
+        <div id="adv-networkmask" style="flex:1;padding:7px 10px;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:0.9rem;">255.255.255.0</div>
+      </div>
+
+      <div style="border-top:1px solid #e2e8f0;margin:4px 0;"></div>
+      <div style="font-weight:700;font-size:0.9rem;color:#374151;padding-bottom:4px;">Subnet Allocation</div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Subnet bits</div>
+        <div style="display:flex;align-items:center;gap:6px;flex:1;">
+          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:28px;height:28px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;flex-shrink:0;">-</button>
+          <input type="number" min="1" max="23" value="1" id="adv-subnetbits" style="width:60px;padding:6px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advSync('adv-subnetbits','adv-subnetbits-sl');updateAdvanced();"/>
+          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:28px;height:28px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;flex-shrink:0;">+</button>
+          <input type="range" min="1" max="23" value="1" id="adv-subnetbits-sl" style="flex:1;" oninput="advSync('adv-subnetbits-sl','adv-subnetbits');updateAdvanced();"/>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Number of subnets</div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:28px;height:28px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;flex-shrink:0;">-</button>
+          <input type="number" id="adv-numsubnets" value="2" style="width:80px;padding:6px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advCalcFromSubnets();"/>
+          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:28px;height:28px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;flex-shrink:0;">+</button>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Addresses per subnet</div>
+        <div id="adv-addrpersubnet" style="padding:7px 10px;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:0.9rem;font-weight:700;">126</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Binary Breakdown card -->
+  <div class="tool-card" style="margin-bottom:14px;">
+    <h3 class="tool-h3">Binary Breakdown</h3>
+    <div id="adv-binary" style="overflow-x:auto;"></div>
+  </div>
+
+  <!-- All Subnets card -->
+  <div class="tool-card">
+    <h3 class="tool-h3">All Subnets</h3>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:#f1f5f9;">
+            <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Subnet</th>
+            <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Network</th>
+            <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">First IP</th>
+            <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Last IP</th>
+            <th style="padding:8px;text-align:left;border:1px solid #e2e8f0;">Broadcast</th>
+          </tr>
+        </thead>
+        <tbody id="adv-subnettable"></tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 <div aria-label="Subnet calculator mode" class="tool-tabs" role="tablist">
 <button aria-controls="panel-ipv4" aria-selected="true" class="tool-tab is-active" id="tab-ipv4" role="tab" type="button">IPv4</button>
@@ -1327,5 +1412,200 @@ window.addEventListener('load', function() {
   updateAdvanced();
 });
 </script>
+<script id="mode-switcher">
+window.setMode = function(mode) {
+  var tabs = document.querySelector('.tool-tabs');
+  var panels = document.querySelectorAll('.tool-panel');
+  var advDiv = document.getElementById('advanced-mode');
+  var simpleBtn = document.getElementById('mode-simple');
+  var advBtn = document.getElementById('mode-advanced');
+  if (mode === 'advanced') {
+    tabs.style.display = 'none';
+    panels.forEach(function(p){ p.style.display = 'none'; });
+    if (advDiv) advDiv.style.display = 'block';
+    simpleBtn.style.background = '#fff';
+    simpleBtn.style.color = '#0f172a';
+    advBtn.style.background = '#0f172a';
+    advBtn.style.color = '#fff';
+  } else {
+    tabs.style.display = '';
+    panels.forEach(function(p){ p.style.display = ''; });
+    document.getElementById('panel-ipv4').classList.add('is-active');
+    if (advDiv) advDiv.style.display = 'none';
+    simpleBtn.style.background = '#0f172a';
+    simpleBtn.style.color = '#fff';
+    advBtn.style.background = '#fff';
+    advBtn.style.color = '#0f172a';
+  }
+};
+</script>
+
+<script id="advanced-mode-js">
+function advFmtIP(n) {
+  return [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.');
+}
+function advParseIP(s) {
+  var p = s.trim().split('.');
+  if (p.length !== 4) return null;
+  var n = 0;
+  for (var i = 0; i < 4; i++) {
+    var v = parseInt(p[i]);
+    if (isNaN(v) || v < 0 || v > 255) return null;
+    n = (n << 8) | v;
+  }
+  return n >>> 0;
+}
+function advGetMask(p) {
+  return p === 0 ? 0 : ((0xFFFFFFFF << (32 - p)) >>> 0);
+}
+function advSync(fromId, toId) {
+  var f = document.getElementById(fromId);
+  var t = document.getElementById(toId);
+  if (f && t) t.value = f.value;
+}
+function advAdj(numId, slId, min, max, delta) {
+  var el = document.getElementById(numId);
+  var val = (parseInt(el.value) || 0) + delta;
+  if (val < min) val = min;
+  if (val > max) val = max;
+  el.value = val;
+  var sl = document.getElementById(slId);
+  if (sl) sl.value = val;
+  updateAdvanced();
+}
+function advCalcFromSubnets() {
+  var num = parseInt(document.getElementById('adv-numsubnets').value);
+  if (isNaN(num) || num < 1) return;
+  var sb = Math.ceil(Math.log2(num));
+  if (sb < 1) sb = 1;
+  if (sb > 23) sb = 23;
+  document.getElementById('adv-subnetbits').value = sb;
+  document.getElementById('adv-subnetbits-sl').value = sb;
+  updateAdvanced();
+}
+function advRenderBinary(ipn, prefix) {
+  var ipBits = ipn.toString(2).padStart(32,'0');
+  var octets = [(ipn>>>24)&255,(ipn>>>16)&255,(ipn>>>8)&255,ipn&255];
+  var hexOctets = octets.map(function(o){ return o.toString(16).toUpperCase().padStart(2,'0'); });
+
+  // Use a single table where octet rows use colspan=8 and bit rows use 1 cell per bit
+  // Label col is fixed, then 32 bit columns
+  var html = '<table style="border-collapse:collapse;font-size:0.78rem;width:100%;table-layout:fixed;">';
+  html += '<colgroup><col style="width:130px;"/>';
+  for (var c=0;c<32;c++) html += '<col/>';
+  html += '</colgroup><tbody>';
+
+  function lbl(t) { return '<td style="padding:3px 8px;color:#374151;font-weight:700;font-size:0.78rem;white-space:nowrap;background:#f8fafc;border:1px solid #e2e8f0;">'+t+'</td>'; }
+
+  // IP Address - 4 cells each colspan=8
+  html += '<tr>'+lbl('IP Address');
+  for (var o=0;o<4;o++) {
+    var br = o<3 ? 'border-right:2px solid #94a3b8;' : '';
+    html += '<td colspan="8" style="text-align:center;padding:4px 2px;background:#f1f5f9;font-weight:700;border:1px solid #e2e8f0;'+br+'">'+octets[o]+'</td>';
+  }
+  html += '</tr>';
+
+  // Octet Value hex
+  html += '<tr>'+lbl('Octet Value');
+  for (var o=0;o<4;o++) {
+    var br = o<3 ? 'border-right:2px solid #94a3b8;' : '';
+    html += '<td colspan="8" style="text-align:center;padding:4px 2px;background:#e0f2fe;font-weight:700;border:1px solid #e2e8f0;'+br+'">'+hexOctets[o]+'</td>';
+  }
+  html += '</tr>';
+
+  // Octet Number
+  html += '<tr>'+lbl('Octet Number');
+  for (var o=0;o<4;o++) {
+    var br = o<3 ? 'border-right:2px solid #94a3b8;' : '';
+    html += '<td colspan="8" style="text-align:center;padding:4px 2px;background:#f8fafc;border:1px solid #e2e8f0;'+br+'">'+(o+1)+'</td>';
+  }
+  html += '</tr>';
+
+  // Bit Number - 32 individual cells
+  html += '<tr>'+lbl('Bit Number');
+  for (var i=0;i<32;i++) {
+    var br = (i===7||i===15||i===23) ? 'border-right:2px solid #94a3b8;' : '';
+    html += '<td style="text-align:center;padding:3px 1px;font-size:0.7rem;color:#94a3b8;border:1px solid #e2e8f0;'+br+'">'+(i+1)+'</td>';
+  }
+  html += '</tr>';
+
+  // Bit Value - green for network, yellow for host
+  html += '<tr>'+lbl('Bit Value');
+  for (var i=0;i<32;i++) {
+    var bg = i < prefix ? '#86efac' : '#fef08a';
+    var br = (i===7||i===15||i===23) ? 'border-right:2px solid #94a3b8;' : '';
+    html += '<td style="text-align:center;padding:3px 1px;background:'+bg+';font-weight:700;border:1px solid #e2e8f0;'+br+'">'+ipBits[i]+'</td>';
+  }
+  html += '</tr>';
+
+  html += '</tbody></table>';
+  html += '<div style="margin-top:8px;">';
+  html += '<span style="display:inline-block;background:#86efac;padding:2px 10px;border-radius:4px;font-size:0.8rem;margin-right:6px;">Network bits ('+prefix+')</span>';
+  html += '<span style="display:inline-block;background:#fef08a;padding:2px 10px;border-radius:4px;font-size:0.8rem;">Host bits ('+(32-prefix)+')</span>';
+  html += '</div>';
+  document.getElementById('adv-binary').innerHTML = html;
+}
+function advRenderSubnets(net, prefix, sb, showAll) {
+  var effectiveSb = Math.min(sb, 32-prefix);
+  var newPrefix = prefix + effectiveSb;
+  var hostsPerSubnet = Math.pow(2, 32-newPrefix);
+  var numSubnets = Math.pow(2, sb);
+  var limit = showAll ? Math.min(numSubnets, 1024) : Math.min(numSubnets, 10);
+  var tbody = document.getElementById('adv-subnettable');
+  var rows = '';
+  for (var i=0;i<limit;i++) {
+    var sn = (net + i*hostsPerSubnet) >>> 0;
+    var bc = (sn + hostsPerSubnet - 1) >>> 0;
+    var first = newPrefix<=30 ? (sn+1)>>>0 : sn;
+    var last  = newPrefix<=30 ? (bc-1)>>>0 : bc;
+    rows += '<tr style="'+(i%2?'background:#f8fafc':'')+'">'
+      +'<td style="padding:6px 8px;border:1px solid #e2e8f0;">'+advFmtIP(sn)+'/'+newPrefix+'</td>'
+      +'<td style="padding:6px 8px;border:1px solid #e2e8f0;">'+advFmtIP(sn)+'</td>'
+      +'<td style="padding:6px 8px;border:1px solid #e2e8f0;">'+advFmtIP(first)+'</td>'
+      +'<td style="padding:6px 8px;border:1px solid #e2e8f0;">'+advFmtIP(last)+'</td>'
+      +'<td style="padding:6px 8px;border:1px solid #e2e8f0;">'+advFmtIP(bc)+'</td>'
+      +'</tr>';
+  }
+  if (!showAll && numSubnets > 10) {
+    rows += '<tr><td colspan="5" style="padding:8px;text-align:center;">'
+      +'<button onclick="advShowAll()" style="padding:6px 16px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;cursor:pointer;font-size:0.85rem;color:#4f46e5;font-weight:600;">Show all '+numSubnets.toLocaleString()+' subnets (max 1024)</button>'
+      +'</td></tr>';
+  } else if (numSubnets > 1024) {
+    rows += '<tr><td colspan="5" style="padding:8px;text-align:center;color:#64748b;">Showing first 1024 of '+numSubnets.toLocaleString()+' subnets</td></tr>';
+  }
+  tbody.innerHTML = rows;
+}
+function advShowAll() {
+  var ipn = advParseIP(document.getElementById('adv-ip').value);
+  var p = parseInt(document.getElementById('adv-maskbits').value);
+  var sb = parseInt(document.getElementById('adv-subnetbits').value);
+  if (ipn===null||isNaN(p)) return;
+  var net = (ipn & advGetMask(p)) >>> 0;
+  advRenderSubnets(net, p, sb, true);
+}
+function updateAdvanced() {
+  var ipn = advParseIP(document.getElementById('adv-ip').value);
+  var p = parseInt(document.getElementById('adv-maskbits').value);
+  var sb = parseInt(document.getElementById('adv-subnetbits').value);
+  if (ipn===null||isNaN(p)||isNaN(sb)) return;
+  if (sb<1) sb=1; if (sb>23) sb=23;
+  var mask = advGetMask(p);
+  var net = (ipn & mask) >>> 0;
+  var effectiveSb = Math.min(sb, 32-p);
+  var newPrefix = p + effectiveSb;
+  var numSubnets = Math.pow(2, sb);
+  var hostsPerSubnet = Math.max(0, Math.pow(2, 32-newPrefix)-2);
+  document.getElementById('adv-networkmask').textContent = advFmtIP(mask);
+  document.getElementById('adv-numsubnets').value = numSubnets;
+  document.getElementById('adv-addrpersubnet').textContent = hostsPerSubnet.toLocaleString();
+  advRenderBinary(ipn, p);
+  advRenderSubnets(net, p, sb, false);
+}
+window.addEventListener('load', function() {
+  document.getElementById('adv-ip').addEventListener('input', updateAdvanced);
+  updateAdvanced();
+});
+</script>
+
 </body>
 </html>
