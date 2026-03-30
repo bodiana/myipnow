@@ -304,7 +304,7 @@ ACTUAL FIX (no hacks, no clipping):
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
           <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Number of subnets</div>
-          <div style="flex:1;"><div style="display:flex;align-items:center;gap:4px;"><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">-</button><input type="number" id="adv-numsubnets" value="2" style="width:90px;padding:5px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advCalcFromSubnets()"/><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">+</button></div></div>
+          <div style="flex:1;"><div style="display:flex;align-items:center;gap:4px;"><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">-</button><input type="number" id="adv-numsubnets" value="2" style="width:90px;padding:5px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advDebounceSubnets()"/><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">+</button></div></div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
           <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Addresses per subnet</div>
@@ -1355,6 +1355,11 @@ function renderSubnetsAdv(net, prefix, sb) {
   tbody.innerHTML = rows;
 }
 
+var _advSubnetsTimer = null;
+function advDebounceSubnets() {
+  clearTimeout(_advSubnetsTimer);
+  _advSubnetsTimer = setTimeout(advCalcFromSubnets, 600);
+}
 function advCalcFromSubnets() {
   var num = parseInt(document.getElementById('adv-numsubnets').value);
   if (isNaN(num) || num < 1) return;
@@ -1394,6 +1399,11 @@ function advAdj(numId, slId, min, max, delta) {
   var sl = document.getElementById(slId);
   if (sl) sl.value = val;
   updateAdvanced();
+}
+var _advSubnetsTimer = null;
+function advDebounceSubnets() {
+  clearTimeout(_advSubnetsTimer);
+  _advSubnetsTimer = setTimeout(advCalcFromSubnets, 600);
 }
 function advCalcFromSubnets() {
   var num = parseInt(document.getElementById('adv-numsubnets').value);
@@ -1524,6 +1534,11 @@ function advAdj(numId, slId, min, max, delta) {
   var sl = document.getElementById(slId);
   if (sl) sl.value = val;
   updateAdvanced();
+}
+var _advSubnetsTimer = null;
+function advDebounceSubnets() {
+  clearTimeout(_advSubnetsTimer);
+  _advSubnetsTimer = setTimeout(advCalcFromSubnets, 600);
 }
 function advCalcFromSubnets() {
   var num = parseInt(document.getElementById('adv-numsubnets').value);
