@@ -248,48 +248,34 @@ ACTUAL FIX (no hacks, no clipping):
 <div id="advanced-mode" style="display:none;">
   <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:14px;">
     <!-- Left: inputs -->
-    <div class="tool-card">
-      <h3 class="tool-h3">Address Block</h3>
-      <div class="tool-row">
-        <label class="tool-label">IP Address (IPv4)</label>
-        <input class="tool-input" id="adv-ip" value="192.168.1.1" placeholder="e.g. 192.168.1.1"/>
-      </div>
-      <div class="tool-row">
-        <label class="tool-label">Mask bits</label>
-        <div style="display:flex;align-items:center;gap:6px;">
-          <button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,-1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">-</button>
-          <input type="number" min="0" max="32" value="24" id="adv-maskbits" style="width:60px;padding:8px;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:1rem;text-align:center;" oninput="advSync('adv-maskbits','adv-maskbits-sl');updateAdvanced();"/>
-          <button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">+</button>
-          <input type="range" min="0" max="32" value="24" id="adv-maskbits-sl" style="flex:1;" oninput="advSync('adv-maskbits-sl','adv-maskbits');updateAdvanced();"/>
+    <div class="tool-card" style="padding:12px;">
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <div style="font-weight:700;font-size:0.9rem;color:#374151;padding:4px 0 6px;">Address Block</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+          <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">IP Address (IPv4)</div>
+          <div style="flex:1;"><input class="tool-input" id="adv-ip" value="192.168.1.1" placeholder="e.g. 192.168.1.1" style="padding:6px 10px;width:100%;box-sizing:border-box;"/></div>
         </div>
-      </div>
-      <div class="tool-row">
-        <label class="tool-label">Network Mask</label>
-        <div id="adv-networkmask" style="padding:10px 12px;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:12px;">255.255.255.0</div>
-      </div>
-      <hr style="border:none;border-top:1px solid #e2e8f0;margin:12px 0;"/>
-      <div style="font-weight:700;margin-bottom:8px;">Subnet Allocation</div>
-      <div class="tool-row">
-        <label class="tool-label">Subnet bits</label>
-        <div style="display:flex;align-items:center;gap:6px;">
-          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">-</button>
-          <input type="number" min="1" max="23" value="1" id="adv-subnetbits" style="width:60px;padding:8px;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:1rem;text-align:center;" oninput="advSync('adv-subnetbits','adv-subnetbits-sl');updateAdvanced();"/>
-          <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">+</button>
-          <input type="range" min="1" max="23" value="1" id="adv-subnetbits-sl" style="flex:1;" oninput="advSync('adv-subnetbits-sl','adv-subnetbits');updateAdvanced();"/>
+        <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+          <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Mask bits</div>
+          <div style="flex:1;"><div style="display:flex;align-items:center;gap:4px;"><button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,-1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">-</button><input type="number" min="0" max="32" value="24" id="adv-maskbits" style="width:70px;padding:5px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advSync('adv-maskbits','adv-maskbits-sl');updateAdvanced();"/><button onclick="advAdj('adv-maskbits','adv-maskbits-sl',0,32,1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">+</button><input type="range" min="0" max="32" value="24" id="adv-maskbits-sl" style="flex:1;" oninput="advSync('adv-maskbits-sl','adv-maskbits');updateAdvanced();"/></div></div>
         </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
-        <div>
-          <div class="tool-label">Number of subnets</div>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">-</button>
-            <input type="number" id="adv-numsubnets" value="2" style="width:60px;padding:8px;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:1rem;text-align:center;" oninput="advCalcFromSubnets()"/>
-            <button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:32px;height:32px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;font-size:1.2rem;cursor:pointer;">+</button>
-          </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+          <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Network Mask</div>
+          <div style="flex:1;"><div id="adv-networkmask" style="padding:6px 10px;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:0.9rem;">255.255.255.0</div></div>
         </div>
-        <div>
-          <div class="tool-label">Addresses per subnet</div>
-          <div id="adv-addrpersubnet" style="padding:10px 12px;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:12px;font-weight:700;">126</div>
+        <div style="border-top:1px solid #e2e8f0;margin:6px 0;"></div>
+        <div style="font-weight:700;font-size:0.9rem;color:#374151;padding:4px 0 6px;">Subnet Allocation</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+          <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Subnet bits</div>
+          <div style="flex:1;"><div style="display:flex;align-items:center;gap:4px;"><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">-</button><input type="number" min="1" max="23" value="1" id="adv-subnetbits" style="width:70px;padding:5px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advSync('adv-subnetbits','adv-subnetbits-sl');updateAdvanced();"/><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">+</button><input type="range" min="1" max="23" value="1" id="adv-subnetbits-sl" style="flex:1;" oninput="advSync('adv-subnetbits-sl','adv-subnetbits');updateAdvanced();"/></div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+          <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Number of subnets</div>
+          <div style="flex:1;"><div style="display:flex;align-items:center;gap:4px;"><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,-1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">-</button><input type="number" id="adv-numsubnets" value="2" style="width:90px;padding:5px;border:1px solid rgba(148,163,184,.35);border-radius:6px;font-size:0.9rem;text-align:center;" oninput="advCalcFromSubnets()"/><button onclick="advAdj('adv-subnetbits','adv-subnetbits-sl',1,23,1)" style="width:26px;height:26px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;font-size:1rem;cursor:pointer;">+</button></div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:4px 0;">
+          <div style="width:160px;flex-shrink:0;font-size:0.85rem;color:#64748b;">Addresses per subnet</div>
+          <div style="flex:1;"><div id="adv-addrpersubnet" style="padding:6px 10px;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:8px;font-size:0.9rem;font-weight:700;">126</div></div>
         </div>
       </div>
     </div>
@@ -1128,53 +1114,60 @@ window.setMode = function(mode) {
 };
 
 function renderBinaryAdv(ipn, mask, prefix) {
-  var ipBits = ipn.toString(2).padStart(32, '0');
   var octets = [(ipn>>>24)&255,(ipn>>>16)&255,(ipn>>>8)&255,ipn&255];
   var hexOctets = octets.map(function(o){ return o.toString(16).toUpperCase().padStart(2,'0'); });
-  var html = '<table style="border-collapse:collapse;font-size:0.78rem;">';
+  var ipBits = ipn.toString(2).padStart(32,'0');
+  var BIT_W = 18; // px per bit cell
+  var OCT_W = BIT_W * 8; // px per octet
+  var LABEL_W = 140; // label column width
 
-  // IP Address row
-  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">IP Address</td><td style="white-space:nowrap;">';
-  for (var o = 0; o < 4; o++) {
-    html += '<span style="display:inline-block;width:128px;text-align:center;padding:3px 0;background:#f1f5f9;font-weight:700;border:1px solid #e2e8f0;">' + octets[o] + '</span>';
+  function cell(content, w, bg, bold, border) {
+    return '<span style="display:inline-block;width:'+w+'px;text-align:center;'+(bg?'background:'+bg+';':'')+(bold?'font-weight:700;':'')+(border?'border-right:2px solid #94a3b8;':'')+'">' + content + '</span>';
+  }
+
+  var html = '<div style="overflow-x:auto;"><table style="border-collapse:collapse;font-size:0.78rem;white-space:nowrap;">';
+
+  // IP Address row (decimal per octet)
+  html += '<tr><td style="width:'+LABEL_W+'px;padding:2px 8px;color:#64748b;font-size:0.75rem;white-space:nowrap;">IP Address</td><td>';
+  for (var o=0;o<4;o++) {
+    html += cell(octets[o], OCT_W, '#f1f5f9', true, o<3);
   }
   html += '</td></tr>';
 
-  // Octet Value row (hex)
-  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Octet Value</td><td style="white-space:nowrap;">';
-  for (var o = 0; o < 4; o++) {
-    html += '<span style="display:inline-block;width:128px;text-align:center;padding:3px 0;background:#e0f2fe;font-weight:700;border:1px solid #e2e8f0;">' + hexOctets[o] + '</span>';
+  // Octet Value hex row
+  html += '<tr><td style="padding:2px 8px;color:#64748b;font-size:0.75rem;">Octet Value</td><td>';
+  for (var o=0;o<4;o++) {
+    html += cell(hexOctets[o], OCT_W, '#e0f2fe', true, o<3);
   }
   html += '</td></tr>';
 
   // Octet Number row
-  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Octet Number</td><td style="white-space:nowrap;">';
-  for (var o = 0; o < 4; o++) {
-    html += '<span style="display:inline-block;width:128px;text-align:center;padding:3px 0;border:1px solid #e2e8f0;">' + (o+1) + '</span>';
+  html += '<tr><td style="padding:2px 8px;color:#64748b;font-size:0.75rem;">Octet Number</td><td>';
+  for (var o=0;o<4;o++) {
+    html += cell(o+1, OCT_W, '#f8fafc', false, o<3);
   }
   html += '</td></tr>';
 
   // Bit Number row
-  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Bit Number</td><td style="white-space:nowrap;">';
-  for (var i = 0; i < 32; i++) {
-    var border = (i === 7 || i === 15 || i === 23) ? 'border-right:2px solid #94a3b8;' : '';
-    html += '<span style="display:inline-block;width:16px;text-align:center;font-size:0.65rem;color:#94a3b8;' + border + '">' + (i+1) + '</span>';
+  html += '<tr><td style="padding:2px 8px;color:#64748b;font-size:0.75rem;">Bit Number</td><td>';
+  for (var i=0;i<32;i++) {
+    html += cell(i+1, BIT_W, '', false, (i===7||i===15||i===23));
   }
   html += '</td></tr>';
 
-  // Bit Value row
-  html += '<tr><td style="padding:3px 8px;font-weight:700;white-space:nowrap;color:#64748b;font-size:0.75rem;">Bit Value</td><td style="white-space:nowrap;">';
-  for (var i = 0; i < 32; i++) {
-    var bg = i < prefix ? '#dbeafe' : '#fef3c7';
-    var border = (i === 7 || i === 15 || i === 23) ? 'border-right:2px solid #94a3b8;' : '';
-    html += '<span style="display:inline-block;width:16px;text-align:center;background:' + bg + ';' + border + 'border:1px solid #e2e8f0;margin:1px;font-weight:700;">' + ipBits[i] + '</span>';
+  // Bit Value row - green for network bits, yellow for host
+  html += '<tr><td style="padding:2px 8px;color:#64748b;font-size:0.75rem;">Bit Value</td><td>';
+  for (var i=0;i<32;i++) {
+    var bg = i < prefix ? '#bbf7d0' : '#fef9c3';
+    html += cell(ipBits[i], BIT_W, bg, true, (i===7||i===15||i===23));
   }
   html += '</td></tr>';
 
-  html += '<tr><td></td><td style="padding-top:6px;">';
-  html += '<span style="display:inline-block;background:#dbeafe;padding:2px 8px;border-radius:4px;font-size:0.8rem;margin-right:6px;">Network bits (' + prefix + ')</span>';
-  html += '<span style="display:inline-block;background:#fef3c7;padding:2px 8px;border-radius:4px;font-size:0.8rem;">Host bits (' + (32-prefix) + ')</span>';
-  html += '</td></tr></table>';
+  html += '</table>';
+  html += '<div style="margin-top:6px;">';
+  html += '<span style="display:inline-block;background:#bbf7d0;padding:2px 10px;border-radius:4px;font-size:0.8rem;margin-right:6px;">Network bits ('+prefix+')</span>';
+  html += '<span style="display:inline-block;background:#fef9c3;padding:2px 10px;border-radius:4px;font-size:0.8rem;">Host bits ('+(32-prefix)+')</span>';
+  html += '</div></div>';
 
   document.getElementById('adv-binary').innerHTML = html;
 }
@@ -1227,8 +1220,9 @@ function updateAdvanced() {
 
   var mask = getMask(p);
   var net = (ipn & mask) >>> 0;
-  var newPrefix = Math.min(p + sb, 32);
-  var numSubnets = Math.pow(2, newPrefix - p);
+  var effectiveSb = Math.min(sb, 32 - p);
+  var newPrefix = p + effectiveSb;
+  var numSubnets = Math.pow(2, sb);
   var hostsPerSubnet = Math.max(0, Math.pow(2, 32 - newPrefix) - 2);
 
   document.getElementById('adv-networkmask').textContent = fmtIP(mask);
