@@ -196,7 +196,56 @@ ACTUAL FIX (no hacks, no clipping):
 .kv-row.is-expanded .v {justify-content: space-between; text-align: left; width: 100%;}
 
 #o6-exp {display: block; flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; word-break: break-word;}</style>
-<title>IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow</title><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." name="description"/><meta content="IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow" property="og:title"/><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." property="og:description"/><meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/><style id="subnet-layout-fix">
+<title>IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow</title><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." name="description"/><meta content="IP Subnet Calculator | CIDR, Subnet Mask & Wildcard | MyIPNow" property="og:title"/><meta content="Free advanced IP subnet calculator for IPv4 and IPv6. Get subnet mask, wildcard mask, binary breakdown, and full subnet allocation table. Used by network engineers and sysadmins." property="og:description"/><meta content="https://myipnow.net/ip-subnet-calculator" property="og:url"/><style id="mobile-fixes">
+@media (max-width: 680px) {
+
+  /* Advanced mode inputs - stack label above control */
+  #advanced-mode .tool-card > div > div[style*="display:flex"] {
+    flex-wrap: wrap;
+  }
+  #advanced-mode div[style*="width:160px"] {
+    width: 100% !important;
+    margin-bottom: 4px;
+  }
+
+  /* Sliders in advanced mode - full width */
+  #adv-maskbits-sl, #adv-subnetbits-sl {
+    width: 100% !important;
+    margin-top: 6px;
+  }
+
+  /* Binary breakdown - scroll horizontally, don't wrap */
+  #adv-binary {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  #adv-binary table {
+    min-width: 600px;
+  }
+
+  /* Simple calculator - stack vertically */
+  #panel-ipv4 .tool-grid,
+  #panel-ipv6 .tool-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Slider row on simple calc - stack */
+  .tool-row-split {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Advanced mode number+slider rows - wrap slider to next line */
+  #advanced-mode div[style*="display:flex;align-items:center;gap:6px"] {
+    flex-wrap: wrap;
+  }
+  #advanced-mode input[type="range"] {
+    width: 100% !important;
+    flex: none !important;
+    margin-top: 4px;
+  }
+}
+</style>
+<style id="subnet-layout-fix">
 #panel-ipv4 .tool-grid { grid-template-columns: 1fr !important; }
 #panel-ipv6 .tool-grid { grid-template-columns: 1fr !important; }
 </style>
