@@ -53,7 +53,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 .whois-tool button:hover {background: #059669;}
 
 /* ====== RESULTS: NON-SCROLLABLE, NO INNER BOXES ====== */
-.whois-results {display: none; margin-top: 1rem; background: #f1f5f9; padding: 12px; border-radius: 8px; width: 100%; box-sizing: border-box; /* IMPORTANT: no max-height, no overflow — it will expand naturally */;}
+.whois-results {display: none; margin-top: 1rem; background: #f1f5f9; padding: 12px; border-radius: 8px; width: 100%; box-sizing: border-box; /* IMPORTANT: no max-height, no overflow - it will expand naturally */;}
 /* Simple presentation: headings + paragraphs (no boxed blocks) */
 .whois-results h3 {margin: 0 0 6px 0; color: var(--accent-color); font-size: 1rem;}
 .whois-results p {margin: 0 0 12px 0; color: var(--text-primary); line-height: 1.45; word-break: break-word; white-space: pre-wrap;}
@@ -155,7 +155,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <section aria-label="WHOIS Definition" class="snippet-section">
 <h2>What Is a WHOIS Lookup?</h2>
 <p>
-    A WHOIS lookup gives you the public registration info for a domain — stuff like who the registrar is, when it was created and when it expires, what name servers it's using, and whether it's active. A lot of domains hide their registration details with privacy protection, but WHOIS and RDAP can still pull up the ownership and operational info you need for security checks, domain transfers, and fixing problems.
+    A WHOIS lookup gives you the public registration info for a domain - stuff like who the registrar is, when it was created and when it expires, what name servers it's using, and whether it's active. A lot of domains hide their registration details with privacy protection, but WHOIS and RDAP can still pull up the ownership and operational info you need for security checks, domain transfers, and fixing problems.
   </p>
 <div aria-label="How to use WHOIS Lookup" class="howto">
 <h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">How to use this WHOIS Lookup</h3>
@@ -180,7 +180,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <dt>Status</dt><dd id="dl-status"></dd>
 </dl>
 <section class="explanation">
-<p>So here's the thing — this WHOIS Lookup tool digs up all the registration details about a domain. You'll see the registrar, when it was created and expires, the nameservers, and sometimes even contact info for the owner. It's a quick way to confirm who owns a domain and check whether it's still active.</p>
+<p>So here's the thing - this WHOIS Lookup tool digs up all the registration details about a domain. You'll see the registrar, when it was created and expires, the nameservers, and sometimes even contact info for the owner. It's a quick way to confirm who owns a domain and check whether it's still active.</p>
 </section>
 <section class="faq-section">
 <h2>Frequently Asked Questions</h2>
@@ -315,7 +315,7 @@ function lookupWHOIS(){
             if(contacts.length) out += `<h3>Contacts</h3><p>${safeText(contacts.join('\n'))}</p>`;
         }
 
-        // Raw JSON as fallback (small) — only if above data is sparse
+        // Raw JSON as fallback (small) - only if above data is sparse
         if(out.trim().length < 50 && data){
             out += `<h3>Raw RDAP Data</h3><p>${safeText(JSON.stringify(data, null, 2))}</p>`;
         }

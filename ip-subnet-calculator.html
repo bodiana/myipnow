@@ -268,7 +268,7 @@ ACTUAL FIX (no hacks, no clipping):
 </nav>
 </header>
 <header class="page-header">
-<h1>IP Subnet Calculator — Advanced IPv4 &amp; IPv6 Tool</h1>
+<h1>IP Subnet Calculator - Advanced IPv4 &amp; IPv6 Tool</h1>
 <p>Calculate subnet mask, wildcard mask, network range, broadcast, and usable hosts from any IP + CIDR. Includes binary breakdown and subnet allocation table for network engineers. <strong>Updated: January 2026</strong></p>
 </header>
 <article class="article-body">
@@ -562,41 +562,41 @@ ACTUAL FIX (no hacks, no clipping):
 <p>
 Here's the thing: a subnet is basically a way to split up IP addresses into groups. The <strong>CIDR prefix</strong> tells you how big that group is.
 With IPv4, <code>/24</code> means "the first 24 bits are the network part," and that leaves 8 bits for the actual hosts (256 addresses total).
-IPv6 works the same way — just with bigger numbers, and you're usually dealing with way larger subnets (often <code>/64</code>).
+IPv6 works the same way - just with bigger numbers, and you're usually dealing with way larger subnets (often <code>/64</code>).
 </p>
 <h2>CIDR Subnet Sizes Explained</h2>
 <p>
-CIDR (Classless Inter-Domain Routing) notation expresses a network as an IP address followed by a prefix length — for example, <code>192.168.1.0/24</code>. The prefix length tells you how many bits are reserved for the network, and the remaining bits are available for hosts. The formula is simple: a <strong>/24</strong> has 32 − 24 = 8 host bits, giving 2<sup>8</sup> = 256 total addresses and 254 usable hosts (network and broadcast are reserved).
+CIDR (Classless Inter-Domain Routing) notation expresses a network as an IP address followed by a prefix length - for example, <code>192.168.1.0/24</code>. The prefix length tells you how many bits are reserved for the network, and the remaining bits are available for hosts. The formula is simple: a <strong>/24</strong> has 32 − 24 = 8 host bits, giving 2<sup>8</sup> = 256 total addresses and 254 usable hosts (network and broadcast are reserved).
 </p>
 
 <h3>How many IPs are in a /24, /16, or /8?</h3>
 <p>
-A <strong>/24</strong> contains 256 total addresses (254 usable) and is the most common subnet in home and office networks — it maps directly to the familiar <code>255.255.255.0</code> subnet mask. A <strong>/16</strong> contains 65,536 addresses and is often used inside large enterprises or cloud VPCs where room to grow matters. A <strong>/8</strong> holds over 16 million addresses and is reserved for large ISPs or legacy Class A allocations like <code>10.0.0.0/8</code> used in private networks.
+A <strong>/24</strong> contains 256 total addresses (254 usable) and is the most common subnet in home and office networks - it maps directly to the familiar <code>255.255.255.0</code> subnet mask. A <strong>/16</strong> contains 65,536 addresses and is often used inside large enterprises or cloud VPCs where room to grow matters. A <strong>/8</strong> holds over 16 million addresses and is reserved for large ISPs or legacy Class A allocations like <code>10.0.0.0/8</code> used in private networks.
 </p>
 
 <h3>Small subnets: /30, /29, /28</h3>
 <p>
-When you only need a handful of addresses, small prefixes are the right tool. A <strong>/30</strong> gives exactly 4 addresses (2 usable) and is the classic choice for point-to-point router links — just enough for each end. A <strong>/29</strong> offers 8 addresses (6 usable), useful for small server clusters or DMZ segments. A <strong>/28</strong> with 16 addresses (14 usable) works well for small VLANs, lab environments, or cloud subnets where you want to keep the blast radius small.
+When you only need a handful of addresses, small prefixes are the right tool. A <strong>/30</strong> gives exactly 4 addresses (2 usable) and is the classic choice for point-to-point router links - just enough for each end. A <strong>/29</strong> offers 8 addresses (6 usable), useful for small server clusters or DMZ segments. A <strong>/28</strong> with 16 addresses (14 usable) works well for small VLANs, lab environments, or cloud subnets where you want to keep the blast radius small.
 </p>
 
 <h3>Special cases: /32 and /31</h3>
 <p>
-A <strong>/32</strong> represents a single host — no network, no broadcast, just one IP. It is widely used in routing to advertise specific host routes, in firewall rules to target one machine, and in loopback interface configurations. A <strong>/31</strong> is a two-address subnet defined in RFC 3021 for point-to-point links: both addresses are usable, eliminating the waste of a /30. Modern routers and cloud providers fully support /31 links.
+A <strong>/32</strong> represents a single host - no network, no broadcast, just one IP. It is widely used in routing to advertise specific host routes, in firewall rules to target one machine, and in loopback interface configurations. A <strong>/31</strong> is a two-address subnet defined in RFC 3021 for point-to-point links: both addresses are usable, eliminating the waste of a /30. Modern routers and cloud providers fully support /31 links.
 </p>
 
 <h3>Subnet mask vs CIDR: what is the difference?</h3>
 <p>
-Subnet masks and CIDR prefix lengths represent the same concept in two different formats. The mask <code>255.255.255.0</code> is identical to <code>/24</code> — both mean the first 24 bits identify the network. CIDR notation is more compact and is preferred in routing protocols, cloud consoles, and firewall rules, while subnet masks still appear in older equipment and Windows network settings. This calculator supports both: enter any IP and prefix length and it will show you the corresponding subnet mask, wildcard mask, and full network range.
+Subnet masks and CIDR prefix lengths represent the same concept in two different formats. The mask <code>255.255.255.0</code> is identical to <code>/24</code> - both mean the first 24 bits identify the network. CIDR notation is more compact and is preferred in routing protocols, cloud consoles, and firewall rules, while subnet masks still appear in older equipment and Windows network settings. This calculator supports both: enter any IP and prefix length and it will show you the corresponding subnet mask, wildcard mask, and full network range.
 </p>
 
 <h3>Wildcard masks and how they differ from subnet masks</h3>
 <p>
-A wildcard mask is the bitwise inverse of a subnet mask. Where a subnet mask uses 1s to mark network bits, a wildcard mask uses 0s — and 1s mark the bits that are "don't care." For <code>/24</code>, the subnet mask is <code>255.255.255.0</code> and the wildcard is <code>0.0.0.255</code>. Wildcard masks are used heavily in Cisco ACLs and OSPF area configurations to match ranges of addresses flexibly. Use the calculator above to instantly see the wildcard mask for any prefix length.
+A wildcard mask is the bitwise inverse of a subnet mask. Where a subnet mask uses 1s to mark network bits, a wildcard mask uses 0s - and 1s mark the bits that are "don't care." For <code>/24</code>, the subnet mask is <code>255.255.255.0</code> and the wildcard is <code>0.0.0.255</code>. Wildcard masks are used heavily in Cisco ACLs and OSPF area configurations to match ranges of addresses flexibly. Use the calculator above to instantly see the wildcard mask for any prefix length.
 </p>
 
 <h3>Choosing the right subnet size</h3>
 <p>
-For home and small office networks, a <strong>/24</strong> is almost always the right answer — it is simple, well-supported, and gives you 254 hosts. For cloud environments, start with the largest subnet you can justify (often a <strong>/16</strong> for a VPC) and carve it into smaller subnets per availability zone or tier. For point-to-point links between routers, use <strong>/31</strong> to save addresses. For loopbacks and host routes, use <strong>/32</strong>. When designing enterprise networks, plan for growth: a department that needs 50 hosts today should get a <strong>/25</strong> (126 hosts) rather than a /26, so you have room to expand without renumbering.
+For home and small office networks, a <strong>/24</strong> is almost always the right answer - it is simple, well-supported, and gives you 254 hosts. For cloud environments, start with the largest subnet you can justify (often a <strong>/16</strong> for a VPC) and carve it into smaller subnets per availability zone or tier. For point-to-point links between routers, use <strong>/31</strong> to save addresses. For loopbacks and host routes, use <strong>/32</strong>. When designing enterprise networks, plan for growth: a department that needs 50 hosts today should get a <strong>/25</strong> (126 hosts) rather than a /26, so you have room to expand without renumbering.
 </p>
 <h2>FAQ</h2>
 <div class="faq">
@@ -691,7 +691,7 @@ For home and small office networks, a <strong>/24</strong> is almost always the 
   }
   function explainIPv4(prefix, total) {
     if (prefix >= 24) return `This is a small subnet (/${prefix}). It contains ${total.toLocaleString()} IPv4 addresses and is commonly used for local networks and VLANs.`;
-    if (prefix >= 20) return `This is a medium subnet (/${prefix}) with ${total.toLocaleString()} addresses — often used for larger VLANs, offices, or internal service ranges.`;
+    if (prefix >= 20) return `This is a medium subnet (/${prefix}) with ${total.toLocaleString()} addresses - often used for larger VLANs, offices, or internal service ranges.`;
     if (prefix >= 16) return `This is a large subnet (/${prefix}) with ${total.toLocaleString()} addresses. These are common in legacy allocations and large enterprise environments.`;
     return `This is a very large subnet (/${prefix}) with ${total.toLocaleString()} addresses. Ranges this large are typically used by providers or very large networks.`;
   }

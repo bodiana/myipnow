@@ -347,7 +347,7 @@ document.addEventListener('click', function(e) {
   }
   function explainIPv4(prefix, total) {
     if (prefix >= 24) return `This is a small subnet (/${prefix}). It contains ${total.toLocaleString()} IPv4 addresses and is commonly used for local networks and VLANs.`;
-    if (prefix >= 20) return `This is a medium subnet (/${prefix}) with ${total.toLocaleString()} addresses — often used for larger VLANs, offices, or internal service ranges.`;
+    if (prefix >= 20) return `This is a medium subnet (/${prefix}) with ${total.toLocaleString()} addresses - often used for larger VLANs, offices, or internal service ranges.`;
     if (prefix >= 16) return `This is a large subnet (/${prefix}) with ${total.toLocaleString()} addresses. These are common in legacy allocations and large enterprise environments.`;
     return `This is a very large subnet (/${prefix}) with ${total.toLocaleString()} addresses. Ranges this large are typically used by providers or very large networks.`;
   }
