@@ -428,8 +428,8 @@ An <strong>Autonomous System Number (ASN)</strong> is basically an ID that ident
   }
 
   function kvRow(label, value, copyable) {
-    var safe = (value === null || value === undefined || value === '') ? '—' : String(value);
-    var copyBtn = copyable && safe !== '—' ? ' <button class="copy" data-copy-text="'+safe.replace(/"/g,'&quot;')+'">Copy</button>' : '';
+    var safe = (value === null || value === undefined || value === '') ? '-' : String(value);
+    var copyBtn = copyable && safe !== '-' ? ' <button class="copy" data-copy-text="'+safe.replace(/"/g,'&quot;')+'">Copy</button>' : '';
     return '<div class="kv-row"><span class="k">'+label+'</span><span class="v">'+safe + copyBtn + '</span></div>';
   }
 
@@ -542,9 +542,9 @@ function renderPrefixes(list) {
       var px = arr[1];
       lastRaw = { overview: ov, announced_prefixes: px };
       var data = (ov && ov.data) ? ov.data : {};
-      var holder = data.holder || data.as_name || data.name || '—';
-      var rir = data.rir || data.registry || '—';
-      var cc = data.country || data.country_code || '—';
+      var holder = data.holder || data.as_name || data.name || '-';
+      var rir = data.rir || data.registry || '-';
+      var cc = data.country || data.country_code || '-';
       var asnNum = (data.asn || asn).toString();
       var asnNumOnly = asn.replace(/^AS/i, '');
       function renderSummary(r, c, h) {
@@ -554,14 +554,14 @@ function renderPrefixes(list) {
           kvRow('RIR / Registry', r, false) +
           kvRow('Country', c, false);
       }
-      if (rir === '—' || cc === '—') {
+      if (rir === '-' || cc === '-') {
         fetch('https://api.bgpview.io/asn/' + asnNumOnly)
           .then(function(r) { return r.json(); })
           .then(function(bg) {
             var d = (bg && bg.data) ? bg.data : {};
-            if (rir === '—') rir = (d.rir_allocation && d.rir_allocation.rir_name) ? d.rir_allocation.rir_name : (d.rir || '—');
-            if (cc === '—') cc = d.country_code || '—';
-            if (holder === '—') holder = d.name || d.description_short || holder;
+            if (rir === '-') rir = (d.rir_allocation && d.rir_allocation.rir_name) ? d.rir_allocation.rir_name : (d.rir || '-');
+            if (cc === '-') cc = d.country_code || '-';
+            if (holder === '-') holder = d.name || d.description_short || holder;
             renderSummary(rir, cc, holder);
           })
           .catch(function() { renderSummary(rir, cc, holder); });
@@ -636,10 +636,10 @@ function renderPrefixes(list) {
     fetchJSON(url).then(function(r) {
       var d = r && r.data ? r.data : {};
       var asns = d.asns || (d.asn ? [d.asn] : []);
-      var asn = asns && asns.length ? asns[0] : '—';
-      var holder = d.holder || d.name || '—';
-      var prefix = d.prefix || d.resource || '—';
-      var rir = d.rir || d.registry || '—';
+      var asn = asns && asns.length ? asns[0] : '-';
+      var holder = d.holder || d.name || '-';
+      var prefix = d.prefix || d.resource || '-';
+      var rir = d.rir || d.registry || '-';
 
       ipSummary.innerHTML =
         kvRow('IP', ip, true) +

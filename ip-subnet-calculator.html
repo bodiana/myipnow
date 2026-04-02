@@ -457,7 +457,7 @@ ACTUAL FIX (no hacks, no clipping):
 <div class="tool-row tool-row-split">
 <div>
 <label class="tool-label" for="ipv4-prefix">CIDR prefix</label>
-<input class="tool-input" id="ipv4-prefix" inputmode="numeric" placeholder="0–32" value="24"/>
+<input class="tool-input" id="ipv4-prefix" inputmode="numeric" placeholder="0-32" value="24"/>
 </div>
 <div>
 <label class="tool-label" for="ipv4-slider">Quick adjust</label>
@@ -529,7 +529,7 @@ ACTUAL FIX (no hacks, no clipping):
 <div class="tool-row tool-row-split">
 <div>
 <label class="tool-label" for="ipv6-prefix">Prefix length</label>
-<input class="tool-input" id="ipv6-prefix" inputmode="numeric" placeholder="0–128" value="64"/>
+<input class="tool-input" id="ipv6-prefix" inputmode="numeric" placeholder="0-128" value="64"/>
 </div>
 <div>
 <label class="tool-label" for="ipv6-slider">Quick adjust</label>
@@ -843,7 +843,7 @@ For home and small office networks, a <strong>/24</strong> is almost always the 
     setText('o4-last', fmtIPv4(last));
     setText('o4-total', counts.total.toLocaleString());
     setText('o4-usable', counts.usable.toLocaleString());
-    setText('o4-range', `${fmtIPv4(net)} – ${fmtIPv4(bc)}`);
+    setText('o4-range', `${fmtIPv4(net)} - ${fmtIPv4(bc)}`);
 
     const note = counts.note ? `<div class="pill">${counts.note}</div>` : "";
     document.getElementById('o4-explain').innerHTML =

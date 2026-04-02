@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <article class="article-body"><h2>Direct Answer: Typical DNS Propagation Timeframes</h2>
 <p>DNS propagation usually takes anywhere from a few minutes to 48 hours to complete worldwide. But the exact time really depends on several factors like TTL (Time to Live) settings, what kind of DNS changes you're making, and how ISPs and recursive DNS servers cache things. Some updates might show up almost instantly, but others can take up to two days before everyone across the internet sees the new DNS info.</p>
 <h2>Understanding DNS Propagation</h2>
-<p>DNS propagation is basically the time it takes for changes you make to DNS records to show up and get recognized across all DNS servers worldwide. When you update DNS records—maybe you're changing an A record, switching nameservers, or adding a CNAME—those changes need to get communicated to and cached by DNS resolvers all over the world.</p>
+<p>DNS propagation is basically the time it takes for changes you make to DNS records to show up and get recognized across all DNS servers worldwide. When you update DNS records-maybe you're changing an A record, switching nameservers, or adding a CNAME-those changes need to get communicated to and cached by DNS resolvers all over the world.</p>
 <p>Here's the thing: DNS is a distributed system, so no single server runs the whole show. Instead, updates spread out gradually as individual DNS servers refresh their cached data based on TTL values and other caching stuff.</p>
 <h3>Key Components Influencing Propagation Time</h3>
 <ul>
@@ -176,7 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Not all DNS changes propagate at the same speed:</p>
 <ul>
 <li><strong>Record Updates (A, AAAA, CNAME, MX, TXT):</strong> These usually propagate within your TTL window since they rely on cached records.</li>
-<li><strong>Nameserver (NS) Changes:</strong> Changing your authoritative nameservers takes longer—often up to 48 hours—because the parent zone servers (like the .com registry) have to update their delegation records, and resolvers need to refresh their cache too.</li>
+<li><strong>Nameserver (NS) Changes:</strong> Changing your authoritative nameservers takes longer-often up to 48 hours-because the parent zone servers (like the .com registry) have to update their delegation records, and resolvers need to refresh their cache too.</li>
 <li><strong>Registrar-Level Changes:</strong> Updates you make at your domain registrar, like domain transfers or DNSSEC changes, can create extra delays.</li>
 </ul>
 <h3>3. ISP and Recursive Resolver Behavior</h3>

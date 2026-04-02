@@ -226,7 +226,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <h2>How CIDR to IP range calculation works</h2>
 <p>
-CIDR notation tells you how many bits are used for the network part. Here's the thing—this calculator takes that prefix and converts it into the actual network address, broadcast address, and which IPs you can actually use. You'll run into this all the time when you're setting up firewall rules, configuring routing, or planning out subnets.
+CIDR notation tells you how many bits are used for the network part. Here's the thing-this calculator takes that prefix and converts it into the actual network address, broadcast address, and which IPs you can actually use. You'll run into this all the time when you're setting up firewall rules, configuring routing, or planning out subnets.
 </p>
 <h2>Related tools</h2>
 <ul>
@@ -493,7 +493,7 @@ document.getElementById('btn-calc').onclick = function() {
     setText('o4-last', fmtIPv4(last));
     setText('o4-total', counts.total.toLocaleString());
     setText('o4-usable', counts.usable.toLocaleString());
-    setText('o4-range', `${fmtIPv4(net)} – ${fmtIPv4(bc)}`);
+    setText('o4-range', `${fmtIPv4(net)} - ${fmtIPv4(bc)}`);
 
     const note = counts.note ? `<div class="pill">${counts.note}</div>` : "";
     document.getElementById('o4-explain').innerHTML =

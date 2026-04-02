@@ -498,7 +498,7 @@ document.addEventListener('click', function(e) {
     setText('o4-last', fmtIPv4(last));
     setText('o4-total', counts.total.toLocaleString());
     setText('o4-usable', counts.usable.toLocaleString());
-    setText('o4-range', `${fmtIPv4(net)} – ${fmtIPv4(bc)}`);
+    setText('o4-range', `${fmtIPv4(net)} - ${fmtIPv4(bc)}`);
 
     const note = counts.note ? `<div class="pill">${counts.note}</div>` : "";
     document.getElementById('o4-explain').innerHTML =
