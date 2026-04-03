@@ -201,6 +201,23 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <div class="faq-item"><div class="faq-question">How do I check DNS records for my domain?</div><div class="faq-answer">Enter your domain and select the DNS record type to see live A, AAAA, MX, NS, and TXT information.</div></div>
 <div class="faq-item"><div class="faq-question">What do A, MX, NS, and TXT records mean?</div><div class="faq-answer">A records map domain to IPv4, AAAA to IPv6, MX for mail servers, NS for name servers, TXT for verification and SPF/DKIM records.</div></div>
 <div class="faq-item"><div class="faq-question">Why is my domain not showing records?</div><div class="faq-answer">Some domains may have privacy protection or may not have certain DNS records configured yet.</div></div>
+<div class="faq-item"><div class="faq-question">What is DNS propagation?</div><div class="faq-answer">DNS propagation is the time it takes for DNS record changes to spread across all servers worldwide. It can take anywhere from a few minutes to 48 hours depending on TTL settings.</div></div>
+<div class="faq-item"><div class="faq-question">How do I troubleshoot email delivery with DNS?</div><div class="faq-answer">Check MX records to verify they point to the correct mail server. Also check TXT records for SPF and DKIM entries. Missing or incorrect records are a common cause of email delivery failures.</div></div>
+<div class="faq-item"><div class="faq-question">What is a CNAME record?</div><div class="faq-answer">A CNAME (Canonical Name) record maps one domain name to another. It is commonly used to point subdomains like www to the root domain, or to point to external services like CDNs.</div></div>
+</section>
+<section class="article-section">
+<h2>What Is DNS and How Does It Work?</h2>
+<p>DNS (Domain Name System) is often called the phonebook of the internet. It translates human-readable domain names like <code>example.com</code> into IP addresses that computers use to communicate. Without DNS, you would need to memorize the IP address of every website you visit.</p>
+<p>When you type a domain into your browser, your device queries a DNS resolver, which looks up the answer from authoritative name servers and returns the IP address. This entire process typically takes milliseconds.</p>
+
+<h3>What DNS record types can I check?</h3>
+<p>The most common DNS record types are: <strong>A records</strong> (map domain to IPv4), <strong>AAAA records</strong> (map to IPv6), <strong>MX records</strong> (specify mail servers), <strong>NS records</strong> (identify authoritative name servers), <strong>TXT records</strong> (used for SPF, DKIM, and domain verification), and <strong>CNAME records</strong> (alias one domain to another).</p>
+
+<h3>How to use DNS lookup to troubleshoot email</h3>
+<p>If emails are not being delivered, check the MX records for your domain to verify they point to the correct mail server. Also check TXT records for SPF and DKIM entries which prevent emails from being marked as spam. Missing or misconfigured records are the most common cause of email delivery failures.</p>
+
+<h3>What is DNS propagation?</h3>
+<p>DNS propagation is the time it takes for DNS record changes to spread across all DNS servers worldwide. It can take anywhere from a few minutes to 48 hours. The TTL (Time to Live) value on each record controls how long it is cached. If you recently changed DNS records and they are not showing correctly, propagation may still be in progress.</p>
 </section>
 <section class="see-also">
 <h2>See Also</h2>
