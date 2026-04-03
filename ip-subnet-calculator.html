@@ -600,20 +600,17 @@ For home and small office networks, a <strong>/24</strong> is almost always the 
 </p>
 
 <h2>What Is a Subnet Mask?</h2>
-<p>A subnet mask is a 32-bit number that divides an IP address into two parts: the network portion and the host portion. It looks like an IP address in dotted decimal notation, for example <code>255.255.255.0</code>. Every device on a network uses a subnet mask to determine which part of an IP address identifies the network and which part identifies the individual device.</p>
-<p>The subnet mask works by using binary 1s to mark the network bits and binary 0s to mark the host bits. For example, <code>255.255.255.0</code> in binary is 11111111.11111111.11111111.00000000 - the first 24 bits identify the network, the last 8 bits identify the host. This is why it is equivalent to /24 in CIDR notation.</p>
+<p>A subnet mask is a 32-bit number that divides an IP address into two parts: the network portion and the host portion. It looks like an IP address in dotted decimal notation, for example <code>255.255.255.0</code>. Every device on a network uses it to determine which part of an IP address identifies the network and which part identifies the individual device.</p>
+<p>The mask works by using binary 1s to mark the network bits and 0s to mark the host bits. <code>255.255.255.0</code> in binary is 11111111.11111111.11111111.00000000 - 24 network bits, 8 host bits - which is why it equals /24 in CIDR notation. The terms "subnet mask" and "network mask" are interchangeable; both refer to the same 32-bit value.</p>
 
-<h2>What Is a Network Mask?</h2>
-<p>A network mask is the same thing as a subnet mask - the terms are used interchangeably. It is a 32-bit number used to separate the network address from the host address in an IPv4 address. Common network masks include <code>255.0.0.0</code> (/8), <code>255.255.0.0</code> (/16), and <code>255.255.255.0</code> (/24).</p>
+<h3>Subnet mask for home Wi-Fi</h3>
+<p>On home Wi-Fi networks the subnet mask is almost always <code>255.255.255.0</code> (/24), giving 254 usable addresses. Your router assigns it automatically via DHCP. To check yours: run <code>ipconfig</code> on Windows, or go to System Settings - Network - your Wi-Fi - Details on Mac.</p>
 
-<h2>What Is a Subnet Mask for Wi-Fi?</h2>
-<p>For home Wi-Fi networks, the subnet mask is almost always <code>255.255.255.0</code>, which is equivalent to /24. This gives your home network 254 usable IP addresses (from .1 to .254), which is more than enough for all your devices. Your router automatically assigns this subnet mask to every device that connects via DHCP. You can check your current subnet mask on Windows by running <code>ipconfig</code> in Command Prompt, or on Mac by going to System Settings - Network - your Wi-Fi connection - Details.</p>
+<h3>How a subnet mask and IP address work together</h3>
+<p>An IP address and subnet mask always pair up. The IP address (e.g. <code>192.168.1.10</code>) identifies the device; the mask (e.g. <code>255.255.255.0</code>) tells it which bits belong to the network. Without a mask, a device cannot decide whether to send traffic directly to another device or route it through the gateway.</p>
 
-<h2>What Is an IP Address and Subnet Mask?</h2>
-<p>An IP address and subnet mask always work together. The IP address (for example <code>192.168.1.10</code>) identifies a specific device on a network. The subnet mask (for example <code>255.255.255.0</code>) tells the device which part of that address is the network and which part is unique to that device. Together they define both where the device lives on the network and how large that network is. Without a subnet mask, a device cannot determine whether another IP address is on the same local network or on a different network requiring a router.</p>
-
-<h2>How Is a Subnet Mask Used?</h2>
-<p>Subnet masks are used in three key ways. First, your device uses the subnet mask to decide whether to send traffic directly to another device on the same network or send it to the default gateway (router) for routing. Second, network administrators use subnet masks to divide a large network into smaller, more manageable subnets - a process called subnetting. Third, routers use subnet masks in their routing tables to determine which interface to forward packets through. Use the free subnet calculator above to instantly see the network address, broadcast address, and usable host range for any IP and subnet mask combination.</p>
+<h3>How subnet masks are used in practice</h3>
+<p>Subnet masks serve three roles: routing decisions on your device, dividing large networks into smaller subnets (subnetting), and populating router routing tables. Use the free calculator above to instantly see the network address, broadcast, usable range, and wildcard mask for any IP and prefix combination.</p>
 
 <h2>FAQ</h2>
 <div class="faq">
@@ -622,8 +619,28 @@ For home and small office networks, a <strong>/24</strong> is almost always the 
 <p>A /24 contains 256 total IPv4 addresses. Typically 254 are usable hosts (network + broadcast are reserved).</p>
 </details>
 <details>
+<summary>What is a subnet mask?</summary>
+<p>A subnet mask is a 32-bit number that separates the network portion of an IP address from the host portion. It looks like an IP address, for example 255.255.255.0. The mask uses binary 1s to mark network bits and 0s for host bits. 255.255.255.0 is equivalent to /24 in CIDR notation.</p>
+</details>
+<details>
+<summary>What is the subnet mask for a home Wi-Fi network?</summary>
+<p>The subnet mask for almost all home Wi-Fi networks is 255.255.255.0, which equals /24. This gives 254 usable IP addresses. Your router assigns it automatically via DHCP.</p>
+</details>
+<details>
+<summary>What is the difference between a subnet mask and a network mask?</summary>
+<p>They are the same thing. Subnet mask and network mask are interchangeable terms for the 32-bit value that separates network bits from host bits in an IPv4 address.</p>
+</details>
+<details>
 <summary>What's the difference between CIDR and subnet mask?</summary>
-<p>They represent the same thing: how many bits belong to the network. CIDR uses a prefix length (like /24). A subnet mask uses dotted decimal (like 255.255.255.0).</p>
+<p>They represent the same concept in different formats. CIDR uses a prefix length like /24. A subnet mask uses dotted decimal like 255.255.255.0. Both mean the first 24 bits identify the network.</p>
+</details>
+<details>
+<summary>How many IPs are in a /16?</summary>
+<p>A /16 contains 65,536 total IPv4 addresses with 65,534 usable hosts. The subnet mask is 255.255.0.0. It is commonly used for large enterprise networks and cloud VPCs.</p>
+</details>
+<details>
+<summary>What is a wildcard mask?</summary>
+<p>A wildcard mask is the bitwise inverse of a subnet mask. Where a subnet mask uses 1s for network bits, a wildcard uses 0s. For /24 the subnet mask is 255.255.255.0 and the wildcard is 0.0.0.255. Wildcard masks are used in Cisco ACLs and OSPF configurations.</p>
 </details>
 <details>
 <summary>Why does IPv6 have no broadcast address?</summary>
@@ -631,7 +648,7 @@ For home and small office networks, a <strong>/24</strong> is almost always the 
 </details>
 <details>
 <summary>Why do /31 and /32 look weird?</summary>
-<p>/32 is a single IPv4 address. /31 has two addresses and is commonly used for point-to-point links (both addresses can be used under modern standards).</p>
+<p>/32 is a single IPv4 address used for host routes and loopbacks. /31 has two addresses and is used for point-to-point links where both addresses are usable (RFC 3021).</p>
 </details>
 </div>
 <h2>Related tools</h2>
