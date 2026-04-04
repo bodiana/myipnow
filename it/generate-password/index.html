@@ -169,7 +169,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <li><a href="https://myipnow.net/it/dns-lookup/">DNS Lookup</a></li>
 <li><a href="https://myipnow.net/it/whois-lookup/">WHOIS Lookup</a></li>
 <li><a href="https://myipnow.net/it/internet-speed-test/">Internet Speed Test</a></li>
-<li><a href="https://myipnow.net/it/generate-password/">Generate Password</a></li>
+<li><a href="https://myipnow.net/it/generate-password/">Genera Password</a></li>
 <li><a href="https://myipnow.net/it/ip-blacklist/">IP Blacklist</a></li>
 </ul>
 </li>
@@ -203,18 +203,18 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 </section>
 <div class="password-tool">
 <div class="password-input-wrapper">
-<input id="passwordResult" placeholder="Your password will appear here" readonly="" type="text"/>
+<input id="passwordResult" placeholder="La tua password apparirà qui" readonly="" type="text"/>
 <span class="icon reload" onclick="generatePassword()" title="Regenerate Password">↻</span>
 <span class="icon copy" onclick="copyPassword()" title="Copy Password">⎘</span>
 </div>
-<button class="generate-btn" onclick="generatePassword()">Generate Password</button>
+<button class="generate-btn" onclick="generatePassword()">Genera Password</button>
 <div class="password-settings">
-<label>Password Length: <span id="lengthVal">12</span></label>
+<label>Lunghezza password: <span id="lengthVal">12</span></label>
 <input id="lengthSlider" max="32" min="8" type="range" value="12"/>
-<label><input checked="" id="uppercase" type="checkbox"/> Include Uppercase</label>
-<label><input checked="" id="lowercase" type="checkbox"/> Include Lowercase</label>
-<label><input checked="" id="numbers" type="checkbox"/> Include Numbers</label>
-<label><input checked="" id="symbols" type="checkbox"/> Include Symbols</label>
+<label><input checked="" id="uppercase" type="checkbox"/> Maiuscole</label>
+<label><input checked="" id="lowercase" type="checkbox"/> Minuscole</label>
+<label><input checked="" id="numbers" type="checkbox"/> Numeri</label>
+<label><input checked="" id="symbols" type="checkbox"/> Simboli</label>
 </div>
 </div>
 <section class="faq-section">
