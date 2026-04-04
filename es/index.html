@@ -538,7 +538,7 @@ details summary{list-style: none;}
 <div class="header-top">
 <a class="logo" href="https://myipnow.net/es/">🌐 MyIPNow</a>
 <form action="/search.html" class="search-form" method="get">
-<input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
+<input aria-label="Search articles" name="q" placeholder="Buscar..." type="search"/>
 <button type="submit">Search</button>
 </form>
 </div>
@@ -572,7 +572,7 @@ Tu dirección IP es un número único asignado a tu dispositivo en Internet. Est
 </p>
 <div class="ip-search hero-search">
 <form id="ipLookupForm">
-<input aria-label="Search IP address" id="ipLookupInput" placeholder="Enter an IP address (IPv4 or IPv6)" type="text"/>
+<input aria-label="Search IP address" id="ipLookupInput" placeholder="Introduce una dirección IP (IPv4 o IPv6)" type="text"/>
 <button type="submit">Search</button>
 </form>
 </div>
@@ -997,7 +997,7 @@ async function loadOwnIP(ip = '') {
       const asnEl = document.getElementById('asnLink');
       if (asnEl) {
         asnEl.textContent = g.asn;
-        asnEl.href = "/asn-lookup?asn=" + g.asn.replace("AS", "");
+        asnEl.href = "https://myipnow.net/es/asn-lookup/?asn=" + g.asn.replace("AS", "");
       }
     }
     document.getElementById('timezone').textContent = g.timezone || '-';
