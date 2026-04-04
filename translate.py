@@ -29,7 +29,7 @@ ROUTER_IPS = [
 
 PROTECTED_TERMS = sorted([
     "IP Subnet Calculator", "DNS Lookup", "WHOIS Lookup", "ASN Lookup",
-    "IP Blacklist Checker", "Internet Speed Test", "Password Generator",
+    "IP Blacklist Checker",
     "CIDR to IP Range Calculator", "IP Range to CIDR Calculator",
     "CIDR Calculator", "IP Range to CIDR", "CIDR to IP Range",
     "What Is My IP", "IP Address Lookup", "IP Lookup",
