@@ -311,25 +311,44 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
   trigger.addEventListener('touchstart',openMenu,{passive:false});
 })();
 </script>
+
 <script>/*lang-redirect*/</script>
 <script>
 (function(){
   var lang = location.pathname.split('/').filter(Boolean)[0];
   if (!['de','es','fr','it'].includes(lang)) return;
+  var translated = [
+    'dns-lookup','whois-lookup','ip-blacklist','asn-lookup',
+    'internet-speed-test','generate-password','ip-subnet-calculator',
+    'cidr-to-ip-range-calculator','ip-range-to-cidr-calculator',
+    'router/10.0.0.1','router/10.11.12.1','router/192.168.0.100',
+    'router/192.168.0.254','router/192.168.100.1','router/192.168.10.1',
+    'router/192.168.11.1','router/192.168.1.11','router/192.168.12.1',
+    'router/192.168.1.250','router/192.168.1.2','router/192.168.1.254',
+    'router/192.168.188.1','router/192.168.2.1','router/192.168.223.1',
+    'router/192.168.254.254','router/192.168.4.1','router/192.168.7.1',
+    'router/192.168.8.1'
+  ];
+  function isTranslated(path) {
+    path = path.replace(/\/$/, '');
+    return translated.some(function(s){ return path === s || path.endsWith('/'+s); });
+  }
   document.querySelectorAll('a[href]').forEach(function(a){
     var href = a.getAttribute('href');
-    if (href && href.startsWith('https://myipnow.net/') && !href.includes('/'+lang+'/')) {
-      var path = href.replace('https://myipnow.net/', '');
-      // Only rewrite known tool/page paths, not root or external
-      if (path && path !== '' && !path.startsWith('hide-my-ip') && !path.startsWith('about') && !path.startsWith('contact') && !path.startsWith('privacy') && !path.startsWith('terms') && !path.startsWith('affiliate') && !path.startsWith('search')) {
-        a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path);
-      }
+    if (!href || !href.startsWith('https://myipnow.net/')) return;
+    if (href.includes('/'+lang+'/')) return;
+    var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
+    if (path && isTranslated(path)) {
+      a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
     }
   });
-  // Fix onclick buttons too
   document.querySelectorAll('button[onclick]').forEach(function(btn){
     var oc = btn.getAttribute('onclick');
-    if (oc && oc.includes('myipnow.net/') && !oc.includes('/'+lang+'/')) {
+    if (!oc || !oc.includes('myipnow.net/')) return;
+    var m = oc.match(/myipnow\.net\/([^']+)/);
+    if (!m) return;
+    var path = m[1].replace(/\/$/, '');
+    if (path && isTranslated(path) && !oc.includes('/'+lang+'/')) {
       btn.setAttribute('onclick', oc.replace('myipnow.net/', 'myipnow.net/' + lang + '/'));
     }
   });
