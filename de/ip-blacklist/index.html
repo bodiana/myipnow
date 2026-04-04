@@ -112,6 +112,17 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <title>Kostenloser IP Blacklist Checker - IP Reputation prüfen | MyIPNow</title><meta content="Kostenloser IP-Blacklist-Checker - prüfen Sie sofort, ob Ihre IP in Spamhaus, SORBS, Barracuda und anderen großen Spam- und Bedrohungsdatenbanken auf einer schwarzen Liste steht." name="description"/><meta content="Kostenloser IP Blacklist Checker - IP Reputation prüfen | MyIPNow" property="og:title"/><meta content="Kostenloser IP-Blacklist-Checker - prüfen Sie sofort, ob Ihre IP in Spamhaus, SORBS, Barracuda und anderen großen Spam- und Bedrohungsdatenbanken auf einer schwarzen Liste steht." property="og:description"/><meta content="https://myipnow.net/de/ip-blacklist.html" property="og:url"/><link rel="alternate" hreflang="en" href="https://myipnow.net/de/ip-blacklist/"/>
 <link rel="alternate" hreflang="de" href="https://myipnow.net/de/de/ip-blacklist/"/>
 <link rel="alternate" hreflang="x-default" href="https://myipnow.net/de/ip-blacklist/"/>
+<style id="lang-switcher-css">
+.lang-switcher{position:absolute;top:1rem;right:1rem;}
+.lang-switcher-btn{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:5px 10px;cursor:pointer;font-weight:600;font-size:0.82rem;color:#1e293b;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.lang-switcher-btn:hover{background:#f1f5f9;}
+.lang-switcher-dropdown{display:none;position:absolute;top:100%;right:0;background:#fff;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.1);min-width:110px;z-index:9999;margin-top:4px;}
+.lang-switcher-dropdown a{display:block;padding:7px 12px;text-decoration:none;color:#1e293b;font-size:0.82rem;font-weight:500;}
+.lang-switcher-dropdown a:hover{background:#f1f5f9;}
+.lang-switcher-dropdown a.active{color:#4f46e5;font-weight:700;}
+.lang-switcher.open .lang-switcher-dropdown{display:block;}
+.page-header{position:relative;}
+</style>
 </head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -122,6 +133,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
 <button type="submit">Search</button>
 </form>
+</div>
 </div>
 <nav aria-label="Article Categories" class="category-nav">
 <ul>
@@ -145,6 +157,16 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 </nav>
 </header>
 <header class="page-header">
+<div class="lang-switcher">
+<button class="lang-switcher-btn">🇩🇪 DE &#9662;</button>
+<div class="lang-switcher-dropdown">
+<a href="https://myipnow.net/ip-blacklist/">🇬🇧 EN</a>
+<a href="https://myipnow.net/de/ip-blacklist/" class="active">🇩🇪 DE</a>
+<a href="https://myipnow.net/es/ip-blacklist/">🇪🇸 ES</a>
+<a href="https://myipnow.net/fr/ip-blacklist/">🇫🇷 FR</a>
+<a href="https://myipnow.net/it/ip-blacklist/">🇮🇹 IT</a>
+</div>
+</div>
 <h1>IP-Blacklist-Prüfer</h1>
 <p>Prüfen Sie, ob eine IP-Adresse auf den wichtigsten Spam- und DNS-basierten Blacklists steht. Schützen Sie sofort die Reputation Ihrer E-Mails und Ihres Servers.</p>
 </header>
@@ -494,6 +516,19 @@ if (typeof setDL !== "function") {
         '</strong>: Not listed in major blacklists</div>';
     }, 800);
   };
+})();
+</script>
+<script id="lang-switcher-js">
+(function(){
+  var sw = document.querySelector('.lang-switcher');
+  if(!sw) return;
+  var btn = sw.querySelector('.lang-switcher-btn');
+  var dd = sw.querySelector('.lang-switcher-dropdown');
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    sw.classList.toggle('open');
+  });
+  document.addEventListener('click',function(){ sw.classList.remove('open'); });
 })();
 </script>
 </body>

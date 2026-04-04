@@ -196,7 +196,7 @@ ACTUAL FIX (no hacks, no clipping):
 .kv-row.is-expanded .v {justify-content: space-between; text-align: left; width: 100%;}
 
 #o6-exp {display: block; flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; word-break: break-word;}</style>
-<title>Calculadora gratuita de subredes IP | ¿Qué es una máscara de subred? CIDR y Wildcard | MyIPNow</title><meta content="Calculadora de subred IP gratuita - calcula instantáneamente la máscara de subred, la máscara comodín, CIDR, el rango de red y el desglose binario. Respuestas qué es una máscara de subred, máscara de red y cómo funciona la subred." name="description"/><meta content="Calculadora gratuita de subredes IP | CIDR, máscara de subred, comodín y binario | MyIPNow" property="og:title"/><meta content="Calculadora de subredes IP gratuita para IPv4 e IPv6. Obtenga instantáneamente la máscara de subred, la máscara comodín, el rango de red, el desglose binario y la tabla de subredes exportable. Construido para ingenieros de redes y administradores de sistemas." property="og:description"/><meta content="https://myipnow.net/es/ip-subnet-calculator" property="og:url"/><style id="mobile-fixes">
+<title>Free IP Subnet Calculator | What Is a Subnet Mask? CIDR & Wildcard | MyIPNow</title><meta content="Free IP subnet calculator - instantly calculate subnet mask, wildcard mask, CIDR, network range, and binary breakdown. Answers what is a subnet mask, network mask, and how subnetting works." name="description"/><meta content="Free IP Subnet Calculator | CIDR, Subnet Mask, Wildcard & Binary | MyIPNow" property="og:title"/><meta content="Free IP subnet calculator for IPv4 and IPv6. Instantly get subnet mask, wildcard mask, network range, binary breakdown, and exportable subnet table. Built for network engineers and sysadmins." property="og:description"/><meta content="https://myipnow.net/es/ip-subnet-calculator" property="og:url"/><style id="mobile-fixes">
 @media (max-width: 680px) {
 
   /* Binary breakdown - scroll horizontally */
@@ -235,6 +235,12 @@ ACTUAL FIX (no hacks, no clipping):
 #panel-ipv6 .tool-grid { grid-template-columns: 1fr !important; }
 </style>
 <link rel="alternate" hreflang="en" href="https://myipnow.net/es/ip-subnet-calculator/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/es/ip-subnet-calculator/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/es/de/ip-subnet-calculator/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/es/ip-subnet-calculator/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/es/fr/ip-subnet-calculator/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/es/it/ip-subnet-calculator/"/>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/es/ip-subnet-calculator/"/>
 <link rel="alternate" hreflang="es" href="https://myipnow.net/es/es/ip-subnet-calculator/"/>
 <link rel="alternate" hreflang="x-default" href="https://myipnow.net/es/ip-subnet-calculator/"/>
 </head>
@@ -271,8 +277,8 @@ ACTUAL FIX (no hacks, no clipping):
 </nav>
 </header>
 <header class="page-header">
-<h1>Calculadora de subredes IP - IPv4 avanzada &amp; Herramienta IPv6</h1>
-<p>Calcula la máscara de subred, la máscara comodín, el rango de red, la dirección de difusión y los hosts disponibles a partir de cualquier dirección IP o CIDR. Incluye un desglose binario y una tabla de asignación de subredes para ingenieros de redes. <strong>Actualizado: enero de 2026</strong></p>
+<h1>IP Subnet Calculator - Advanced IPv4 &amp; IPv6 Tool</h1>
+<p>Calculate subnet mask, wildcard mask, network range, broadcast, and usable hosts from any IP + CIDR. Includes binary breakdown and subnet allocation table for network engineers. <strong>Updated: January 2026</strong></p>
 </header>
 <article class="article-body">
 <div class="tool-shell">
@@ -317,14 +323,14 @@ ACTUAL FIX (no hacks, no clipping):
     </div>
     <!-- Right: binary breakdown -->
     <div class="tool-card">
-      <h3 class="tool-h3">Desglose binario</h3>
+      <h3 class="tool-h3">Binary Breakdown</h3>
       <div id="adv-binary" style="font-family:monospace;font-size:0.82rem;overflow-x:auto;"></div>
     </div>
   </div>
   <!-- Full width subnet table -->
   <div class="tool-card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-      <h3 class="tool-h3" style="margin:0;">Todas las subredes</h3>
+      <h3 class="tool-h3" style="margin:0;">All Subnets</h3>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
         <button onclick="advDownloadCSV()" style="padding:6px 14px;border:1px solid #e2e8f0;border-radius:8px;background:#0f172a;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;">⬇ Download CSV</button>
         <span style="font-size:0.75rem;color:#94a3b8;">Max 65,536 subnets</span>
@@ -408,14 +414,14 @@ ACTUAL FIX (no hacks, no clipping):
 
   <!-- Binary Breakdown card -->
   <div class="tool-card" style="margin-bottom:14px;">
-    <h3 class="tool-h3">Desglose binario</h3>
+    <h3 class="tool-h3">Binary Breakdown</h3>
     <div id="adv-binary" style="overflow-x:auto;"></div>
   </div>
 
   <!-- All Subnets card -->
   <div class="tool-card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-      <h3 class="tool-h3" style="margin:0;">Todas las subredes</h3>
+      <h3 class="tool-h3" style="margin:0;">All Subnets</h3>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
         <button onclick="advDownloadCSV()" style="padding:6px 14px;border:1px solid #e2e8f0;border-radius:8px;background:#0f172a;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;">⬇ Download CSV</button>
         <span style="font-size:0.75rem;color:#94a3b8;">Max 65,536 subnets</span>
@@ -445,8 +451,8 @@ ACTUAL FIX (no hacks, no clipping):
 <div aria-labelledby="tab-ipv4" class="tool-panel is-active" id="panel-ipv4" role="tabpanel">
 <div class="tool-grid">
 <div class="tool-card">
-<h2 class="tool-h2">Calculadora de subredes IPv4</h2>
-<p class="tool-muted">Introduce una dirección IPv4 y la longitud del prefijo CIDR, y obtendrás el rango de red, la máscara, la dirección de difusión y el número de hosts que caben.</p>
+<h2 class="tool-h2">IPv4 subnet calculator</h2>
+<p class="tool-muted">Plug in an IPv4 address and CIDR prefix length, and you'll get back the network range, mask, broadcast, and how many hosts fit.</p>
 <div class="tool-row">
 <label class="tool-label" for="ipv4">IPv4 address</label>
 <input class="tool-input" id="ipv4" inputmode="numeric" placeholder="e.g., 192.168.1.10" value="192.168.1.10"/>
@@ -474,7 +480,7 @@ ACTUAL FIX (no hacks, no clipping):
 <p class="tool-note" id="ipv4-note"></p>
 </div>
 <div class="tool-card">
-<h3 class="tool-h3">Resultados</h3>
+<h3 class="tool-h3">Results</h3>
 <div class="kv">
 <div class="kv-row"><span class="k">CIDR</span><span class="v"><span id="o4-cidr"></span><button aria-label="Copy CIDR" class="copy" data-copy="o4-cidr">Copy</button></span></div>
 <div class="kv-row"><span class="k">Subnet mask</span><span class="v"><span id="o4-mask"></span><button class="copy" data-copy="o4-mask">Copy</button></span></div>
@@ -492,10 +498,10 @@ ACTUAL FIX (no hacks, no clipping):
 <!-- ADVANCED SECTION -->
 <div id="o4-advanced" style="display:none; margin-top:16px;">
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;"/>
-  <h3 style="margin:0 0 12px;font-size:1rem;">Desglose binario</h3>
+  <h3 style="margin:0 0 12px;font-size:1rem;">Binary Breakdown</h3>
   <div id="o4-binary" style="font-family:monospace;font-size:0.85rem;overflow-x:auto;"></div>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;"/>
-  <h3 style="margin:0 0 8px;font-size:1rem;">Asignación de subredes</h3>
+  <h3 style="margin:0 0 8px;font-size:1rem;">Subnet Allocation</h3>
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
     <label style="font-weight:700;font-size:0.9rem;">Subnet bits:</label>
     <input id="o4-subnetbits" type="number" min="1" max="8" value="1" style="width:60px;padding:6px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.9rem;"/>
@@ -523,8 +529,8 @@ ACTUAL FIX (no hacks, no clipping):
 <div aria-labelledby="tab-ipv6" class="tool-panel" id="panel-ipv6" role="tabpanel">
 <div class="tool-grid">
 <div class="tool-card">
-<h2 class="tool-h2">Calculadora de subredes IPv6</h2>
-<p class="tool-muted">Introduce una dirección IPv6 y la longitud del prefijo para ver el prefijo de red, la primera y la última dirección de la subred, y el tamaño. Una advertencia: IPv6 no tiene direcciones de difusión.</p>
+<h2 class="tool-h2">IPv6 subnet calculator</h2>
+<p class="tool-muted">Throw in an IPv6 address and prefix length to see the network prefix, first and last address in the subnet, and the size. Fair warning: IPv6 doesn't have broadcast addresses.</p>
 <div class="tool-row">
 <label class="tool-label" for="ipv6">IPv6 address</label>
 <input class="tool-input" id="ipv6" placeholder="e.g., 2001:db8::1" value="2001:db8::1"/>
@@ -546,7 +552,7 @@ ACTUAL FIX (no hacks, no clipping):
 <p class="tool-note" id="ipv6-note"></p>
 </div>
 <div class="tool-card">
-<h3 class="tool-h3">Resultados</h3>
+<h3 class="tool-h3">Results</h3>
 <div class="kv">
 <div class="kv-row"><span class="k">Prefix</span><span class="v"><span id="o6-cidr"></span><button class="copy" data-copy="o6-cidr">Copy</button></span></div>
 <div class="kv-row"><span class="k">Network prefix</span><span class="v"><span id="o6-net"></span><button class="copy" data-copy="o6-net">Copy</button></span></div>
@@ -561,105 +567,105 @@ ACTUAL FIX (no hacks, no clipping):
 </div>
 </div>
 </div>
-<h2>Cómo funciona la subred (en inglés)</h2>
+<h2>How subnetting works (in plain English)</h2>
 <p>
-La cuestión es la siguiente: una subred es, básicamente, una forma de dividir las direcciones IP en grupos. El <strong>prefijo CIDR</strong> indica el tamaño de ese grupo.
-En IPv4, <code>/24</code> significa que «los primeros 24 bits corresponden a la parte de red», lo que deja 8 bits para los hosts propiamente dichos (256 direcciones en total).
-IPv6 funciona de la misma manera, solo que con números más grandes, y normalmente se trata de subredes mucho más grandes (a menudo <code>/64</code>).
+Here's the thing: a subnet is basically a way to split up IP addresses into groups. The <strong>CIDR prefix</strong> tells you how big that group is.
+With IPv4, <code>/24</code> means "the first 24 bits are the network part," and that leaves 8 bits for the actual hosts (256 addresses total).
+IPv6 works the same way - just with bigger numbers, and you're usually dealing with way larger subnets (often <code>/64</code>).
 </p>
-<h2>Explicación de los tamaños de subred CIDR</h2>
+<h2>CIDR Subnet Sizes Explained</h2>
 <p>
-La notación CIDR (enrutamiento entre dominios sin clases) expresa una red como una dirección IP seguida de una longitud de prefijo; por ejemplo, <code>192.168.1.0/24</code>. La longitud del prefijo indica cuántos bits se reservan para la red, y los bits restantes están disponibles para los hosts. La fórmula es sencilla: un <strong>/24</strong> tiene 32 − 24 = 8 bits de host, lo que da un total de 2<sup>8</sup> = 256 direcciones y 254 hosts utilizables (la red y la difusión están reservadas).
-</p>
-
-<h3>¿Cuántas IP hay en un /24, /16 o /8?</h3>
-<p>
-Un <strong>/24</strong> contiene un total de 256 direcciones (254 utilizables) y es la subred más habitual en redes domésticas y de oficina; se corresponde directamente con la conocida máscara de subred <code>255.255.255.0</code>. Un <strong>/16</strong> contiene 65 536 direcciones y se utiliza a menudo en grandes empresas o en VPC en la nube, donde es importante disponer de margen de crecimiento. Una subred <strong>/8</strong> contiene más de 16 millones de direcciones y está reservada para grandes proveedores de servicios de Internet (ISP) o asignaciones heredadas de Clase A, como <code>10.0.0.0/8</code>, que se utilizan en redes privadas.
+CIDR (Classless Inter-Domain Routing) notation expresses a network as an IP address followed by a prefix length - for example, <code>192.168.1.0/24</code>. The prefix length tells you how many bits are reserved for the network, and the remaining bits are available for hosts. The formula is simple: a <strong>/24</strong> has 32 − 24 = 8 host bits, giving 2<sup>8</sup> = 256 total addresses and 254 usable hosts (network and broadcast are reserved).
 </p>
 
-<h3>Subredes pequeñas: /30, /29, /28</h3>
+<h3>How many IPs are in a /24, /16, or /8?</h3>
 <p>
-Cuando solo se necesitan unas pocas direcciones, los prefijos pequeños son la opción más adecuada. Un <strong>/30</strong> proporciona exactamente 4 direcciones (2 utilizables) y es la opción clásica para enlaces de enrutadores punto a punto: lo justo para cada extremo. Un <strong>/29</strong> ofrece 8 direcciones (6 utilizables), lo que resulta útil para pequeños clústeres de servidores o segmentos de DMZ. Un <strong>/28</strong> con 16 direcciones (14 utilizables) funciona bien para pequeñas VLAN, entornos de laboratorio o subredes en la nube en las que se desea mantener reducido el radio de impacto.
+A <strong>/24</strong> contains 256 total addresses (254 usable) and is the most common subnet in home and office networks - it maps directly to the familiar <code>255.255.255.0</code> subnet mask. A <strong>/16</strong> contains 65,536 addresses and is often used inside large enterprises or cloud VPCs where room to grow matters. A <strong>/8</strong> holds over 16 million addresses and is reserved for large ISPs or legacy Class A allocations like <code>10.0.0.0/8</code> used in private networks.
 </p>
 
-<h3>Casos especiales: /32 y /31</h3>
+<h3>Small subnets: /30, /29, /28</h3>
 <p>
-Un <strong>/32</strong> representa un único host: sin red, sin difusión, solo una dirección IP. Se utiliza ampliamente en el enrutamiento para anunciar rutas de host específicas, en reglas de cortafuegos para dirigirse a una sola máquina y en configuraciones de interfaces de bucle invertido. Un <strong>/31</strong> es una subred de dos direcciones definida en el RFC 3021 para enlaces punto a punto: ambas direcciones son utilizables, lo que elimina el desperdicio de un /30. Los routers modernos y los proveedores de servicios en la nube admiten plenamente los enlaces /31.
+When you only need a handful of addresses, small prefixes are the right tool. A <strong>/30</strong> gives exactly 4 addresses (2 usable) and is the classic choice for point-to-point router links - just enough for each end. A <strong>/29</strong> offers 8 addresses (6 usable), useful for small server clusters or DMZ segments. A <strong>/28</strong> with 16 addresses (14 usable) works well for small VLANs, lab environments, or cloud subnets where you want to keep the blast radius small.
 </p>
 
-<h3>Máscara de subred frente a CIDR: ¿cuál es la diferencia?</h3>
+<h3>Special cases: /32 and /31</h3>
 <p>
-Las máscaras de subred y las longitudes de prefijo CIDR representan el mismo concepto en dos formatos diferentes. La máscara <code>255.255.255.0</code> es idéntica a <code>/24</code>: en ambos casos, los primeros 24 bits identifican la red. La notación CIDR es más compacta y se prefiere en los protocolos de enrutamiento, las consolas en la nube y las reglas de cortafuegos, mientras que las máscaras de subred siguen apareciendo en equipos más antiguos y en la configuración de red de Windows. Esta calculadora admite ambas: introduce cualquier IP y longitud de prefijo y te mostrará la máscara de subred correspondiente, la máscara comodín y el rango completo de la red.
+A <strong>/32</strong> represents a single host - no network, no broadcast, just one IP. It is widely used in routing to advertise specific host routes, in firewall rules to target one machine, and in loopback interface configurations. A <strong>/31</strong> is a two-address subnet defined in RFC 3021 for point-to-point links: both addresses are usable, eliminating the waste of a /30. Modern routers and cloud providers fully support /31 links.
 </p>
 
-<h3>Máscaras comodín y diferencias con las máscaras de subred</h3>
+<h3>Subnet mask vs CIDR: what is the difference?</h3>
 <p>
-Una máscara comodín es el inverso bit a bit de una máscara de subred. Mientras que una máscara de subred utiliza unos para indicar los bits de red, una máscara comodín utiliza ceros, y los unos indican los bits que «no importan». Para <code>/24</code>, la máscara de subred es <code>255.255.255.0</code> y la máscara comodín es <code>0.0.0.255</code>. Las máscaras comodín se utilizan mucho en las ACL de Cisco y en las configuraciones de área OSPF para hacer coincidir rangos de direcciones de forma flexible. Utiliza la calculadora anterior para ver al instante la máscara comodín para cualquier longitud de prefijo.
+Subnet masks and CIDR prefix lengths represent the same concept in two different formats. The mask <code>255.255.255.0</code> is identical to <code>/24</code> - both mean the first 24 bits identify the network. CIDR notation is more compact and is preferred in routing protocols, cloud consoles, and firewall rules, while subnet masks still appear in older equipment and Windows network settings. This calculator supports both: enter any IP and prefix length and it will show you the corresponding subnet mask, wildcard mask, and full network range.
 </p>
 
-<h3>Elegir el tamaño de subred adecuado</h3>
+<h3>Wildcard masks and how they differ from subnet masks</h3>
 <p>
-Para redes domésticas y de pequeñas oficinas, una subred <strong>/24</strong> suele ser la solución más adecuada: es sencilla, cuenta con un buen soporte técnico y ofrece 254 hosts. En entornos en la nube, empieza con la subred más grande que puedas justificar (a menudo una <strong>/16</strong> para una VPC) y divídela en subredes más pequeñas por zona de disponibilidad o nivel. Para enlaces punto a punto entre routers, utilice <strong>/31</strong> para ahorrar direcciones. Para bucles de retorno y rutas de host, utilice <strong>/32</strong>. Al diseñar redes empresariales, planifique el crecimiento: un departamento que hoy necesite 50 hosts debería obtener una <strong>/25</strong> (126 hosts) en lugar de una /26, para que tenga margen para expandirse sin tener que renumerar.
+A wildcard mask is the bitwise inverse of a subnet mask. Where a subnet mask uses 1s to mark network bits, a wildcard mask uses 0s - and 1s mark the bits that are "don't care." For <code>/24</code>, the subnet mask is <code>255.255.255.0</code> and the wildcard is <code>0.0.0.255</code>. Wildcard masks are used heavily in Cisco ACLs and OSPF area configurations to match ranges of addresses flexibly. Use the calculator above to instantly see the wildcard mask for any prefix length.
 </p>
 
-<h2>¿Qué es una máscara de subred?</h2>
-<p>Una máscara de subred es un número de 32 bits que divide una dirección IP en dos partes: la parte de red y la parte de host. Tiene el mismo formato que una dirección IP en notación decimal con puntos, por ejemplo, <code>255.255.255.0</code>. Todos los dispositivos de una red la utilizan para determinar qué parte de una dirección IP identifica a la red y qué parte identifica al dispositivo concreto.</p>
-<p>La máscara funciona utilizando unos binarios para marcar los bits de red y ceros para marcar los bits de host. <code>255.255.255.0</code> en binario es 11111111.11111111.11111111.00000000 —24 bits de red, 8 bits de host—, por lo que equivale a /24 en notación CIDR. Los términos «máscara de subred» y «máscara de red» son intercambiables; ambos se refieren al mismo valor de 32 bits.</p>
+<h3>Choosing the right subnet size</h3>
+<p>
+For home and small office networks, a <strong>/24</strong> is almost always the right answer - it is simple, well-supported, and gives you 254 hosts. For cloud environments, start with the largest subnet you can justify (often a <strong>/16</strong> for a VPC) and carve it into smaller subnets per availability zone or tier. For point-to-point links between routers, use <strong>/31</strong> to save addresses. For loopbacks and host routes, use <strong>/32</strong>. When designing enterprise networks, plan for growth: a department that needs 50 hosts today should get a <strong>/25</strong> (126 hosts) rather than a /26, so you have room to expand without renumbering.
+</p>
 
-<h3>Máscara de subred para Wi-Fi doméstico</h3>
-<p>En las redes Wi-Fi domésticas, la máscara de subred suele ser casi siempre <code>255.255.255.0</code> (/24), lo que proporciona 254 direcciones utilizables. Tu router la asigna automáticamente a través de DHCP. Para comprobar la tuya: ejecuta <code>ipconfig</code> en Windows, o ve a «Configuración del sistema» - «Red» - «Tu red Wi-Fi» - «Detalles» en Mac.</p>
+<h2>What Is a Subnet Mask?</h2>
+<p>A subnet mask is a 32-bit number that divides an IP address into two parts: the network portion and the host portion. It looks like an IP address in dotted decimal notation, for example <code>255.255.255.0</code>. Every device on a network uses it to determine which part of an IP address identifies the network and which part identifies the individual device.</p>
+<p>The mask works by using binary 1s to mark the network bits and 0s to mark the host bits. <code>255.255.255.0</code> in binary is 11111111.11111111.11111111.00000000 - 24 network bits, 8 host bits - which is why it equals /24 in CIDR notation. The terms "subnet mask" and "network mask" are interchangeable; both refer to the same 32-bit value.</p>
 
-<h3>Funcionamiento conjunto de la máscara de subred y la dirección IP</h3>
-<p>Una dirección IP y una máscara de subred siempre van juntas. La dirección IP (p. ej., <code>192.168.1.10</code>) identifica el dispositivo; la máscara (p. ej., <code>255.255.255.0</code>) le indica qué bits pertenecen a la red. Sin una máscara, un dispositivo no puede decidir si enviar el tráfico directamente a otro dispositivo o enrutarlo a través de la puerta de enlace.</p>
+<h3>Subnet mask for home Wi-Fi</h3>
+<p>On home Wi-Fi networks the subnet mask is almost always <code>255.255.255.0</code> (/24), giving 254 usable addresses. Your router assigns it automatically via DHCP. To check yours: run <code>ipconfig</code> on Windows, or go to System Settings - Network - your Wi-Fi - Details on Mac.</p>
 
-<h3>Cómo se utilizan las máscaras de subred en la práctica</h3>
-<p>Las máscaras de subred cumplen tres funciones: tomar decisiones de enrutamiento en tu dispositivo, dividir redes grandes en subredes más pequeñas (subdivisión de subredes) y completar las tablas de enrutamiento de los routers. Utiliza la calculadora gratuita que aparece arriba para ver al instante la dirección de red, la dirección de difusión, el rango utilizable y la máscara comodín para cualquier combinación de IP y prefijo.</p>
+<h3>How a subnet mask and IP address work together</h3>
+<p>An IP address and subnet mask always pair up. The IP address (e.g. <code>192.168.1.10</code>) identifies the device; the mask (e.g. <code>255.255.255.0</code>) tells it which bits belong to the network. Without a mask, a device cannot decide whether to send traffic directly to another device or route it through the gateway.</p>
 
-<h2>PREGUNTAS FRECUENTES</h2>
+<h3>How subnet masks are used in practice</h3>
+<p>Subnet masks serve three roles: routing decisions on your device, dividing large networks into smaller subnets (subnetting), and populating router routing tables. Use the free calculator above to instantly see the network address, broadcast, usable range, and wildcard mask for any IP and prefix combination.</p>
+
+<h2>FAQ</h2>
 <div class="faq">
 <details>
 <summary>How many IPs are in a /24?</summary>
-<p>Un /24 contiene un total de 256 direcciones IPv4. Normalmente, 254 son hosts utilizables (la red y la difusión están reservadas).</p>
+<p>A /24 contains 256 total IPv4 addresses. Typically 254 are usable hosts (network + broadcast are reserved).</p>
 </details>
 <details>
 <summary>What is a subnet mask?</summary>
-<p>Una máscara de subred es un número de 32 bits que separa la parte de red de una dirección IP de la parte de host. Tiene el mismo formato que una dirección IP; por ejemplo, 255.255.255.0. La máscara utiliza unos binarios para indicar los bits de red y ceros para los bits de host. 255.255.255.0 equivale a /24 en notación CIDR.</p>
+<p>A subnet mask is a 32-bit number that separates the network portion of an IP address from the host portion. It looks like an IP address, for example 255.255.255.0. The mask uses binary 1s to mark network bits and 0s for host bits. 255.255.255.0 is equivalent to /24 in CIDR notation.</p>
 </details>
 <details>
 <summary>What is the subnet mask for a home Wi-Fi network?</summary>
-<p>La máscara de subred de casi todas las redes Wi-Fi domésticas es 255.255.255.0, lo que equivale a /24. Esto proporciona 254 direcciones IP utilizables. Tu router las asigna automáticamente a través de DHCP.</p>
+<p>The subnet mask for almost all home Wi-Fi networks is 255.255.255.0, which equals /24. This gives 254 usable IP addresses. Your router assigns it automatically via DHCP.</p>
 </details>
 <details>
 <summary>What is the difference between a subnet mask and a network mask?</summary>
-<p>Son lo mismo. «Máscara de subred» y «máscara de red» son términos intercambiables que se refieren al valor de 32 bits que separa los bits de red de los bits de host en una dirección IPv4.</p>
+<p>They are the same thing. Subnet mask and network mask are interchangeable terms for the 32-bit value that separates network bits from host bits in an IPv4 address.</p>
 </details>
 <details>
 <summary>What's the difference between CIDR and subnet mask?</summary>
-<p>Representan el mismo concepto en formatos diferentes. El CIDR utiliza una longitud de prefijo como /24. Una máscara de subred utiliza el formato decimal con puntos, como 255.255.255.0. En ambos casos, los primeros 24 bits identifican la red.</p>
+<p>They represent the same concept in different formats. CIDR uses a prefix length like /24. A subnet mask uses dotted decimal like 255.255.255.0. Both mean the first 24 bits identify the network.</p>
 </details>
 <details>
 <summary>How many IPs are in a /16?</summary>
-<p>Una subred /16 contiene un total de 65 536 direcciones IPv4, con 65 534 hosts utilizables. La máscara de subred es 255.255.0.0. Se utiliza habitualmente en redes de grandes empresas y en VPC en la nube.</p>
+<p>A /16 contains 65,536 total IPv4 addresses with 65,534 usable hosts. The subnet mask is 255.255.0.0. It is commonly used for large enterprise networks and cloud VPCs.</p>
 </details>
 <details>
 <summary>What is a wildcard mask?</summary>
-<p>Una máscara comodín es el inverso bit a bit de una máscara de subred. Mientras que una máscara de subred utiliza unos para los bits de red, una máscara comodín utiliza ceros. Para /24, la máscara de subred es 255.255.255.0 y la máscara comodín es 0.0.0.255. Las máscaras comodín se utilizan en las listas de control de acceso (ACL) de Cisco y en las configuraciones de OSPF.</p>
+<p>A wildcard mask is the bitwise inverse of a subnet mask. Where a subnet mask uses 1s for network bits, a wildcard uses 0s. For /24 the subnet mask is 255.255.255.0 and the wildcard is 0.0.0.255. Wildcard masks are used in Cisco ACLs and OSPF configurations.</p>
 </details>
 <details>
 <summary>Why does IPv6 have no broadcast address?</summary>
-<p>IPv6 se diseñó sin la función de difusión. En su lugar, utiliza la multidifusión, y muchas operaciones que en IPv4 se realizaban mediante difusión funcionan de manera diferente en IPv6.</p>
+<p>IPv6 was designed without broadcast. It uses multicast instead, and many operations that used broadcast in IPv4 work differently in IPv6.</p>
 </details>
 <details>
 <summary>Why do /31 and /32 look weird?</summary>
-<p>/32 es una dirección IPv4 única que se utiliza para rutas de host y direcciones de bucle invertido. /31 tiene dos direcciones y se utiliza para enlaces punto a punto en los que ambas direcciones son utilizables (RFC 3021).</p>
+<p>/32 is a single IPv4 address used for host routes and loopbacks. /31 has two addresses and is used for point-to-point links where both addresses are usable (RFC 3021).</p>
 </details>
 </div>
-<h2>Herramientas relacionadas</h2>
+<h2>Related tools</h2>
 <ul>
-<li><a href="https://myipnow.net/">Búsqueda de IP</a></li>
-<li><a href="https://myipnow.net/es/whois-lookup/">Búsqueda WHOIS</a></li>
-<li><a href="https://myipnow.net/es/ip-blacklist/">Comprobación de la lista negra de IP</a></li>
-<li><a href="https://myipnow.net/es/dns-lookup/">Búsqueda DNS</a></li>
+<li><a href="https://myipnow.net/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/es/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/es/ip-blacklist/">IP Blacklist Check</a></li>
+<li><a href="https://myipnow.net/es/dns-lookup/">DNS Lookup</a></li>
 </ul>
 </article>
 <script>

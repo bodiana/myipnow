@@ -85,6 +85,17 @@ tr:nth-child(even) {background: #f8fafc;}
 <link rel="alternate" hreflang="en" href="https://myipnow.net/de/router/10.11.12.1/"/>
 <link rel="alternate" hreflang="de" href="https://myipnow.net/de/de/router/10.11.12.1/"/>
 <link rel="alternate" hreflang="x-default" href="https://myipnow.net/de/router/10.11.12.1/"/>
+<style id="lang-switcher-css">
+.lang-switcher{position:absolute;top:1rem;right:1rem;}
+.lang-switcher-btn{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:5px 10px;cursor:pointer;font-weight:600;font-size:0.82rem;color:#1e293b;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.lang-switcher-btn:hover{background:#f1f5f9;}
+.lang-switcher-dropdown{display:none;position:absolute;top:100%;right:0;background:#fff;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.1);min-width:110px;z-index:9999;margin-top:4px;}
+.lang-switcher-dropdown a{display:block;padding:7px 12px;text-decoration:none;color:#1e293b;font-size:0.82rem;font-weight:500;}
+.lang-switcher-dropdown a:hover{background:#f1f5f9;}
+.lang-switcher-dropdown a.active{color:#4f46e5;font-weight:700;}
+.lang-switcher.open .lang-switcher-dropdown{display:block;}
+.page-header{position:relative;}
+</style>
 </head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -96,6 +107,7 @@ tr:nth-child(even) {background: #f8fafc;}
 <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
 <button type="submit">Search</button>
 </form>
+</div>
 </div>
 <nav aria-label="Article Categories" class="category-nav">
 <ul>
@@ -120,6 +132,16 @@ tr:nth-child(even) {background: #f8fafc;}
 </header>
 
 <header class="page-header">
+<div class="lang-switcher">
+<button class="lang-switcher-btn">🇩🇪 DE &#9662;</button>
+<div class="lang-switcher-dropdown">
+<a href="https://myipnow.net/router/10.11.12.1/">🇬🇧 EN</a>
+<a href="https://myipnow.net/de/router/10.11.12.1/" class="active">🇩🇪 DE</a>
+<a href="https://myipnow.net/es/router/10.11.12.1/">🇪🇸 ES</a>
+<a href="https://myipnow.net/fr/router/10.11.12.1/">🇫🇷 FR</a>
+<a href="https://myipnow.net/it/router/10.11.12.1/">🇮🇹 IT</a>
+</div>
+</div>
 <h1>10.11.12.1 Router-Anmeldung</h1>
 <p>10.11.12.1 ist eine private IP-Adresse, die von einigen von Internetdienstanbietern bereitgestellten Routern als Standard-Gateway verwendet wird.</p>
 </header>
@@ -288,6 +310,19 @@ tr:nth-child(even) {background: #f8fafc;}
   window.addEventListener('resize',closeMenu);
   trigger.addEventListener('click',openMenu);
   trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+<script id="lang-switcher-js">
+(function(){
+  var sw = document.querySelector('.lang-switcher');
+  if(!sw) return;
+  var btn = sw.querySelector('.lang-switcher-btn');
+  var dd = sw.querySelector('.lang-switcher-dropdown');
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    sw.classList.toggle('open');
+  });
+  document.addEventListener('click',function(){ sw.classList.remove('open'); });
 })();
 </script>
 </body>
