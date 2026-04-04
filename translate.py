@@ -59,9 +59,13 @@ def restore_technical(text, placeholders):
 def deepl_call(text, target_lang, use_html=False):
     if not text or not text.strip() or len(text.strip()) < 3:
         return text
-    payload = {"text": [text], "target_lang": target_lang, "source_lang": "EN"}
+    # Clean text before sending
+    import html as html_module
+    clean = text.strip()
+    payload = {"text": [clean], "target_lang": target_lang, "source_lang": "EN"}
     if use_html:
         payload["tag_handling"] = "html"
+        payload["split_sentences"] = "nonewlines"
     req = urllib.request.Request(
         DEEPL_URL,
         data=json.dumps(payload).encode(),
