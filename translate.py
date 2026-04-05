@@ -17,6 +17,7 @@ TOOL_PAGES = [
     ("ip-subnet-calculator.html", "ip-subnet-calculator"),
     ("cidr-to-ip-range-calculator.html", "cidr-to-ip-range-calculator"),
     ("ip-range-to-cidr-calculator.html", "ip-range-to-cidr-calculator"),
+    ("hide-my-ip.html", "hide-my-ip"),
 ]
 
 ROUTER_IPS = [
@@ -165,7 +166,7 @@ def translate_page(content, lang, deepl_lang, slug, translated_slugs):
         content = content.replace(m.group(0), m.group(1) + translated_body + m.group(3))
         print("  Article translated")
     else:
-        for section_class in ["snippet-section", "faq-snippet", "guide-section"]:
+        for section_class in ["snippet-section", "faq-snippet", "guide-section", "affiliate-banner", "card-section"]:
             m = re.search(r'(<section[^>]*%s[^>]*>)(.*?)(</section>)' % section_class, content, re.DOTALL)
             if m:
                 translated_body = translate_body(m.group(2))
