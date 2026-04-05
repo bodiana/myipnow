@@ -1536,4 +1536,8 @@
   <url><loc>https://myipnow.net/it/router/192.168.4.1/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://myipnow.net/it/router/192.168.7.1/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://myipnow.net/it/router/192.168.8.1/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://myipnow.net/de/hide-my-ip/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://myipnow.net/es/hide-my-ip/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://myipnow.net/fr/hide-my-ip/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://myipnow.net/it/hide-my-ip/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
