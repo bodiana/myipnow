@@ -17,15 +17,15 @@ f.parentNode.insertBefore(j,f);
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myipnow.net/#organization", "name": "MyIPNow", "url": "https://myipnow.net/", "logo": {"@type": "ImageObject", "url": "https://myipnow.net/favicon-96x96.png"}}, {"@type": "WebSite", "@id": "https://myipnow.net/#website", "url": "https://myipnow.net/", "name": "MyIPNow", "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "WebPage", "@id": "https://myipnow.net/asn-lookup/#webpage", "url": "https://myipnow.net/asn-lookup", "name": "ASN Lookup Tool", "description": "Look up an ASN or IP address to see the network owner, registry, and announced prefixes using the MyIPNow ASN Lookup tool.", "isPartOf": {"@id": "https://myipnow.net/#website"}}, {"@type": "SoftwareApplication", "@id": "https://myipnow.net/asn-lookup/#app", "name": "ASN Lookup Tool", "applicationCategory": "WebApplication", "applicationSubCategory": "Network Intelligence Tool", "operatingSystem": "All", "url": "https://myipnow.net/asn-lookup", "browserRequirements": "Requires JavaScript", "description": "Lookup Autonomous System Numbers to find network owners, routing registry, and announced IP prefixes.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "FAQPage", "@id": "https://myipnow.net/asn-lookup/#faq", "mainEntity": [{"@type": "Question", "name": "What is an ASN?", "acceptedAnswer": {"@type": "Answer", "text": "An ASN (Autonomous System Number) is a unique identifier assigned to a network managed by a single organization. ISPs, cloud providers, and large companies each have their own ASN used for internet routing via BGP."}}, {"@type": "Question", "name": "What is an Autonomous System Number?", "acceptedAnswer": {"@type": "Answer", "text": "An Autonomous System Number identifies a collection of IP networks under single administrative control. It is used in BGP routing to direct internet traffic between different networks worldwide."}}, {"@type": "Question", "name": "How do I find the ASN for an IP address?", "acceptedAnswer": {"@type": "Answer", "text": "Enter the IP address in the ASN lookup tool. It returns the ASN, organization name, country, and IP ranges controlled by that autonomous system."}}, {"@type": "Question", "name": "What is the difference between an ASN and an IP address?", "acceptedAnswer": {"@type": "Answer", "text": "An IP address identifies a specific device or connection. An ASN identifies the entire network organization that owns a block of IP addresses. One ASN can control millions of IP addresses."}}, {"@type": "Question", "name": "What is BGP?", "acceptedAnswer": {"@type": "Answer", "text": "BGP (Border Gateway Protocol) is the routing protocol that uses ASNs to direct internet traffic between autonomous systems. It is how networks advertise which IP ranges they own and how packets find their way across the internet."}}, {"@type": "Question", "name": "How do I find my own ASN?", "acceptedAnswer": {"@type": "Answer", "text": "Look up your public IP address using the IP lookup tool, then enter that IP into the ASN lookup. It will show the ASN of your internet service provider."}}]}]}</script>
 <link href="/css/fonts.css" rel="stylesheet"/>
 <style>body {font-family: 'Inter', sans-serif; background: #f7f8f9; margin: 0; color: #1e293b; line-height: 1.7;}
-    .container {max-width: 900px; margin: 0 auto; padding: 1rem;}
+    .container {max-width: 1200px; margin: 0 auto; padding: 1rem;}
     .site-header {background: #fff; padding: 1rem; margin-bottom: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
     .header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
     .logo {font-size: 1.5rem; font-weight: 700; color: #1e293b; text-decoration: none;}
-    .search-form {display: flex; flex-grow: 1; max-width: 400px;}
-    .search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 0.9rem;}
+    .search-form {display: flex; flex-grow: 0; width: 480px; max-width: 100%;}
+    .search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 1rem;}
     .search-form button {padding: 0.75rem 1rem; border: none; background: #10b981; color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
     .category-nav {padding-top: 1rem;}
-    .category-nav ul {display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+    .category-nav ul {display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
 
 .nav-tools {position: relative;}
 .nav-tools > a {cursor: default;}
@@ -47,11 +47,11 @@ f.parentNode.insertBefore(j,f);
 
 }
 
-.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 0.9rem; font-weight: 500; transition: color var(--transition-speed);}
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 1rem; font-weight: 500; transition: color var(--transition-speed);}
 
 .category-nav a:hover {color: var(--accent-color);}
     .page-header {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;}
-    .page-header h1 {font-size: 2.2rem; margin: 0 0 0.5rem;}
+    .page-header h1 {font-size: 2.5rem; margin: 0 0 0.5rem;}
     .page-header p {font-size: 1rem; color: #64748b; margin: 0;}
     .article-body {background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
     .article-body h2 {margin-top: 2rem; font-size: 1.5rem;}
@@ -65,7 +65,7 @@ f.parentNode.insertBefore(j,f);
     .article-pagination a {background: #fff; padding: 0.75rem 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; color: #1e293b; font-weight: 500;}
     .article-pagination a:hover {background: #4f46e5; color: white;}
     .footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
-    .footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+    .footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 2.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
     .footer-nav a {color: #64748b; text-decoration: none; font-size: 0.9rem;}
     .footer-nav a:hover {color: #4f46e5;}
     .footer-copyright {font-size: 0.85rem; color: #64748b;}
@@ -366,17 +366,6 @@ f.parentNode.insertBefore(j,f);
 <li><a href="https://stat.ripe.net/docs/data-api/ripestat-data-api#api-endpoints" rel="nofollow">RIPEstat API endpoints list</a></li>
 </ul>
 </article>
-<div class="lang-links">
-<a href="https://myipnow.net/asn-lookup/">🇺🇸 What Is My IP?</a>
-<a href="https://myipnow.net/de/asn-lookup/">🇩🇪 Wie Ist Meine IP?</a>
-<a href="https://myipnow.net/fr/asn-lookup/">🇫🇷 Quel Est Mon IP?</a>
-<a href="https://myipnow.net/it/asn-lookup/">🇮🇹 Qual è il Mio IP?</a>
-</div>
-<style>
-.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
-.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
-.lang-links a:hover {background: #f1f5f9;}
-</style>
 <footer class="footer">
 <ul class="footer-nav">
 <li>
