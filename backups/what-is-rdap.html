@@ -139,7 +139,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <div class="container"><header class="site-header">
 <div class="header-top">
-<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:middle;margin-right:6px;border-radius:8px;"> <span style="vertical-align:middle;font-size:1rem;font-weight:600;">MyIPNow.net</span></a>
+<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
 <form action="/search.html" class="search-form" method="get">
 <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
 <button type="submit">Search</button>
@@ -169,7 +169,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="page-header">
 <h1>What is RDAP?</h1>
 </header>
-<article class="article-body"><h2>Direct Answer: What is RDAP?</h2><p>The Registration Data Access Protocol (RDAP) is a modern protocol designed to provide standardized, secure, and structured access to domain registration data. It is intended to replace the legacy WHOIS system by offering enhanced functionality, including support for internationalization, differentiated access control, and machine-readable output formats. RDAP enables users, network operators, and law enforcement agencies to query domain ownership and registration details in a more reliable, scalable, and privacy-conscious manner.</p><h2>Background: The Limitations of WHOIS</h2><p>For decades, WHOIS has been the primary protocol used to retrieve domain registration information. However, WHOIS suffers from several significant limitations:</p><ul><li><strong>Lack of Standardization:</strong> WHOIS responses vary widely between registries and registrars, making automated parsing difficult.</li><li><strong>No Support for Internationalization:</strong> WHOIS does not natively support non-ASCII characters, limiting global usability.</li><li><strong>Security and Privacy Concerns:</strong> WHOIS provides unrestricted access to personal data, raising privacy issues and regulatory challenges.</li><li><strong>Limited Query Capabilities:</strong> WHOIS lacks support for differentiated access levels or authentication mechanisms.</li></ul><p>These shortcomings motivated the Internet Engineering Task Force (IETF) to develop RDAP as a replacement protocol.</p><h2>Technical Overview of RDAP</h2><p>RDAP is defined in a series of RFCs, primarily RFC 7480 through RFC 7484, which specify its architecture, protocol, and data model. It is designed to operate over HTTP and HTTPS, leveraging RESTful principles to provide domain registration data in a structured JSON format.</p><h3>Key Features of RDAP</h3><ul><li><strong>Standardized JSON Responses:</strong> RDAP returns data in JSON, enabling easy parsing and integration with modern applications.</li><li><strong>HTTP-Based Protocol:</strong> Using HTTP/HTTPS allows RDAP to benefit from existing web infrastructure, including caching, authentication, and encryption.</li><li><strong>Internationalization Support:</strong> RDAP supports Unicode, allowing domain data to be represented in multiple languages and scripts.</li><li><strong>Differentiated Access Control:</strong> RDAP supports authentication and authorization mechanisms, enabling registries to restrict access to sensitive data based on user roles.</li><li><strong>Extensibility:</strong> The protocol is designed to be extensible, allowing additional data elements and features to be added without breaking compatibility.</li></ul><h3>RDAP Query Types</h3><p>RDAP supports queries for various types of registration data, including:</p><ul><li><strong>Domain Names:</strong> Retrieve registration details for specific domain names.</li><li><strong>IP Addresses and Networks:</strong> Query ownership and allocation information for IP address blocks.</li><li><strong>Autonomous System Numbers (ASNs):</strong> Obtain registration data for ASNs.</li><li><strong>Entities:</strong> Look up registrant or administrative contact information.</li></ul><h2>How RDAP Works in Practice</h2><p>When a client issues an RDAP query, it sends an HTTP GET request to an RDAP server endpoint. The server processes the request and returns a JSON response containing the requested registration data or an error message if the resource is not found or access is denied.</p><p>For example, to retrieve information about a domain, a client might send a request to:</p><pre>https://rdap.example-registrar.com/domain/example.com</pre><p>The server responds with a JSON object detailing the domain's registration status, creation and expiration dates, registrar information, and contact entities.</p><h3>Access Control and Privacy</h3><p>One of RDAP's critical improvements over WHOIS is its support for access control. Registries and registrars can implement authentication mechanisms such as OAuth or API keys to restrict sensitive data access. This capability aligns RDAP with data protection regulations like GDPR, allowing personal data to be shielded from unauthorized queries.</p><h2>Benefits of RDAP</h2><p>RDAP offers several advantages over the legacy WHOIS system:</p><ul><li><strong>Improved Data Consistency:</strong> Standardized JSON responses reduce ambiguity and parsing errors.</li><li><strong>Enhanced Security:</strong> HTTPS transport and authentication mechanisms protect data integrity and privacy.</li><li><strong>Better International Support:</strong> Unicode compatibility facilitates global use.</li><li><strong>Extensibility and Future-Proofing:</strong> RDAP's design allows for protocol evolution without major disruptions.</li><li><strong>Integration with Modern Web Technologies:</strong> RESTful API design enables easier integration with automated tools and services.</li></ul><h2>RDAP Adoption and Implementation</h2><p>RDAP is being adopted by domain registries, registrars, and Regional Internet Registries (RIRs) worldwide. ICANN has mandated that all accredited registries and registrars implement RDAP services to replace WHOIS by a specified deadline.</p><p>Many RIRs, such as ARIN, RIPE NCC, APNIC, LACNIC, and AFRINIC, already provide RDAP endpoints for IP address and ASN queries. Similarly, domain registries and registrars are deploying RDAP servers to comply with ICANN policies and improve user experience.</p><h3>Challenges in Transition</h3><p>Despite its advantages, the transition from WHOIS to RDAP involves challenges:</p><ul><li><strong>Infrastructure Upgrades:</strong> Registries and registrars must develop and maintain RDAP-compliant servers.</li><li><strong>Client Tooling:</strong> Existing WHOIS clients require updates or replacements to support RDAP.</li><li><strong>Policy Harmonization:</strong> Access control policies must be standardized to ensure consistent data availability.</li></ul><h2>Using RDAP to Look Up Domain Ownership</h2><p>RDAP provides a reliable and standardized method to <a href="https://myipnow.net/whois-lookup/">look up domain ownership</a>. Unlike WHOIS, RDAP responses are machine-readable and can be integrated into automated workflows for domain management, cybersecurity investigations, and regulatory compliance.</p><p>By querying RDAP endpoints, users can obtain detailed information about domain registrants, administrative and technical contacts, registration dates, and status codes, all formatted in a consistent JSON structure.</p><h2>Conclusion</h2><p>RDAP represents a significant advancement in accessing domain registration and network resource data. By addressing the limitations of WHOIS, it offers a standardized, secure, and extensible protocol that meets the needs of modern internet governance, privacy regulations, and technical interoperability. As adoption continues to grow, RDAP will become the definitive method for querying registration data across domains, IP addresses, and autonomous systems.</p><h2>FAQ</h2><h3>What does RDAP stand for?</h3><p>RDAP stands for Registration Data Access Protocol.</p><h3>How is RDAP different from WHOIS?</h3><p>RDAP uses HTTP/HTTPS and returns data in JSON format, supports authentication and access control, and provides internationalization, whereas WHOIS uses a legacy text-based protocol without standardized output or access restrictions.</p><h3>Can I use RDAP to look up domain ownership?</h3><p>Yes, RDAP allows you to look up domain ownership information in a structured and standardized way.</p><h3>Is RDAP widely adopted?</h3><p>Yes, many registries, registrars, and Regional Internet Registries have implemented RDAP, and ICANN mandates its adoption for domain registration data access.</p><h3>Does RDAP protect personal data?</h3><p>RDAP supports access control mechanisms that enable registries to restrict access to sensitive personal data, helping comply with privacy regulations like GDPR.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/whois-privacy-protection/">Whois Privacy Protection</a></li><li><a href="https://myipnow.net/whois-for-ip-addresses/">Whois For Ip Addresses</a></li><li><a href="https://myipnow.net/what-is-whois/">What Is Whois</a></li><li><a href="https://myipnow.net/whois-vs-rdap/">Whois Vs Rdap</a></li></ul></section></article><footer class="footer">
+<article class="article-body"><h2>Direct Answer: What is RDAP?</h2><p>The Registration Data Access Protocol (RDAP) is a modern protocol designed to provide standardized, secure, and structured access to domain registration data. It is intended to replace the legacy WHOIS system by offering enhanced functionality, including support for internationalization, differentiated access control, and machine-readable output formats. RDAP enables users, network operators, and law enforcement agencies to query domain ownership and registration details in a more reliable, scalable, and privacy-conscious manner.</p><h2>Background: The Limitations of WHOIS</h2><p>For decades, WHOIS has been the primary protocol used to retrieve domain registration information. However, WHOIS suffers from several significant limitations:</p><ul><li><strong>Lack of Standardization:</strong> WHOIS responses vary widely between registries and registrars, making automated parsing difficult.</li><li><strong>No Support for Internationalization:</strong> WHOIS does not natively support non-ASCII characters, limiting global usability.</li><li><strong>Security and Privacy Concerns:</strong> WHOIS provides unrestricted access to personal data, raising privacy issues and regulatory challenges.</li><li><strong>Limited Query Capabilities:</strong> WHOIS lacks support for differentiated access levels or authentication mechanisms.</li></ul><p>These shortcomings motivated the Internet Engineering Task Force (IETF) to develop RDAP as a replacement protocol.</p><h2>Technical Overview of RDAP</h2><p>RDAP is defined in a series of RFCs, primarily RFC 7480 through RFC 7484, which specify its architecture, protocol, and data model. It is designed to operate over HTTP and HTTPS, leveraging RESTful principles to provide domain registration data in a structured JSON format.</p><h3>Key Features of RDAP</h3><ul><li><strong>Standardized JSON Responses:</strong> RDAP returns data in JSON, enabling easy parsing and integration with modern applications.</li><li><strong>HTTP-Based Protocol:</strong> Using HTTP/HTTPS allows RDAP to benefit from existing web infrastructure, including caching, authentication, and encryption.</li><li><strong>Internationalization Support:</strong> RDAP supports Unicode, allowing domain data to be represented in multiple languages and scripts.</li><li><strong>Differentiated Access Control:</strong> RDAP supports authentication and authorization mechanisms, enabling registries to restrict access to sensitive data based on user roles.</li><li><strong>Extensibility:</strong> The protocol is designed to be extensible, allowing additional data elements and features to be added without breaking compatibility.</li></ul><h3>RDAP Query Types</h3><p>RDAP supports queries for various types of registration data, including:</p><ul><li><strong>Domain Names:</strong> Retrieve registration details for specific domain names.</li><li><strong>IP Addresses and Networks:</strong> Query ownership and allocation information for IP address blocks.</li><li><strong>Autonomous System Numbers (ASNs):</strong> Obtain registration data for ASNs.</li><li><strong>Entities:</strong> Look up registrant or administrative contact information.</li></ul><h2>How RDAP Works in Practice</h2><p>When a client issues an RDAP query, it sends an HTTP GET request to an RDAP server endpoint. The server processes the request and returns a JSON response containing the requested registration data or an error message if the resource is not found or access is denied.</p><p>For example, to retrieve information about a domain, a client might send a request to:</p><pre>https://rdap.example-registrar.com/domain/example.com</pre><p>The server responds with a JSON object detailing the domain's registration status, creation and expiration dates, registrar information, and contact entities.</p><h3>Access Control and Privacy</h3><p>One of RDAP's critical improvements over WHOIS is its support for access control. Registries and registrars can implement authentication mechanisms such as OAuth or API keys to restrict sensitive data access. This capability aligns RDAP with data protection regulations like GDPR, allowing personal data to be shielded from unauthorized queries.</p><h2>Benefits of RDAP</h2><p>RDAP offers several advantages over the legacy WHOIS system:</p><ul><li><strong>Improved Data Consistency:</strong> Standardized JSON responses reduce ambiguity and parsing errors.</li><li><strong>Enhanced Security:</strong> HTTPS transport and authentication mechanisms protect data integrity and privacy.</li><li><strong>Better International Support:</strong> Unicode compatibility facilitates global use.</li><li><strong>Extensibility and Future-Proofing:</strong> RDAP's design allows for protocol evolution without major disruptions.</li><li><strong>Integration with Modern Web Technologies:</strong> RESTful API design enables easier integration with automated tools and services.</li></ul><h2>RDAP Adoption and Implementation</h2><p>RDAP is being adopted by domain registries, registrars, and Regional Internet Registries (RIRs) worldwide. ICANN has mandated that all accredited registries and registrars implement RDAP services to replace WHOIS by a specified deadline.</p><p>Many RIRs, such as ARIN, RIPE NCC, APNIC, LACNIC, and AFRINIC, already provide RDAP endpoints for IP address and ASN queries. Similarly, domain registries and registrars are deploying RDAP servers to comply with ICANN policies and improve user experience.</p><h3>Challenges in Transition</h3><p>Despite its advantages, the transition from WHOIS to RDAP involves challenges:</p><ul><li><strong>Infrastructure Upgrades:</strong> Registries and registrars must develop and maintain RDAP-compliant servers.</li><li><strong>Client Tooling:</strong> Existing WHOIS clients require updates or replacements to support RDAP.</li><li><strong>Policy Harmonization:</strong> Access control policies must be standardized to ensure consistent data availability.</li></ul><h2>Using RDAP to Look Up Domain Ownership</h2><p>RDAP provides a reliable and standardized method to <a href="https://myipnow.net/whois-lookup/">look up domain ownership</a>. Unlike WHOIS, RDAP responses are machine-readable and can be integrated into automated workflows for domain management, cybersecurity investigations, and regulatory compliance.</p><p>By querying RDAP endpoints, users can obtain detailed information about domain registrants, administrative and technical contacts, registration dates, and status codes, all formatted in a consistent JSON structure.</p><h2>Conclusion</h2><p>RDAP represents a significant advancement in accessing domain registration and network resource data. By addressing the limitations of WHOIS, it offers a standardized, secure, and extensible protocol that meets the needs of modern internet governance, privacy regulations, and technical interoperability. As adoption continues to grow, RDAP will become the definitive method for querying registration data across domains, IP addresses, and autonomous systems.</p><h2>FAQ</h2><h3>What does RDAP stand for?</h3><p>RDAP stands for Registration Data Access Protocol.</p><h3>How is RDAP different from WHOIS?</h3><p>RDAP uses HTTP/HTTPS and returns data in JSON format, supports authentication and access control, and provides internationalization, whereas WHOIS uses a legacy text-based protocol without standardized output or access restrictions.</p><h3>Can I use RDAP to look up domain ownership?</h3><p>Yes, RDAP allows you to look up domain ownership information in a structured and standardized way.</p><h3>Is RDAP widely adopted?</h3><p>Yes, many registries, registrars, and Regional Internet Registries have implemented RDAP, and ICANN mandates its adoption for domain registration data access.</p><h3>Does RDAP protect personal data?</h3><p>RDAP supports access control mechanisms that enable registries to restrict access to sensitive personal data, helping comply with privacy regulations like GDPR.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/whois-privacy-protection/">Whois Privacy Protection</a></li><li><a href="https://myipnow.net/whois-for-ip-addresses/">Whois For Ip Addresses</a></li><li><a href="https://myipnow.net/what-is-whois/">What Is Whois</a></li><li><a href="https://myipnow.net/whois-vs-rdap/">Whois Vs Rdap</a></li></ul></section></article><style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/de/backups/what-is-rdap/">🇩🇪 Wie Ist Meine IP?</a>
+<a href="https://myipnow.net/es/backups/what-is-rdap/">🇪🇸 Cuál es mi IP?</a>
+<a href="https://myipnow.net/fr/backups/what-is-rdap/">🇫🇷 Quel Est Mon IP?</a>
+<a href="https://myipnow.net/it/backups/what-is-rdap/">🇮🇹 Qual è il Mio IP?</a>
+</div>
+<footer class="footer">
 <ul class="footer-nav">
 <li>
 <a href="https://myipnow.net/about/">
@@ -331,14 +342,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){
   var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
   var LANGS = [
-    {code:'en', flag:'\u{1F1FA}\u{1F1F8}', label:'English', base:'https://myipnow.net/'},
-    {code:'de', flag:'\u{1F1E9}\u{1F1EA}', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'\u{1F1EA}\u{1F1F8}', label:'Español', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'\u{1F1EB}\u{1F1F7}', label:'Français', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'\u{1F1EE}\u{1F1F9}', label:'Italiano', base:'https://myipnow.net/it/'}
+    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
+    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
+    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
+    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
+    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}
   ];
   function getSlug(){
-    var path = location.pathname.replace(/^\//, '').replace(/\/$/, '');
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
     if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
@@ -360,48 +372,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     var btn = document.createElement('button');
     btn.className = 'lang-switcher-btn';
     var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
-    btn.innerHTML = currentL.flag + ' ' + currentL.code.toUpperCase() + ' &#9660;';
-    var ul = document.createElement('ul');
-    ul.className = 'lang-switcher-dropdown';
-    LANGS.forEach(function(lang){
-      var item = document.createElement('li');
-      var a = document.createElement('a');
-      var url = lang.base + (slug ? slug + '/' : '');
-      a.href = url;
-      a.innerHTML = lang.flag + ' ' + lang.label;
-      if(lang.code === currentLang) a.className = 'active';
-      item.appendChild(a);
-      ul.appendChild(item);
-    });
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
     li.appendChild(btn);
-    li.appendChild(ul);
     nav.appendChild(li);
-    function positionDropdown(){
-      var rect = btn.getBoundingClientRect();
-      ul.style.top = (rect.bottom + window.scrollY + 6) + 'px';
-      ul.style.left = Math.min(rect.left + window.scrollX, window.innerWidth - 215) + 'px';
-      ul.style.right = 'auto';
+    var floatingMenu = null, backdrop = null, open = false;
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = lang.base + (slug ? slug + '/' : '');
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
     }
-    btn.addEventListener('click', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    });
-    btn.addEventListener('touchstart', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    }, {passive:false});
-    document.addEventListener('click', function(e){
-      if(!li.contains(e.target)) li.classList.remove('open');
-    });
-    window.addEventListener('resize', function(){ li.classList.remove('open'); });
-    window.addEventListener('scroll', function(){ if(li.classList.contains('open')) positionDropdown(); });
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
   }
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
 })();
+
 </script>
 </body>
 </html>

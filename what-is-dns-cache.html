@@ -138,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <div class="container"><header class="site-header">
 <div class="header-top">
-<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:middle;margin-right:6px;border-radius:8px;"> <span style="vertical-align:middle;font-size:1rem;font-weight:600;">MyIPNow.net</span></a>
+<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
 <form action="/search.html" class="search-form" method="get">
 <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
 <button type="submit">Search</button>
@@ -168,7 +168,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="page-header">
 <h1>What is DNS Cache?</h1>
 </header>
-<article class="article-body"><h2>Direct Answer: What is DNS Cache?</h2><p>DNS cache is basically a temporary storage system on your computer or a DNS server that keeps track of recent DNS lookups. When you visit a website, your device asks DNS servers to convert the domain name (like example.com) into an IP address. DNS caching saves these IP addresses locally for a set amount of time, so you can pull them up faster next time instead of making new requests to external DNS servers every single time.</p><h2>Understanding DNS Cache in Detail</h2><p>To really get why DNS cache matters, you need to understand how DNS actually works. The Domain Name System is basically the internet's phonebook-it matches domain names with the IP addresses that computers actually need to talk to each other. Every time you visit a website, your device sends out a DNS query to figure out that domain name.</p><p>Without caching, every DNS query would need to go through the whole DNS system from scratch, starting at the root servers and working down to the authoritative name servers. That's slow and wasteful, especially when you think about how many DNS requests happen during a normal browsing session.</p><h3>How DNS Cache Works</h3><p>When a DNS query gets resolved, the answer gets stored temporarily in the DNS cache. This cache can live in a few different places:</p><ul><li><strong>Client-side cache:</strong> Your operating system and web browser both keep their own DNS caches to speed things up.</li><li><strong>Recursive DNS server cache:</strong> DNS resolvers run by your ISP or other providers store DNS responses so they can serve multiple clients without doing the same lookup twice.</li><li><strong>Local network cache:</strong> Some networks set up their own caching DNS servers to cut down on traffic going out to the internet.</li></ul><p>Every cached entry has a Time To Live (TTL) value set by the authoritative DNS server. This tells you how long the record stays valid before it expires. Once the TTL runs out, the cache drops that entry, and you need to do a fresh DNS query to get the latest info.</p><h3>Benefits of DNS Caching</h3><p>DNS caching comes with some solid advantages:</p><ul><li><strong>Improved Performance:</strong> Storing DNS results locally means faster domain name resolution, which means websites load quicker.</li><li><strong>Reduced Network Traffic:</strong> Caching cuts down how many DNS queries travel across your network, saves bandwidth, and takes the load off DNS servers.</li><li><strong>Increased Reliability:</strong> If your upstream DNS servers go down temporarily, you can still access sites you've visited before because they're in your cache.</li></ul><h3>DNS Cache Types and Locations</h3><p>Knowing where DNS cache lives helps you fix problems and get better performance:</p><ul><li><strong>Browser Cache:</strong> Chrome, Firefox, Edge, and other modern browsers all keep their own DNS caches. These get cleared when you close the browser or manually flush them.</li><li><strong>Operating System Cache:</strong> Windows, macOS, and Linux all maintain DNS caches at the system level. These stick around even after your browser closes, and you can manage them through system commands.</li><li><strong>Recursive Resolver Cache:</strong> These DNS servers cache responses for everyone they serve, which really speeds things up for popular domains.</li></ul><h3>Common DNS Cache Issues</h3><p>Even though DNS caching is super helpful, it can sometimes create problems:</p><ul><li><strong>Stale Records:</strong> If a website's IP address changes but your cached version hasn't expired yet, you might end up on the wrong server.</li><li><strong>Cache Poisoning:</strong> Bad actors can sometimes sneak false DNS records into caches and redirect you to fake sites.</li><li><strong>Cache Corruption:</strong> Sometimes bugs or bad setup can mess up your DNS cache, which breaks name resolution.</li></ul><p>You can fix these by clearing your DNS cache once in a while or setting up your DNS servers with the right security features.</p><h3>How to Manage DNS Cache</h3><p>Managing your DNS cache means viewing it, clearing it, or changing how it behaves:</p><ul><li><strong>Flushing DNS Cache:</strong> This wipes out your stored entries and forces fresh lookups. It's helpful when you're trying to fix connection problems or after you've made DNS changes.</li><li><strong>Adjusting TTL Values:</strong> Website owners can set TTL values to find the right balance between caching performance and having current data.</li><li><strong>Using Secure DNS:</strong> DNSSEC and secure DNS resolvers help protect you from cache poisoning attacks.</li></ul><h3>DNS Cache and Security Considerations</h3><p>DNS cache plays a big role in keeping the internet safe. Cache poisoning can hurt your security by sending you to malicious sites. Using DNS Security Extensions (DNSSEC) helps verify that DNS responses are legit, which cuts down on poisoning risks.</p><p>A lot of organizations also set up DNS filtering and monitoring at their caching resolver level to block access to bad domains.</p><h3>Conclusion</h3><p>DNS cache is a key part of how the internet works, and it really speeds up and improves how reliable domain name resolution is. By storing DNS results temporarily, it cuts down delay, saves bandwidth, and makes things faster for users. But you should understand how it works and what can go wrong so you can manage your network well and keep it secure.</p><p>If you want to dig into the technical side of DNS queries and learn how to <a href="https://myipnow.net/dns-lookup/">look up DNS records</a>, getting a handle on DNS caching is a good starting point.</p><h2>FAQ</h2><h3>What happens if DNS cache is not used?</h3><p>Without DNS caching, every domain name resolution would require a full DNS lookup from the root servers, resulting in slower website access and increased network traffic.</p><h3>How can I clear my DNS cache?</h3><p>Clearing DNS cache depends on your operating system or browser. For example, on Windows, you can run <code>ipconfig /flushdns</code> in the command prompt. Browsers often have settings or developer tools to clear their DNS cache.</p><h3>Can DNS cache cause website access problems?</h3><p>Yes, if the cached DNS records are outdated or corrupted, they can prevent access to websites or direct users to incorrect IP addresses.</p><h3>Is DNS cache the same as browser cache?</h3><p>No, DNS cache specifically stores DNS query results, while browser cache stores website content like images and scripts. Both improve performance but serve different purposes.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/what-is-a-mx-record/">What Is A Mx Record</a></li><li><a href="https://myipnow.net/what-is-an-aaaa-record/">What Is An Aaaa Record</a></li><li><a href="https://myipnow.net/what-is-dns/">What Is Dns</a></li><li><a href="https://myipnow.net/what-is-a-txt-record/">What Is A Txt Record</a></li><li><a href="https://myipnow.net/can-dns-leak-your-ip/">Can Dns Leak Your Ip</a></li></ul></section></article><footer class="footer">
+<article class="article-body"><h2>Direct Answer: What is DNS Cache?</h2><p>DNS cache is basically a temporary storage system on your computer or a DNS server that keeps track of recent DNS lookups. When you visit a website, your device asks DNS servers to convert the domain name (like example.com) into an IP address. DNS caching saves these IP addresses locally for a set amount of time, so you can pull them up faster next time instead of making new requests to external DNS servers every single time.</p><h2>Understanding DNS Cache in Detail</h2><p>To really get why DNS cache matters, you need to understand how DNS actually works. The Domain Name System is basically the internet's phonebook-it matches domain names with the IP addresses that computers actually need to talk to each other. Every time you visit a website, your device sends out a DNS query to figure out that domain name.</p><p>Without caching, every DNS query would need to go through the whole DNS system from scratch, starting at the root servers and working down to the authoritative name servers. That's slow and wasteful, especially when you think about how many DNS requests happen during a normal browsing session.</p><h3>How DNS Cache Works</h3><p>When a DNS query gets resolved, the answer gets stored temporarily in the DNS cache. This cache can live in a few different places:</p><ul><li><strong>Client-side cache:</strong> Your operating system and web browser both keep their own DNS caches to speed things up.</li><li><strong>Recursive DNS server cache:</strong> DNS resolvers run by your ISP or other providers store DNS responses so they can serve multiple clients without doing the same lookup twice.</li><li><strong>Local network cache:</strong> Some networks set up their own caching DNS servers to cut down on traffic going out to the internet.</li></ul><p>Every cached entry has a Time To Live (TTL) value set by the authoritative DNS server. This tells you how long the record stays valid before it expires. Once the TTL runs out, the cache drops that entry, and you need to do a fresh DNS query to get the latest info.</p><h3>Benefits of DNS Caching</h3><p>DNS caching comes with some solid advantages:</p><ul><li><strong>Improved Performance:</strong> Storing DNS results locally means faster domain name resolution, which means websites load quicker.</li><li><strong>Reduced Network Traffic:</strong> Caching cuts down how many DNS queries travel across your network, saves bandwidth, and takes the load off DNS servers.</li><li><strong>Increased Reliability:</strong> If your upstream DNS servers go down temporarily, you can still access sites you've visited before because they're in your cache.</li></ul><h3>DNS Cache Types and Locations</h3><p>Knowing where DNS cache lives helps you fix problems and get better performance:</p><ul><li><strong>Browser Cache:</strong> Chrome, Firefox, Edge, and other modern browsers all keep their own DNS caches. These get cleared when you close the browser or manually flush them.</li><li><strong>Operating System Cache:</strong> Windows, macOS, and Linux all maintain DNS caches at the system level. These stick around even after your browser closes, and you can manage them through system commands.</li><li><strong>Recursive Resolver Cache:</strong> These DNS servers cache responses for everyone they serve, which really speeds things up for popular domains.</li></ul><h3>Common DNS Cache Issues</h3><p>Even though DNS caching is super helpful, it can sometimes create problems:</p><ul><li><strong>Stale Records:</strong> If a website's IP address changes but your cached version hasn't expired yet, you might end up on the wrong server.</li><li><strong>Cache Poisoning:</strong> Bad actors can sometimes sneak false DNS records into caches and redirect you to fake sites.</li><li><strong>Cache Corruption:</strong> Sometimes bugs or bad setup can mess up your DNS cache, which breaks name resolution.</li></ul><p>You can fix these by clearing your DNS cache once in a while or setting up your DNS servers with the right security features.</p><h3>How to Manage DNS Cache</h3><p>Managing your DNS cache means viewing it, clearing it, or changing how it behaves:</p><ul><li><strong>Flushing DNS Cache:</strong> This wipes out your stored entries and forces fresh lookups. It's helpful when you're trying to fix connection problems or after you've made DNS changes.</li><li><strong>Adjusting TTL Values:</strong> Website owners can set TTL values to find the right balance between caching performance and having current data.</li><li><strong>Using Secure DNS:</strong> DNSSEC and secure DNS resolvers help protect you from cache poisoning attacks.</li></ul><h3>DNS Cache and Security Considerations</h3><p>DNS cache plays a big role in keeping the internet safe. Cache poisoning can hurt your security by sending you to malicious sites. Using DNS Security Extensions (DNSSEC) helps verify that DNS responses are legit, which cuts down on poisoning risks.</p><p>A lot of organizations also set up DNS filtering and monitoring at their caching resolver level to block access to bad domains.</p><h3>Conclusion</h3><p>DNS cache is a key part of how the internet works, and it really speeds up and improves how reliable domain name resolution is. By storing DNS results temporarily, it cuts down delay, saves bandwidth, and makes things faster for users. But you should understand how it works and what can go wrong so you can manage your network well and keep it secure.</p><p>If you want to dig into the technical side of DNS queries and learn how to <a href="https://myipnow.net/dns-lookup/">look up DNS records</a>, getting a handle on DNS caching is a good starting point.</p><h2>FAQ</h2><h3>What happens if DNS cache is not used?</h3><p>Without DNS caching, every domain name resolution would require a full DNS lookup from the root servers, resulting in slower website access and increased network traffic.</p><h3>How can I clear my DNS cache?</h3><p>Clearing DNS cache depends on your operating system or browser. For example, on Windows, you can run <code>ipconfig /flushdns</code> in the command prompt. Browsers often have settings or developer tools to clear their DNS cache.</p><h3>Can DNS cache cause website access problems?</h3><p>Yes, if the cached DNS records are outdated or corrupted, they can prevent access to websites or direct users to incorrect IP addresses.</p><h3>Is DNS cache the same as browser cache?</h3><p>No, DNS cache specifically stores DNS query results, while browser cache stores website content like images and scripts. Both improve performance but serve different purposes.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/what-is-a-mx-record/">What Is A Mx Record</a></li><li><a href="https://myipnow.net/what-is-an-aaaa-record/">What Is An Aaaa Record</a></li><li><a href="https://myipnow.net/what-is-dns/">What Is Dns</a></li><li><a href="https://myipnow.net/what-is-a-txt-record/">What Is A Txt Record</a></li><li><a href="https://myipnow.net/can-dns-leak-your-ip/">Can Dns Leak Your Ip</a></li></ul></section></article><style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/de/what-is-dns-cache/">🇩🇪 Wie Ist Meine IP?</a>
+<a href="https://myipnow.net/es/what-is-dns-cache/">🇪🇸 Cuál es mi IP?</a>
+<a href="https://myipnow.net/fr/what-is-dns-cache/">🇫🇷 Quel Est Mon IP?</a>
+<a href="https://myipnow.net/it/what-is-dns-cache/">🇮🇹 Qual è il Mio IP?</a>
+</div>
+<footer class="footer">
 <ul class="footer-nav">
 <li>
 <a href="https://myipnow.net/about/">
@@ -330,14 +341,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){
   var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
   var LANGS = [
-    {code:'en', flag:'\u{1F1FA}\u{1F1F8}', label:'English', base:'https://myipnow.net/'},
-    {code:'de', flag:'\u{1F1E9}\u{1F1EA}', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'\u{1F1EA}\u{1F1F8}', label:'Español', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'\u{1F1EB}\u{1F1F7}', label:'Français', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'\u{1F1EE}\u{1F1F9}', label:'Italiano', base:'https://myipnow.net/it/'}
+    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
+    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
+    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
+    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
+    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}
   ];
   function getSlug(){
-    var path = location.pathname.replace(/^\//, '').replace(/\/$/, '');
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
     if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
@@ -359,48 +371,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     var btn = document.createElement('button');
     btn.className = 'lang-switcher-btn';
     var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
-    btn.innerHTML = currentL.flag + ' ' + currentL.code.toUpperCase() + ' &#9660;';
-    var ul = document.createElement('ul');
-    ul.className = 'lang-switcher-dropdown';
-    LANGS.forEach(function(lang){
-      var item = document.createElement('li');
-      var a = document.createElement('a');
-      var url = lang.base + (slug ? slug + '/' : '');
-      a.href = url;
-      a.innerHTML = lang.flag + ' ' + lang.label;
-      if(lang.code === currentLang) a.className = 'active';
-      item.appendChild(a);
-      ul.appendChild(item);
-    });
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
     li.appendChild(btn);
-    li.appendChild(ul);
     nav.appendChild(li);
-    function positionDropdown(){
-      var rect = btn.getBoundingClientRect();
-      ul.style.top = (rect.bottom + window.scrollY + 6) + 'px';
-      ul.style.left = Math.min(rect.left + window.scrollX, window.innerWidth - 215) + 'px';
-      ul.style.right = 'auto';
+    var floatingMenu = null, backdrop = null, open = false;
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = lang.base + (slug ? slug + '/' : '');
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
     }
-    btn.addEventListener('click', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    });
-    btn.addEventListener('touchstart', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    }, {passive:false});
-    document.addEventListener('click', function(e){
-      if(!li.contains(e.target)) li.classList.remove('open');
-    });
-    window.addEventListener('resize', function(){ li.classList.remove('open'); });
-    window.addEventListener('scroll', function(){ if(li.classList.contains('open')) positionDropdown(); });
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
   }
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
 })();
+
 </script>
 </body>
 </html>

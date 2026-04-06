@@ -139,7 +139,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <div class="container"><header class="site-header">
 <div class="header-top">
-<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:middle;margin-right:6px;border-radius:8px;"> <span style="vertical-align:middle;font-size:1rem;font-weight:600;">MyIPNow.net</span></a>
+<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
 <form action="/search.html" class="search-form" method="get">
 <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
 <button type="submit">Search</button>
@@ -169,7 +169,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="page-header">
 <h1>What Is a TXT Record?</h1>
 </header>
-<article class="article-body"><h2>Direct Answer: What Is a TXT Record?</h2><p>A TXT record is a type of Domain Name System (DNS) record that allows domain administrators to associate arbitrary text with a domain name. Unlike other DNS records that map domain names to IP addresses or mail servers, TXT records provide a flexible mechanism to store human-readable or machine-readable data for various purposes such as domain ownership verification, email security, and policy declarations.</p><h2>Understanding TXT Records in DNS</h2><p>DNS is the foundational system that translates human-friendly domain names into IP addresses that computers use to communicate. Within this system, different record types serve distinct functions. TXT records stand out because they do not directly influence routing or addressing but instead carry textual information that can be leveraged by external services or protocols.</p><h3>Structure of a TXT Record</h3><p>A TXT record consists of the following components:</p><ul><li><strong>Name:</strong> The domain or subdomain to which the TXT record applies.</li><li><strong>TTL (Time to Live):</strong> Duration in seconds that the record is cached by DNS resolvers.</li><li><strong>Type:</strong> Always set to TXT for this record.</li><li><strong>Text Data:</strong> The actual string of text, which can be up to 255 characters per segment, often concatenated if longer.</li></ul><p>For example, a TXT record for <code>example.com</code> might look like this in a zone file:</p><pre>example.com. 3600 IN TXT "v=spf1 include:_spf.google.com ~all"</pre><p>This record contains an SPF policy string used for email validation.</p><h2>Common Uses of TXT Records</h2><p>TXT records are versatile and serve multiple critical functions in modern internet infrastructure. Below are the most prevalent applications:</p><h3>1. Email Authentication</h3><p>Email systems use TXT records to publish policies that help prevent spoofing and phishing attacks. The main protocols relying on TXT records include:</p><ul><li><strong>SPF (Sender Policy Framework):</strong> Defines which mail servers are authorized to send email on behalf of a domain. The SPF record is published as a TXT record containing a specific syntax that mail servers check during email delivery.</li><li><strong>DKIM (DomainKeys Identified Mail):</strong> Uses cryptographic signatures to verify that an email was sent and authorized by the domain owner. The public key for DKIM verification is stored in a TXT record.</li><li><strong>DMARC (Domain-based Message Authentication, Reporting &amp; Conformance):</strong> Builds on SPF and DKIM to specify how receiving mail servers should handle messages that fail authentication checks. DMARC policies are published as TXT records.</li></ul><h3>2. Domain Ownership Verification</h3><p>Many online services, including Google, Microsoft, and SSL certificate authorities, require domain owners to prove control over a domain before granting access to services or issuing certificates. This verification is often performed by asking the domain owner to add a specific TXT record with a unique token to their DNS zone. The service then queries the DNS to confirm the presence of the token.</p><h3>3. Miscellaneous Uses</h3><p>Beyond email and verification, TXT records can store arbitrary data such as:</p><ul><li>Information about network infrastructure or policies.</li><li>Custom metadata for applications or services.</li><li>Cryptographic fingerprints or public keys for non-email purposes.</li></ul><h2>How to Query TXT Records</h2><p>To inspect TXT records for a domain, DNS lookup tools can be used. These tools query authoritative DNS servers and return the TXT data associated with a domain or subdomain. For example, using a <a href="https://myipnow.net/dns-lookup/">DNS checker</a> allows administrators to verify that TXT records are correctly published and propagated.</p><p>Command-line utilities such as <code>dig</code> or <code>nslookup</code> are also commonly used:</p><pre>dig txt example.com</pre><p>This command returns all TXT records for <code>example.com</code>.</p><h2>Best Practices for Managing TXT Records</h2><ul><li><strong>Keep TXT Records Concise:</strong> Although TXT records can be concatenated, keeping them concise reduces complexity and potential errors.</li><li><strong>Use Subdomains for Specific Purposes:</strong> For example, DKIM keys are often stored under selector-based subdomains like <code>selector._domainkey.example.com</code> to isolate keys and simplify management.</li><li><strong>Regularly Audit TXT Records:</strong> Remove outdated or unused TXT records to avoid confusion and potential security risks.</li><li><strong>Monitor TTL Values:</strong> Set appropriate TTL values to balance between DNS propagation speed and query load.</li></ul><h2>Security Considerations</h2><p>While TXT records themselves do not pose direct security risks, improper management can lead to vulnerabilities:</p><ul><li><strong>Exposure of Sensitive Data:</strong> Avoid placing confidential information in TXT records as they are publicly accessible.</li><li><strong>Incorrect Email Policies:</strong> Misconfigured SPF, DKIM, or DMARC TXT records can cause legitimate emails to be rejected or spoofed emails to be accepted.</li><li><strong>DNS Spoofing Risks:</strong> Attackers who gain control over DNS can alter TXT records to bypass email authentication or impersonate domains.</li></ul><p>Therefore, securing DNS management access and validating TXT record configurations are essential steps in maintaining domain security.</p><h2>Conclusion</h2><p>TXT records are a fundamental component of the DNS ecosystem, enabling domain owners to publish critical information for email authentication, domain verification, and other custom uses. Their flexibility and widespread adoption make them indispensable for maintaining trust and security on the internet. Understanding how to properly configure and manage TXT records is essential for network administrators, security professionals, and anyone responsible for domain management.</p><h2>FAQ</h2><h3>What is the maximum length of a TXT record?</h3><p>Each individual string within a TXT record can be up to 255 characters. Longer text can be split into multiple strings within the same record, but the total length should be kept reasonable to avoid DNS issues.</p><h3>Can TXT records affect website performance?</h3><p>TXT records do not directly impact website performance since they are not used in HTTP requests. However, excessive or large TXT records can increase DNS query response times slightly.</p><h3>How do I add a TXT record to my domain?</h3><p>You typically add TXT records via your domain registrar or DNS hosting provider’s control panel. The process involves specifying the record name, TTL, and the text value.</p><h3>Why is my email failing SPF checks?</h3><p>Common reasons include missing or incorrect SPF TXT records, sending from unauthorized servers, or syntax errors in the SPF record. Use DNS lookup tools to verify your SPF record configuration.</p><h3>How can I verify my TXT records are published correctly?</h3><p>You can use online tools such as a <a href="https://myipnow.net/dns-lookup/">DNS checker</a> or command-line utilities like <code>dig</code> to query and verify the TXT records for your domain.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/what-is-an-aaaa-record/">What Is An Aaaa Record</a></li><li><a href="https://myipnow.net/how-long-does-dns-propagation-take/">How Long Does Dns Propagation Take</a></li><li><a href="https://myipnow.net/what-is-dns/">What Is Dns</a></li><li><a href="https://myipnow.net/types-of-dns-records/">Types Of Dns Records</a></li><li><a href="https://myipnow.net/what-is-dns-flush/">What Is Dns Flush</a></li><li><a href="https://myipnow.net/what-is-a-dns-leak/">What Is A Dns Leak</a></li></ul></section></article><footer class="footer">
+<article class="article-body"><h2>Direct Answer: What Is a TXT Record?</h2><p>A TXT record is a type of Domain Name System (DNS) record that allows domain administrators to associate arbitrary text with a domain name. Unlike other DNS records that map domain names to IP addresses or mail servers, TXT records provide a flexible mechanism to store human-readable or machine-readable data for various purposes such as domain ownership verification, email security, and policy declarations.</p><h2>Understanding TXT Records in DNS</h2><p>DNS is the foundational system that translates human-friendly domain names into IP addresses that computers use to communicate. Within this system, different record types serve distinct functions. TXT records stand out because they do not directly influence routing or addressing but instead carry textual information that can be leveraged by external services or protocols.</p><h3>Structure of a TXT Record</h3><p>A TXT record consists of the following components:</p><ul><li><strong>Name:</strong> The domain or subdomain to which the TXT record applies.</li><li><strong>TTL (Time to Live):</strong> Duration in seconds that the record is cached by DNS resolvers.</li><li><strong>Type:</strong> Always set to TXT for this record.</li><li><strong>Text Data:</strong> The actual string of text, which can be up to 255 characters per segment, often concatenated if longer.</li></ul><p>For example, a TXT record for <code>example.com</code> might look like this in a zone file:</p><pre>example.com. 3600 IN TXT "v=spf1 include:_spf.google.com ~all"</pre><p>This record contains an SPF policy string used for email validation.</p><h2>Common Uses of TXT Records</h2><p>TXT records are versatile and serve multiple critical functions in modern internet infrastructure. Below are the most prevalent applications:</p><h3>1. Email Authentication</h3><p>Email systems use TXT records to publish policies that help prevent spoofing and phishing attacks. The main protocols relying on TXT records include:</p><ul><li><strong>SPF (Sender Policy Framework):</strong> Defines which mail servers are authorized to send email on behalf of a domain. The SPF record is published as a TXT record containing a specific syntax that mail servers check during email delivery.</li><li><strong>DKIM (DomainKeys Identified Mail):</strong> Uses cryptographic signatures to verify that an email was sent and authorized by the domain owner. The public key for DKIM verification is stored in a TXT record.</li><li><strong>DMARC (Domain-based Message Authentication, Reporting &amp; Conformance):</strong> Builds on SPF and DKIM to specify how receiving mail servers should handle messages that fail authentication checks. DMARC policies are published as TXT records.</li></ul><h3>2. Domain Ownership Verification</h3><p>Many online services, including Google, Microsoft, and SSL certificate authorities, require domain owners to prove control over a domain before granting access to services or issuing certificates. This verification is often performed by asking the domain owner to add a specific TXT record with a unique token to their DNS zone. The service then queries the DNS to confirm the presence of the token.</p><h3>3. Miscellaneous Uses</h3><p>Beyond email and verification, TXT records can store arbitrary data such as:</p><ul><li>Information about network infrastructure or policies.</li><li>Custom metadata for applications or services.</li><li>Cryptographic fingerprints or public keys for non-email purposes.</li></ul><h2>How to Query TXT Records</h2><p>To inspect TXT records for a domain, DNS lookup tools can be used. These tools query authoritative DNS servers and return the TXT data associated with a domain or subdomain. For example, using a <a href="https://myipnow.net/dns-lookup/">DNS checker</a> allows administrators to verify that TXT records are correctly published and propagated.</p><p>Command-line utilities such as <code>dig</code> or <code>nslookup</code> are also commonly used:</p><pre>dig txt example.com</pre><p>This command returns all TXT records for <code>example.com</code>.</p><h2>Best Practices for Managing TXT Records</h2><ul><li><strong>Keep TXT Records Concise:</strong> Although TXT records can be concatenated, keeping them concise reduces complexity and potential errors.</li><li><strong>Use Subdomains for Specific Purposes:</strong> For example, DKIM keys are often stored under selector-based subdomains like <code>selector._domainkey.example.com</code> to isolate keys and simplify management.</li><li><strong>Regularly Audit TXT Records:</strong> Remove outdated or unused TXT records to avoid confusion and potential security risks.</li><li><strong>Monitor TTL Values:</strong> Set appropriate TTL values to balance between DNS propagation speed and query load.</li></ul><h2>Security Considerations</h2><p>While TXT records themselves do not pose direct security risks, improper management can lead to vulnerabilities:</p><ul><li><strong>Exposure of Sensitive Data:</strong> Avoid placing confidential information in TXT records as they are publicly accessible.</li><li><strong>Incorrect Email Policies:</strong> Misconfigured SPF, DKIM, or DMARC TXT records can cause legitimate emails to be rejected or spoofed emails to be accepted.</li><li><strong>DNS Spoofing Risks:</strong> Attackers who gain control over DNS can alter TXT records to bypass email authentication or impersonate domains.</li></ul><p>Therefore, securing DNS management access and validating TXT record configurations are essential steps in maintaining domain security.</p><h2>Conclusion</h2><p>TXT records are a fundamental component of the DNS ecosystem, enabling domain owners to publish critical information for email authentication, domain verification, and other custom uses. Their flexibility and widespread adoption make them indispensable for maintaining trust and security on the internet. Understanding how to properly configure and manage TXT records is essential for network administrators, security professionals, and anyone responsible for domain management.</p><h2>FAQ</h2><h3>What is the maximum length of a TXT record?</h3><p>Each individual string within a TXT record can be up to 255 characters. Longer text can be split into multiple strings within the same record, but the total length should be kept reasonable to avoid DNS issues.</p><h3>Can TXT records affect website performance?</h3><p>TXT records do not directly impact website performance since they are not used in HTTP requests. However, excessive or large TXT records can increase DNS query response times slightly.</p><h3>How do I add a TXT record to my domain?</h3><p>You typically add TXT records via your domain registrar or DNS hosting provider’s control panel. The process involves specifying the record name, TTL, and the text value.</p><h3>Why is my email failing SPF checks?</h3><p>Common reasons include missing or incorrect SPF TXT records, sending from unauthorized servers, or syntax errors in the SPF record. Use DNS lookup tools to verify your SPF record configuration.</p><h3>How can I verify my TXT records are published correctly?</h3><p>You can use online tools such as a <a href="https://myipnow.net/dns-lookup/">DNS checker</a> or command-line utilities like <code>dig</code> to query and verify the TXT records for your domain.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/what-is-an-aaaa-record/">What Is An Aaaa Record</a></li><li><a href="https://myipnow.net/how-long-does-dns-propagation-take/">How Long Does Dns Propagation Take</a></li><li><a href="https://myipnow.net/what-is-dns/">What Is Dns</a></li><li><a href="https://myipnow.net/types-of-dns-records/">Types Of Dns Records</a></li><li><a href="https://myipnow.net/what-is-dns-flush/">What Is Dns Flush</a></li><li><a href="https://myipnow.net/what-is-a-dns-leak/">What Is A Dns Leak</a></li></ul></section></article><style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/de/backups/what-is-a-txt-record/">🇩🇪 Wie Ist Meine IP?</a>
+<a href="https://myipnow.net/es/backups/what-is-a-txt-record/">🇪🇸 Cuál es mi IP?</a>
+<a href="https://myipnow.net/fr/backups/what-is-a-txt-record/">🇫🇷 Quel Est Mon IP?</a>
+<a href="https://myipnow.net/it/backups/what-is-a-txt-record/">🇮🇹 Qual è il Mio IP?</a>
+</div>
+<footer class="footer">
 <ul class="footer-nav">
 <li>
 <a href="https://myipnow.net/about/">
@@ -331,14 +342,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){
   var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
   var LANGS = [
-    {code:'en', flag:'\u{1F1FA}\u{1F1F8}', label:'English', base:'https://myipnow.net/'},
-    {code:'de', flag:'\u{1F1E9}\u{1F1EA}', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'\u{1F1EA}\u{1F1F8}', label:'Español', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'\u{1F1EB}\u{1F1F7}', label:'Français', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'\u{1F1EE}\u{1F1F9}', label:'Italiano', base:'https://myipnow.net/it/'}
+    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
+    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
+    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
+    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
+    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}
   ];
   function getSlug(){
-    var path = location.pathname.replace(/^\//, '').replace(/\/$/, '');
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
     if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
@@ -360,48 +372,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     var btn = document.createElement('button');
     btn.className = 'lang-switcher-btn';
     var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
-    btn.innerHTML = currentL.flag + ' ' + currentL.code.toUpperCase() + ' &#9660;';
-    var ul = document.createElement('ul');
-    ul.className = 'lang-switcher-dropdown';
-    LANGS.forEach(function(lang){
-      var item = document.createElement('li');
-      var a = document.createElement('a');
-      var url = lang.base + (slug ? slug + '/' : '');
-      a.href = url;
-      a.innerHTML = lang.flag + ' ' + lang.label;
-      if(lang.code === currentLang) a.className = 'active';
-      item.appendChild(a);
-      ul.appendChild(item);
-    });
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
     li.appendChild(btn);
-    li.appendChild(ul);
     nav.appendChild(li);
-    function positionDropdown(){
-      var rect = btn.getBoundingClientRect();
-      ul.style.top = (rect.bottom + window.scrollY + 6) + 'px';
-      ul.style.left = Math.min(rect.left + window.scrollX, window.innerWidth - 215) + 'px';
-      ul.style.right = 'auto';
+    var floatingMenu = null, backdrop = null, open = false;
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = lang.base + (slug ? slug + '/' : '');
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
     }
-    btn.addEventListener('click', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    });
-    btn.addEventListener('touchstart', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    }, {passive:false});
-    document.addEventListener('click', function(e){
-      if(!li.contains(e.target)) li.classList.remove('open');
-    });
-    window.addEventListener('resize', function(){ li.classList.remove('open'); });
-    window.addEventListener('scroll', function(){ if(li.classList.contains('open')) positionDropdown(); });
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
   }
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
 })();
+
 </script>
 </body>
 </html>

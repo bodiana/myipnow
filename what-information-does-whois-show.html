@@ -138,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <div class="container"><header class="site-header">
 <div class="header-top">
-<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:middle;margin-right:6px;border-radius:8px;"> <span style="vertical-align:middle;font-size:1rem;font-weight:600;">MyIPNow.net</span></a>
+<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
 <form action="/search.html" class="search-form" method="get">
 <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
 <button type="submit">Search</button>
@@ -168,7 +168,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <header class="page-header">
 <h1>What Information Does WHOIS Show?</h1>
 </header>
-<article class="article-body"><h2>Understanding WHOIS: The Direct Answer</h2><p>WHOIS is basically a public database that shows detailed info about registered domain names. When you run a WHOIS query, you'll get key data like the domain owner's contact info, when it was registered and when it expires, registrar details, name servers, and status codes. This stuff is really important for confirming who owns a domain, sorting out disputes, and handling domain management tasks.</p><h2>Core Components of WHOIS Records</h2><p>WHOIS records have a bunch of different fields that together give you a pretty complete picture of a domain's registration status and who owns it. The exact fields can vary a bit depending on your registrar and the top-level domain (TLD), but here's what you'll typically find in every WHOIS record.</p><h3>1. Registrant Information</h3><p>The registrant is the person or organization that actually owns the domain. WHOIS shows:</p><ul><li><strong>Name:</strong> The registrant's full name.</li><li><strong>Organization:</strong> If there is one, the company or entity name.</li><li><strong>Address:</strong> The physical mailing address with street, city, state/province, postal code, and country.</li><li><strong>Email:</strong> The registrant's email address.</li><li><strong>Phone Number:</strong> How to reach them by phone.</li></ul><p>This info helps you figure out who legally owns the domain. But if they're using privacy services or have GDPR protections, some of these details might be hidden or masked.</p><h3>2. Administrative Contact</h3><p>The administrative contact is the person who handles the day-to-day administrative stuff for the domain. This might be the same person as the registrant, or it could be someone else they've designated. WHOIS includes:</p><ul><li>Name</li><li>Organization</li><li>Address</li><li>Email</li><li>Phone Number</li></ul><p>They're the ones dealing with renewals, transfers, and other admin requests.</p><h3>3. Technical Contact</h3><p>The technical contact is in charge of the technical side of things-like DNS setup and server management. WHOIS records list:</p><ul><li>Name</li><li>Organization</li><li>Address</li><li>Email</li><li>Phone Number</li></ul><p>Having someone dedicated to the technical stuff means domain issues can get fixed quickly.</p><h3>4. Registrar Information</h3><p>The registrar is the official company that registered the domain for you. WHOIS gives you:</p><ul><li><strong>Registrar Name:</strong> The company that manages your domain registration.</li><li><strong>Registrar IANA ID:</strong> A unique ID assigned by the Internet Assigned Numbers Authority.</li><li><strong>Registrar URL:</strong> The registrar's website.</li></ul><p>This helps you verify that the domain registration is legitimate and makes it easier to get in touch with the registrar if you need to.</p><h3>5. Domain Status</h3><p>WHOIS records include status codes that tell you what state the domain is in. Here are the common ones:</p><ul><li><strong>OK:</strong> The domain is active with no restrictions.</li><li><strong>ClientHold:</strong> The registrar has put it on hold, usually because of non-payment.</li><li><strong>ClientTransferProhibited:</strong> You can't transfer it to prevent someone from taking it without permission.</li><li><strong>PendingDelete:</strong> The domain is being deleted after expiration.</li></ul><p>These statuses matter a lot when you're managing your domain or trying to fix problems.</p><h3>6. Important Dates</h3><p>WHOIS shows you some key dates in the domain's life:</p><ul><li><strong>Creation Date:</strong> When the domain was first registered.</li><li><strong>Expiration Date:</strong> When your current registration runs out.</li><li><strong>Updated Date:</strong> The last time someone changed the domain record.</li></ul><p>Keep an eye on these dates so you don't miss renewals or notice any weird changes.</p><h3>7. Name Servers</h3><p>Name servers are the DNS servers that point your domain to the right IP address. WHOIS lists:</p><ul><li>The fully qualified domain names (FQDN) of those name servers.</li></ul><p>This info is super helpful for figuring out where your DNS is hosted and troubleshooting if things aren't working right.</p><h2>Additional Information in WHOIS Records</h2><p>There's sometimes other stuff in WHOIS records too, depending on your registrar and TLD policies.</p><h3>1. DNSSEC Status</h3><p>DNSSEC (Domain Name System Security Extensions) status tells you whether your domain has this security feature turned on, which protects against DNS spoofing attacks.</p><h3>2. Abuse Contact Information</h3><p>Some WHOIS records include a contact you can report abuse to-things like spam or phishing connected to the domain.</p><h3>3. Registrar Abuse Contact</h3><p>This is where you report issues with the registrar itself.</p><h2>Privacy and WHOIS Data</h2><p>Privacy rules like GDPR and privacy protection services have changed things. A lot of personal info in WHOIS records is now hidden or replaced with proxy service details. This keeps domain owners' personal data private while still letting you see the admin and technical contacts you actually need.</p><h2>How to Access WHOIS Information</h2><p>You can access WHOIS data through online tools and command-line utilities. Lots of registrars and other services offer free WHOIS lookup tools. To <a href="https://myipnow.net/whois-lookup/">look up domain ownership</a>, you just type in the domain name and you'll get the current WHOIS record.</p><h2>Interpreting WHOIS Data Effectively</h2><p>To understand WHOIS data, you need to know what the terms mean and what each field is for. For example, if a domain has <em>ClientTransferProhibited</em> status, that's actually good-it means it's protected from being transferred without your say-so. On the flip side, <em>PendingDelete</em> status means the domain is about to become available again.</p><p>Also, if the registrant info doesn't match up or the contact details are outdated, that can be a red flag for things like domain hijacking or someone abandoning their domain.</p><h2>Conclusion</h2><p>WHOIS records give you a ton of information about domain registrations-who owns it, who manages it, registrar details, the domain's status, and important dates. Privacy laws have hidden some personal data, but WHOIS is still an essential tool for managing domains, confirming ownership, and staying on top of security.</p><h2>FAQ</h2><h3>What is the difference between the registrant and administrative contact in WHOIS?</h3><p>The registrant is the legal owner of the domain, while the administrative contact handles administrative tasks such as renewals and transfers. They can be the same person or different entities.</p><h3>Why is some WHOIS information redacted or hidden?</h3><p>Privacy laws like GDPR and the use of privacy protection services mask personal data to protect domain owners from spam and identity theft.</p><h3>Can WHOIS data be used to resolve domain disputes?</h3><p>Yes, WHOIS information is often used to verify ownership and contact details during domain dispute resolution processes.</p><h3>How often is WHOIS data updated?</h3><p>WHOIS data is updated whenever changes are made to the domain registration, such as ownership transfer or contact information updates.</p><h3>Where can I perform a WHOIS lookup?</h3><p>You can perform a WHOIS lookup using various online tools, including registrar websites and dedicated WHOIS services. For a reliable option, you can <a href="https://myipnow.net/whois-lookup/">look up domain ownership</a> through specialized platforms.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/how-to-hide-whois-information/">How To Hide Whois Information</a></li><li><a href="https://myipnow.net/whois-for-ip-addresses/">Whois For Ip Addresses</a></li><li><a href="https://myipnow.net/whois-vs-rdap/">Whois Vs Rdap</a></li><li><a href="https://myipnow.net/what-is-whois/">What Is Whois</a></li><li><a href="https://myipnow.net/is-whois-public/">Is Whois Public</a></li></ul></section></article><footer class="footer">
+<article class="article-body"><h2>Understanding WHOIS: The Direct Answer</h2><p>WHOIS is basically a public database that shows detailed info about registered domain names. When you run a WHOIS query, you'll get key data like the domain owner's contact info, when it was registered and when it expires, registrar details, name servers, and status codes. This stuff is really important for confirming who owns a domain, sorting out disputes, and handling domain management tasks.</p><h2>Core Components of WHOIS Records</h2><p>WHOIS records have a bunch of different fields that together give you a pretty complete picture of a domain's registration status and who owns it. The exact fields can vary a bit depending on your registrar and the top-level domain (TLD), but here's what you'll typically find in every WHOIS record.</p><h3>1. Registrant Information</h3><p>The registrant is the person or organization that actually owns the domain. WHOIS shows:</p><ul><li><strong>Name:</strong> The registrant's full name.</li><li><strong>Organization:</strong> If there is one, the company or entity name.</li><li><strong>Address:</strong> The physical mailing address with street, city, state/province, postal code, and country.</li><li><strong>Email:</strong> The registrant's email address.</li><li><strong>Phone Number:</strong> How to reach them by phone.</li></ul><p>This info helps you figure out who legally owns the domain. But if they're using privacy services or have GDPR protections, some of these details might be hidden or masked.</p><h3>2. Administrative Contact</h3><p>The administrative contact is the person who handles the day-to-day administrative stuff for the domain. This might be the same person as the registrant, or it could be someone else they've designated. WHOIS includes:</p><ul><li>Name</li><li>Organization</li><li>Address</li><li>Email</li><li>Phone Number</li></ul><p>They're the ones dealing with renewals, transfers, and other admin requests.</p><h3>3. Technical Contact</h3><p>The technical contact is in charge of the technical side of things-like DNS setup and server management. WHOIS records list:</p><ul><li>Name</li><li>Organization</li><li>Address</li><li>Email</li><li>Phone Number</li></ul><p>Having someone dedicated to the technical stuff means domain issues can get fixed quickly.</p><h3>4. Registrar Information</h3><p>The registrar is the official company that registered the domain for you. WHOIS gives you:</p><ul><li><strong>Registrar Name:</strong> The company that manages your domain registration.</li><li><strong>Registrar IANA ID:</strong> A unique ID assigned by the Internet Assigned Numbers Authority.</li><li><strong>Registrar URL:</strong> The registrar's website.</li></ul><p>This helps you verify that the domain registration is legitimate and makes it easier to get in touch with the registrar if you need to.</p><h3>5. Domain Status</h3><p>WHOIS records include status codes that tell you what state the domain is in. Here are the common ones:</p><ul><li><strong>OK:</strong> The domain is active with no restrictions.</li><li><strong>ClientHold:</strong> The registrar has put it on hold, usually because of non-payment.</li><li><strong>ClientTransferProhibited:</strong> You can't transfer it to prevent someone from taking it without permission.</li><li><strong>PendingDelete:</strong> The domain is being deleted after expiration.</li></ul><p>These statuses matter a lot when you're managing your domain or trying to fix problems.</p><h3>6. Important Dates</h3><p>WHOIS shows you some key dates in the domain's life:</p><ul><li><strong>Creation Date:</strong> When the domain was first registered.</li><li><strong>Expiration Date:</strong> When your current registration runs out.</li><li><strong>Updated Date:</strong> The last time someone changed the domain record.</li></ul><p>Keep an eye on these dates so you don't miss renewals or notice any weird changes.</p><h3>7. Name Servers</h3><p>Name servers are the DNS servers that point your domain to the right IP address. WHOIS lists:</p><ul><li>The fully qualified domain names (FQDN) of those name servers.</li></ul><p>This info is super helpful for figuring out where your DNS is hosted and troubleshooting if things aren't working right.</p><h2>Additional Information in WHOIS Records</h2><p>There's sometimes other stuff in WHOIS records too, depending on your registrar and TLD policies.</p><h3>1. DNSSEC Status</h3><p>DNSSEC (Domain Name System Security Extensions) status tells you whether your domain has this security feature turned on, which protects against DNS spoofing attacks.</p><h3>2. Abuse Contact Information</h3><p>Some WHOIS records include a contact you can report abuse to-things like spam or phishing connected to the domain.</p><h3>3. Registrar Abuse Contact</h3><p>This is where you report issues with the registrar itself.</p><h2>Privacy and WHOIS Data</h2><p>Privacy rules like GDPR and privacy protection services have changed things. A lot of personal info in WHOIS records is now hidden or replaced with proxy service details. This keeps domain owners' personal data private while still letting you see the admin and technical contacts you actually need.</p><h2>How to Access WHOIS Information</h2><p>You can access WHOIS data through online tools and command-line utilities. Lots of registrars and other services offer free WHOIS lookup tools. To <a href="https://myipnow.net/whois-lookup/">look up domain ownership</a>, you just type in the domain name and you'll get the current WHOIS record.</p><h2>Interpreting WHOIS Data Effectively</h2><p>To understand WHOIS data, you need to know what the terms mean and what each field is for. For example, if a domain has <em>ClientTransferProhibited</em> status, that's actually good-it means it's protected from being transferred without your say-so. On the flip side, <em>PendingDelete</em> status means the domain is about to become available again.</p><p>Also, if the registrant info doesn't match up or the contact details are outdated, that can be a red flag for things like domain hijacking or someone abandoning their domain.</p><h2>Conclusion</h2><p>WHOIS records give you a ton of information about domain registrations-who owns it, who manages it, registrar details, the domain's status, and important dates. Privacy laws have hidden some personal data, but WHOIS is still an essential tool for managing domains, confirming ownership, and staying on top of security.</p><h2>FAQ</h2><h3>What is the difference between the registrant and administrative contact in WHOIS?</h3><p>The registrant is the legal owner of the domain, while the administrative contact handles administrative tasks such as renewals and transfers. They can be the same person or different entities.</p><h3>Why is some WHOIS information redacted or hidden?</h3><p>Privacy laws like GDPR and the use of privacy protection services mask personal data to protect domain owners from spam and identity theft.</p><h3>Can WHOIS data be used to resolve domain disputes?</h3><p>Yes, WHOIS information is often used to verify ownership and contact details during domain dispute resolution processes.</p><h3>How often is WHOIS data updated?</h3><p>WHOIS data is updated whenever changes are made to the domain registration, such as ownership transfer or contact information updates.</p><h3>Where can I perform a WHOIS lookup?</h3><p>You can perform a WHOIS lookup using various online tools, including registrar websites and dedicated WHOIS services. For a reliable option, you can <a href="https://myipnow.net/whois-lookup/">look up domain ownership</a> through specialized platforms.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="https://myipnow.net/how-to-hide-whois-information/">How To Hide Whois Information</a></li><li><a href="https://myipnow.net/whois-for-ip-addresses/">Whois For Ip Addresses</a></li><li><a href="https://myipnow.net/whois-vs-rdap/">Whois Vs Rdap</a></li><li><a href="https://myipnow.net/what-is-whois/">What Is Whois</a></li><li><a href="https://myipnow.net/is-whois-public/">Is Whois Public</a></li></ul></section></article><style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/de/what-information-does-whois-show/">🇩🇪 Wie Ist Meine IP?</a>
+<a href="https://myipnow.net/es/what-information-does-whois-show/">🇪🇸 Cuál es mi IP?</a>
+<a href="https://myipnow.net/fr/what-information-does-whois-show/">🇫🇷 Quel Est Mon IP?</a>
+<a href="https://myipnow.net/it/what-information-does-whois-show/">🇮🇹 Qual è il Mio IP?</a>
+</div>
+<footer class="footer">
 <ul class="footer-nav">
 <li>
 <a href="https://myipnow.net/about/">
@@ -330,14 +341,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 (function(){
   var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
   var LANGS = [
-    {code:'en', flag:'\u{1F1FA}\u{1F1F8}', label:'English', base:'https://myipnow.net/'},
-    {code:'de', flag:'\u{1F1E9}\u{1F1EA}', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'\u{1F1EA}\u{1F1F8}', label:'Español', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'\u{1F1EB}\u{1F1F7}', label:'Français', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'\u{1F1EE}\u{1F1F9}', label:'Italiano', base:'https://myipnow.net/it/'}
+    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
+    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
+    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
+    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
+    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}
   ];
   function getSlug(){
-    var path = location.pathname.replace(/^\//, '').replace(/\/$/, '');
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
     if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
@@ -359,48 +371,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     var btn = document.createElement('button');
     btn.className = 'lang-switcher-btn';
     var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
-    btn.innerHTML = currentL.flag + ' ' + currentL.code.toUpperCase() + ' &#9660;';
-    var ul = document.createElement('ul');
-    ul.className = 'lang-switcher-dropdown';
-    LANGS.forEach(function(lang){
-      var item = document.createElement('li');
-      var a = document.createElement('a');
-      var url = lang.base + (slug ? slug + '/' : '');
-      a.href = url;
-      a.innerHTML = lang.flag + ' ' + lang.label;
-      if(lang.code === currentLang) a.className = 'active';
-      item.appendChild(a);
-      ul.appendChild(item);
-    });
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
     li.appendChild(btn);
-    li.appendChild(ul);
     nav.appendChild(li);
-    function positionDropdown(){
-      var rect = btn.getBoundingClientRect();
-      ul.style.top = (rect.bottom + window.scrollY + 6) + 'px';
-      ul.style.left = Math.min(rect.left + window.scrollX, window.innerWidth - 215) + 'px';
-      ul.style.right = 'auto';
+    var floatingMenu = null, backdrop = null, open = false;
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = lang.base + (slug ? slug + '/' : '');
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
     }
-    btn.addEventListener('click', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    });
-    btn.addEventListener('touchstart', function(e){
-      e.preventDefault(); e.stopPropagation();
-      positionDropdown();
-      li.classList.toggle('open');
-    }, {passive:false});
-    document.addEventListener('click', function(e){
-      if(!li.contains(e.target)) li.classList.remove('open');
-    });
-    window.addEventListener('resize', function(){ li.classList.remove('open'); });
-    window.addEventListener('scroll', function(){ if(li.classList.contains('open')) positionDropdown(); });
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
   }
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
 })();
+
 </script>
 </body>
 </html>
