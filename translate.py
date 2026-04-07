@@ -7,17 +7,7 @@ LANGUAGES = {"de": "DE", "es": "ES", "fr": "FR", "it": "IT"}
 LANG_NAMES = {"de": "German", "es": "Spanish", "fr": "French", "it": "Italian"}
 
 TOOL_PAGES = [
-    ("index.html", ""),
-    ("dns-lookup.html", "dns-lookup"),
-    ("whois-lookup.html", "whois-lookup"),
-    ("ip-blacklist.html", "ip-blacklist"),
-    ("asn-lookup.html", "asn-lookup"),
-    ("internet-speed-test.html", "internet-speed-test"),
-    ("generate-password.html", "generate-password"),
-    ("ip-subnet-calculator.html", "ip-subnet-calculator"),
-    ("cidr-to-ip-range-calculator.html", "cidr-to-ip-range-calculator"),
-    ("ip-range-to-cidr-calculator.html", "ip-range-to-cidr-calculator"),
-    ("hide-my-ip.html", "hide-my-ip"),
+    ("ping-test.html", "ping-test"),
 ]
 
 ROUTER_IPS = [
@@ -221,7 +211,7 @@ def main():
             time.sleep(2)
         router_dir = os.path.join(lang_dir, "router")
         os.makedirs(router_dir, exist_ok=True)
-        for ip in ROUTER_IPS:
+        for ip in []:
             src = os.path.join(base, "router", ip, "index.html")
             if not os.path.exists(src):
                 print("  SKIP: router/%s not found" % ip)
