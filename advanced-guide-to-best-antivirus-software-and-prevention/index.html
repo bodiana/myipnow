@@ -495,7 +495,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script id="lang-switcher-js">
 (function(){
-  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1', 'router/192.168.1.1', 'router/192.168.0.1'];
+  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
   var LANGS = [
     {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
     {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
@@ -510,18 +510,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
-  function isTranslated(slug){ return TRANSLATED.indexOf(slug) !== -1; }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
     if(['de','es','fr','it'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){
-    var slug = getSlug();
-    if(!isTranslated(slug)) return;
     var nav = document.querySelector('.category-nav ul');
     if(!nav) return;
+    var slug = getSlug();
     var currentLang = getCurrentLang();
+    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
+
     var li = document.createElement('li');
     li.className = 'lang-switcher';
     var btn = document.createElement('button');
@@ -530,7 +530,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
     li.appendChild(btn);
     nav.appendChild(li);
+
     var floatingMenu = null, backdrop = null, open = false;
+
     function buildMenu(){
       var ul = document.createElement('ul');
       Object.assign(ul.style, {
@@ -543,7 +545,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       LANGS.forEach(function(lang){
         var item = document.createElement('li');
         var a = document.createElement('a');
-        a.href = lang.base + (slug ? slug + '/' : '');
+        // If page is translated point to same page in that lang, else point to lang homepage
+        if(isTranslated){
+          a.href = lang.base + (slug ? slug + '/' : '');
+        } else {
+          a.href = lang.base;
+        }
         a.textContent = lang.label;
         Object.assign(a.style, {
           display:'block', padding:'0.55rem 1rem',
