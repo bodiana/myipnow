@@ -111,7 +111,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <div class="container">
 <header class="site-header">
 <div class="header-top">
-<a class="logo" href="https://myipnow.net/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
+<a class="logo" href="https://myipnow.net/it/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
 <form action="/search.html" class="search-form" method="get">
 <input aria-label="Search articles" name="q" placeholder="Search..." type="search"/>
 <button type="submit">Search</button>
@@ -121,13 +121,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <ul>
 <li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
 <ul>
-<li><a href="https://myipnow.net/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/dns-lookup/">DNS Lookup</a></li>
-<li><a href="https://myipnow.net/whois-lookup/">WHOIS Lookup</a></li>
-<li><a href="https://myipnow.net/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/it/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/it/dns-lookup/">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/it/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/it/internet-speed-test/">Internet Speed Test</a></li>
 <li><a href="https://myipnow.net/it/ping-test/">Ping Test</a></li>
-<li><a href="https://myipnow.net/generate-password/">Generate Password</a></li>
-<li><a href="https://myipnow.net/ip-blacklist/">IP Blacklist</a></li>
+<li><a href="https://myipnow.net/it/generate-password/">Generate Password</a></li>
+<li><a href="https://myipnow.net/it/ip-blacklist/">IP Blacklist</a></li>
 </ul>
 </li>
 <li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
@@ -522,6 +522,49 @@ document.addEventListener('DOMContentLoaded', function() {
   } else { init(); }
 })();
 
+</script>
+<script>/*lang-redirect*/</script>
+<script>
+(function(){
+  var lang = location.pathname.split('/').filter(Boolean)[0];
+  if (!['de','es','fr','it'].includes(lang)) return;
+  var translated = [
+    'dns-lookup','whois-lookup','ip-blacklist','asn-lookup',
+    'internet-speed-test','generate-password','ip-subnet-calculator',
+    'cidr-to-ip-range-calculator','ip-range-to-cidr-calculator','hide-my-ip',
+    'ping-test',
+    'router/10.0.0.1','router/10.11.12.1','router/192.168.0.1','router/192.168.0.100',
+    'router/192.168.0.254','router/192.168.100.1','router/192.168.10.1',
+    'router/192.168.11.1','router/192.168.1.1','router/192.168.1.11',
+    'router/192.168.12.1','router/192.168.1.250','router/192.168.1.2',
+    'router/192.168.1.254','router/192.168.188.1','router/192.168.2.1',
+    'router/192.168.223.1','router/192.168.254.254','router/192.168.4.1',
+    'router/192.168.7.1','router/192.168.8.1'
+  ];
+  function isTranslated(path) {
+    path = path.replace(/\/$/, '');
+    return translated.some(function(s){ return path === s || path.endsWith('/'+s); });
+  }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if (!href || !href.startsWith('https://myipnow.net/')) return;
+    if (href.includes('/'+lang+'/')) return;
+    var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
+    if (path && isTranslated(path)) {
+      a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
+    }
+  });
+  document.querySelectorAll('button[onclick]').forEach(function(btn){
+    var oc = btn.getAttribute('onclick');
+    if (!oc || !oc.includes('myipnow.net/')) return;
+    var m = oc.match(/myipnow\.net\/([^']+)/);
+    if (!m) return;
+    var path = m[1].replace(/\/$/, '');
+    if (path && isTranslated(path) && !oc.includes('/'+lang+'/')) {
+      btn.setAttribute('onclick', oc.replace('myipnow.net/', 'myipnow.net/' + lang + '/'));
+    }
+  });
+})();
 </script>
 </body>
 </html>
