@@ -554,7 +554,7 @@ details summary{list-style: none;}
 <a class="logo" href="https://myipnow.net/pt/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
 <form action="/search.html" class="search-form" method="get">
 <input aria-label="Search articles" name="q" placeholder="Pesquisar..." type="search"/>
-<button type="submit">Search</button>
+<button type="submit">Pesquisar</button>
 </form>
 </div>
 <nav aria-label="Article Categories" class="category-nav">
@@ -589,7 +589,7 @@ Esta ferramenta mostra instantaneamente o seu endereço IPv4 e IPv6 público, lo
 <div class="ip-search hero-search">
 <form id="ipLookupForm">
 <input aria-label="Search IP address" id="ipLookupInput" placeholder="Digite um endereço IP (IPv4 ou IPv6)" type="text"/>
-<button type="submit">Search</button>
+<button type="submit">Pesquisar</button>
 </form>
 </div>
 <div class="hero-ip-row">
@@ -723,8 +723,8 @@ Esta ferramenta mostra instantaneamente o seu endereço IPv4 e IPv6 público, lo
 <div class="map-card">
 <div class="map" id="map"></div>
 <div class="map-controls">
-<button id="refreshBtn">🔄 Refresh</button>
-<button id="toggleMapBtn">🗺️ Toggle Map</button>
+<button id="refreshBtn">🔄 Atualizar</button>
+<button id="toggleMapBtn">🗺️ Alternar mapa</button>
 </div>
 </div>
 </div></section>
@@ -1099,11 +1099,11 @@ if (toggleBtn && typeof map !== "undefined") {
     if (isSatellite) {
       map.removeLayer(satelliteLayer);
       normalLayer.addTo(map);
-      this.innerText = "🛰 Satellite View";
+      this.innerText = "🛰 Vista de satélite";
     } else {
       map.removeLayer(normalLayer);
       satelliteLayer.addTo(map);
-      this.innerText = "🌍 Map View";
+      this.innerText = "🌍 Vista de mapa";
     }
     isSatellite = !isSatellite;
   });
