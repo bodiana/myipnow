@@ -888,6 +888,8 @@ diagnosing network issues, or confirming security settings.
 <a href="https://myipnow.net/fr/">🇫🇷 Français</a>
 <a href="https://myipnow.net/it/">🇮🇹 Italiano</a>
 <a href="https://myipnow.net/pt/">🇧🇷 Português</a>
+<a href="https://myipnow.net/pl/">🇵🇱 Polski</a>
+<a href="https://myipnow.net/nl/">🇳🇱 Nederlands</a>
 </div>
 <style>
 .lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
@@ -1156,24 +1158,17 @@ if (toggleBtn && typeof map !== "undefined") {
 <script id="lang-switcher-js">
 (function(){
   var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
-  var LANGS = [
-    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
-    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
-    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
-  ];
+  var LANGS = [{code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'}, {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'}, {code:'es', flag:'ES', label:'Español', base:'https://myipnow.net/es/'}, {code:'fr', flag:'FR', label:'Français', base:'https://myipnow.net/fr/'}, {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}, {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}, {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'}, {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'}];
   function getSlug(){
     var path = location.pathname;
     path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) return parts[0];
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){

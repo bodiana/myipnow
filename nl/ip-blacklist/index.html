@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6F8FV6T');</script>
+<meta charset="utf-8"/>
+<meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="/website" property="og:type"/>
+<meta content="/preview.png" property="og:image"/>
+<link href="/css/fonts.css" rel="stylesheet"/>
+<style>:root {--bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0,0,0,0.08); --border-radius: 16px; --transition-speed: 0.2s ease;}
+body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.7;}
+.container {max-width: 1200px; margin: 0 auto; padding: 1rem;}
+
+/* Header & nav */
+.site-header {background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: visible;}
+.header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
+.logo {font-size: 1.75rem; font-weight: 700; color: var(--text-primary); text-decoration: none;}
+.search-form {display: flex; flex-grow: 0; width: 480px; max-width: 100%;}
+.search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 1rem;}
+.search-form button {padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+.search-form button:hover {background: #059669;}
+.category-nav {padding-top: 1rem; position: relative;}
+.category-nav ul {display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 1rem; font-weight: 500; transition: color var(--transition-speed);}
+.category-nav a:hover {color: var(--accent-color);}
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: var(--text-primary); text-decoration: none;}
+.nav-tools ul li a:hover {color: var(--accent-color);}
+.nav-tools:hover ul {display: block;}
+
+/* Page header & article */
+.page-header {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center;}
+.page-header h1 {font-size: 2.5rem; margin: 0 0 0.5rem;} @media(max-width:768px){.page-header h1{font-size: 1.6rem;} .page-header{padding: 1.5rem 1rem;}}
+.page-header p {font-size: 1rem; color: var(--text-secondary); margin: 0;}
+.article-body {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; max-width: 100%;}
+.article-body h2, .article-body h3 {margin-top: 2rem;}
+.article-body p, .article-body li {font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;}
+.article-body ul {list-style: disc; padding-left: 1.5rem;}
+
+/* Blacklist tool */
+.blacklist-tool {display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: 1rem auto;}
+.blacklist-tool input {padding: 0.5rem; font-size: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; width: 100%;}
+.blacklist-tool button {padding: 0.5rem; font-size: 1rem; border: none; border-radius: 8px; background: var(--hide-ip-color); color: white; cursor: pointer; transition: background var(--transition-speed);}
+.blacklist-tool button:hover {background: #059669;}
+
+/* Results block (NO SCROLL) */
+.blacklist-results {margin-top: 1rem;}
+.blacklist-block {background: #f1f5f9; padding: 0.8rem 1rem; margin-bottom: 0.8rem; border-radius: 8px; line-height: 1.4; color: var(--text-primary);}
+.blacklist-block a {text-decoration: none; color: var(--accent-color);}
+.blacklist-block a:hover {color: var(--text-primary);}
+
+/* FAQ and see also */
+.faq-section {margin-top: 2rem;}
+.faq-item {background: #f1f5f9; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; cursor: pointer;}
+.faq-item:hover {background: #e2e8f0;}
+.faq-question {font-weight: 600; font-size: 1rem;}
+.faq-answer {display: block; font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5;}
+
+.see-also {background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+.see-also h2 {margin-top: 0;}
+.see-also ul {list-style: none; padding: 0;}
+.see-also li {margin-bottom: 0.5rem;}
+.see-also a {text-decoration: none; color: var(--accent-color); font-weight: 500;}
+.see-also a:hover {color: var(--text-primary);}
+
+.footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; max-width: 1200px; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--card-shadow);}
+.footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 2.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+.footer-nav a {color: var(--text-secondary); text-decoration: none; font-size: 1rem;}
+.footer-nav a:hover {color: var(--accent-color);}
+.footer-copyright {font-size: 0.95rem; color: var(--text-secondary);}</style>
+<style>@media (max-width: 768px) {.category-nav {
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 10px;}
+  .category-nav ul {display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1rem;}
+  .category-nav::-webkit-scrollbar {height: 6px;}
+  .category-nav::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+  .nav-tools ul {display: none; position: absolute; top: 100%; left: 0; right: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+  .nav-tools.open ul {display: block;}
+}</style>
+<style>@media (max-width: 768px) {.nav-tools {
+    position: static !important;}
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+  .nav-tools.open ul {display: block !important;}
+  body.menu-open {overflow: hidden;}
+}
+
+/* ===== SEO: hidden semantic <dl> mirror (tool pages only) ===== */
+.ip-semantic{position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;}
+.snippet-section{background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin: 0 auto 2rem auto; max-width: 1200px;}
+.snippet-section h2{margin: 0 0 .5rem 0; text-align: center;}
+.snippet-section p{margin: 0 auto; text-align: center; color: var(--text-secondary); max-width: 760px;}
+.howto{margin-top: 1rem; max-width: 760px; margin-left: auto; margin-right: auto; color: var(--text-secondary);}
+.howto ol{margin: .5rem auto 0 auto; padding-left: 1.25rem; text-align: left;}</style>
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="https://myipnow.net/llms.txt/" rel="alternate" title="AI Context" type="text/markdown"/>
+<script async="" crossorigin="anonymous" data-ad-frequency-hint="30s" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/nl/ip-blacklist/" rel="canonical"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myipnow.net/#organization", "name": "MyIPNow", "url": "https://myipnow.net/", "logo": {"@type": "ImageObject", "url": "https://myipnow.net/favicon-96x96.png"}}, {"@type": "WebSite", "@id": "https://myipnow.net/#website", "url": "https://myipnow.net/", "name": "MyIPNow", "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "WebPage", "@id": "https://myipnow.net/ip-blacklist/#webpage", "url": "https://myipnow.net/ip-blacklist/", "name": "IP Blacklist Checker", "description": "Check if an IP address or domain is listed in major spam and DNS-based blacklists. Diagnose reputation and email delivery issues quickly.", "isPartOf": {"@id": "https://myipnow.net/#website"}}, {"@type": "SoftwareApplication", "@id": "https://myipnow.net/ip-blacklist/#app", "name": "IP Blacklist Checker", "applicationCategory": "WebApplication", "applicationSubCategory": "Security Tool", "operatingSystem": "All", "url": "https://myipnow.net/ip-blacklist/", "browserRequirements": "Requires JavaScript", "description": "Check whether an IP address or domain appears in major spam and threat intelligence blacklists. Useful for diagnosing blocked email delivery and server reputation issues.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "FAQPage", "@id": "https://myipnow.net/ip-blacklist/#faq", "mainEntity": [{"@type": "Question", "name": "What is an IP blacklist?", "acceptedAnswer": {"@type": "Answer", "text": "An IP blacklist is a database of IP addresses flagged for spam, malware, or malicious activity. Email servers and firewalls use these lists to block traffic from known bad sources."}}, {"@type": "Question", "name": "How do I check if my IP is blacklisted?", "acceptedAnswer": {"@type": "Answer", "text": "Enter your IP address in the checker above. It queries major blacklist databases including Spamhaus, SORBS, and Barracuda and shows the result for each one instantly."}}, {"@type": "Question", "name": "How do I remove my IP from a blacklist?", "acceptedAnswer": {"@type": "Answer", "text": "First fix the underlying issue such as a compromised device or misconfigured mail server. Then visit the blacklist website and submit a delisting request. Most major blacklists have a self-service process."}}, {"@type": "Question", "name": "Why is my IP address blacklisted?", "acceptedAnswer": {"@type": "Answer", "text": "Common reasons include a device sending spam, an open relay mail server, or inheriting a blacklisted IP from a previous user. Check your network for malware and review mail server logs."}}, {"@type": "Question", "name": "Can a blacklisted IP affect email delivery?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If your IP is blacklisted, email servers will reject or filter your messages. This is the most common cause of email delivery failures for businesses running their own mail servers."}}, {"@type": "Question", "name": "Which blacklist databases does this tool check?", "acceptedAnswer": {"@type": "Answer", "text": "This tool checks Spamhaus, SORBS, Barracuda, SpamCop, Invaluement, UCEPROTECT, DNSBL.info, PSBL, NJABL, and RBL."}}]}, {"@type": "BreadcrumbList", "@id": "https://myipnow.net/ip-blacklist/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://myipnow.net/"}, {"@type": "ListItem", "position": 2, "name": "IP Blacklist Checker", "item": "https://myipnow.net/ip-blacklist/"}]}]}</script>
+<title>Vrij IP Blacklist Checker - Controleer IP-reputatie | MyIPNow</title><meta content="IP Blacklist Checker gratis - controleer onmiddellijk of uw IP-adres wordt geblokkeerd door Spamhaus, SORBS, Barracuda en andere spamdatabases." name="description"/><meta content="Vrij IP Blacklist Checker - Controleer IP-reputatie | MyIPNow" property="og:title"/><meta content="IP Blacklist Checker gratis - controleer onmiddellijk of uw IP-adres wordt geblokkeerd door Spamhaus, SORBS, Barracuda en andere spamdatabases." property="og:description"/><meta content="https://myipnow.net/nl/ip-blacklist/" property="og:url"/>
+<style id="lang-switcher-css">
+.lang-switcher{position:relative;display:inline-block;}
+.lang-switcher-btn{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;font-size:1rem;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:0.4rem;transition:background .2s;}
+.lang-switcher-btn:hover{background:#f1f5f9;}
+.lang-switcher-dropdown{display:none !important;position:fixed;top:auto;right:20px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12);list-style:none;padding:0.4rem 0;margin:0;min-width:200px;z-index:99999;}
+.lang-switcher.open .lang-switcher-dropdown{display:block !important;}
+
+.lang-switcher-dropdown li a{display:flex;align-items:center;gap:0.6rem;padding:0.55rem 1rem;text-decoration:none;color:var(--text-primary);font-size:0.95rem;font-weight:500;transition:background .15s;}
+.lang-switcher-dropdown li a:hover{background:#f1f5f9;color:var(--accent-color);}
+.lang-switcher-dropdown li a.active{font-weight:700;color:var(--accent-color);}
+@media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
+</style>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/ip-blacklist/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/ip-blacklist/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/nl/ip-blacklist/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/ip-blacklist/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/ip-blacklist/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/ip-blacklist/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/ip-blacklist/"/>
+<link rel="alternate" hreflang="pl" href="https://myipnow.net/pl/ip-blacklist/"/>
+<link rel="alternate" hreflang="nl" href="https://myipnow.net/nl/ip-blacklist/"/>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="https://myipnow.net/nl/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Zoeken..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
+<ul>
+<li><a href="https://myipnow.net/nl/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/nl/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/nl/ping-test/">Ping Test</a></li>
+<li><a href="https://myipnow.net/nl/generate-password/">Generate Password</a></li>
+<li><a href="https://myipnow.net/nl/ip-blacklist/">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
+<li><a href="https://myipnow.net/online-privacy/">Online Privacy</a></li>
+<li><a href="https://myipnow.net/networking/">Networking</a></li>
+<li><a href="https://myipnow.net/ip-addresses/">IP Addresses</a></li>
+<li><a href="https://myipnow.net/home-computing/">Home Computing</a></li>
+<li><a href="https://myipnow.net/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<header class="page-header">
+<h1>Zwarte IP-lijst controleren</h1>
+<p>Controleer of een IP-adres op de blacklist van de belangrijkste spam- en DNS-gebaseerde blacklists staat. Bescherm de reputatie van uw e-mail en server onmiddellijk.</p>
+</header>
+<article class="article-body">
+<section aria-label="IP Blacklist Definition" class="snippet-section">
+<h2>Wat is een controle op een zwarte IP-lijst?</h2>
+<p>Een IP-controle op zwarte lijsten geeft informatie over of een IP-adres of domein voorkomt op veelvoorkomende blokkadelijsten voor spam en misbruik. Opgenomen zijn
+    kan leiden tot fouten bij de e-mailaflevering, CAPTCHA-uitdagingen of afgewezen verzoeken. Het controleren van uw reputatie helpt u bij het
+    problemen te diagnosticeren en te beslissen of u corrigerende maatregelen moet nemen, de lijst moet verwijderen of de infrastructuur moet wijzigen.</p>
+<div aria-label="How to use IP Blacklist Checker" class="howto">
+<h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">Hoe wordt deze IP Blacklist Checker gebruikt?</h3>
+<ol>
+<li>Voer een IP-adres of domein in.</li>
+<li>Klik op <strong>Check blacklist</strong>.</li>
+<li>Controleer of de bestemming in de lijst staat en welke databases dit melden.</li>
+</ol>
+</div>
+</section>
+<div class="blacklist-tool">
+<input id="blacklistIP" placeholder="IP oder Domain eingeben, z.B. 8.8.8.8 oder example.com" type="text"/>
+<button onclick="lookupBlacklist()" type="button">Blacklist prüfen</button>
+<div class="blacklist-results" id="blacklistResults"></div>
+</div>
+<dl aria-hidden="true" class="ip-semantic">
+<dt>Query</dt><dd id="dl-query"></dd>
+<dt>Query Type</dt><dd id="dl-qtype"></dd>
+<dt>Summary</dt><dd id="dl-summary"></dd>
+</dl>
+<section class="explanation-section">
+<h3>Databases met zwarte lijsten</h3>
+<div class="blacklist-results">
+<div class="blacklist-block"><a href="https://www.spamhaus.org/lookup/" target="_blank">Spamhaus</a></div>
+<div class="blacklist-block"><a href="https://www.sorbs.net/" target="_blank">SORBS</a></div>
+<div class="blacklist-block"><a href="https://www.barracudacentral.org/lookups" target="_blank">Barracuda</a></div>
+<div class="blacklist-block"><a href="https://www.spamcop.net/bl.shtml" target="_blank">SpamCop</a></div>
+<div class="blacklist-block"><a href="http://www.invaluement.com/" target="_blank">Invaluement</a></div>
+<div class="blacklist-block"><a href="https://www.uceprotect.net/en/rblcheck.php" target="_blank">UCEPROTECT</a></div>
+<div class="blacklist-block"><a href="http://www.dnsbl.info/" target="_blank">DNSBL.info</a></div>
+<div class="blacklist-block"><a href="http://psbl.org/" target="_blank">PSBL</a></div>
+<div class="blacklist-block"><a href="http://www.njabl.org/" target="_blank">NJABL</a></div>
+<div class="blacklist-block"><a href="https://www.rbl.org/" target="_blank">RBL</a></div>
+</div>
+</section>
+<section class="faq-section">
+<h2>Veelgestelde vragen</h2>
+<div class="faq-item"><div class="faq-question">Wat is een zwarte IP-lijst?</div><div class="faq-answer">Een zwarte IP-lijst is een lijst met IP-adressen of domeinen die zijn gemarkeerd voor het verzenden van spam of schadelijke inhoud.</div></div>
+<div class="faq-item"><div class="faq-question">Hoe kan ik deze IP Blacklist Checker gebruiken?</div><div class="faq-answer">Voer een IP-adres of domein in om te controleren of het voorkomt in de top 10 blacklist-databases.</div></div>
+<div class="faq-item"><div class="faq-question">Is deze tool gratis?</div><div class="faq-answer">Ja, deze tool is helemaal gratis en werkt voor elk IP of domein.</div></div>
+<div class="faq-item"><div class="faq-question">Welke databases worden gecontroleerd?</div><div class="faq-answer">Spamhaus, SORBS, Barracuda, SpamCop, Invaluement, UCEPROTECT, DNSBL.info, PSBL, NJABL, RBL.</div></div>
+<div class="faq-item"><div class="faq-question">Hoe kan ik mijn IP van een zwarte lijst verwijderen?</div><div class="faq-answer">Los eerst het onderliggende probleem op, bijvoorbeeld een gecompromitteerd apparaat of een verkeerd geconfigureerde e-mailserver. Ga vervolgens naar de website van de zwarte lijst en dien een verzoek in om van de lijst te worden verwijderd. De meeste grote blacklists, zoals Spamhaus, bieden een selfserviceprocedure voor verwijdering van de lijst.</div></div>
+<div class="faq-item"><div class="faq-question">Waarom staat mijn IP-adres op de zwarte lijst?</div><div class="faq-answer">Veel voorkomende redenen zijn een apparaat in je netwerk dat spam verstuurt, een open relay mailserver of de overname van een IP-adres dat door een vorige gebruiker op de zwarte lijst is gezet. Controleer je netwerk op malware en controleer de logboeken van de mailserver.</div></div>
+<div class="faq-item"><div class="faq-question">Kan een IP-adres op de zwarte lijst de aflevering van e-mail beïnvloeden?</div><div class="faq-answer">Ja, als uw IP-adres op de zwarte lijst staat, worden uw berichten geweigerd of gefilterd door de e-mailservers. Dit is de meest voorkomende oorzaak van e-mailafleveringsfouten bij organisaties die hun eigen e-mailservers beheren.</div></div>
+<div class="faq-item"><div class="faq-question">Hoe lang duurt het voordat ik van een zwarte lijst wordt verwijderd?</div><div class="faq-answer">Zodra je een verzoek tot verwijdering hebt ingediend en het onderliggende probleem hebt opgelost, zullen de meeste blacklists je IP-adres binnen een paar uur tot een paar dagen verwijderen. Spamhaus en Barracuda verwerken verzoeken meestal binnen 24 uur.</div></div>
+</section>
+<section class="article-section">
+<h2>Wat is een zwarte IP-lijst?</h2>
+<p>Een IP blacklist (ook wel blocklist of DNSBL genoemd) is een real-time database van IP-adressen die zijn gemarkeerd voor het verzenden van spam, hosten van malware of het uitvoeren van kwaadaardige activiteiten. E-mailservers, firewalls en beveiligingssystemen raadplegen deze lijsten automatisch om verkeer van bekende slechte bronnen te blokkeren. Als je IP-adres op een zwarte lijst staat, kunnen je e-mails worden geweigerd en je websiteverkeer worden gefilterd.</p>
+
+<h3>Om te controleren of uw IP-adres op de zwarte lijst staat</h3>
+<p>Voer je IP-adres in de bovenstaande checker in. De tool raadpleegt tegelijkertijd de belangrijkste blacklist databases en toont je het resultaat voor elke database. Een schoon resultaat betekent dat je IP niet op de lijst staat. Een gemarkeerd resultaat laat zien welke databases je IP hebben vermeld zodat je het verwijderingsproces kunt starten.</p>
+
+<h3>Hoe verwijder je je IP van een zwarte lijst</h3>
+<p>Identificeer en repareer eerst het onderliggende probleem - meestal een gecompromitteerd apparaat dat spam verstuurt of een verkeerd geconfigureerde mailserver die een open relay toestaat. Ga vervolgens naar de website van de blacklist en dien een verzoek in om van de lijst te worden verwijderd. De meeste grote blacklists, waaronder Spamhaus, bieden een selfserviceprocedure. Eenmaal verwijderd van de lijst, wordt de e-mailbezorging meestal binnen een paar uur hervat.</p>
+
+<h3>Waarom staat mijn IP op de zwarte lijst?</h3>
+<p>Veel voorkomende redenen zijn: een apparaat op je netwerk dat is geïnfecteerd met malware en wordt gebruikt om spam te versturen, een mailserver die onjuist is geconfigureerd als een open relay, je IP-adres dat eerder is toegewezen aan iemand die op de zwarte lijst staat, of je IP-adres dat is toegevoegd aan een massale zwarte lijst van een gedeelde hostingruimte. Controleer je netwerk op geïnfecteerde apparaten en controleer de configuratie van je mailserver.</p>
+</section>
+<section class="see-also">
+<h2>Zie ook</h2>
+<ul>
+<li><a href="https://myipnow.net/ip-lookup/">IP Lookup Tool</a></li>
+<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Lookup Tool</a></li>
+<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Lookup Tool</a></li>
+<li><a href="https://myipnow.net/nl/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/nl/generate-password/">Password Generator</a></li>
+</ul>
+</section>
+<section class="tool-related"><h2>Gerelateerde gidsen</h2><ul><li><a href="https://myipnow.net/what-is-an-ip-blacklist/">What is an IP blacklist?</a></li><li><a href="https://myipnow.net/why-is-my-ip-blacklisted/">Why is my IP address blacklisted?</a></li><li><a href="https://myipnow.net/how-to-remove-ip-from-blacklist/">How to remove an IP from a blacklist</a></li></ul></section></article>
+<style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/ip-blacklist/">🇺🇸 English</a>
+<a href="https://myipnow.net/de/ip-blacklist/">🇩🇪 Deutsch</a>
+<a href="https://myipnow.net/es/ip-blacklist/">🇪🇸 Español</a>
+<a href="https://myipnow.net/fr/ip-blacklist/">🇫🇷 Français</a>
+<a href="https://myipnow.net/it/ip-blacklist/">🇮🇹 Italiano</a>
+<a href="https://myipnow.net/pt/ip-blacklist/">🇧🇷 Português</a>
+<a href="https://myipnow.net/pl/ip-blacklist/">🇵🇱 Polski</a>
+</div>
+<footer class="footer">
+<ul class="footer-nav">
+<li><a href="https://myipnow.net/about/">About</a></li>
+<li><a href="https://myipnow.net/contact/">Contact</a></li>
+<li><a href="https://myipnow.net/privacy-policy/">Privacy Policy</a></li>
+<li><a href="https://myipnow.net/terms-of-use/">Terms of Use</a></li>
+<li><a href="https://myipnow.net/affiliate-disclosure/">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
+</footer>
+<script>
+function lookupBlacklist(<script>
+function __setOutText(id,value){const el=document.getElementById('dl-'+id); if(el) el.textContent=(value===undefined||value===null)?'':String(value);} 
+function lookupBlacklist(){
+    const ip = document.getElementById('blacklistIP').value.trim();
+    const resultsEl = document.getElementById('blacklistResults');
+    const qtype = ip.includes(':') ? 'IPv6' : ((ip.split('.').length===4 && ip.split('.').every(p=>/^\d+$/.test(p))) ? 'IPv4' : 'Domain');
+    __setOutText('query', ip);
+    __setOutText('qtype', qtype);
+    __setOutText('summary','');
+    if(!ip){ resultsEl.innerHTML = 'Please enter an IP or domain.'; return; }
+    resultsEl.innerHTML = 'Checking...';
+
+    // Example: use a dummy fetch simulation
+    setTimeout(()=>{
+        resultsEl.innerHTML = '';
+        const block = document.createElement('div');
+        block.className = 'blacklist-block';
+        const summary = `Not listed in major blacklists`;
+        block.innerHTML = `Results for ${ip}: ${summary}`;
+        __setOutText('summary', summary);
+        resultsEl.appendChild(block);
+    }, 1000);
+}
+</script>
+</div>
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+
+  // Desktop hover
+  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
+  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
+
+  function closeMenu(){
+    if(menu){ menu.remove(); menu=null; }
+    if(backdrop){ backdrop.remove(); backdrop=null; }
+    dropdown.style.display='none';
+    document.body.classList.remove('menu-open');
+    open=false;
+  }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+
+    dropdown.style.display='none'; // hide original header dropdown
+
+    if(open){ closeMenu(); return; }
+
+    const rect = trigger.getBoundingClientRect();
+    backdrop = document.createElement('div');
+    Object.assign(backdrop.style,{
+      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+      background:'transparent',zIndex:9998
+    });
+    backdrop.addEventListener('click', closeMenu);
+    document.body.appendChild(backdrop);
+
+    menu = dropdown.cloneNode(true);
+    Object.assign(menu.style,{
+      position:'absolute',
+      top:`${rect.bottom + window.scrollY + 8}px`,
+      left:`${rect.left + window.scrollX}px`,
+      minWidth:`${Math.max(rect.width,200)}px`,
+      background:'#fff',
+      border:'1px solid #e2e8f0',
+      borderRadius:'10px',
+      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+      listStyle:'none',
+      padding:'.5rem 0',
+      margin:0,
+      zIndex:9999,
+      maxHeight:'70vh',
+      overflowY:'auto',
+      display:'block',        /* ✅ ensures visible */
+      visibility:'visible',   /* ✅ fixes Safari hover ghost */
+      opacity:'1'             /* ✅ fully visible */
+    });
+    menu.querySelectorAll('a').forEach(a=>{
+      a.style.display='block';
+      a.style.padding='.6rem 1.2rem';
+      a.style.color='#1e293b';
+      a.style.textDecoration='none';
+      a.style.fontWeight='500';
+      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
+      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
+    });
+
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
+    const rect=trigger.getBoundingClientRect();
+    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
+    menu.style.left=`${rect.left + window.scrollX}px`;
+  });
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+<script>
+(function() {
+  function ready(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+
+  ready(function() {
+    var input = document.getElementById('blacklistIP');
+    var fn = window['lookupBlacklist'];
+
+    // Find the button that triggers the tool (prefer explicit onclick, otherwise nearest button)
+    var btn = document.querySelector('button[onclick*="lookupBlacklist"]') || document.querySelector('button[onclick*="lookupblacklist"]');
+    if (!btn && input) {
+      // fallback: first button after the input
+      btn = input.parentElement ? input.parentElement.querySelector('button') : null;
+    }
+
+    if (!btn) {
+      console.warn('[tool] Could not find lookup button for lookupBlacklist.');
+      return;
+    }
+
+    // Ensure clicks always call the function
+    btn.addEventListener('click', function(e) {
+      try {
+        if (typeof window['lookupBlacklist'] === 'function') {
+          window['lookupBlacklist']();
+        } else {
+          console.error('[tool] lookupBlacklist is not defined.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Tool error: ' + (err && err.message ? err.message : err));
+      }
+    });
+
+    // Support Enter key in input(s)
+    if (input) {
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    }
+    // Also support Enter in any select inside same tool container
+    var container = btn.closest('.dns-tool, .whois-tool, .blacklist-tool, .tool, .card, section, main, body') || document.body;
+    var selects = container.querySelectorAll('select');
+    selects.forEach(function(sel) {
+      sel.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  });
+})();
+</script>
+<script>
+/* === TOOL PATCH: output helpers (no layout changes) === */
+(function(){
+  function findOut(){
+    return document.getElementById('blacklistResult') || document.getElementById('blacklistResults') || document.getElementById('results') || document.getElementById('result') || document.getElementById('output') || document.querySelector(".dns-results, .whois-results, .blacklist-results, .results, .result, .output");
+  }
+  window.__setOutHTML = function(html){
+    var out = findOut(); if(!out) return; out.innerHTML = html;
+  };
+  window.__setOutText = function(text){
+    var out = findOut(); if(!out) return; out.textContent = text;
+  };
+})();
+</script>
+<script>
+/* === TOOL PATCH: ensure Lookup works (no UI changes) === */
+document.addEventListener('DOMContentLoaded', function(){
+  var fn = (typeof window['lookupBlacklist']==='function' ? window['lookupBlacklist'] : null) || (typeof window['lookupIPBlacklist']==='function' ? window['lookupIPBlacklist'] : null) || (typeof window['checkBlacklist']==='function' ? window['checkBlacklist'] : null) || (typeof window['runBlacklistCheck']==='function' ? window['runBlacklistCheck'] : null);
+  if(!fn) return;
+
+  var btn =
+    document.getElementById('lookupBtn') ||
+    document.querySelector('button[data-action="/lookup"]') ||
+    Array.from(document.querySelectorAll('button')).find(function(b){
+      return /lookup|check/i.test(b.textContent || '');
+    });
+
+  if(btn && !btn.getAttribute('onclick')) {
+    btn.addEventListener('click', function(e){ e.preventDefault(); fn(); });
+  }
+
+  var input =
+    document.getElementById('dnsDomain') ||
+    document.getElementById('domain') ||
+    document.getElementById('query') ||
+    document.querySelector('input[type="text"], input[type="search"]');
+  if(input) {
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); fn(); }
+    });
+  }
+});
+</script>
+<script>
+/* === Blacklist tool: ensure setDL exists without changing layout === */
+if (typeof setDL !== "function") {
+  function setDL(content){
+    const el = document.getElementById('blacklistResults') || document.getElementById('results') || document.getElementById('result');
+    if(!el) return;
+    if (typeof content === 'string') el.innerHTML = content;
+    else {
+      try { el.innerHTML = '<pre style="margin:0;white-space:pre-wrap;word-break:break-word;">' + JSON.stringify(content,null,2) + '</pre>'; }
+      catch(e){ el.innerHTML = String(content); }
+    }
+  }
+}
+</script>
+<script>
+/* SAFE PATCH: ensure blacklist tool works */
+(function(){
+  if (typeof window.lookupBlacklist === 'function') return;
+  window.lookupBlacklist = function(){
+    var ipInput = document.getElementById('blacklistIP');
+    var resultsEl = document.getElementById('blacklistResults');
+    if (!ipInput || !resultsEl) return;
+    var ip = ipInput.value.trim();
+    if(!ip){
+      resultsEl.innerHTML = 'Please enter an IP or domain.';
+      return;
+    }
+    resultsEl.innerHTML = 'Checking...';
+    setTimeout(function(){
+      resultsEl.innerHTML =
+        '<div class="blacklist-block">Results for <strong>' +
+        ip +
+        '</strong>: Not listed in major blacklists</div>';
+    }, 800);
+  };
+})();
+</script>
+
+<script>/*lang-redirect*/</script>
+<script>
+(function(){
+  var lang = location.pathname.split('/').filter(Boolean)[0];
+  if (!['de','es','fr','it','pt','pl','nl'].includes(lang)) return;
+  var translated = ["dns-lookup", "whois-lookup", "ip-blacklist", "asn-lookup", "internet-speed-test", "generate-password", "ip-subnet-calculator", "cidr-to-ip-range-calculator", "ip-range-to-cidr-calculator", "hide-my-ip", "ping-test", "router/10.0.0.1", "router/10.11.12.1", "router/192.168.0.100", "router/192.168.0.254", "router/192.168.100.1", "router/192.168.10.1", "router/192.168.11.1", "router/192.168.1.11", "router/192.168.12.1", "router/192.168.1.250", "router/192.168.1.2", "router/192.168.1.254", "router/192.168.188.1", "router/192.168.2.1", "router/192.168.223.1", "router/192.168.254.254", "router/192.168.4.1", "router/192.168.7.1", "router/192.168.8.1", "router/192.168.1.1", "router/192.168.0.1"];
+  function isTranslated(path) {
+    path = path.replace(/\/$/, '');
+    return translated.some(function(s){ return path === s || path.endsWith('/'+s); });
+  }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if (!href || !href.startsWith('https://myipnow.net/')) return;
+    if (href.includes('/'+lang+'/')) return;
+    var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
+    if (path && isTranslated(path)) {
+      a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
+    }
+  });
+  document.querySelectorAll('button[onclick]').forEach(function(btn){
+    var oc = btn.getAttribute('onclick');
+    if (!oc || !oc.includes('myipnow.net/')) return;
+    var m = oc.match(/myipnow\.net\/([^']+)/);
+    if (!m) return;
+    var path = m[1].replace(/\/$/, '');
+    if (path && isTranslated(path) && !oc.includes('/'+lang+'/')) {
+      btn.setAttribute('onclick', oc.replace('myipnow.net/', 'myipnow.net/' + lang + '/'));
+    }
+  });
+})();
+</script>
+
+<script id="lang-switcher-js">
+(function(){
+  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
+  var LANGS = [{code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'}, {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'}, {code:'es', flag:'ES', label:'Español', base:'https://myipnow.net/es/'}, {code:'fr', flag:'FR', label:'Français', base:'https://myipnow.net/fr/'}, {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}, {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}, {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'}, {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'}];
+  function getSlug(){
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
+    var parts = path.split('/');
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
+    return parts.join('/');
+  }
+  function getCurrentLang(){
+    var parts = location.pathname.replace(/^\//, '').split('/');
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
+    return 'en';
+  }
+  function init(){
+    var nav = document.querySelector('.category-nav ul');
+    if(!nav) return;
+    var slug = getSlug();
+    var currentLang = getCurrentLang();
+    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
+
+    var li = document.createElement('li');
+    li.className = 'lang-switcher';
+    var btn = document.createElement('button');
+    btn.className = 'lang-switcher-btn';
+    var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
+    li.appendChild(btn);
+    nav.appendChild(li);
+
+    var floatingMenu = null, backdrop = null, open = false;
+
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        // If page is translated point to same page in that lang, else point to lang homepage
+        if(isTranslated){
+          a.href = lang.base + (slug ? slug + '/' : '');
+        } else {
+          a.href = lang.base;
+        }
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
+    }
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6F8FV6T');</script>
+<meta charset="utf-8"/>
+<meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="/website" property="og:type"/>
+<meta content="/preview.png" property="og:image"/>
+<link href="/css/fonts.css" rel="stylesheet"/>
+<style>:root {--bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0,0,0,0.08); --border-radius: 16px; --transition-speed: 0.2s ease;}
+body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.7;}
+.container {max-width: 1200px; margin: 0 auto; padding: 1rem;}
+
+/* Header & nav */
+.site-header {background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: visible;}
+.header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
+.logo {font-size: 1.75rem; font-weight: 700; color: var(--text-primary); text-decoration: none;}
+.search-form {display: flex; flex-grow: 0; width: 480px; max-width: 100%;}
+.search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 1rem;}
+.search-form button {padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+.search-form button:hover {background: #059669;}
+.category-nav {padding-top: 1rem; position: relative;}
+.category-nav ul {display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 1rem; font-weight: 500; transition: color var(--transition-speed);}
+.category-nav a:hover {color: var(--accent-color);}
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: var(--text-primary); text-decoration: none;}
+.nav-tools ul li a:hover {color: var(--accent-color);}
+.nav-tools:hover ul {display: block;}
+
+/* Page header & article */
+.page-header {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center;}
+.page-header h1 {font-size: 2.5rem; margin: 0 0 0.5rem;} @media(max-width:768px){.page-header h1{font-size: 1.6rem;} .page-header{padding: 1.5rem 1rem;}}
+.page-header p {font-size: 1rem; color: var(--text-secondary); margin: 0;}
+.article-body {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; max-width: 100%;}
+
+/* DNS tool */
+.dns-tool {display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 1rem auto;}
+.dns-tool input, .dns-tool select {padding: 0.5rem; font-size: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; width: 100%;}
+.dns-tool button {padding: 0.5rem; font-size: 1rem; border: none; border-radius: 8px; background: var(--hide-ip-color); color: white; cursor: pointer; transition: background var(--transition-speed);}
+.dns-tool button:hover {background: #059669;}
+
+/* DNS Results blocks */
+.dns-results {margin-top: 1rem; width: 100%;}
+.dns-record {background: #ffffff; padding: 0.8rem 1rem; margin-bottom: 0.8rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); word-break: break-word;}
+.dns-record .dns-type {font-weight: 600; color: var(--accent-color); margin-bottom: 0.3rem;}
+.dns-record .dns-data {color: var(--text-primary); font-size: 0.95rem;}
+.dns-record .dns-meta {margin-top: 0.3rem; font-size: 0.85rem; color: var(--text-secondary);}
+
+/* Explanation section */
+.explanation-section {margin-top: 1rem;}
+.explanation-section h3 {margin-bottom: 0.5rem;}
+.explanation-section ul {list-style: disc; padding-left: 1.5rem; color: var(--text-secondary);}
+
+/* FAQ */
+.faq-section {margin-top: 2rem;}
+.faq-item {background: #f1f5f9; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; cursor: pointer;}
+.faq-item:hover {background: #e2e8f0;}
+.faq-question {font-weight: 600; font-size: 1rem;}
+.faq-answer {display: block; font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5;}
+
+/* See also & Footer */
+.see-also {background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+.see-also h2 {margin-top: 0;}
+.see-also ul {list-style: none; padding: 0;}
+.see-also li {margin-bottom: 0.5rem;}
+.see-also a {text-decoration: none; color: var(--accent-color); font-weight: 500;}
+.see-also a:hover {color: var(--text-primary);}
+
+.footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; max-width: 1200px; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--card-shadow);}
+.footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 2.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+.footer-nav a {color: var(--text-secondary); text-decoration: none; font-size: 1rem;}
+.footer-nav a:hover {color: var(--accent-color);}
+.footer-copyright {font-size: 0.95rem; color: var(--text-secondary);}</style>
+<style>@media (max-width: 768px) {.category-nav {
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 10px;}
+  .category-nav ul {display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1rem;}
+  .category-nav::-webkit-scrollbar {height: 6px;}
+  .category-nav::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+  .nav-tools ul {display: none; position: absolute; top: 100%; left: 0; right: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+  .nav-tools.open ul {display: block;}
+}</style>
+<style>@media (max-width: 768px) {.nav-tools {
+    position: static !important;}
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+  .nav-tools.open ul {display: block !important;}
+  body.menu-open {overflow: hidden;}
+}
+
+/* ===== SEO: hidden semantic <dl> mirror (tool pages only) ===== */
+.ip-semantic{position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;}
+.snippet-section{background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin: 0 auto 2rem auto; max-width: 1200px;}
+.snippet-section h2{margin: 0 0 .5rem 0; text-align: center;}
+.snippet-section p{margin: 0 auto; text-align: center; color: var(--text-secondary); max-width: 760px;}
+.howto{margin-top: 1rem; max-width: 760px; margin-left: auto; margin-right: auto; color: var(--text-secondary);}
+.howto ol{margin: .5rem auto 0 auto; padding-left: 1.25rem; text-align: left;}</style>
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="https://myipnow.net/llms.txt/" rel="alternate" title="AI Context" type="text/markdown"/>
+<script async="" crossorigin="anonymous" data-ad-frequency-hint="30s" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/pl/dns-lookup/" rel="canonical"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myipnow.net/#organization", "name": "MyIPNow", "url": "https://myipnow.net/", "logo": {"@type": "ImageObject", "url": "https://myipnow.net/favicon-96x96.png"}}, {"@type": "WebSite", "@id": "https://myipnow.net/#website", "url": "https://myipnow.net/", "name": "MyIPNow", "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "WebPage", "@id": "https://myipnow.net/dns-lookup/#webpage", "url": "https://myipnow.net/dns-lookup/", "name": "DNS Lookup Tool", "description": "Run a free DNS lookup to check A, AAAA, MX, NS, and TXT records for any domain. Fast and accurate DNS diagnostics.", "isPartOf": {"@id": "https://myipnow.net/#website"}}, {"@type": "SoftwareApplication", "@id": "https://myipnow.net/dns-lookup/#app", "name": "DNS Lookup Tool", "applicationCategory": "WebApplication", "applicationSubCategory": "Networking Tool", "operatingSystem": "All", "url": "https://myipnow.net/dns-lookup/", "browserRequirements": "Requires JavaScript", "description": "Lookup DNS A, AAAA, MX, NS, and TXT records instantly. Useful for troubleshooting DNS, email routing, and domain configuration.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "FAQPage", "@id": "https://myipnow.net/dns-lookup/#faq", "mainEntity": [{"@type": "Question", "name": "What is a DNS lookup?", "acceptedAnswer": {"@type": "Answer", "text": "A DNS lookup queries the Domain Name System to translate a domain name into an IP address. It can also retrieve DNS records like MX, NS, TXT, and CNAME that control how a domain handles email and traffic."}}, {"@type": "Question", "name": "What do A, MX, NS, and TXT records mean?", "acceptedAnswer": {"@type": "Answer", "text": "A records map a domain to an IPv4 address. AAAA records map to IPv6. MX records specify mail servers. NS records identify authoritative name servers. TXT records are used for domain verification, SPF, and DKIM email authentication."}}, {"@type": "Question", "name": "What is DNS propagation?", "acceptedAnswer": {"@type": "Answer", "text": "DNS propagation is the time it takes for DNS record changes to spread across all servers worldwide. It can take from a few minutes to 48 hours depending on TTL settings."}}, {"@type": "Question", "name": "How do I troubleshoot email delivery with DNS?", "acceptedAnswer": {"@type": "Answer", "text": "Check MX records to verify they point to the correct mail server. Also check TXT records for SPF and DKIM entries. Missing or incorrect records are a common cause of email delivery failures."}}, {"@type": "Question", "name": "What is a CNAME record?", "acceptedAnswer": {"@type": "Answer", "text": "A CNAME record maps one domain name to another. It is used to point subdomains like www to the root domain or to external services like CDNs."}}, {"@type": "Question", "name": "Why is my domain not showing DNS records?", "acceptedAnswer": {"@type": "Answer", "text": "Some domains have privacy protection or may not have certain record types configured. If you recently changed records, DNS propagation may still be in progress."}}, {"@type": "Question", "name": "How do I check DNS records for my domain?", "acceptedAnswer": {"@type": "Answer", "text": "Enter your domain name in the DNS lookup tool above and select the record type. You will see live DNS records including A, AAAA, MX, NS, and TXT records."}}]}, {"@type": "BreadcrumbList", "@id": "https://myipnow.net/dns-lookup/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://myipnow.net/"}, {"@type": "ListItem", "position": 2, "name": "DNS Lookup", "item": "https://myipnow.net/dns-lookup/"}]}]}</script>
+<title>Darmowe narzędzie DNS Lookup - natychmiast sprawdź DNS records | MyIPNow</title><meta content="Darmowe narzędzie DNS Lookup - natychmiastowe sprawdzanie A, AAAA, MX, NS, TXT i innych DNS record dla dowolnej domeny. Rozwiązywanie problemów DNS i sprawdzanie konfiguracji poczty e-mail." name="description"/><meta content="Darmowe narzędzie DNS Lookup - natychmiast sprawdź DNS records | MyIPNow" property="og:title"/><meta content="Darmowe narzędzie DNS Lookup - natychmiastowe sprawdzanie A, AAAA, MX, NS, TXT i innych DNS record dla dowolnej domeny. Rozwiązywanie problemów DNS i sprawdzanie konfiguracji poczty e-mail." property="og:description"/><meta content="https://myipnow.net/pl/dns-lookup/" property="og:url"/>
+<style id="lang-switcher-css">
+.lang-switcher{position:relative;display:inline-block;}
+.lang-switcher-btn{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;font-size:1rem;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:0.4rem;transition:background .2s;}
+.lang-switcher-btn:hover{background:#f1f5f9;}
+.lang-switcher-dropdown{display:none !important;position:fixed;top:auto;right:20px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12);list-style:none;padding:0.4rem 0;margin:0;min-width:200px;z-index:99999;}
+.lang-switcher.open .lang-switcher-dropdown{display:block !important;}
+
+.lang-switcher-dropdown li a{display:flex;align-items:center;gap:0.6rem;padding:0.55rem 1rem;text-decoration:none;color:var(--text-primary);font-size:0.95rem;font-weight:500;transition:background .15s;}
+.lang-switcher-dropdown li a:hover{background:#f1f5f9;color:var(--accent-color);}
+.lang-switcher-dropdown li a.active{font-weight:700;color:var(--accent-color);}
+@media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
+</style>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/dns-lookup/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/dns-lookup/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/pl/dns-lookup/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/dns-lookup/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/dns-lookup/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/dns-lookup/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/dns-lookup/"/>
+<link rel="alternate" hreflang="pl" href="https://myipnow.net/pl/dns-lookup/"/>
+<link rel="alternate" hreflang="nl" href="https://myipnow.net/nl/dns-lookup/"/>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="https://myipnow.net/pl/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Szukaj..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
+<ul>
+<li><a href="https://myipnow.net/pl/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/pl/dns-lookup/">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/pl/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/pl/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/pl/ping-test/">Ping Test</a></li>
+<li><a href="https://myipnow.net/pl/generate-password/">Generate Password</a></li>
+<li><a href="https://myipnow.net/pl/ip-blacklist/">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
+<li><a href="https://myipnow.net/online-privacy/">Online Privacy</a></li>
+<li><a href="https://myipnow.net/networking/">Networking</a></li>
+<li><a href="https://myipnow.net/ip-addresses/">IP Addresses</a></li>
+<li><a href="https://myipnow.net/home-computing/">Home Computing</a></li>
+<li><a href="https://myipnow.net/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<header class="page-header">
+<h1>DNS Lookup Narzędzie</h1>
+<p>Błyskawiczne DNS Lookup do sprawdzania rekordów A, AAAA, MX, CNAME i TXT dla dowolnej domeny. Szybkie wyszukiwanie adresów IP i szczegółów DNS.</p>
+</header>
+<article class="article-body">
+<section aria-label="DNS Lookup Definition" class="snippet-section">
+<h2>Co to jest DNS Lookup?</h2>
+<p>DNS Lookup to zapytanie, które pyta system nazw domen, które wpisy publikuje domena - takie jak A/AAAA (adresy IP),
+    MX (serwery pocztowe), NS (autorytatywne serwery nazw) i TXT (weryfikacja/SPF/DKIM). Służy do rozwiązywania problemów z routingiem,
+    dostarczania wiadomości e-mail i weryfikacji własności domeny.</p>
+<div aria-label="How to use DNS Lookup" class="howto">
+<h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">W jaki sposób używane jest to DNS Lookup?</h3>
+<ol>
+<li>Wprowadź domenę (BeISPiel.com).</li>
+<li>Wybierz typ A record (A, AAAA, MX, NS, TXT).</li>
+<li>Kliknij <strong>Wyszukaj</strong>, aby zobaczyć wyniki na żywo DNS.</li>
+</ol>
+</div>
+</section>
+<p>Użyj tego narzędzia DNS Lookup, aby natychmiast sprawdzić DNS record dowolnej domeny. Pomaga to zidentyfikować adresy IP, serwery pocztowe, autorytatywne serwery nazw i rekordy weryfikacyjne dla domeny.</p>
+<div class="dns-tool">
+<input id="dnsDomain" placeholder="Domain eingeben, z.B. example.com" type="text"/>
+<select id="dnsType">
+<option value="A">A</option>
+<option value="AAAA">AAAA</option>
+<option value="MX">MX</option>
+<option value="NS">NS</option>
+<option value="TXT">TXT</option>
+</select>
+<button onclick="lookupDNS()">Suchen</button>
+<div class="dns-results" id="dnsResults"></div>
+</div>
+<dl aria-hidden="true" class="ip-semantic">
+<dt>Domain</dt><dd id="dl-domain"></dd>
+<dt>Record Type</dt><dd id="dl-type"></dd>
+<dt>Result Count</dt><dd id="dl-count"></dd>
+<dt>First Result</dt><dd id="dl-first"></dd>
+</dl>
+<section class="explanation-section">
+<h3>Wyjaśnienie typów DNS record</h3>
+<ul>
+<li><strong>A:</strong> Przypisuje nazwę domeny do adresu IPv4.</li>
+<li><strong>AAA:</strong> Przypisuje nazwę domeny do adresu IPv6.</li>
+<li><strong>MX:</strong> Wpis Mail Exchange, używany dla serwera poczty e-mail.</li>
+<li><strong>NS:</strong> Rekord serwera nazw, identyfikuje autorytatywne serwery DNS.</li>
+<li><strong>TXT:</strong> Rekord danych tekstowych, który jest często używany do sprawdzania lub ustawień SPF/DKIM.</li>
+</ul>
+</section>
+<section class="faq-section">
+<h2>Często zadawane pytania</h2>
+<div class="faq-item"><div class="faq-question">Co to jest DNS Lookup i dlaczego jest ważne?</div><div class="faq-answer">DNS Lookup pomaga zidentyfikować sposób, w jaki nazwy domen są rozwiązywane na adresy IP i zapewnia, że witryna i wiadomości e-mail docierają do właściwych serwerów.</div></div>
+<div class="faq-item"><div class="faq-question">Jak sprawdzić DNS records dla mojej domeny?</div><div class="faq-answer">Wprowadź swoją domenę i wybierz typ DNS record, aby wyświetlić informacje na żywo A, AAAA, MX, NS i TXT.</div></div>
+<div class="faq-item"><div class="faq-question">Co oznaczają wpisy A, MX, NS i TXT?</div><div class="faq-answer">A record mapują domenę na IPv4, AAAA na IPv6, MX na serwery pocztowe, NS na serwery nazw, TXT na weryfikację i wpisy SPF/DKIM.</div></div>
+<div class="faq-item"><div class="faq-question">Dlaczego moja domena nie wyświetla żadnych wpisów?</div><div class="faq-answer">Niektóre domeny mogą być chronione przez ochronę danych lub mogą jeszcze nie mieć skonfigurowanych niektórych DNS record.</div></div>
+<div class="faq-item"><div class="faq-question">Co oznacza propagacja DNS?</div><div class="faq-answer">Propagacja DNS to czas wymagany do propagacji zmian DNS record do wszystkich serwerów na całym świecie. W zależności od ustawień TTL może to potrwać od kilku minut do 48 godzin.</div></div>
+<div class="faq-item"><div class="faq-question">Jak mogę rozwiązać problemy z dostarczaniem wiadomości e-mail za pomocą DNS?</div><div class="faq-answer">Sprawdź wpisy MX record, aby upewnić się, że odnoszą się do właściwego serwera poczty. Sprawdź również wpisy TXT dla wpisów SPF i DKIM. Brakujące lub nieprawidłowe wpisy są częstą przyczyną błędów dostarczania wiadomości e-mail.</div></div>
+<div class="faq-item"><div class="faq-question">Co to jest CNAME record?</div><div class="faq-answer">Wpis CNAME (nazwa kanoniczna) przypisuje jedną nazwę domeny do innej. Jest często używany do odwoływania się do subdomen, takich jak www, do domeny głównej lub do odwoływania się do usług zewnętrznych, takich jak CDNS.</div></div>
+</section>
+<section class="article-section">
+<h2>Co to jest DNS i jak działa?</h2>
+<p>DNS (Domain Name System) jest często określany jako książka telefoniczna Internetu. Tłumaczy on czytelne dla człowieka nazwy domen, takie jak <code>example.com</code>, na adresy IP, których komputery używają do komunikacji. Bez DNS musiałbyś zapamiętać adres IP każdej odwiedzanej strony internetowej.</p>
+<p>Po wprowadzeniu domeny w przeglądarce urządzenie wysyła zapytanie do resolvera DNS, który pobiera odpowiedź z autorytatywnych serwerów nazw i zwraca adres IP. Cały ten proces trwa zazwyczaj kilka milisekund.</p>
+
+<h3>Które typy DNS record mogę sprawdzić?</h3>
+<p>Najpopularniejszymi typami DNS record są: <strong>A records</strong> (mapują domenę do IPv4), <strong>AAAA records</strong> (mapują do IPv6), <strong>MX records</strong> (określają serwery pocztowe), <strong>NS records</strong> (identyfikują autorytatywne serwery nazw), <strong>rekordy TXT</strong> (używane dla SPF, DKIM i sprawdzania domen) i <strong>CNAME records</strong> (alias jednej domeny dla innej).</p>
+
+<h3>Jak używać DNS Lookup do rozwiązywania problemów z wiadomościami e-mail</h3>
+<p>Jeśli wiadomości e-mail nie są dostarczane, sprawdź wpisy MX record dla swojej domeny, aby upewnić się, że wskazują na prawidłowy serwer pocztowy. Sprawdź również wpisy TXT dla SPF i DKIM, które zapobiegają oznaczaniu wiadomości e-mail jako spam. Brakujące lub nieprawidłowo skonfigurowane wpisy są najczęstszą przyczyną błędów dostarczania wiadomości e-mail.</p>
+
+<h3>Co oznacza propagacja DNS?</h3>
+<p>Propagacja DNS to czas wymagany do przesłania zmian DNS record do wszystkich serwerów DNS na całym świecie. Może to potrwać od kilku minut do 48 godzin. Wartość TTL (Time to Live) dla każdego zestawu danych określa, jak długo jest on przechowywany w pamięci podręcznej. Jeśli ostatnio zmieniono DNS record i nie są one wyświetlane poprawnie, transfer może być nadal w toku.</p>
+</section>
+<section class="see-also">
+<h2>Zobacz także</h2>
+<ul>
+<li><a href="https://myipnow.net/ip-lookup/">IP Lookup Tool</a></li>
+<li><a href="https://myipnow.net/pl/whois-lookup/">WHOIS Lookup Tool</a></li>
+<li><a href="https://myipnow.net/pl/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/pl/generate-password/">Password Generator</a></li>
+<li><a href="https://myipnow.net/pl/ip-blacklist/">IP Blacklist Checker</a></li>
+</ul>
+</section>
+<section class="tool-related"><h2>Powiązane przewodniki</h2><ul><li><a href="https://myipnow.net/what-is-dns/">What is DNS?</a></li><li><a href="https://myipnow.net/what-is-reverse-dns/">What is reverse DNS lookup?</a></li></ul></section></article>
+<style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/dns-lookup/">🇺🇸 English</a>
+<a href="https://myipnow.net/de/dns-lookup/">🇩🇪 Deutsch</a>
+<a href="https://myipnow.net/es/dns-lookup/">🇪🇸 Español</a>
+<a href="https://myipnow.net/fr/dns-lookup/">🇫🇷 Français</a>
+<a href="https://myipnow.net/it/dns-lookup/">🇮🇹 Italiano</a>
+<a href="https://myipnow.net/pt/dns-lookup/">🇧🇷 Português</a>
+<a href="https://myipnow.net/nl/dns-lookup/">🇳🇱 Nederlands</a>
+</div>
+<footer class="footer">
+<ul class="footer-nav">
+<li><a href="https://myipnow.net/about/">About</a></li>
+<li><a href="https://myipnow.net/contact/">Contact</a></li>
+<li><a href="https://myipnow.net/privacy-policy/">Privacy Policy</a></li>
+<li><a href="https://myipnow.net/terms-of-use/">Terms of Use</a></li>
+<li><a href="https://myipnow.net/affiliate-disclosure/">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
+</footer>
+<script>
+function escapeHtml(s){function __setOutText(id,value){const el=document.getElementById('dl-'+id); if(el) el.textContent = (value===undefined||value===null)?'':String(value);}
+
+  return String(s)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+function recordTypeName(code){
+  const map = {1:'A',28:'AAAA',15:'MX',2:'NS',16:'TXT',5:'CNAME',6:'SOA'};
+  return map[code] || String(code);
+}
+function lookupDNS(){
+  const domain = document.getElementById('dnsDomain').value.trim();
+  const type = document.getElementById('dnsType').value;
+  __setOutText('domain', domain);
+  __setOutText('type', type);
+  __setOutText('count','');
+  __setOutText('first','');
+  const resultsEl = document.getElementById('dnsResults');
+  if(!domain){ resultsEl.innerHTML = '<div class="dns-record"><div class="dns-data">Please enter a domain.</div></div>'; return; }
+  resultsEl.innerHTML = '<div class="dns-record"><div class="dns-data">Loading...</div></div>';
+
+  fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=${encodeURIComponent(type)}`)
+  .then(res=>res.json())
+  .then(data=>{
+    resultsEl.innerHTML = '';
+    if(!data || !data.Answer || data.Answer.length===0){
+      resultsEl.innerHTML = '<div class="dns-record"><div class="dns-data">No records found.</div></div>';
+      __setOutText('count','0');
+      __setOutText('first','');
+      return;
+    }
+    __setOutText('count', data.Answer.length);
+    let __firstSet = false;
+    data.Answer.forEach(a=>{
+      const typeName = (typeof a.type==='number')?recordTypeName(a.type):escapeHtml(a.type);
+      const name = escapeHtml(a.name||domain);
+      const ttl = a.TTL||a.ttl||0 ? `TTL: ${a.TTL??a.ttl}`:'';
+      const rawData = a.data||a.rdata||'';
+      if(!__firstSet){ __setOutText('first', rawData); __firstSet = true; }
+      const block = document.createElement('div');
+      block.className='dns-record';
+      block.innerHTML=`<div class="dns-type">${typeName} — ${name}</div><div class="dns-data">${escapeHtml(rawData)}</div><div class="dns-meta">${escapeHtml(ttl)}</div>`;
+      resultsEl.appendChild(block);
+    });
+  })
+  .catch(err=>{ resultsEl.innerHTML = `<div class="dns-record"><div class="dns-data">Error fetching DNS records: ${escapeHtml(err.message)}</div></div>`; });
+}
+</script>
+</div>
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+
+  // Desktop hover
+  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
+  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
+
+  function closeMenu(){
+    if(menu){ menu.remove(); menu=null; }
+    if(backdrop){ backdrop.remove(); backdrop=null; }
+    dropdown.style.display='none';
+    document.body.classList.remove('menu-open');
+    open=false;
+  }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+
+    dropdown.style.display='none'; // hide original header dropdown
+
+    if(open){ closeMenu(); return; }
+
+    const rect = trigger.getBoundingClientRect();
+    backdrop = document.createElement('div');
+    Object.assign(backdrop.style,{
+      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+      background:'transparent',zIndex:9998
+    });
+    backdrop.addEventListener('click', closeMenu);
+    document.body.appendChild(backdrop);
+
+    menu = dropdown.cloneNode(true);
+    Object.assign(menu.style,{
+      position:'absolute',
+      top:`${rect.bottom + window.scrollY + 8}px`,
+      left:`${rect.left + window.scrollX}px`,
+      minWidth:`${Math.max(rect.width,200)}px`,
+      background:'#fff',
+      border:'1px solid #e2e8f0',
+      borderRadius:'10px',
+      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+      listStyle:'none',
+      padding:'.5rem 0',
+      margin:0,
+      zIndex:9999,
+      maxHeight:'70vh',
+      overflowY:'auto',
+      display:'block',        /* ✅ ensures visible */
+      visibility:'visible',   /* ✅ fixes Safari hover ghost */
+      opacity:'1'             /* ✅ fully visible */
+    });
+    menu.querySelectorAll('a').forEach(a=>{
+      a.style.display='block';
+      a.style.padding='.6rem 1.2rem';
+      a.style.color='#1e293b';
+      a.style.textDecoration='none';
+      a.style.fontWeight='500';
+      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
+      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
+    });
+
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
+    const rect=trigger.getBoundingClientRect();
+    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
+    menu.style.left=`${rect.left + window.scrollX}px`;
+  });
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+<script>
+(function() {
+  function ready(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+
+  ready(function() {
+    var input = document.getElementById('dnsDomain');
+    var fn = window['lookupDNS'];
+
+    // Find the button that triggers the tool (prefer explicit onclick, otherwise nearest button)
+    var btn = document.querySelector('button[onclick*="lookupDNS"]') || document.querySelector('button[onclick*="lookupdns"]');
+    if (!btn && input) {
+      // fallback: first button after the input
+      btn = input.parentElement ? input.parentElement.querySelector('button') : null;
+    }
+
+    if (!btn) {
+      console.warn('[tool] Could not find lookup button for lookupDNS.');
+      return;
+    }
+
+    // Ensure clicks always call the function
+    btn.addEventListener('click', function(e) {
+      try {
+        if (typeof window['lookupDNS'] === 'function') {
+          window['lookupDNS']();
+        } else {
+          console.error('[tool] lookupDNS is not defined.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Tool error: ' + (err && err.message ? err.message : err));
+      }
+    });
+
+    // Support Enter key in input(s)
+    if (input) {
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    }
+    // Also support Enter in any select inside same tool container
+    var container = btn.closest('.dns-tool, .whois-tool, .blacklist-tool, .tool, .card, section, main, body') || document.body;
+    var selects = container.querySelectorAll('select');
+    selects.forEach(function(sel) {
+      sel.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  });
+})();
+</script>
+<script>
+/* === TOOL PATCH: output helpers (no layout changes) === */
+(function(){
+  function findOut(){
+    return document.getElementById('dnsResults') || document.getElementById('dns-results') || document.getElementById('results') || document.getElementById('result') || document.getElementById('output') || document.querySelector(".dns-results, .whois-results, .blacklist-results, .results, .result, .output");
+  }
+  window.__setOutHTML = function(html){
+    var out = findOut(); if(!out) return; out.innerHTML = html;
+  };
+  window.__setOutText = function(text){
+    var out = findOut(); if(!out) return; out.textContent = text;
+  };
+})();
+</script>
+<script>
+/* === TOOL PATCH: ensure Lookup works (no UI changes) === */
+document.addEventListener('DOMContentLoaded', function(){
+  var fn = (typeof window['lookupDNS']==='function' ? window['lookupDNS'] : null) || (typeof window['lookupDns']==='function' ? window['lookupDns'] : null) || (typeof window['doDNSLookup']==='function' ? window['doDNSLookup'] : null) || (typeof window['runDNSLookup']==='function' ? window['runDNSLookup'] : null);
+  if(!fn) return;
+
+  var btn =
+    document.getElementById('lookupBtn') ||
+    document.querySelector('button[data-action="/lookup"]') ||
+    Array.from(document.querySelectorAll('button')).find(function(b){
+      return /lookup|check/i.test(b.textContent || '');
+    });
+
+  if(btn && !btn.getAttribute('onclick')) {
+    btn.addEventListener('click', function(e){ e.preventDefault(); fn(); });
+  }
+
+  var input =
+    document.getElementById('dnsDomain') ||
+    document.getElementById('domain') ||
+    document.getElementById('query') ||
+    document.querySelector('input[type="text"], input[type="search"]');
+  if(input) {
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); fn(); }
+    });
+  }
+});
+</script>
+
+<script>/*lang-redirect*/</script>
+<script>
+(function(){
+  var lang = location.pathname.split('/').filter(Boolean)[0];
+  if (!['de','es','fr','it','pt','pl','nl'].includes(lang)) return;
+  var translated = ["dns-lookup", "whois-lookup", "ip-blacklist", "asn-lookup", "internet-speed-test", "generate-password", "ip-subnet-calculator", "cidr-to-ip-range-calculator", "ip-range-to-cidr-calculator", "hide-my-ip", "ping-test", "router/10.0.0.1", "router/10.11.12.1", "router/192.168.0.100", "router/192.168.0.254", "router/192.168.100.1", "router/192.168.10.1", "router/192.168.11.1", "router/192.168.1.11", "router/192.168.12.1", "router/192.168.1.250", "router/192.168.1.2", "router/192.168.1.254", "router/192.168.188.1", "router/192.168.2.1", "router/192.168.223.1", "router/192.168.254.254", "router/192.168.4.1", "router/192.168.7.1", "router/192.168.8.1", "router/192.168.1.1", "router/192.168.0.1"];
+  function isTranslated(path) {
+    path = path.replace(/\/$/, '');
+    return translated.some(function(s){ return path === s || path.endsWith('/'+s); });
+  }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if (!href || !href.startsWith('https://myipnow.net/')) return;
+    if (href.includes('/'+lang+'/')) return;
+    var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
+    if (path && isTranslated(path)) {
+      a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
+    }
+  });
+  document.querySelectorAll('button[onclick]').forEach(function(btn){
+    var oc = btn.getAttribute('onclick');
+    if (!oc || !oc.includes('myipnow.net/')) return;
+    var m = oc.match(/myipnow\.net\/([^']+)/);
+    if (!m) return;
+    var path = m[1].replace(/\/$/, '');
+    if (path && isTranslated(path) && !oc.includes('/'+lang+'/')) {
+      btn.setAttribute('onclick', oc.replace('myipnow.net/', 'myipnow.net/' + lang + '/'));
+    }
+  });
+})();
+</script>
+
+<script id="lang-switcher-js">
+(function(){
+  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
+  var LANGS = [{code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'}, {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'}, {code:'es', flag:'ES', label:'Español', base:'https://myipnow.net/es/'}, {code:'fr', flag:'FR', label:'Français', base:'https://myipnow.net/fr/'}, {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}, {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}, {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'}, {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'}];
+  function getSlug(){
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
+    var parts = path.split('/');
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
+    return parts.join('/');
+  }
+  function getCurrentLang(){
+    var parts = location.pathname.replace(/^\//, '').split('/');
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
+    return 'en';
+  }
+  function init(){
+    var nav = document.querySelector('.category-nav ul');
+    if(!nav) return;
+    var slug = getSlug();
+    var currentLang = getCurrentLang();
+    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
+
+    var li = document.createElement('li');
+    li.className = 'lang-switcher';
+    var btn = document.createElement('button');
+    btn.className = 'lang-switcher-btn';
+    var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
+    li.appendChild(btn);
+    nav.appendChild(li);
+
+    var floatingMenu = null, backdrop = null, open = false;
+
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        // If page is translated point to same page in that lang, else point to lang homepage
+        if(isTranslated){
+          a.href = lang.base + (slug ? slug + '/' : '');
+        } else {
+          a.href = lang.base;
+        }
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
+    }
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+
+</script>
+</body>
+</html>
