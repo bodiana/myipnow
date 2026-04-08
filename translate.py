@@ -1,6 +1,6 @@
 import os, re, json, time, urllib.request, urllib.error, urllib.parse
 
-DEEPL_KEY = "c1102701-960d-435e-adf6-8ca0a4412e06"
+DEEPL_KEY = ""
 DEEPL_URL = "https://api.deepl.com/v2/translate"
 
 LANGUAGES = {"de": "DE", "es": "ES", "fr": "FR", "it": "IT", "pt": "PT"}
