@@ -3,7 +3,7 @@ import os, re, json, time, urllib.request, urllib.error, urllib.parse
 DEEPL_KEY = "c1102701-960d-435e-adf6-8ca0a4412e06"
 DEEPL_URL = "https://api.deepl.com/v2/translate"
 
-LANGUAGES = {"pt": "PT"}
+LANGUAGES = {"de": "DE", "es": "ES", "fr": "FR", "it": "IT", "pt": "PT"}
 LANG_NAMES = {"de": "German", "es": "Spanish", "fr": "French", "it": "Italian", "pt": "Portuguese"}
 
 TOOL_PAGES = [
@@ -26,8 +26,19 @@ ROUTER_IPS = [
     "192.168.100.1", "192.168.10.1", "192.168.11.1", "192.168.1.11",
     "192.168.12.1", "192.168.1.250", "192.168.1.2", "192.168.1.254",
     "192.168.188.1", "192.168.2.1", "192.168.223.1", "192.168.254.254",
-    "192.168.4.1", "192.168.7.1", "192.168.8.1"
+    "192.168.4.1", "192.168.7.1", "192.168.8.1",
+    "192.168.1.1", "192.168.0.1"
 ]
+
+ALL_LANGS = ["de", "es", "fr", "it", "pt"]
+
+SEARCH_PLACEHOLDER = {
+    "de": "Suchen...",
+    "es": "Buscar...",
+    "fr": "Rechercher...",
+    "it": "Cerca...",
+    "pt": "Pesquisar...",
+}
 
 PROTECTED_TERMS = sorted([
     "IP Subnet Calculator", "DNS Lookup", "WHOIS Lookup", "ASN Lookup",
@@ -59,8 +70,8 @@ def protect_technical(text):
             counter[0] += 1
             text = re.sub(re.escape(term), key, text, flags=re.IGNORECASE)
     text = re.sub(r'<code>[^<]+</code>', replace, text)
-    text = re.sub(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(?:/\d+)?', replace, text)
-    text = re.sub(r'(example\.com|example\.org|google\.com|myipnow\.net)', replace, text)
+    text = re.sub(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(?:/\d+)?', replace, text)
+    text = re.sub(r'(example\.com|example\.org|google\.com|myipnow\.net)', replace, text)
     return text, placeholders
 
 def restore_technical(text, placeholders):
@@ -102,33 +113,153 @@ def translate_html(text, target_lang):
     translated = deepl_call(protected, target_lang)
     return restore_technical(translated, ph)
 
+def build_nav(lang):
+    base = "https://myipnow.net/%s" % lang
+    return '''<li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
+<ul>
+<li><a href="%s/">IP Lookup</a></li>
+<li><a href="%s/dns-lookup/">DNS Lookup</a></li>
+<li><a href="%s/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="%s/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="%s/ping-test/">Ping Test</a></li>
+<li><a href="%s/generate-password/">Generate Password</a></li>
+<li><a href="%s/ip-blacklist/">IP Blacklist</a></li>
+</ul>
+</li>''' % (base, base, base, base, base, base, base)
+
+def build_lang_links(current_lang, slug):
+    all_langs = [
+        ('', '🇺🇸', 'English'),
+        ('de', '🇩🇪', 'Deutsch'),
+        ('es', '🇪🇸', 'Español'),
+        ('fr', '🇫🇷', 'Français'),
+        ('it', '🇮🇹', 'Italiano'),
+        ('pt', '🇧🇷', 'Português'),
+    ]
+    links = []
+    for code, flag, label in all_langs:
+        if code == current_lang:
+            continue
+        if code == '':
+            href = 'https://myipnow.net/' + (slug if slug else '')
+        else:
+            href = 'https://myipnow.net/%s/' % code + (slug if slug else '')
+        links.append('<a href="%s">%s %s</a>' % (href, flag, label))
+    return '<div class="lang-links">\n' + '\n'.join(links) + '\n</div>'
+
+def build_lang_redirect(lang, translated_slugs):
+    slugs_js = json.dumps(translated_slugs)
+    return '''<script>/*lang-redirect*/</script>
+<script>
+(function(){
+  var lang = location.pathname.split('/').filter(Boolean)[0];
+  if (!['de','es','fr','it','pt'].includes(lang)) return;
+  var translated = %s;
+  function isTranslated(path) {
+    path = path.replace(/\\/$/, '');
+    return translated.some(function(s){ return path === s || path.endsWith('/'+s); });
+  }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if (!href || !href.startsWith('https://myipnow.net/')) return;
+    if (href.includes('/'+lang+'/')) return;
+    var path = href.replace('https://myipnow.net/', '').replace(/\\/$/, '');
+    if (path && isTranslated(path)) {
+      a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
+    }
+  });
+  document.querySelectorAll('button[onclick]').forEach(function(btn){
+    var oc = btn.getAttribute('onclick');
+    if (!oc || !oc.includes('myipnow.net/')) return;
+    var m = oc.match(/myipnow\\.net\\/([^']+)/);
+    if (!m) return;
+    var path = m[1].replace(/\\/$/, '');
+    if (path && isTranslated(path) && !oc.includes('/'+lang+'/')) {
+      btn.setAttribute('onclick', oc.replace('myipnow.net/', 'myipnow.net/' + lang + '/'));
+    }
+  });
+})();
+</script>''' % slugs_js
+
+def build_hreflang(slug):
+    """Build correct hreflang tags for a given slug"""
+    en_url = 'https://myipnow.net/' + (slug if slug else '')
+    lines = [
+        '<link rel="alternate" hreflang="en" href="%s"/>' % en_url,
+        '<link rel="alternate" hreflang="x-default" href="%s"/>' % en_url,
+    ]
+    for l in ALL_LANGS:
+        url = 'https://myipnow.net/%s/' % l + (slug if slug else '')
+        lines.append('<link rel="alternate" hreflang="%s" href="%s"/>' % (l, url))
+    return '\n'.join(lines)
+
 def translate_page(content, lang, deepl_lang, slug, translated_slugs):
+    # 1. HTML lang attribute
     content = re.sub(r'<html lang="[^"]*"', '<html lang="%s"' % lang, content)
+
+    # 2. Canonical - correct URL for this lang
+    canon_url = 'https://myipnow.net/%s/' % lang + (slug if slug else '')
     content = re.sub(
-        r'<link rel="canonical" href="https://myipnow\.net/([^"]*)"',
-        '<link rel="canonical" href="https://myipnow.net/%s/\\1"' % lang,
-        content
-    )
-    hreflang = '<link rel="alternate" hreflang="en" href="https://myipnow.net/%s"/>\n<link rel="alternate" hreflang="%s" href="https://myipnow.net/%s/%s"/>\n<link rel="alternate" hreflang="x-default" href="https://myipnow.net/%s"/>' % (slug, lang, lang, slug, slug)
+        r'<link rel="canonical" href="[^"]*"',
+        '<link rel="canonical" href="%s"' % canon_url,
+        content)
+
+    # 3. Remove existing hreflang tags and add correct ones
+    content = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*"/>\n?', '', content)
+    hreflang = build_hreflang(slug)
     content = content.replace('</head>', hreflang + '\n</head>', 1)
-    content = re.sub(r'<link[^>]*fonts\.googleapis\.com[^>]*/?>'  , '<link href="/css/fonts.css" rel="stylesheet"/>', content)
+
+    # 4. Fix fonts
+    content = re.sub(r'<link[^>]*fonts\.googleapis\.com[^>]*/?>',
+                     '<link href="/css/fonts.css" rel="stylesheet"/>', content)
+
+    # 5. Fix og:url
+    content = re.sub(
+        r'<meta content="https://myipnow\.net/[^"]*" property="og:url"/>',
+        '<meta content="%s" property="og:url"/>' % canon_url,
+        content)
+
+    # 6. Translate title
     m = re.search(r'<title>([^<]+)</title>', content)
     if m:
         trans = translate_text(m.group(1), deepl_lang)
         content = content.replace('<title>%s</title>' % m.group(1), '<title>%s</title>' % trans)
         print("  Title: %s" % trans)
+
+    # 7. Translate meta description
     m = re.search(r'(<meta content=")([^"]+)(" name="description"/>)', content)
     if m:
         trans = translate_text(m.group(2), deepl_lang)
         content = content.replace(m.group(0), m.group(1) + trans + m.group(3))
-    m = re.search(r'(<meta content=")([^"]+)(" property="og:title"/>)', content)
-    if m:
-        trans = translate_text(m.group(2), deepl_lang)
-        content = content.replace(m.group(0), m.group(1) + trans + m.group(3))
-    m = re.search(r'(<meta content=")([^"]+)(" property="og:description"/>)', content)
-    if m:
-        trans = translate_text(m.group(2), deepl_lang)
-        content = content.replace(m.group(0), m.group(1) + trans + m.group(3))
+
+    # 8. Translate og:title and og:description
+    for prop in ['og:title', 'og:description']:
+        m = re.search(r'(<meta content=")([^"]+)(" property="%s"/>)' % prop, content)
+        if m:
+            trans = translate_text(m.group(2), deepl_lang)
+            content = content.replace(m.group(0), m.group(1) + trans + m.group(3))
+
+    # 9. Fix nav tools to correct language links
+    content = re.sub(
+        r'<li class="nav-tools">[\s\S]*?</ul>\s*</li>',
+        build_nav(lang),
+        content, count=1)
+
+    # 10. Fix logo link
+    content = re.sub(
+        r'(<a class="logo" href="https://myipnow\.net/)[^"]*(")',
+        r'\g<1>%s/\2' % lang,
+        content)
+
+    # 11. Fix search placeholder
+    content = content.replace(
+        'placeholder="Search..."',
+        'placeholder="%s"' % SEARCH_PLACEHOLDER.get(lang, 'Search...'))
+    content = content.replace(
+        'placeholder="Suchen..."' if lang != 'de' else 'SKIP',
+        'placeholder="%s"' % SEARCH_PLACEHOLDER.get(lang, 'Search...'))
+
+    # 12. Translate headings
     def trans_heading(m):
         inner = m.group(2)
         if inner.strip() and len(inner.strip()) > 2:
@@ -137,6 +268,8 @@ def translate_page(content, lang, deepl_lang, slug, translated_slugs):
     content = re.sub(r'(<h1[^>]*>)(.*?)(</h1>)', trans_heading, content, flags=re.DOTALL)
     content = re.sub(r'(<h2[^>]*>)(.*?)(</h2>)', trans_heading, content, flags=re.DOTALL)
     content = re.sub(r'(<h3[^>]*>)(.*?)(</h3>)', trans_heading, content, flags=re.DOTALL)
+
+    # 13. Translate body content
     def translate_body(body):
         def trans_p(m):
             inner = m.group(2)
@@ -151,6 +284,13 @@ def translate_page(content, lang, deepl_lang, slug, translated_slugs):
             return m.group(0)
         body = re.sub(r'(<div class="faq-question">)(.*?)(</div>)', trans_div, body, flags=re.DOTALL)
         body = re.sub(r'(<div class="faq-answer">)(.*?)(</div>)', trans_div, body, flags=re.DOTALL)
+        # Translate <summary> tags (FAQ questions in details/summary format)
+        def trans_summary(m):
+            inner = m.group(2)
+            if inner.strip() and len(inner.strip()) > 2:
+                return m.group(1) + translate_text(inner.strip(), deepl_lang) + m.group(3)
+            return m.group(0)
+        body = re.sub(r'(<summary>)(.*?)(</summary>)', trans_summary, body, flags=re.DOTALL)
         def trans_li(m):
             inner = m.group(2)
             if 'myipnow.net' in inner or 'href=' in inner:
@@ -161,6 +301,7 @@ def translate_page(content, lang, deepl_lang, slug, translated_slugs):
         body = re.sub(r'(<li>)(.*?)(</li>)', trans_li, body, flags=re.DOTALL)
         body = re.sub(r'(<p class="snippet-answer[^"]*">)(.*?)(</p>)', trans_p, body, flags=re.DOTALL)
         return body
+
     m = re.search(r'(<article[^>]*>)(.*?)(</article>)', content, re.DOTALL)
     if m:
         translated_body = translate_body(m.group(2))
@@ -173,37 +314,79 @@ def translate_page(content, lang, deepl_lang, slug, translated_slugs):
                 translated_body = translate_body(m.group(2))
                 content = content.replace(m.group(0), m.group(1) + translated_body + m.group(3))
         print("  Sections translated")
+
+    # 14. Translate page-header subtitle
     m = re.search(r'(<header class="page-header">.*?<p>)(.*?)(</p>)', content, re.DOTALL)
     if m:
         trans = translate_html(m.group(2), deepl_lang)
         content = content.replace(m.group(0), m.group(1) + trans + m.group(3))
+
+    # 15. Fix internal links to use lang prefix
     def fix_link(m):
         href = m.group(1)
         if 'myipnow.net/' not in href:
             return m.group(0)
+        # Already has a lang prefix
+        for l in ALL_LANGS:
+            if '/myipnow.net/%s/' % l in href:
+                return m.group(0)
         for s in translated_slugs:
             if s and (href.endswith('/' + s + '/') or href.endswith('/' + s)):
                 return 'href="' + href.replace('myipnow.net/', 'myipnow.net/%s/' % lang) + '"'
         return m.group(0)
     content = re.sub(r'href="(https://myipnow\.net/[^"]+)"', fix_link, content)
-    content = re.sub(
-        r'(<meta content="https://myipnow\.net/)([^"]*" property="og:url"/>)',
-        r'\g<1>' + lang + r'/\2',
-        content
-    )
+
+    # 16. Fix button onclick links
+    def fix_onclick(m):
+        oc = m.group(0)
+        for s in translated_slugs:
+            if s and ('myipnow.net/' + s in oc) and ('myipnow.net/%s/' % lang not in oc):
+                oc = oc.replace('myipnow.net/', 'myipnow.net/%s/' % lang)
+        return oc
+    content = re.sub(r"onclick=\"location\.href='https://myipnow\.net/[^']*'\"", fix_onclick, content)
+
+    # 17. Replace lang-redirect script with correct one
+    if '/*lang-redirect*/' in content:
+        content = re.sub(
+            r'<script>/\*lang-redirect\*/</script>[\s\S]*?</script>',
+            build_lang_redirect(lang, translated_slugs),
+            content, count=1)
+    else:
+        content = content.replace('</body>', build_lang_redirect(lang, translated_slugs) + '\n</body>', 1)
+
+    # 18. Replace or add lang-links block
+    lang_links = build_lang_links(lang, slug)
+    if '<div class="lang-links">' in content:
+        content = re.sub(
+            r'<div class="lang-links">[\s\S]*?</div>',
+            lang_links,
+            content, count=1)
+    else:
+        content = content.replace('<footer', lang_links + '\n<footer', 1)
+
+    # 19. Fix ASN lookup link in JS
+    content = content.replace(
+        'href = "/asn-lookup?asn="',
+        'href = "https://myipnow.net/%s/asn-lookup/?asn="' % lang)
+    content = content.replace(
+        '"https://myipnow.net/asn-lookup/?asn="',
+        '"https://myipnow.net/%s/asn-lookup/?asn="' % lang)
+
     return content
 
 def main():
     base = "/var/www/html"
     translated_slugs = [slug for _, slug in TOOL_PAGES if slug]
     translated_slugs += ["router/" + ip for ip in ROUTER_IPS]
+
     for lang, deepl_lang in LANGUAGES.items():
         print("\n" + "="*50)
         print("Translating to %s (%s)..." % (LANG_NAMES[lang], lang))
         print("="*50)
         lang_dir = os.path.join(base, lang)
         os.makedirs(lang_dir, exist_ok=True)
-        for filename, slug in []:
+
+        for filename, slug in TOOL_PAGES:
             src = os.path.join(base, filename)
             if not os.path.exists(src):
                 print("  SKIP: %s not found" % filename)
@@ -220,6 +403,7 @@ def main():
                 f.write(trans)
             print("  Saved: %s" % out_path)
             time.sleep(2)
+
         router_dir = os.path.join(lang_dir, "router")
         os.makedirs(router_dir, exist_ok=True)
         for ip in ROUTER_IPS:
@@ -237,6 +421,7 @@ def main():
                 f.write(trans)
             print("  Saved: %s" % out_dir)
             time.sleep(2)
+
         print("\n%s done!" % LANG_NAMES[lang])
     print("\n\nAll languages done!")
 
