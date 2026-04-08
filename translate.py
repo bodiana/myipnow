@@ -3,8 +3,8 @@ import os, re, json, time, urllib.request, urllib.error, urllib.parse
 DEEPL_KEY = ""
 DEEPL_URL = "https://api.deepl.com/v2/translate"
 
-LANGUAGES = {"de": "DE", "es": "ES", "fr": "FR", "it": "IT", "pt": "PT"}
-LANG_NAMES = {"de": "German", "es": "Spanish", "fr": "French", "it": "Italian", "pt": "Portuguese"}
+LANGUAGES = {"de": "DE", "es": "ES", "fr": "FR", "it": "IT", "pt": "PT", "pl": "PL", "nl": "NL"}
+LANG_NAMES = {"de": "German", "es": "Spanish", "fr": "French", "it": "Italian", "pt": "Portuguese", "pl": "Polish", "nl": "Dutch"}
 
 TOOL_PAGES = [
     ("index.html", ""),
@@ -30,7 +30,7 @@ ROUTER_IPS = [
     "192.168.1.1", "192.168.0.1"
 ]
 
-ALL_LANGS = ["de", "es", "fr", "it", "pt"]
+ALL_LANGS = ["de", "es", "fr", "it", "pt", "pl", "nl"]
 
 SEARCH_PLACEHOLDER = {
     "de": "Suchen...",
@@ -38,6 +38,8 @@ SEARCH_PLACEHOLDER = {
     "fr": "Rechercher...",
     "it": "Cerca...",
     "pt": "Pesquisar...",
+    "pl": "Szukaj...",
+    "nl": "Zoeken...",
 }
 
 PROTECTED_TERMS = sorted([
@@ -135,6 +137,8 @@ def build_lang_links(current_lang, slug):
         ('fr', '🇫🇷', 'Français'),
         ('it', '🇮🇹', 'Italiano'),
         ('pt', '🇧🇷', 'Português'),
+        ('pl', '🇵🇱', 'Polski'),
+        ('nl', '🇳🇱', 'Nederlands'),
     ]
     links = []
     for code, flag, label in all_langs:
@@ -153,7 +157,7 @@ def build_lang_redirect(lang, translated_slugs):
 <script>
 (function(){
   var lang = location.pathname.split('/').filter(Boolean)[0];
-  if (!['de','es','fr','it','pt'].includes(lang)) return;
+  if (!['de','es','fr','it','pt','pl','nl'].includes(lang)) return;
   var translated = %s;
   function isTranslated(path) {
     path = path.replace(/\\/$/, '');

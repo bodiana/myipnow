@@ -199,13 +199,7 @@ f.parentNode.insertBefore(j,f);
 <style id="asn-input-frame-fix">/* === ASN INPUT FRAME FIX (minimal) === */
 .tool-card .tool-input {box-sizing: border-box; max-width: 100%;}
 .tool-row {min-width: 0;}</style>
-<title>Ferramenta gratuita ASN Lookup - Localizar números de sistemas autónomos | MyIPNow</title><meta content="Free ASN Lookup - encontre o número do sistema autónomo, a organização e os intervalos de IP para qualquer endereço IP. Identifique qual rede possui qualquer bloco IP instantaneamente." name="description"/><meta content="Ferramenta gratuita ASN Lookup - Localizar números de sistemas autónomos | MyIPNow" property="og:title"/><meta content="Free ASN Lookup - encontre o número do sistema autónomo, a organização e os intervalos de IP para qualquer endereço IP. Identifique qual rede possui qualquer bloco IP instantaneamente." property="og:description"/><meta content="https://myipnow.net/pt/asn-lookup" property="og:url"/><link rel="alternate" hreflang="en" href="https://myipnow.net/asn-lookup/"/>
-<link rel="alternate" hreflang="x-default" href="https://myipnow.net/asn-lookup/"/>
-<link rel="alternate" hreflang="de" href="https://myipnow.net/de/asn-lookup/"/>
-<link rel="alternate" hreflang="es" href="https://myipnow.net/es/asn-lookup/"/>
-<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/asn-lookup/"/>
-<link rel="alternate" hreflang="it" href="https://myipnow.net/it/asn-lookup/"/>
-
+<title>Ferramenta gratuita ASN Lookup - Localizar números de sistemas autónomos | MyIPNow</title><meta content="Free ASN Lookup - encontre o número do sistema autónomo, a organização e os intervalos de IP para qualquer endereço IP. Identifique qual rede possui qualquer bloco IP instantaneamente." name="description"/><meta content="Ferramenta gratuita ASN Lookup - Localizar números de sistemas autónomos | MyIPNow" property="og:title"/><meta content="Free ASN Lookup - encontre o número do sistema autónomo, a organização e os intervalos de IP para qualquer endereço IP. Identifique qual rede possui qualquer bloco IP instantaneamente." property="og:description"/><meta content="https://myipnow.net/pt/asn-lookup" property="og:url"/>
 <style id="lang-switcher-css">
 .lang-switcher{position:relative;display:inline-block;}
 .lang-switcher-btn{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;font-size:1rem;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:0.4rem;transition:background .2s;}
@@ -219,8 +213,14 @@ f.parentNode.insertBefore(j,f);
 @media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
 </style>
 <link rel="alternate" hreflang="en" href="https://myipnow.net/asn-lookup/"/>
-<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/asn-lookup/"/>
 <link rel="alternate" hreflang="x-default" href="https://myipnow.net/asn-lookup/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/asn-lookup/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/asn-lookup/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/asn-lookup/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/asn-lookup/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/asn-lookup/"/>
+<link rel="alternate" hreflang="pl" href="https://myipnow.net/pl/asn-lookup/"/>
+<link rel="alternate" hreflang="nl" href="https://myipnow.net/nl/asn-lookup/"/>
 </head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -854,18 +854,21 @@ function renderPrefixes(list) {
     {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
     {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
     {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'},
+    {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'},
+    {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'},
     {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
   ];
   function getSlug(){
     var path = location.pathname;
     path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
-    if(['de','es','fr','it','pt'].indexOf(parts[0]) !== -1) parts.shift();
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it','pt'].indexOf(parts[0]) !== -1) return parts[0];
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){
@@ -961,7 +964,7 @@ function renderPrefixes(list) {
 <script>
 (function(){
   var lang = location.pathname.split('/').filter(Boolean)[0];
-  if (!['de','es','fr','it','pt'].includes(lang)) return;
+  if (!['de','es','fr','it','pt','pl','nl'].includes(lang)) return;
   var translated = [
     'dns-lookup','whois-lookup','ip-blacklist','asn-lookup',
     'internet-speed-test','generate-password','ip-subnet-calculator',

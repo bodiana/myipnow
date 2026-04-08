@@ -162,16 +162,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .tool-row {min-width: 0;}
 
 .tool-input {max-width: 100%; box-sizing: border-box;}</style>
-<title>IP Range to CIDR Calculator | MyIPNow</title><meta content="Converte istantaneamente gli intervalli di indirizzi IP in notazione CIDR. Semplificare la configurazione di rete e la subnettizzazione senza calcoli manuali." name="description"/><meta content="IP Range to CIDR Calculator | MyIPNow" property="og:title"/><meta content="Converte istantaneamente gli intervalli di indirizzi IP in notazione CIDR. Semplificare la configurazione di rete e la subnettizzazione senza calcoli manuali." property="og:description"/><meta content="https://myipnow.net/it/ip-range-to-cidr-calculator" property="og:url"/><link rel="alternate" hreflang="en" href="https://myipnow.net/it/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="x-default" href="https://myipnow.net/it/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="de" href="https://myipnow.net/it/de/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="es" href="https://myipnow.net/it/es/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="fr" href="https://myipnow.net/it/fr/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="it" href="https://myipnow.net/it/it/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="en" href="https://myipnow.net/it/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="it" href="https://myipnow.net/it/it/ip-range-to-cidr-calculator/"/>
-<link rel="alternate" hreflang="x-default" href="https://myipnow.net/it/ip-range-to-cidr-calculator/"/>
-
+<title>IP Range to CIDR Calculator | MyIPNow</title><meta content="Converte istantaneamente gli intervalli di indirizzi IP in notazione CIDR. Semplificare la configurazione di rete e la subnettizzazione senza calcoli manuali." name="description"/><meta content="IP Range to CIDR Calculator | MyIPNow" property="og:title"/><meta content="Converte istantaneamente gli intervalli di indirizzi IP in notazione CIDR. Semplificare la configurazione di rete e la subnettizzazione senza calcoli manuali." property="og:description"/><meta content="https://myipnow.net/it/ip-range-to-cidr-calculator" property="og:url"/>
 <style id="lang-switcher-css">
 .lang-switcher{position:relative;display:inline-block;}
 .lang-switcher-btn{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;font-size:1rem;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:0.4rem;transition:background .2s;}
@@ -184,6 +175,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .lang-switcher-dropdown li a.active{font-weight:700;color:var(--accent-color);}
 @media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
 </style>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="pl" href="https://myipnow.net/pl/ip-range-to-cidr-calculator/"/>
+<link rel="alternate" hreflang="nl" href="https://myipnow.net/nl/ip-range-to-cidr-calculator/"/>
 </head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -757,7 +757,7 @@ document.addEventListener('click', function(e) {
 <script>
 (function(){
   var lang = location.pathname.split('/').filter(Boolean)[0];
-  if (!['de','es','fr','it'].includes(lang)) return;
+  if (!['de','es','fr','it','pt','pl','nl'].includes(lang)) return;
   var translated = [
     'dns-lookup','whois-lookup','ip-blacklist','asn-lookup',
     'internet-speed-test','generate-password','ip-subnet-calculator',
@@ -805,18 +805,21 @@ document.addEventListener('click', function(e) {
     {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
     {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
     {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'},
+    {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'},
+    {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'},
     {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
   ];
   function getSlug(){
     var path = location.pathname;
     path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) return parts[0];
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){

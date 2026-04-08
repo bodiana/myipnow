@@ -13,9 +13,6 @@
 <meta content="https://myipnow.net/preview.png" property="og:image"/>
 <meta content="index,follow" name="robots"/>
 <link rel="canonical" href="https://myipnow.net/it/hide-my-ip/"/>
-<link rel="alternate" hreflang="en" href="https://myipnow.net/hide-my-ip/"/>
-<link rel="alternate" hreflang="it" href="https://myipnow.net/it/hide-my-ip/"/>
-<link rel="alternate" hreflang="x-default" href="https://myipnow.net/hide-my-ip/"/>
 <link href="/css/fonts.css" rel="stylesheet"/>
 <link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
@@ -97,6 +94,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 .lang-switcher-dropdown li a.active{font-weight:700;color:var(--accent-color);}
 @media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
 </style>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/hide-my-ip/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/hide-my-ip/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/hide-my-ip/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/hide-my-ip/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/hide-my-ip/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/hide-my-ip/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/hide-my-ip/"/>
+<link rel="alternate" hreflang="pl" href="https://myipnow.net/pl/hide-my-ip/"/>
+<link rel="alternate" hreflang="nl" href="https://myipnow.net/nl/hide-my-ip/"/>
 </head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -209,18 +215,21 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
     {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
     {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
     {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'},
+    {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'},
+    {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'},
     {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
   ];
   function getSlug(){
     var path = location.pathname;
     path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) return parts[0];
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){

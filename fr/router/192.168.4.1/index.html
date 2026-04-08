@@ -82,15 +82,6 @@ tr:nth-child(even) {background: #f8fafc;}
     ]}
   ]
 }</script>
-<link rel="alternate" hreflang="en" href="https://myipnow.net/fr/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="x-default" href="https://myipnow.net/fr/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="de" href="https://myipnow.net/fr/de/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="es" href="https://myipnow.net/fr/es/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/fr/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="it" href="https://myipnow.net/fr/it/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="en" href="https://myipnow.net/fr/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/fr/router/192.168.4.1/"/>
-<link rel="alternate" hreflang="x-default" href="https://myipnow.net/fr/router/192.168.4.1/"/>
 
 <style id="lang-switcher-css">
 .lang-switcher{position:relative;display:inline-block;}
@@ -104,6 +95,15 @@ tr:nth-child(even) {background: #f8fafc;}
 .lang-switcher-dropdown li a.active{font-weight:700;color:var(--accent-color);}
 @media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
 </style>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="pl" href="https://myipnow.net/pl/router/192.168.4.1/"/>
+<link rel="alternate" hreflang="nl" href="https://myipnow.net/nl/router/192.168.4.1/"/>
 </head>
 <body>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
@@ -316,7 +316,7 @@ tr:nth-child(even) {background: #f8fafc;}
 <script>
 (function(){
   var lang = location.pathname.split('/').filter(Boolean)[0];
-  if (!['de','es','fr','it'].includes(lang)) return;
+  if (!['de','es','fr','it','pt','pl','nl'].includes(lang)) return;
   var translated = [
     'dns-lookup','whois-lookup','ip-blacklist','asn-lookup',
     'internet-speed-test','generate-password','ip-subnet-calculator',
@@ -364,18 +364,21 @@ tr:nth-child(even) {background: #f8fafc;}
     {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
     {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
     {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'},
+    {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'},
+    {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'},
     {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
   ];
   function getSlug(){
     var path = location.pathname;
     path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) return parts[0];
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){
