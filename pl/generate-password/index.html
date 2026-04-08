@@ -155,7 +155,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 </style>
 <link rel="alternate" hreflang="en" href="https://myipnow.net/generate-password/"/>
 <link rel="alternate" hreflang="x-default" href="https://myipnow.net/generate-password/"/>
-<link rel="alternate" hreflang="de" href="https://myipnow.net/pl/generate-password/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/generate-password/"/>
 <link rel="alternate" hreflang="es" href="https://myipnow.net/es/generate-password/"/>
 <link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/generate-password/"/>
 <link rel="alternate" hreflang="it" href="https://myipnow.net/it/generate-password/"/>
@@ -217,18 +217,18 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 </section>
 <div class="password-tool">
 <div class="password-input-wrapper">
-<input id="passwordResult" placeholder="Ihr Passwort erscheint hier" readonly="" type="text"/>
+<input id="passwordResult" placeholder="Twoje hasło pojawi się tutaj" readonly="" type="text"/>
 <span class="icon reload" onclick="generatePassword()" title="Regenerate Password">↻</span>
 <span class="icon copy" onclick="copyPassword()" title="Copy Password">⎘</span>
 </div>
-<button class="generate-btn" onclick="generatePassword()">Passwort generieren</button>
+<button class="generate-btn" onclick="generatePassword()">Generuj hasło</button>
 <div class="password-settings">
-<label>Passwortlänge: <span id="lengthVal">12</span></label>
+<label>Długość hasła: <span id="lengthVal">12</span></label>
 <input id="lengthSlider" max="32" min="8" type="range" value="12"/>
-<label><input checked="" id="uppercase" type="checkbox"/> Großbuchstaben</label>
-<label><input checked="" id="lowercase" type="checkbox"/> Kleinbuchstaben</label>
-<label><input checked="" id="numbers" type="checkbox"/> Zahlen</label>
-<label><input checked="" id="symbols" type="checkbox"/> Sonderzeichen</label>
+<label><input checked="" id="uppercase" type="checkbox"/> Wielkie litery</label>
+<label><input checked="" id="lowercase" type="checkbox"/> Małe litery</label>
+<label><input checked="" id="numbers" type="checkbox"/> Cyfry</label>
+<label><input checked="" id="symbols" type="checkbox"/> Znaki specjalne</label>
 </div>
 </div>
 <section class="faq-section">
@@ -302,7 +302,7 @@ slider.addEventListener('input',()=>lengthVal.textContent=slider.value);
   if(lower)charSet+=lowerChars;
   if(number)charSet+=numberChars;
   if(symbol)charSet+=symbolChars;
-  if(!charSet){document.getElementById('passwordResult').value='Select at least one option';return;}
+  if(!charSet){document.getElementById('passwordResult').value='Wybierz co najmniej jedną opcję';return;}
 
   let password='';
   for(let i=0;i<length;i++){
@@ -479,7 +479,7 @@ window.onload=generatePassword;
     if (chkNums  && chkNums.checked ) set += numberChars;
     if (chkSyms  && chkSyms.checked ) set += symbolChars;
 
-    if (!set){ out.value = 'Select at least one option'; return; }
+    if (!set){ out.value = 'Wybierz co najmniej jedną opcję'; return; }
 
     let pwd = '';
     for (let i=0; i<length; i++){
