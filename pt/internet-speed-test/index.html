@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6F8FV6T');</script>
+<meta charset="utf-8"/>
+<meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="/website" property="og:type"/>
+<meta content="/preview.png" property="og:image"/>
+<link href="/css/fonts.css" rel="stylesheet"/>
+<style>:root {--bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --accent-color: #4f46e5; --hide-ip-color: #10b981; /* ✅ consistent green color */
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.08); --border-radius: 16px; --transition-speed: 0.2s ease;}
+
+body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.7;}
+.container {max-width: 1200px; margin: 0 auto; padding: 1rem;}
+
+/* Header & Nav */
+.site-header {background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: visible;}
+.header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
+.logo {font-size: 1.75rem; font-weight: 700; color: var(--text-primary); text-decoration: none;}
+.search-form {display: flex; flex-grow: 0; width: 480px; max-width: 100%;}
+.search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 1rem;}
+.search-form button {padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+.search-form button:hover {background: #059669;}
+
+.category-nav {padding-top: 1rem; position: relative;}
+.category-nav ul {display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 1rem; font-weight: 500; transition: color var(--transition-speed);}
+.category-nav a:hover {color: var(--accent-color);}
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: var(--text-primary); text-decoration: none;}
+.nav-tools ul li a:hover {color: var(--accent-color);}
+.nav-tools:hover ul {display: block;}
+
+/* Page header */
+.page-header {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center;}
+.page-header h1 {font-size: 2.5rem; margin: 0 0 0.5rem;} @media(max-width:768px){.page-header h1{font-size: 1.6rem;} .page-header{padding: 1.5rem 1rem;}}
+.page-header p {font-size: 1rem; color: var(--text-secondary); margin: 0 auto; max-width: 700px;}
+
+/* Article */
+.article-body {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; max-width: 100%;}
+
+/* Explanation & FAQ */
+.explanation {margin: 1rem 0; color: var(--text-secondary); text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;}
+.faq-section {margin-top: 2rem;}
+.faq-item {background: #f1f5f9; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; cursor: pointer;}
+.faq-item:hover {background: #e2e8f0;}
+.faq-question {font-weight: 600; font-size: 1rem;}
+.faq-answer {display: block; font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5;}
+
+/* See also & Footer */
+.see-also {background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+.see-also h2 {margin-top: 0;}
+.see-also ul {list-style: none; padding: 0;}
+.see-also li {margin-bottom: 0.5rem;}
+.see-also a {text-decoration: none; color: var(--accent-color); font-weight: 500;}
+.see-also a:hover {color: var(--text-primary);}
+
+.footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; max-width: 1200px; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--card-shadow);}
+.footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 2.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+.footer-nav a {color: var(--text-secondary); text-decoration: none; font-size: 1rem;}
+.footer-nav a:hover {color: var(--accent-color);}
+.footer-copyright {font-size: 0.95rem; color: var(--text-secondary);}
+
+/* === Snippet + How-to (matches IP Blacklist pattern) === */
+
+.snippet-section {background: #f1f5f9; border-radius: 12px; padding: 1.25rem 1.25rem; margin: 0 auto 1.5rem; max-width: 1200px;}
+.snippet-section h2 {margin: 0 0 .5rem; font-size: 1.3rem;}
+.howto {background: #f1f5f9; border-radius: 12px; padding: 1.25rem 1.25rem; margin: 0 auto 1.5rem; max-width: 1200px;}
+.howto h2 {margin: 0 0 .75rem; font-size: 1.3rem;}
+.howto ol {margin: .25rem 0 0 1.25rem; padding: 0;}
+.howto li {margin: .35rem 0;}
+
+
+/* Match IP Blacklist: snippet is WHITE card, not grey */
+.snippet-section {background: var(--card-bg, #ffffff) !important; box-shadow: var(--card-shadow, 0 1px 3px rgba(0,0,0,.08));}
+
+/* How-to is plain content inside snippet */
+.snippet-section .howto {background: transparent !important; box-shadow: none !important; padding: 0; margin-top: 1rem;}</style>
+<style>@media (max-width: 768px) {.category-nav {
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 10px;}
+  .category-nav ul {display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1rem;}
+  .category-nav::-webkit-scrollbar {height: 6px;}
+  .category-nav::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+  .nav-tools ul {display: none; position: absolute; top: 100%; left: 0; right: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+  .nav-tools.open ul {display: block;}
+}</style>
+<style>@media (max-width: 768px) {.nav-tools {
+    position: static !important;}
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+  .nav-tools.open ul {display: block !important;}
+  body.menu-open {overflow: hidden;}
+}</style>
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="https://myipnow.net/llms.txt/" rel="alternate" title="AI Context" type="text/markdown"/>
+<script async="" crossorigin="anonymous" data-ad-frequency-hint="30s" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/pt/internet-speed-test/" rel="canonical"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myipnow.net/#organization", "name": "MyIPNow", "url": "https://myipnow.net/", "logo": {"@type": "ImageObject", "url": "https://myipnow.net/favicon-96x96.png"}}, {"@type": "WebSite", "@id": "https://myipnow.net/#website", "url": "https://myipnow.net/", "name": "MyIPNow", "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "WebPage", "@id": "https://myipnow.net/internet-speed-test/#webpage", "url": "https://myipnow.net/internet-speed-test/", "name": "Internet Speed Test", "description": "Measure download speed, upload speed, ping, jitter and detect your ISP instantly with this free Internet Speed Test.", "isPartOf": {"@id": "https://myipnow.net/#website"}}, {"@type": "SoftwareApplication", "@id": "https://myipnow.net/internet-speed-test/#app", "name": "Internet Speed Test", "applicationCategory": "WebApplication", "applicationSubCategory": "Networking Tool", "operatingSystem": "All", "url": "https://myipnow.net/internet-speed-test/", "browserRequirements": "Requires JavaScript", "description": "Test your internet connection speed including download, upload, latency (ping) and jitter. Works on desktop and mobile.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "FAQPage", "@id": "https://myipnow.net/internet-speed-test/#faq", "mainEntity": [{"@type": "Question", "name": "What is a good internet speed?", "acceptedAnswer": {"@type": "Answer", "text": "For most households, 25 Mbps download is considered broadband. 4K streaming needs 25 Mbps, HD video needs 5 Mbps, and video calls need 1-3 Mbps. For gaming, aim for ping under 50ms."}}, {"@type": "Question", "name": "What is ping in a speed test?", "acceptedAnswer": {"@type": "Answer", "text": "Ping measures the time in milliseconds for data to travel to a server and back. Under 20ms is excellent, under 50ms is good, and over 100ms may cause noticeable lag in gaming and video calls."}}, {"@type": "Question", "name": "What is jitter in a speed test?", "acceptedAnswer": {"@type": "Answer", "text": "Jitter measures the variability in ping over time. High jitter causes choppy voice calls and lag spikes in gaming. Under 10ms jitter is ideal for smooth connections."}}, {"@type": "Question", "name": "What is a good download speed for streaming?", "acceptedAnswer": {"@type": "Answer", "text": "For 4K streaming you need at least 25 Mbps. HD streaming requires about 5 Mbps. If multiple people stream simultaneously, multiply accordingly."}}, {"@type": "Question", "name": "Why is my internet speed slower than expected?", "acceptedAnswer": {"@type": "Answer", "text": "Common causes include Wi-Fi interference, network congestion, too many devices sharing bandwidth, or ISP throttling. Test with an Ethernet cable for accurate results."}}, {"@type": "Question", "name": "What is a good ping for gaming?", "acceptedAnswer": {"@type": "Answer", "text": "Under 20ms is excellent for gaming, under 50ms is good, and under 100ms is acceptable. Above 100ms you may notice lag. Jitter under 10ms is also important for a smooth experience."}}]}, {"@type": "BreadcrumbList", "@id": "https://myipnow.net/internet-speed-test/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://myipnow.net/"}, {"@type": "ListItem", "position": 2, "name": "Internet Speed Test", "item": "https://myipnow.net/internet-speed-test/"}]}]}</script>
+<title>Teste gratuito de velocidade da Internet - Verifique a velocidade de download e upload | MyIPNow</title><meta content="Teste gratuito de velocidade da Internet - verifique a sua velocidade de download, velocidade de upload, ping e jitter instantaneamente. Descubra se o seu ISP está a fornecer as velocidades pelas quais paga." name="description"/><meta content="Teste gratuito de velocidade da Internet - Verifique a velocidade de download e upload | MyIPNow" property="og:title"/><meta content="Teste gratuito de velocidade da Internet - verifique a sua velocidade de download, velocidade de upload, ping e jitter instantaneamente. Descubra se o seu ISP está a fornecer as velocidades pelas quais paga." property="og:description"/><meta content="https://myipnow.net/pt/internet-speed-test.html" property="og:url"/><link rel="alternate" hreflang="en" href="https://myipnow.net/internet-speed-test/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/internet-speed-test/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/internet-speed-test/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/internet-speed-test/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/internet-speed-test/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/internet-speed-test/"/>
+
+<style id="lang-switcher-css">
+.lang-switcher{position:relative;display:inline-block;}
+.lang-switcher-btn{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;font-size:1rem;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:0.4rem;transition:background .2s;}
+.lang-switcher-btn:hover{background:#f1f5f9;}
+.lang-switcher-dropdown{display:none !important;position:fixed;top:auto;right:20px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12);list-style:none;padding:0.4rem 0;margin:0;min-width:200px;z-index:99999;}
+.lang-switcher.open .lang-switcher-dropdown{display:block !important;}
+
+.lang-switcher-dropdown li a{display:flex;align-items:center;gap:0.6rem;padding:0.55rem 1rem;text-decoration:none;color:var(--text-primary);font-size:0.95rem;font-weight:500;transition:background .15s;}
+.lang-switcher-dropdown li a:hover{background:#f1f5f9;color:var(--accent-color);}
+.lang-switcher-dropdown li a.active{font-weight:700;color:var(--accent-color);}
+@media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
+</style>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/internet-speed-test/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/internet-speed-test/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/internet-speed-test/"/>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="container">
+<header class="site-header">
+<div class="header-top">
+<a class="logo" href="https://myipnow.net/pt/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Pesquisar..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
+<ul>
+<li><a href="https://myipnow.net/pt/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/pt/dns-lookup/">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/pt/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/pt/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/pt/ping-test/">Ping Test</a></li>
+<li><a href="https://myipnow.net/pt/generate-password/">Generate Password</a></li>
+<li><a href="https://myipnow.net/pt/ip-blacklist/">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
+<li><a href="https://myipnow.net/online-privacy/">Online Privacy</a></li>
+<li><a href="https://myipnow.net/networking/">Networking</a></li>
+<li><a href="https://myipnow.net/ip-addresses/">IP Addresses</a></li>
+<li><a href="https://myipnow.net/home-computing/">Home Computing</a></li>
+<li><a href="https://myipnow.net/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<header class="page-header">
+<h1>Teste de velocidade da Internet</h1>
+<p>Meça seu download, upload, ping, jitter e veja seu provedor ISP instantaneamente.</p>
+</header>
+<article class="article-body">
+<section class="snippet-section">
+<h2>O que é um teste de velocidade da Internet?</h2>
+<p>Um teste de velocidade da Internet mede a sua velocidade de transferência, velocidade de carregamento, ping (latência) e jitter para o ajudar a
+    compreender a qualidade da ligação para streaming, jogos e chamadas de vídeo.</p>
+<div class="howto">
+<h2>Como utilizar este teste de velocidade da Internet</h2>
+<ol>
+<li>Clique em iniciar e aguarde a conclusão do teste.</li>
+<li>Reveja as velocidades de transferência e de carregamento.</li>
+<li>Verifique o ping e o jitter para obter um desempenho em tempo real.</li>
+</ol>
+</div>
+</section>
+<div style="text-align:right;"><div style="min-height:360px;"><div style="width:100%;height:0;padding-bottom:50%;position:relative;"><iframe src="//openspeedtest.com/speedtest" style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;min-height:360px;overflow:hidden !important;"></iframe></div></div>Provided by <a href="https://openspeedtest.com">OpenSpeedtest.com</a></div><section class="faq-section">
+<h2>Perguntas mais frequentes</h2>
+<div class="faq-item"><div class="faq-question">O que é um teste de velocidade da Internet?</div><div class="faq-answer">Um teste de velocidade da Internet mede a velocidade de transferência, a velocidade de carregamento, ping e o jitter para avaliar o desempenho da ligação à Internet.</div></div>
+<div class="faq-item"><div class="faq-question">Porque é que a minha velocidade de transferência ou de carregamento é inferior à esperada?</div><div class="faq-answer">A sua velocidade pode ser afetada pelo seu plano ISP, pelo congestionamento da rede, pela qualidade do Wi-Fi ou pelo número de dispositivos que utilizam a ligação em simultâneo.</div></div>
+<div class="faq-item"><div class="faq-question">O que significa ping e jitter?</div><div class="faq-answer">ping mede a latência ou o tempo de resposta da sua ligação em milissegundos, enquanto o jitter mostra a variabilidade da latência. Valores mais baixos significam uma rede mais estável.</div></div>
+<div class="faq-item"><div class="faq-question">Como posso encontrar o meu ISP fornecedor?</div><div class="faq-answer">O teste de velocidade detecta automaticamente o seu ISP fornecedor com base no seu endereço IP, permitindo-lhe ver qual a empresa que fornece o seu serviço de Internet.</div></div>
+<div class="faq-item"><div class="faq-question">Posso testar a minha Internet em diferentes dispositivos?</div><div class="faq-answer">Sim, este teste de velocidade da Internet funciona em computadores de secretária, portáteis, tablets e dispositivos móveis, ajudando-o a medir o desempenho em qualquer ligação.</div></div>
+<div class="faq-item"><div class="faq-question">O que é uma boa velocidade de Internet?</div><div class="faq-answer">Para a maioria dos agregados familiares, 25 Mbps de transferência é considerado banda larga. O streaming de 4K precisa de 25 Mbps, o vídeo HD precisa de 5 Mbps e as chamadas de vídeo precisam de 1-3 Mbps. Para jogos, o objetivo é obter ping abaixo de 50ms.</div></div>
+<div class="faq-item"><div class="faq-question">Qual é uma boa velocidade de transferência para o streaming?</div><div class="faq-answer">Para a Netflix ou o YouTube em 4K, precisa de, pelo menos, 25 Mbps. O streaming em HD requer cerca de 5 Mbps. Se várias pessoas transmitirem em simultâneo, multiplique em conformidade.</div></div>
+<div class="faq-item"><div class="faq-question">Porque é que a minha rede Wi-Fi é mais lenta do que a minha rede ethernet?</div><div class="faq-answer">O Wi-Fi é afetado por interferências, distância do router e congestionamento. Para obter resultados de teste de velocidade mais precisos, ligue-se através de um cabo Ethernet diretamente ao router.</div></div>
+<div class="faq-item"><div class="faq-question">Qual é um bom ping para jogos?</div><div class="faq-answer">Menos de 20 ms é excelente para jogos, menos de 50 ms é bom e menos de 100 ms é aceitável. Acima de 100 ms, poderá notar desfasamento. Jitter abaixo de 10ms também é importante para uma experiência de jogo suave.</div></div>
+</section>
+<section class="article-section">
+<h2>O que é um teste de velocidade da Internet?</h2>
+<p>Um teste de velocidade da Internet mede o desempenho da sua ligação à Internet, testando a velocidade de transferência, a velocidade de carregamento, ping (latência) e o jitter. Funciona através da transferência de dados entre o seu dispositivo e um servidor de teste e mede a rapidez com que esses dados se movem. Utilize este teste de velocidade gratuito para verificar se o seu ISP está a fornecer as velocidades pelas quais está a pagar.</p>
+
+<h3>O que é uma boa velocidade de Internet?</h3>
+<p>Para a maioria dos agregados familiares, velocidades de transferência de <strong>25 Mbps ou superiores</strong> são consideradas banda larga. Para fazer streaming de vídeo 4K, precisa de pelo menos 25 Mbps, o vídeo HD precisa de cerca de 5 Mbps e as chamadas de vídeo precisam de cerca de 1-3 Mbps. Para jogos online, ping é mais importante do que a velocidade bruta - menos de 50ms é bom, menos de 20ms é excelente.</p>
+
+<h3>O que é ping e jitter?</h3>
+<p>A <strong>ping</strong> (latência) mede o tempo, em milissegundos, que os dados demoram a viajar do seu dispositivo para um servidor e vice-versa. Menor ping significa tempos de resposta mais rápidos. O <strong>Jitter</strong> mede a variabilidade do ping ao longo do tempo. Um jitter elevado provoca chamadas de voz instáveis e picos de atraso nos jogos, mesmo que o ping médio pareça aceitável.</p>
+
+<h3>Porque é que a velocidade da minha Internet é mais lenta do que o esperado?</h3>
+<p>As causas mais comuns incluem interferência Wi-Fi (utilize Ethernet para obter resultados precisos), congestionamento da rede durante as horas de ponta, demasiados dispositivos a diminuir a largura de banda, firmware de router antigo ou o seu ISP a prejudicar a ligação. Faça o teste em diferentes momentos do dia para comparar. Se as velocidades forem consistentemente inferiores às que paga, contacte o seu ISP.</p>
+</section>
+<section class="see-also">
+<h2>Ver também</h2>
+<ul>
+<li><a href="https://myipnow.net/ip-lookup/">IP Lookup Tool</a></li>
+<li><a href="https://myipnow.net/pt/dns-lookup/">DNS Lookup Tool</a></li>
+<li><a href="https://myipnow.net/pt/whois-lookup/">WHOIS Lookup Tool</a></li>
+<li><a href="https://myipnow.net/pt/ip-blacklist/">IP Blacklist Checker</a></li>
+<li><a href="https://myipnow.net/pt/generate-password/">Password Generator</a></li>
+</ul>
+</section>
+<section class="tool-related"><h2>Guias relacionados</h2><ul><li><a href="https://myipnow.net/what-is-good-internet-speed/">What is a good internet speed?</a></li><li><a href="https://myipnow.net/why-is-my-internet-slow/">Why is my internet slow?</a></li><li><a href="https://myipnow.net/what-is-latency-ping/">What is latency and ping?</a></li></ul></section></article>
+<style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/internet-speed-test/">🇺🇸 English</a>
+<a href="https://myipnow.net/de/internet-speed-test/">🇩🇪 Deutsch</a>
+<a href="https://myipnow.net/es/internet-speed-test/">🇪🇸 Español</a>
+<a href="https://myipnow.net/fr/internet-speed-test/">🇫🇷 Français</a>
+<a href="https://myipnow.net/it/internet-speed-test/">🇮🇹 Italiano</a>
+</div>
+<footer class="footer">
+<ul class="footer-nav">
+<li><a href="https://myipnow.net/about/">About</a></li>
+<li><a href="https://myipnow.net/contact/">Contact</a></li>
+<li><a href="https://myipnow.net/privacy-policy/">Privacy Policy</a></li>
+<li><a href="https://myipnow.net/terms-of-use/">Terms of Use</a></li>
+<li><a href="https://myipnow.net/affiliate-disclosure/">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
+</footer>
+</div>
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+
+  // Desktop hover
+  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
+  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
+
+  function closeMenu(){
+    if(menu){ menu.remove(); menu=null; }
+    if(backdrop){ backdrop.remove(); backdrop=null; }
+    dropdown.style.display='none';
+    document.body.classList.remove('menu-open');
+    open=false;
+  }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+
+    dropdown.style.display='none'; // hide original header dropdown
+
+    if(open){ closeMenu(); return; }
+
+    const rect = trigger.getBoundingClientRect();
+    backdrop = document.createElement('div');
+    Object.assign(backdrop.style,{
+      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+      background:'transparent',zIndex:9998
+    });
+    backdrop.addEventListener('click', closeMenu);
+    document.body.appendChild(backdrop);
+
+    menu = dropdown.cloneNode(true);
+    Object.assign(menu.style,{
+      position:'absolute',
+      top:`${rect.bottom + window.scrollY + 8}px`,
+      left:`${rect.left + window.scrollX}px`,
+      minWidth:`${Math.max(rect.width,200)}px`,
+      background:'#fff',
+      border:'1px solid #e2e8f0',
+      borderRadius:'10px',
+      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+      listStyle:'none',
+      padding:'.5rem 0',
+      margin:0,
+      zIndex:9999,
+      maxHeight:'70vh',
+      overflowY:'auto',
+      display:'block',        /* ✅ ensures visible */
+      visibility:'visible',   /* ✅ fixes Safari hover ghost */
+      opacity:'1'             /* ✅ fully visible */
+    });
+    menu.querySelectorAll('a').forEach(a=>{
+      a.style.display='block';
+      a.style.padding='.6rem 1.2rem';
+      a.style.color='#1e293b';
+      a.style.textDecoration='none';
+      a.style.fontWeight='500';
+      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
+      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
+    });
+
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
+    const rect=trigger.getBoundingClientRect();
+    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
+    menu.style.left=`${rect.left + window.scrollX}px`;
+  });
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+
+<script id="lang-switcher-js">
+(function(){
+  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
+  var LANGS = [
+    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
+    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
+    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
+    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
+    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
+  ];
+  function getSlug(){
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
+    var parts = path.split('/');
+    if(['de','es','fr','it','pt'].indexOf(parts[0]) !== -1) parts.shift();
+    return parts.join('/');
+  }
+  function getCurrentLang(){
+    var parts = location.pathname.replace(/^\//, '').split('/');
+    if(['de','es','fr','it','pt'].indexOf(parts[0]) !== -1) return parts[0];
+    return 'en';
+  }
+  function init(){
+    var nav = document.querySelector('.category-nav ul');
+    if(!nav) return;
+    var slug = getSlug();
+    var currentLang = getCurrentLang();
+    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
+
+    var li = document.createElement('li');
+    li.className = 'lang-switcher';
+    var btn = document.createElement('button');
+    btn.className = 'lang-switcher-btn';
+    var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
+    li.appendChild(btn);
+    nav.appendChild(li);
+
+    var floatingMenu = null, backdrop = null, open = false;
+
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        // If page is translated point to same page in that lang, else point to lang homepage
+        if(isTranslated){
+          a.href = lang.base + (slug ? slug + '/' : '');
+        } else {
+          a.href = lang.base;
+        }
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
+    }
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+
+</script>
+<script>/*lang-redirect*/</script>
+<script>
+(function(){
+  var lang = location.pathname.split('/').filter(Boolean)[0];
+  if (!['de','es','fr','it','pt'].includes(lang)) return;
+  var translated = [
+    'dns-lookup','whois-lookup','ip-blacklist','asn-lookup',
+    'internet-speed-test','generate-password','ip-subnet-calculator',
+    'cidr-to-ip-range-calculator','ip-range-to-cidr-calculator','hide-my-ip',
+    'ping-test',
+    'router/10.0.0.1','router/10.11.12.1','router/192.168.0.1','router/192.168.0.100',
+    'router/192.168.0.254','router/192.168.100.1','router/192.168.10.1',
+    'router/192.168.11.1','router/192.168.1.1','router/192.168.1.11',
+    'router/192.168.12.1','router/192.168.1.250','router/192.168.1.2',
+    'router/192.168.1.254','router/192.168.188.1','router/192.168.2.1',
+    'router/192.168.223.1','router/192.168.254.254','router/192.168.4.1',
+    'router/192.168.7.1','router/192.168.8.1'
+  ];
+  function isTranslated(path) {
+    path = path.replace(/\/$/, '');
+    return translated.some(function(s){ return path === s || path.endsWith('/'+s); });
+  }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if (!href || !href.startsWith('https://myipnow.net/')) return;
+    if (href.includes('/'+lang+'/')) return;
+    var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
+    if (path && isTranslated(path)) {
+      a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
+    }
+  });
+  document.querySelectorAll('button[onclick]').forEach(function(btn){
+    var oc = btn.getAttribute('onclick');
+    if (!oc || !oc.includes('myipnow.net/')) return;
+    var m = oc.match(/myipnow\.net\/([^']+)/);
+    if (!m) return;
+    var path = m[1].replace(/\/$/, '');
+    if (path && isTranslated(path) && !oc.includes('/'+lang+'/')) {
+      btn.setAttribute('onclick', oc.replace('myipnow.net/', 'myipnow.net/' + lang + '/'));
+    }
+  });
+})();
+</script>
+</body>
+</html>

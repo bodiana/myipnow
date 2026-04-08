@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6F8FV6T');</script>
+<meta charset="utf-8"/>
+<meta content="/width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="/website" property="og:type"/>
+<meta content="/preview.png" property="og:image"/>
+<link href="/css/fonts.css" rel="stylesheet"/>
+<style>:root {--bg-color: #f7f8f9; --card-bg: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --accent-color: #4f46e5; --hide-ip-color: #10b981; --card-shadow: 0 10px 30px rgba(0,0,0,0.08); --border-radius: 16px; --transition-speed: 0.2s ease;}
+body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.7;}
+.container {max-width: 1200px; margin: 0 auto; padding: 1rem;}
+
+/* --- Header & Nav --- */
+.site-header {background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: visible;}
+.header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;}
+.logo {font-size: 1.75rem; font-weight: 700; color: var(--text-primary); text-decoration: none;}
+.search-form {display: flex; flex-grow: 0; width: 480px; max-width: 100%;}
+.search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px 0 0 8px; font-size: 1rem;}
+.search-form button {padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+.search-form button:hover {background: #059669;}
+.category-nav {padding-top: 1rem; position: relative;}
+.category-nav ul {display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 1rem; font-weight: 500; transition: color var(--transition-speed);}
+.category-nav a:hover {color: var(--accent-color);}
+.nav-tools {position: relative;}
+.nav-tools > a {cursor: default;}
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: var(--text-primary); text-decoration: none;}
+.nav-tools ul li a:hover {color: var(--accent-color);}
+.nav-tools:hover ul {display: block;}
+
+/* --- Page Header --- */
+.page-header {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center;}
+.page-header h1 {font-size: 2.5rem; margin: 0 0 0.5rem;} @media(max-width:768px){.page-header h1{font-size: 1.6rem;} .page-header{padding: 1.5rem 1rem;}}
+.page-header p {font-size: 1rem; color: var(--text-secondary); margin: 0 auto; max-width: 700px;}
+
+/* --- Article Body --- */
+.article-body {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; max-width: 100%;}
+.article-body h2, .article-body h3 {margin-top: 2rem;}
+.article-body p, .article-body li {font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;}
+.article-body ul {list-style: disc; padding-left: 1.5rem;}
+
+/* --- WHOIS Tool --- */
+.whois-tool {display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: 1rem auto;}
+.whois-tool input {padding: 0.5rem; font-size: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; width: 100%;}
+.whois-tool button {padding: 0.5rem; font-size: 1rem; border: none; border-radius: 8px; background: var(--hide-ip-color); color: white; cursor: pointer; transition: background var(--transition-speed);}
+.whois-tool button:hover {background: #059669;}
+
+/* ====== RESULTS: NON-SCROLLABLE, NO INNER BOXES ====== */
+.whois-results {display: none; margin-top: 1rem; background: #f1f5f9; padding: 12px; border-radius: 8px; width: 100%; box-sizing: border-box; /* IMPORTANT: no max-height, no overflow — it will expand naturally */;}
+/* Simple presentation: headings + paragraphs (no boxed blocks) */
+.whois-results h3 {margin: 0 0 6px 0; color: var(--accent-color); font-size: 1rem;}
+.whois-results p {margin: 0 0 12px 0; color: var(--text-primary); line-height: 1.45; word-break: break-word; white-space: pre-wrap;}
+
+/* --- Explanation centered --- */
+.explanation {text-align: center; max-width: 700px; margin: 1rem auto; color: var(--text-secondary);}
+
+/* --- FAQ visible --- */
+.faq-section {margin-top: 2rem;}
+.faq-item {background: #f1f5f9; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; cursor: pointer;}
+.faq-item:hover {background: #e2e8f0;}
+.faq-question {font-weight: 600; font-size: 1rem;}
+.faq-answer {display: block; font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5;}
+
+/* --- See Also & Footer (unchanged) --- */
+.see-also {background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+.see-also h2 {margin-top: 0;}
+.see-also ul {list-style: none; padding: 0;}
+.see-also li {margin-bottom: 0.5rem;}
+.see-also a {text-decoration: none; color: var(--accent-color); font-weight: 500;}
+.see-also a:hover {color: var(--text-primary);}
+
+.footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; max-width: 1200px; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--card-shadow);}
+.footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 2.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+.footer-nav a {color: var(--text-secondary); text-decoration: none; font-size: 1rem;}
+.footer-nav a:hover {color: var(--accent-color);}
+.footer-copyright {font-size: 0.95rem; color: var(--text-secondary);}</style>
+<style>@media (max-width: 768px) {.category-nav {
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; padding-bottom: 10px;}
+  .category-nav ul {display: inline-flex; flex-wrap: nowrap; white-space: nowrap; gap: 1.2rem; list-style: none; margin: 0; padding: 0 1rem;}
+  .category-nav::-webkit-scrollbar {height: 6px;}
+  .category-nav::-webkit-scrollbar-thumb {background: #cbd5e1; border-radius: 4px;}
+  .nav-tools ul {display: none; position: absolute; top: 100%; left: 0; right: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+  .nav-tools.open ul {display: block;}
+}</style>
+<style>@media (max-width: 768px) {.nav-tools {
+    position: static !important;}
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+  .nav-tools.open ul {display: block !important;}
+  body.menu-open {overflow: hidden;}
+}
+
+/* ===== SEO: hidden semantic <dl> mirror (tool pages only) ===== */
+.ip-semantic{position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;}
+.snippet-section{background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin: 0 auto 2rem auto; max-width: 1200px;}
+.snippet-section h2{margin: 0 0 .5rem 0; text-align: center;}
+.snippet-section p{margin: 0 auto; text-align: center; color: var(--text-secondary); max-width: 760px;}
+.howto{margin-top: 1rem; max-width: 760px; margin-left: auto; margin-right: auto; color: var(--text-secondary);}
+.howto ol{margin: .5rem auto 0 auto; padding-left: 1.25rem; text-align: left;}</style>
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="https://myipnow.net/llms.txt/" rel="alternate" title="AI Context" type="text/markdown"/>
+<script async="" crossorigin="anonymous" data-ad-frequency-hint="30s" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+<link href="https://myipnow.net/pt/whois-lookup/" rel="canonical"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myipnow.net/#organization", "name": "MyIPNow", "url": "https://myipnow.net/", "logo": {"@type": "ImageObject", "url": "https://myipnow.net/favicon-96x96.png"}}, {"@type": "WebSite", "@id": "https://myipnow.net/#website", "url": "https://myipnow.net/", "name": "MyIPNow", "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "WebPage", "@id": "https://myipnow.net/whois-lookup/#webpage", "url": "https://myipnow.net/whois-lookup/", "name": "WHOIS Lookup – Domain Registration & Ownership Tool", "description": "Perform a WHOIS lookup to find domain registrar, registration dates, nameservers, and ownership information instantly. Free, fast, and privacy-focused.", "isPartOf": {"@id": "https://myipnow.net/#website"}, "inLanguage": "en"}, {"@type": "SoftwareApplication", "@id": "https://myipnow.net/whois-lookup/#app", "name": "WHOIS Lookup Tool", "applicationCategory": "WebApplication", "applicationSubCategory": "Networking & Security Tool", "operatingSystem": "All", "url": "https://myipnow.net/whois-lookup/", "browserRequirements": "Requires JavaScript", "description": "Look up domain WHOIS data including registrar, registration and expiry dates, nameservers, and domain status using live RDAP/WHOIS data.", "featureList": ["Domain WHOIS lookup", "Registrar information", "Creation and expiry dates", "Nameserver detection", "Domain status and RDAP data"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "FAQPage", "@id": "https://myipnow.net/whois-lookup/#faq", "mainEntity": [{"@type": "Question", "name": "What is a WHOIS lookup?", "acceptedAnswer": {"@type": "Answer", "text": "A WHOIS lookup retrieves public registration information about a domain or IP address, including the registrar, registration and expiry dates, nameservers, and sometimes the owner contact details."}}, {"@type": "Question", "name": "How do I find who owns a domain?", "acceptedAnswer": {"@type": "Answer", "text": "Enter the domain in the WHOIS lookup tool. If privacy protection is not enabled, the owner name and contact information will be shown. If privacy is enabled, you will see a proxy address from the registrar instead."}}, {"@type": "Question", "name": "Is this WHOIS lookup tool free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, this WHOIS lookup tool is completely free and does not require registration or API keys."}}, {"@type": "Question", "name": "Why does WHOIS show privacy protected?", "acceptedAnswer": {"@type": "Answer", "text": "Domain owners enable WHOIS privacy protection to hide personal contact details. Since GDPR, most registrars offer this free of charge and many enable it by default."}}, {"@type": "Question", "name": "Can I look up IP address ownership with WHOIS?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, WHOIS works for IP addresses too. It returns the organization that owns the IP block, usually an ISP or hosting provider."}}, {"@type": "Question", "name": "What is a domain expiry date in WHOIS?", "acceptedAnswer": {"@type": "Answer", "text": "The expiry date is when the domain registration ends. If not renewed, the domain becomes available for others to register."}}, {"@type": "Question", "name": "How do I check if a domain is available?", "acceptedAnswer": {"@type": "Answer", "text": "Run a WHOIS lookup on the domain. If the result shows no registration data, the domain is likely available. If it shows registration details with an expiry date, the domain is taken."}}]}, {"@type": "HowTo", "@id": "https://myipnow.net/whois-lookup/#howto", "name": "How to use WHOIS Lookup", "step": [{"@type": "HowToStep", "text": "Enter a domain name into the input field."}, {"@type": "HowToStep", "text": "Click the Lookup button."}, {"@type": "HowToStep", "text": "Review registrar, dates, nameservers, and domain status results."}]}, {"@type": "BreadcrumbList", "@id": "https://myipnow.net/whois-lookup/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://myipnow.net/"}, {"@type": "ListItem", "position": 2, "name": "WHOIS Lookup", "item": "https://myipnow.net/whois-lookup/"}]}]}</script>
+<title>Free WHOIS Lookup - Encontrar o proprietário do domínio e detalhes do registo | MyIPNow</title><meta content="Ferramenta WHOIS Lookup gratuita - encontre instantaneamente o proprietário do domínio, o registador, a data de criação, a data de expiração e os servidores de nomes de qualquer domínio ou endereço IP." name="description"/><meta content="Free WHOIS Lookup - Encontrar o proprietário do domínio e detalhes do registo | MyIPNow" property="og:title"/><meta content="Ferramenta WHOIS Lookup gratuita - encontre instantaneamente o proprietário do domínio, o registador, a data de criação, a data de expiração e os servidores de nomes de qualquer domínio ou endereço IP." property="og:description"/><meta content="https://myipnow.net/pt/whois-lookup.html" property="og:url"/><link rel="alternate" hreflang="en" href="https://myipnow.net/whois-lookup/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/whois-lookup/"/>
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/whois-lookup/"/>
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/whois-lookup/"/>
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/whois-lookup/"/>
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/whois-lookup/"/>
+
+<style id="lang-switcher-css">
+.lang-switcher{position:relative;display:inline-block;}
+.lang-switcher-btn{background:none;border:1px solid #e2e8f0;border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;font-size:1rem;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:0.4rem;transition:background .2s;}
+.lang-switcher-btn:hover{background:#f1f5f9;}
+.lang-switcher-dropdown{display:none !important;position:fixed;top:auto;right:20px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12);list-style:none;padding:0.4rem 0;margin:0;min-width:200px;z-index:99999;}
+.lang-switcher.open .lang-switcher-dropdown{display:block !important;}
+
+.lang-switcher-dropdown li a{display:flex;align-items:center;gap:0.6rem;padding:0.55rem 1rem;text-decoration:none;color:var(--text-primary);font-size:0.95rem;font-weight:500;transition:background .15s;}
+.lang-switcher-dropdown li a:hover{background:#f1f5f9;color:var(--accent-color);}
+.lang-switcher-dropdown li a.active{font-weight:700;color:var(--accent-color);}
+@media(max-width:768px){.lang-switcher-dropdown{right:auto;left:0;}.category-nav ul .lang-switcher-dropdown{display:none !important;}.lang-switcher.open .lang-switcher-dropdown{display:block !important;}}
+</style>
+<link rel="alternate" hreflang="en" href="https://myipnow.net/whois-lookup/"/>
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/whois-lookup/"/>
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/whois-lookup/"/>
+</head>
+<body>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="container"><header class="site-header">
+<div class="header-top">
+<a class="logo" href="https://myipnow.net/pt/"><img src="/logo.png" alt="MyIPNow.net" style="width:48px;height:48px;vertical-align:bottom;border-radius:8px;margin-right:6px;"><span style="font-size:1rem;font-weight:600;vertical-align:bottom;">MyIPNow.net</span></a>
+<form action="/search.html" class="search-form" method="get">
+<input aria-label="Search articles" name="q" placeholder="Pesquisar..." type="search"/>
+<button type="submit">Search</button>
+</form>
+</div>
+<nav aria-label="Article Categories" class="category-nav">
+<ul>
+<li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
+<ul>
+<li><a href="https://myipnow.net/pt/">IP Lookup</a></li>
+<li><a href="https://myipnow.net/pt/dns-lookup/">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/pt/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/pt/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/pt/ping-test/">Ping Test</a></li>
+<li><a href="https://myipnow.net/pt/generate-password/">Generate Password</a></li>
+<li><a href="https://myipnow.net/pt/ip-blacklist/">IP Blacklist</a></li>
+</ul>
+</li>
+<li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
+<li><a href="https://myipnow.net/online-privacy/">Online Privacy</a></li>
+<li><a href="https://myipnow.net/networking/">Networking</a></li>
+<li><a href="https://myipnow.net/ip-addresses/">IP Addresses</a></li>
+<li><a href="https://myipnow.net/home-computing/">Home Computing</a></li>
+<li><a href="https://myipnow.net/general-topics/">General Topics</a></li>
+</ul>
+</nav>
+</header>
+<header class="page-header">
+<h1>WHOIS Lookup</h1>
+<p>Utilize a ferramenta WHOIS Lookup para encontrar a propriedade do domínio, as datas de registo e as informações do registador. Descubra os detalhes do domínio instantaneamente.</p>
+</header>
+<article class="article-body">
+<section aria-label="WHOIS Definition" class="snippet-section">
+<h2>O que é um WHOIS Lookup?</h2>
+<p>Um WHOIS Lookup mostra dados públicos de registo de um domínio - normalmente o agente de registo, datas importantes (criação/expiração),
+    servidores de nomes e estado do registo. Muitos domínios utilizam proteção de privacidade, mas o WHOIS/RDAP pode ainda revelar a propriedade e
+    detalhes operacionais necessários para verificações de segurança, transferências e resolução de problemas.</p>
+<div aria-label="How to use WHOIS Lookup" class="howto">
+<h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">Como utilizar este WHOIS Lookup</h3>
+<ol>
+<li>Introduza um domínio (exemplo.com).</li>
+<li>Clique em <strong>Lookup</strong>.</li>
+<li>Reveja os campos de registo, datas, servidores de nomes e estado.</li>
+</ol>
+</div>
+</section>
+<div class="whois-tool">
+<input id="whoisDomain" placeholder="Enter domain, e.g. example.com" type="text"/>
+<button onclick="lookupWHOIS()">Lookup</button>
+<div class="whois-results" id="whoisResults"></div>
+</div>
+<dl aria-hidden="true" class="ip-semantic">
+<dt>Domain</dt><dd id="dl-domain"></dd>
+<dt>Registrar</dt><dd id="dl-registrar"></dd>
+<dt>Created</dt><dd id="dl-created"></dd>
+<dt>Expires</dt><dd id="dl-expires"></dd>
+<dt>Name Servers</dt><dd id="dl-ns"></dd>
+<dt>Status</dt><dd id="dl-status"></dd>
+</dl>
+<section class="explanation">
+<p>Esta ferramenta fornece informações detalhadas sobre o registo de domínios, incluindo o agente de registo, as datas de criação e de expiração, os servidores de nomes e, por vezes, os contactos do proprietário. Ajuda-o a verificar a propriedade e a verificar o estado do domínio instantaneamente.</p>
+</section>
+<section class="faq-section">
+<h2>Perguntas mais frequentes</h2>
+<div class="faq-item"><div class="faq-question">O que é WHOIS Lookup?</div><div class="faq-answer">WHOIS Lookup recupera as informações de registo de um domínio, incluindo o agente de registo, as datas de criação e de expiração, os servidores de nomes e as informações do proprietário.</div></div>
+<div class="faq-item"><div class="faq-question">Esta ferramenta WHOIS Lookup é gratuita?</div><div class="faq-answer">Sim, esta ferramenta é totalmente gratuita e não necessita de chaves API.</div></div>
+<div class="faq-item"><div class="faq-question">Posso pesquisar qualquer domínio?</div><div class="faq-answer">Sim, mas alguns domínios podem ter a proteção de privacidade activada, o que oculta as informações do registante.</div></div>
+<div class="faq-item"><div class="faq-question">Como é que interpreto os resultados de WHOIS?</div><div class="faq-answer">Os resultados do WHOIS incluem detalhes do registador, datas de criação e expiração, servidores de nomes e, por vezes, contactos administrativos ou técnicos.</div></div>
+<div class="faq-item"><div class="faq-question">Como posso saber quem é o proprietário de um domínio?</div><div class="faq-answer">Introduza o domínio na ferramenta WHOIS Lookup. Se a proteção de privacidade não estiver activada, serão apresentados o nome do proprietário e as informações de contacto. Se a privacidade estiver activada, será apresentado um endereço proxy do fornecedor de serviços de registo.</div></div>
+<div class="faq-item"><div class="faq-question">Porque é que WHOIS mostra a proteção da privacidade?</div><div class="faq-answer">Os proprietários de domínios podem ativar a proteção de privacidade WHOIS para ocultar os seus dados de contacto pessoais. Desde que o RGPD entrou em vigor, a maioria dos registadores oferece esta opção gratuitamente e muitos activam-na por defeito.</div></div>
+<div class="faq-item"><div class="faq-question">Posso procurar a propriedade de um endereço IP com WHOIS?</div><div class="faq-answer">Sim, o WHOIS também funciona para endereços IP. Ele retorna a organização que possui o bloco IP, geralmente um ISP, provedor de hospedagem ou grande empresa.</div></div>
+<div class="faq-item"><div class="faq-question">O que é a data de expiração de um domínio em WHOIS?</div><div class="faq-answer">A data de expiração é a data em que o registo do domínio termina. Se não for renovado, o domínio fica disponível para ser registado por outros. A verificação das datas de expiração é útil para monitorizar os seus próprios domínios ou identificar domínios expirados recentemente.</div></div>
+</section>
+<section class="article-section">
+<h2>O que é WHOIS e como funciona?</h2>
+<p>WHOIS é uma base de dados pública que armazena informações de registo de nomes de domínio e endereços IP. Quando alguém regista um domínio, os seus detalhes de contacto, o registador e as informações técnicas são registados em WHOIS. Esta ferramenta gratuita WHOIS Lookup consulta esses registos instantaneamente para qualquer domínio ou endereço IP que introduza.</p>
+
+<h3>Que informações apresenta um WHOIS Lookup?</h3>
+<p>Um WHOIS Lookup normalmente retorna o <strong>nome do registrador</strong>, <strong>datas de registro e expiração</strong>, <strong>servidores de nomes</strong> e, às vezes, o nome, a organização, o e-mail e o endereço do registrante. Desde que o GDPR entrou em vigor em 2018, muitos registradores agora ocultam detalhes de contato pessoal por trás dos serviços de proteção de privacidade.</p>
+
+<h3>Como encontrar o proprietário de um domínio</h3>
+<p>Introduza o nome de domínio na ferramenta WHOIS Lookup acima. Se o proprietário não tiver ativado a proteção de privacidade, verá o seu nome, organização e detalhes de contacto. Se a privacidade estiver activada, verá um endereço de e-mail proxy fornecido pelo registador. Para a propriedade do endereço IP, WHOIS retorna a organização que controla esse bloco de IP.</p>
+
+<h3>O que é a proteção da privacidade WHOIS?</h3>
+<p>A proteção de privacidade WHOIS substitui as suas informações de contacto pessoais nos registos WHOIS por detalhes genéricos do registador. Isto evita o spam e protege as suas informações pessoais. A maioria dos registadores oferece este serviço gratuitamente e muitos activam-no por defeito para novos registos.</p>
+
+<h3>Como verificar se um domínio está disponível</h3>
+<p>Execute um WHOIS Lookup no domínio. Se o resultado não mostrar dados de registo ou devolver um erro, é provável que o domínio esteja disponível para registo. Se devolver detalhes de registo com uma data de expiração, o domínio está ocupado. Também pode verificar a data de expiração para ver quando poderá ficar disponível.</p>
+</section>
+<section class="see-also">
+<h2>Ver também</h2>
+<ul>
+<li><a href="https://myipnow.net/ip-lookup/">IP Lookup Tool</a></li>
+<li><a href="https://myipnow.net/pt/dns-lookup/">DNS Lookup Tool</a></li>
+<li><a href="https://myipnow.net/pt/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/pt/ping-test/">Ping Test</a></li>
+<li><a href="https://myipnow.net/pt/generate-password/">Password Generator</a></li>
+<li><a href="https://myipnow.net/pt/ip-blacklist/">IP Blacklist Checker</a></li>
+</ul>
+</section>
+<section class="tool-related"><h2>Guias relacionados</h2><ul><li><a href="https://myipnow.net/what-is-whois/">What is WHOIS?</a></li><li><a href="https://myipnow.net/can-whois-reveal-owner/">Can WHOIS reveal owner?</a></li></ul></section></article>
+<style>
+.lang-links {display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 1.5rem 1rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+.lang-links a {color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 0.5rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px;}
+.lang-links a:hover {background: #f1f5f9;}
+</style>
+<div class="lang-links">
+<a href="https://myipnow.net/whois-lookup/">🇺🇸 English</a>
+<a href="https://myipnow.net/de/whois-lookup/">🇩🇪 Deutsch</a>
+<a href="https://myipnow.net/es/whois-lookup/">🇪🇸 Español</a>
+<a href="https://myipnow.net/fr/whois-lookup/">🇫🇷 Français</a>
+<a href="https://myipnow.net/it/whois-lookup/">🇮🇹 Italiano</a>
+</div>
+<footer class="footer">
+<ul class="footer-nav">
+<li><a href="https://myipnow.net/about/">About</a></li>
+<li><a href="https://myipnow.net/contact/">Contact</a></li>
+<li><a href="https://myipnow.net/privacy-policy/">Privacy Policy</a></li>
+<li><a href="https://myipnow.net/terms-of-use/">Terms of Use</a></li>
+<li><a href="https://myipnow.net/affiliate-disclosure/">Affiliate Disclosure</a></li>
+</ul>
+<div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
+</footer>
+<script>
+function __setOutText(id,value){const el=document.getElementById('dl-'+id); if(el) el.textContent=(value===undefined||value===null)?'':String(value);} 
+function safeText(s){
+  if(s === null || s === undefined) return 'N/A';
+  return String(s);
+}
+
+function lookupWHOIS(){
+    const domain = document.getElementById('whoisDomain').value.trim();
+    const resultsEl = document.getElementById('whoisResults');
+    resultsEl.style.display = 'block';
+    __setOutText('domain', domain);
+    __setOutText('registrar',''); __setOutText('created',''); __setOutText('expires',''); __setOutText('ns',''); __setOutText('status','');
+    if(!domain){ resultsEl.innerHTML = '<p>Please enter a domain.</p>'; return; }
+    resultsEl.innerHTML = '<p>Loading...</p>';
+
+    // RDAP request
+    fetch(`https://rdap.org/domain/${encodeURIComponent(domain)}`)
+    .then(res => {
+      if(!res.ok) throw new Error('Domain not found or RDAP error (' + res.status + ')');
+      return res.json();
+    })
+    .then(data => {
+        // Build plain, expanded content (headings + paragraphs). NO inner boxes and NO scroll restrictions.
+        let out = '';
+
+        // Domain name & handle
+        out += `<h3>Domínio</h3><p>${safeText(data.ldhName || data.handle || domain)}</p>`;
+
+        // Registrar (if present)
+        if(data.events || data.entities || data.port43 || data.objectClassName){
+            const registrar = (data.entities && data.entities.length) ? data.entities.map(e=>{
+                // prefer vcardOrg or handle
+                let org = e.vcardArray && e.vcardArray[1] ? e.vcardArray[1].find(v=>v[0]==='fn') : null;
+                return org ? org[3] : (e.handle || (e.roles ? e.roles.join(', ') : ''));
+            }).join(', ') : (data.registrar ? safeText(data.registrar) : 'N/A');
+            out += `<h3>Registador / Entidades</h3><p>${safeText(registrar)}</p>`;
+            __setOutText('registrar', registrar);
+        }
+
+        // Registrant (try common RDAP vcard structure)
+        let registrant = 'N/A';
+        if(data.entities && data.entities.length){
+            // find entity with role 'registrant' or 'registrar'
+            const regEntity = data.entities.find(e => (e.roles && e.roles.map(r=>r.toLowerCase()).includes('registrant')));
+            const ent = regEntity || data.entities[0];
+            if(ent && ent.vcardArray && ent.vcardArray[1]){
+                // build a simple vcard text
+                registrant = ent.vcardArray[1].map(item=>{
+                    // item like ["fn", {}, "text", "Name"]
+                    if(Array.isArray(item) && item.length >= 4) return item[3];
+                    return null;
+                }).filter(Boolean).join(', ');
+            } else if(ent && ent.handle){
+                registrant = ent.handle;
+            }
+        }
+        out += `<h3>Registante</h3><p>${safeText(registrant)}</p>`;
+
+        // Events (creation/expiry)
+        if(data.events && data.events.length){
+            const createdEv = data.events.find(e=>String(e.eventAction||'').toLowerCase()==='registration');
+            const expEv = data.events.find(e=>String(e.eventAction||'').toLowerCase()==='expiration');
+            if(createdEv && createdEv.eventDate) __setOutText('created', createdEv.eventDate);
+            if(expEv && expEv.eventDate) __setOutText('expires', expEv.eventDate);
+            if(data.status) __setOutText('status', Array.isArray(data.status)?data.status.join(', '):data.status);
+
+            const ev = data.events.map(e=> `${safeText(e.eventAction)}: ${safeText(e.eventDate)}`).join('\n');
+            out += `<h3>Eventos de domínio</h3><p>${ev}</p>`;
+        } else if(data.event){
+            out += `<h3>Eventos de domínio</h3><p>${safeText(JSON.stringify(data.event))}</p>`;
+        } else {
+            // check common fields
+            if(data.creationDate || data.registryDomainId || data.status || data.changed){
+                let evtext = '';
+                if(data.creationDate) evtext += `Created: ${data.creationDate}\n`;
+                if(data.status) evtext += `Status: ${Array.isArray(data.status)?data.status.join(', '):data.status}\n`;
+                out += `<h3>Eventos de domínio</h3><p>${safeText(evtext || 'N/A')}</p>`;
+            }
+        }
+
+        // Nameservers
+        if(data.nameservers && data.nameservers.length){
+            const __ns = data.nameservers.map(ns => ns.ldhName || ns.handle || ns).join(', ');
+            out += `<h3>Servidores de nomes</h3><p>${safeText(__ns)}</p>`;
+            __setOutText('ns', __ns);
+        } else {
+            out += `<h3>Servidores de nomes</h3><p>N/A</p>`;
+        }
+
+        // Contacts (admin/tech) - attempt to extract
+        if(data.entities && data.entities.length){
+            const contacts = data.entities
+              .filter(e => e.roles && e.roles.some(r => ['registrant','administrative','technical','admin','tech'].includes(String(r).toLowerCase())))
+              .map(e => {
+                let label = (e.roles || []).join(', ') || (e.handle || 'entity');
+                let info = 'N/A';
+                if(e.vcardArray && e.vcardArray[1]){
+                  info = e.vcardArray[1].map(it => (Array.isArray(it) && it.length>=4) ? it[3] : null).filter(Boolean).join(', ');
+                }
+                return `${label}: ${info}`;
+              });
+            if(contacts.length) out += `<h3>Contactos</h3><p>${safeText(contacts.join('\n'))}</p>`;
+        }
+
+        // Raw JSON as fallback (small) — only if above data is sparse
+        if(out.trim().length < 50 && data){
+            out += `<h3>Dados brutos RDAP</h3><p>${safeText(JSON.stringify(data, null, 2))}</p>`;
+        }
+
+        resultsEl.innerHTML = out;
+    })
+    .catch(err => {
+        resultsEl.innerHTML = `<p>Error fetching WHOIS data: ${err.message}</p>`;
+    });
+}
+</script>
+</div>
+<script id="mobile-header-fix-final">
+(function(){
+  const tools = document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger = tools.querySelector(':scope > a');
+  const dropdown = tools.querySelector(':scope > ul');
+  if(!trigger || !dropdown) return;
+
+  let menu=null, backdrop=null, open=false;
+
+  // Desktop hover
+  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
+  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
+
+  function closeMenu(){
+    if(menu){ menu.remove(); menu=null; }
+    if(backdrop){ backdrop.remove(); backdrop=null; }
+    dropdown.style.display='none';
+    document.body.classList.remove('menu-open');
+    open=false;
+  }
+
+  function openMenu(e){
+    e.preventDefault(); e.stopPropagation();
+    if(window.innerWidth>768) return;
+
+    dropdown.style.display='none'; // hide original header dropdown
+
+    if(open){ closeMenu(); return; }
+
+    const rect = trigger.getBoundingClientRect();
+    backdrop = document.createElement('div');
+    Object.assign(backdrop.style,{
+      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
+      background:'transparent',zIndex:9998
+    });
+    backdrop.addEventListener('click', closeMenu);
+    document.body.appendChild(backdrop);
+
+    menu = dropdown.cloneNode(true);
+    Object.assign(menu.style,{
+      position:'absolute',
+      top:`${rect.bottom + window.scrollY + 8}px`,
+      left:`${rect.left + window.scrollX}px`,
+      minWidth:`${Math.max(rect.width,200)}px`,
+      background:'#fff',
+      border:'1px solid #e2e8f0',
+      borderRadius:'10px',
+      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+      listStyle:'none',
+      padding:'.5rem 0',
+      margin:0,
+      zIndex:9999,
+      maxHeight:'70vh',
+      overflowY:'auto',
+      display:'block',        /* ✅ ensures visible */
+      visibility:'visible',   /* ✅ fixes Safari hover ghost */
+      opacity:'1'             /* ✅ fully visible */
+    });
+    menu.querySelectorAll('a').forEach(a=>{
+      a.style.display='block';
+      a.style.padding='.6rem 1.2rem';
+      a.style.color='#1e293b';
+      a.style.textDecoration='none';
+      a.style.fontWeight='500';
+      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
+      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
+    });
+
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+
+  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
+    const rect=trigger.getBoundingClientRect();
+    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
+    menu.style.left=`${rect.left + window.scrollX}px`;
+  });
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
+</script>
+<script>
+(function() {
+  function ready(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+
+  ready(function() {
+    var input = document.getElementById('whoisDomain');
+    var fn = window['lookupWHOIS'];
+
+    // Find the button that triggers the tool (prefer explicit onclick, otherwise nearest button)
+    var btn = document.querySelector('button[onclick*="lookupWHOIS"]') || document.querySelector('button[onclick*="lookupwhois"]');
+    if (!btn && input) {
+      // fallback: first button after the input
+      btn = input.parentElement ? input.parentElement.querySelector('button') : null;
+    }
+
+    if (!btn) {
+      console.warn('[tool] Could not find lookup button for lookupWHOIS.');
+      return;
+    }
+
+    // Ensure clicks always call the function
+    btn.addEventListener('click', function(e) {
+      try {
+        if (typeof window['lookupWHOIS'] === 'function') {
+          window['lookupWHOIS']();
+        } else {
+          console.error('[tool] lookupWHOIS is not defined.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Tool error: ' + (err && err.message ? err.message : err));
+      }
+    });
+
+    // Support Enter key in input(s)
+    if (input) {
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    }
+    // Also support Enter in any select inside same tool container
+    var container = btn.closest('.dns-tool, .whois-tool, .blacklist-tool, .tool, .card, section, main, body') || document.body;
+    var selects = container.querySelectorAll('select');
+    selects.forEach(function(sel) {
+      sel.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  });
+})();
+</script>
+<script>
+
+<script>
+/* === TOOL PATCH: ensure Lookup works (no UI changes) === */
+document.addEventListener('DOMContentLoaded', function(){
+  var fn = (typeof window['lookupWHOIS']==='function' ? window['lookupWHOIS'] : null) || (typeof window['lookupWhois']==='function' ? window['lookupWhois'] : null) || (typeof window['whoisLookup']==='function' ? window['whoisLookup'] : null) || (typeof window['runWhoisLookup']==='function' ? window['runWhoisLookup'] : null);
+  if(!fn) return;
+
+  var btn =
+    document.getElementById('lookupBtn') ||
+    document.querySelector('button[data-action="/lookup"]') ||
+    Array.from(document.querySelectorAll('button')).find(function(b){
+      return /lookup|check/i.test(b.textContent || '');
+    });
+
+  if(btn && !btn.getAttribute('onclick')) {
+    btn.addEventListener('click', function(e){ e.preventDefault(); fn(); });
+  }
+
+  var input =
+    document.getElementById('dnsDomain') ||
+    document.getElementById('domain') ||
+    document.getElementById('query') ||
+    document.querySelector('input[type="text"], input[type="search"]');
+  if(input) {
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); fn(); }
+    });
+  }
+});
+</script>
+
+<script id="lang-switcher-js">
+(function(){
+  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
+  var LANGS = [
+    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
+    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
+    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
+    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
+    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
+  ];
+  function getSlug(){
+    var path = location.pathname;
+    path = path.replace(/^\//, '').replace(/\/$/, '');
+    var parts = path.split('/');
+    if(['de','es','fr','it','pt'].indexOf(parts[0]) !== -1) parts.shift();
+    return parts.join('/');
+  }
+  function getCurrentLang(){
+    var parts = location.pathname.replace(/^\//, '').split('/');
+    if(['de','es','fr','it','pt'].indexOf(parts[0]) !== -1) return parts[0];
+    return 'en';
+  }
+  function init(){
+    var nav = document.querySelector('.category-nav ul');
+    if(!nav) return;
+    var slug = getSlug();
+    var currentLang = getCurrentLang();
+    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
+
+    var li = document.createElement('li');
+    li.className = 'lang-switcher';
+    var btn = document.createElement('button');
+    btn.className = 'lang-switcher-btn';
+    var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
+    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
+    li.appendChild(btn);
+    nav.appendChild(li);
+
+    var floatingMenu = null, backdrop = null, open = false;
+
+    function buildMenu(){
+      var ul = document.createElement('ul');
+      Object.assign(ul.style, {
+        position:'fixed', zIndex:'99999', background:'#fff',
+        border:'1px solid #e2e8f0', borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
+        listStyle:'none', padding:'0.4rem 0', margin:'0',
+        minWidth:'160px', display:'block'
+      });
+      LANGS.forEach(function(lang){
+        var item = document.createElement('li');
+        var a = document.createElement('a');
+        // If page is translated point to same page in that lang, else point to lang homepage
+        if(isTranslated){
+          a.href = lang.base + (slug ? slug + '/' : '');
+        } else {
+          a.href = lang.base;
+        }
+        a.textContent = lang.label;
+        Object.assign(a.style, {
+          display:'block', padding:'0.55rem 1rem',
+          textDecoration:'none', color:'#1e293b',
+          fontSize:'0.95rem', fontWeight:'500'
+        });
+        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
+        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
+        a.onmouseleave = function(){ a.style.background=''; };
+        item.appendChild(a);
+        ul.appendChild(item);
+      });
+      return ul;
+    }
+    function positionMenu(){
+      if(!floatingMenu) return;
+      var rect = btn.getBoundingClientRect();
+      var left = rect.left;
+      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
+      floatingMenu.style.top = (rect.bottom + 6) + 'px';
+      floatingMenu.style.left = left + 'px';
+    }
+    function closeMenu(){
+      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
+      if(backdrop){ backdrop.remove(); backdrop = null; }
+      open = false;
+    }
+    function openMenu(){
+      if(open){ closeMenu(); return; }
+      backdrop = document.createElement('div');
+      Object.assign(backdrop.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        zIndex:'99998', background:'transparent'
+      });
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      floatingMenu = buildMenu();
+      document.body.appendChild(floatingMenu);
+      positionMenu();
+      open = true;
+    }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
+    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
+    window.addEventListener('resize', closeMenu);
+    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+
+</script>
+<script>/*lang-redirect*/</script>
+<script>
+(function(){
+  var lang = location.pathname.split('/').filter(Boolean)[0];
+  if (!['de','es','fr','it','pt'].includes(lang)) return;
+  var translated = [
+    'dns-lookup','whois-lookup','ip-blacklist','asn-lookup',
+    'internet-speed-test','generate-password','ip-subnet-calculator',
+    'cidr-to-ip-range-calculator','ip-range-to-cidr-calculator','hide-my-ip',
+    'ping-test',
+    'router/10.0.0.1','router/10.11.12.1','router/192.168.0.1','router/192.168.0.100',
+    'router/192.168.0.254','router/192.168.100.1','router/192.168.10.1',
+    'router/192.168.11.1','router/192.168.1.1','router/192.168.1.11',
+    'router/192.168.12.1','router/192.168.1.250','router/192.168.1.2',
+    'router/192.168.1.254','router/192.168.188.1','router/192.168.2.1',
+    'router/192.168.223.1','router/192.168.254.254','router/192.168.4.1',
+    'router/192.168.7.1','router/192.168.8.1'
+  ];
+  function isTranslated(path) {
+    path = path.replace(/\/$/, '');
+    return translated.some(function(s){ return path === s || path.endsWith('/'+s); });
+  }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if (!href || !href.startsWith('https://myipnow.net/')) return;
+    if (href.includes('/'+lang+'/')) return;
+    var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
+    if (path && isTranslated(path)) {
+      a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
+    }
+  });
+  document.querySelectorAll('button[onclick]').forEach(function(btn){
+    var oc = btn.getAttribute('onclick');
+    if (!oc || !oc.includes('myipnow.net/')) return;
+    var m = oc.match(/myipnow\.net\/([^']+)/);
+    if (!m) return;
+    var path = m[1].replace(/\/$/, '');
+    if (path && isTranslated(path) && !oc.includes('/'+lang+'/')) {
+      btn.setAttribute('onclick', oc.replace('myipnow.net/', 'myipnow.net/' + lang + '/'));
+    }
+  });
+})();
+</script>
+</body>
+</html>

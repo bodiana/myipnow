@@ -3,11 +3,22 @@ import os, re, json, time, urllib.request, urllib.error, urllib.parse
 DEEPL_KEY = "c1102701-960d-435e-adf6-8ca0a4412e06"
 DEEPL_URL = "https://api.deepl.com/v2/translate"
 
-LANGUAGES = {"de": "DE", "es": "ES", "fr": "FR", "it": "IT"}
-LANG_NAMES = {"de": "German", "es": "Spanish", "fr": "French", "it": "Italian"}
+LANGUAGES = {"pt": "PT"}
+LANG_NAMES = {"de": "German", "es": "Spanish", "fr": "French", "it": "Italian", "pt": "Portuguese"}
 
 TOOL_PAGES = [
-    ("ping-test.html", "ping-test"),
+    ("index.html", ""),
+    ("dns-lookup.html", "dns-lookup"),
+    ("whois-lookup.html", "whois-lookup"),
+    ("ip-blacklist.html", "ip-blacklist"),
+    ("asn-lookup.html", "asn-lookup"),
+    ("internet-speed-test.html", "internet-speed-test"),
+    ("generate-password.html", "generate-password"),
+    ("ip-subnet-calculator.html", "ip-subnet-calculator"),
+    ("cidr-to-ip-range-calculator.html", "cidr-to-ip-range-calculator"),
+    ("ip-range-to-cidr-calculator.html", "ip-range-to-cidr-calculator"),
+    ("hide-my-ip.html", "hide-my-ip"),
+    ("ping-test/index.html", "ping-test"),
 ]
 
 ROUTER_IPS = [
@@ -192,7 +203,7 @@ def main():
         print("="*50)
         lang_dir = os.path.join(base, lang)
         os.makedirs(lang_dir, exist_ok=True)
-        for filename, slug in TOOL_PAGES:
+        for filename, slug in []:
             src = os.path.join(base, filename)
             if not os.path.exists(src):
                 print("  SKIP: %s not found" % filename)
@@ -211,7 +222,7 @@ def main():
             time.sleep(2)
         router_dir = os.path.join(lang_dir, "router")
         os.makedirs(router_dir, exist_ok=True)
-        for ip in []:
+        for ip in ROUTER_IPS:
             src = os.path.join(base, "router", ip, "index.html")
             if not os.path.exists(src):
                 print("  SKIP: router/%s not found" % ip)

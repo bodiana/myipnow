@@ -622,39 +622,39 @@ IPv6 fonctionne de la même manière, mais avec des nombres plus importants, et 
 <h2>FAQ</h2>
 <div class="faq">
 <details>
-<summary>How many IPs are in a /24?</summary>
+<summary>Combien d'IPs y a-t-il dans un /24?</summary>
 <p>Un /24 contient 256 adresses IPv4 au total. En général, 254 sont des hôtes utilisables (réseau + diffusion sont réservés).</p>
 </details>
 <details>
-<summary>What is a subnet mask?</summary>
+<summary>Qu'est-ce qu'un masque de sous-réseau?</summary>
 <p>Un subnet mask est un nombre de 32 bits qui sépare la partie réseau d'une adresse IP de la partie hôte. Il ressemble à une adresse IP, par exemple 255.255.255.0. Le masque utilise des 1 binaires pour marquer les bits du réseau et des 0 pour les bits de l'hôte. 255.255.255.0 équivaut à /24 en notation CIDR.</p>
 </details>
 <details>
-<summary>What is the subnet mask for a home Wi-Fi network?</summary>
+<summary>Quel est le masque de sous-réseau pour un réseau Wi-Fi domestique?</summary>
 <p>La valeur subnet mask de la plupart des réseaux Wi-Fi domestiques est 255.255.255.0, ce qui correspond à /24. Cela donne 254 adresses IP utilisables. Votre routeur les attribue automatiquement via DHCP.</p>
 </details>
 <details>
-<summary>What is the difference between a subnet mask and a network mask?</summary>
+<summary>Quelle est la différence entre un masque de sous-réseau et un masque réseau?</summary>
 <p>Il s'agit de la même chose. subnet mask et masque de réseau sont des termes interchangeables pour désigner la valeur de 32 bits qui sépare les bits du réseau des bits de l'hôte dans une adresse IPv4.</p>
 </details>
 <details>
-<summary>What's the difference between CIDR and subnet mask?</summary>
+<summary>Quelle est la différence entre CIDR et masque de sous-réseau?</summary>
 <p>Ils représentent le même concept dans des formats différents. CIDR utilise une longueur de préfixe comme /24. Un subnet mask utilise la décimale pointée comme 255.255.255.0. Dans les deux cas, les 24 premiers bits identifient le réseau.</p>
 </details>
 <details>
-<summary>How many IPs are in a /16?</summary>
+<summary>Combien d'IPs y a-t-il dans un /16?</summary>
 <p>Un /16 contient 65 536 adresses IPv4 au total avec 65 534 hôtes utilisables. L'adresse subnet mask est 255.255.0.0. Elle est couramment utilisée pour les grands réseaux d'entreprise et les VPC en nuage.</p>
 </details>
 <details>
-<summary>What is a wildcard mask?</summary>
+<summary>Qu'est-ce qu'un masque générique?</summary>
 <p>Un masque de caractères génériques est l'inverse, dans le sens des bits, d'un subnet mask. Alors qu'un subnet mask utilise des 1 pour les bits du réseau, un joker utilise des 0. Pour /24, le subnet mask est 255.255.255.0 et le joker est 0.0.0.255. Les masques de caractères génériques sont utilisés dans les ACL Cisco et les configurations OSPF.</p>
 </details>
 <details>
-<summary>Why does IPv6 have no broadcast address?</summary>
+<summary>Pourquoi IPv6 n'a-t-il pas d'adresse de diffusion?</summary>
 <p>IPv6 a été conçu sans diffusion. Il utilise plutôt la multidiffusion et de nombreuses opérations qui utilisaient la diffusion dans IPv4 fonctionnent différemment dans IPv6.</p>
 </details>
 <details>
-<summary>Why do /31 and /32 look weird?</summary>
+<summary>Pourquoi /31 et /32 semblent-ils étranges?</summary>
 <p>/32 est une adresse IPv4 unique utilisée pour les routes hôtes et les boucles. /31 a deux adresses et est utilisé pour les liaisons point à point où les deux adresses sont utilisables (RFC 3021).</p>
 </details>
 </div>
@@ -1028,10 +1028,11 @@ IPv6 fonctionne de la même manière, mais avec des nombres plus importants, et 
 .lang-links a:hover {background: #f1f5f9;}
 </style>
 <div class="lang-links">
-<a href="https://myipnow.net/ip-subnet-calculator/">🇺🇸 What Is My IP?</a>
-<a href="https://myipnow.net/de/ip-subnet-calculator/">🇩🇪 Wie Ist Meine IP?</a>
-<a href="https://myipnow.net/es/ip-subnet-calculator/">🇪🇸 Cuál es mi IP?</a>
-<a href="https://myipnow.net/it/ip-subnet-calculator/">🇮🇹 Qual è il Mio IP?</a>
+<a href="https://myipnow.net/ip-subnet-calculator/">🇺🇸 English</a>
+<a href="https://myipnow.net/de/ip-subnet-calculator/">🇩🇪 Deutsch</a>
+<a href="https://myipnow.net/es/ip-subnet-calculator/">🇪🇸 Español</a>
+<a href="https://myipnow.net/it/ip-subnet-calculator/">🇮🇹 Italiano</a>
+<a href="https://myipnow.net/pt/ip-subnet-calculator/">🇧🇷 Português</a>
 </div>
 <footer class="footer">
 <ul class="footer-nav">
@@ -1845,7 +1846,8 @@ window.addEventListener('load', function() {
     {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
     {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
     {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}
+    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
   ];
   function getSlug(){
     var path = location.pathname;
