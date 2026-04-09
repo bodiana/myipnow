@@ -189,7 +189,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 </div>
 </section>
 <div class="whois-tool">
-<input id="whoisDomain" placeholder="Enter domain, e.g. example.com" type="text"/>
+<input id="whoisDomain" placeholder="Enter domain or IP, e.g. example.com or 8.8.8.8" type="text"/>
 <button onclick="lookupWHOIS()">Lookup</button>
 <div class="whois-results" id="whoisResults"></div>
 </div>
@@ -275,113 +275,206 @@ function safeText(s){
 }
 
 function lookupWHOIS(){
-    const domain = document.getElementById('whoisDomain').value.trim();
+    const query = document.getElementById('whoisDomain').value.trim();
     const resultsEl = document.getElementById('whoisResults');
     resultsEl.style.display = 'block';
-    __setOutText('domain', domain);
-    __setOutText('registrar',''); __setOutText('created',''); __setOutText('expires',''); __setOutText('ns',''); __setOutText('status','');
-    if(!domain){ resultsEl.innerHTML = '<p>Please enter a domain.</p>'; return; }
+    if(!query){ resultsEl.innerHTML = '<p>Please enter a domain or IP address.</p>'; return; }
     resultsEl.innerHTML = '<p>Loading...</p>';
 
-    // RDAP request
-    fetch(`https://rdap.org/domain/${encodeURIComponent(domain)}`)
-    .then(res => {
-      if(!res.ok) throw new Error('Domain not found or RDAP error (' + res.status + ')');
-      return res.json();
-    })
+    const isIP = /^(\d{1,3}\.){3}\d{1,3}$/.test(query) || /^[0-9a-fA-F:]+:[0-9a-fA-F:]*$/.test(query);
+
+    if(isIP){
+        lookupIP(query, resultsEl);
+    } else {
+        lookupDomain(query, resultsEl);
+    }
+}
+
+function row(label, value){
+    if(!value || value === 'N/A' || value === '') return '';
+    return `<tr><td style="font-weight:600;color:var(--text-secondary);padding:8px 12px;white-space:nowrap;width:38%">${label}</td><td style="padding:8px 12px;word-break:break-word">${value}</td></tr>`;
+}
+
+function section(title, icon, rows){
+    if(!rows) return '';
+    return `<div style="margin-bottom:1.25rem"><div style="font-weight:700;font-size:1rem;color:var(--accent-color);margin-bottom:0.5rem">${icon} ${title}</div><table style="width:100%;border-collapse:collapse;background:#f8fafc;border-radius:8px;overflow:hidden">${rows}</table></div>`;
+}
+
+function fmtDate(d){
+    if(!d) return '';
+    try { return new Date(d).toLocaleDateString('en-GB',{year:'numeric',month:'short',day:'numeric'}); } catch(e){ return d; }
+}
+
+function lookupIP(ip, resultsEl){
+    fetch(`https://rdap.org/ip/${encodeURIComponent(ip)}`)
+    .then(r => { if(!r.ok) throw new Error('IP not found ('+r.status+')'); return r.json(); })
     .then(data => {
-        // Build plain, expanded content (headings + paragraphs). NO inner boxes and NO scroll restrictions.
         let out = '';
 
-        // Domain name & handle
-        out += `<h3>Domain</h3><p>${safeText(data.ldhName || data.handle || domain)}</p>`;
+        // Network info
+        const netRows =
+            row('IP Address', ip) +
+            row('Network', data.handle || '') +
+            row('IP Range', (data.startAddress && data.endAddress) ? data.startAddress + ' — ' + data.endAddress : '') +
+            row('CIDR', data.cidr0_cidrs ? data.cidr0_cidrs.map(c=>c.v4prefix||c.v6prefix).filter(Boolean).join(', ') : '') +
+            row('Network Name', data.name || '') +
+            row('Type', data.type || '') +
+            row('Country', data.country || '');
+        out += section('Network Information', '🌐', netRows);
 
-        // Registrar (if present)
-        if(data.events || data.entities || data.port43 || data.objectClassName){
-            const registrar = (data.entities && data.entities.length) ? data.entities.map(e=>{
-                // prefer vcardOrg or handle
-                let org = e.vcardArray && e.vcardArray[1] ? e.vcardArray[1].find(v=>v[0]==='fn') : null;
-                return org ? org[3] : (e.handle || (e.roles ? e.roles.join(', ') : ''));
-            }).join(', ') : (data.registrar ? safeText(data.registrar) : 'N/A');
-            out += `<h3>Registrar / Entities</h3><p>${safeText(registrar)}</p>`;
-            __setOutText('registrar', registrar);
-        }
-
-        // Registrant (try common RDAP vcard structure)
-        let registrant = 'N/A';
+        // Organisation
+        let orgRows = '';
         if(data.entities && data.entities.length){
-            // find entity with role 'registrant' or 'registrar'
-            const regEntity = data.entities.find(e => (e.roles && e.roles.map(r=>r.toLowerCase()).includes('registrant')));
-            const ent = regEntity || data.entities[0];
-            if(ent && ent.vcardArray && ent.vcardArray[1]){
-                // build a simple vcard text
-                registrant = ent.vcardArray[1].map(item=>{
-                    // item like ["fn", {}, "text", "Name"]
-                    if(Array.isArray(item) && item.length >= 4) return item[3];
-                    return null;
-                }).filter(Boolean).join(', ');
-            } else if(ent && ent.handle){
-                registrant = ent.handle;
-            }
+            data.entities.forEach(e => {
+                const roles = (e.roles||[]).join(', ');
+                let name = '', email = '', phone = '', address = '';
+                if(e.vcardArray && e.vcardArray[1]){
+                    e.vcardArray[1].forEach(item => {
+                        if(!Array.isArray(item)) return;
+                        if(item[0]==='fn') name = item[3]||'';
+                        if(item[0]==='email') email = item[3]||'';
+                        if(item[0]==='tel') phone = item[3]||'';
+                        if(item[0]==='adr') address = (Array.isArray(item[3]) ? item[3].filter(Boolean).join(', ') : item[3])||'';
+                    });
+                }
+                orgRows += row('Role', roles);
+                orgRows += row('Name', name || e.handle || '');
+                orgRows += row('Email', email ? `<a href="mailto:${email}" style="color:var(--accent-color)">${email}</a>` : '');
+                orgRows += row('Phone', phone);
+                orgRows += row('Address', address);
+                orgRows += row('Handle', e.handle||'');
+                if(e.remarks) orgRows += row('Remarks', e.remarks.map(r=>r.description?r.description.join(' '):r.title||'').join('; '));
+            });
         }
-        out += `<h3>Registrant</h3><p>${safeText(registrant)}</p>`;
+        if(orgRows) out += section('Organisation', '🏢', orgRows);
 
-        // Events (creation/expiry)
-        if(data.events && data.events.length){
-            const createdEv = data.events.find(e=>String(e.eventAction||'').toLowerCase()==='registration');
-            const expEv = data.events.find(e=>String(e.eventAction||'').toLowerCase()==='expiration');
-            if(createdEv && createdEv.eventDate) __setOutText('created', createdEv.eventDate);
-            if(expEv && expEv.eventDate) __setOutText('expires', expEv.eventDate);
-            if(data.status) __setOutText('status', Array.isArray(data.status)?data.status.join(', '):data.status);
+        // RIR / Registry
+        const rirRows =
+            row('RIR / Registry', data.port43 || '') +
+            row('Object Class', data.objectClassName || '') +
+            row('Last Changed', fmtDate((data.events||[]).find(e=>e.eventAction==='last changed')?.eventDate));
+        out += section('Registry', '📋', rirRows);
 
-            const ev = data.events.map(e=> `${safeText(e.eventAction)}: ${safeText(e.eventDate)}`).join('\n');
-            out += `<h3>Domain Events</h3><p>${ev}</p>`;
-        } else if(data.event){
-            out += `<h3>Domain Events</h3><p>${safeText(JSON.stringify(data.event))}</p>`;
-        } else {
-            // check common fields
-            if(data.creationDate || data.registryDomainId || data.status || data.changed){
-                let evtext = '';
-                if(data.creationDate) evtext += `Created: ${data.creationDate}\n`;
-                if(data.status) evtext += `Status: ${Array.isArray(data.status)?data.status.join(', '):data.status}\n`;
-                out += `<h3>Domain Events</h3><p>${safeText(evtext || 'N/A')}</p>`;
-            }
+        // Remarks
+        if(data.remarks && data.remarks.length){
+            const rmk = data.remarks.map(r => (r.title?r.title+': ':'')+( r.description||[]).join(' ')).join('<br>');
+            out += section('Remarks', '📝', row('', rmk));
         }
+
+        resultsEl.innerHTML = out || '<p>No data found.</p>';
+    })
+    .catch(err => { resultsEl.innerHTML = `<p>Error: ${err.message}</p>`; });
+}
+
+function lookupDomain(domain, resultsEl){
+    fetch(`https://rdap.org/domain/${encodeURIComponent(domain)}`)
+    .then(r => { if(!r.ok) throw new Error('Domain not found ('+r.status+')'); return r.json(); })
+    .then(data => {
+        let out = '';
+
+        // Events
+        const evMap = {};
+        (data.events||[]).forEach(e => { evMap[String(e.eventAction||'').toLowerCase()] = e.eventDate; });
+
+        // Status badges
+        const statuses = Array.isArray(data.status) ? data.status : (data.status ? [data.status] : []);
+        const statusHTML = statuses.map(s => `<span style="display:inline-block;background:#e0e7ff;color:#3730a3;border-radius:4px;padding:2px 8px;font-size:0.82rem;margin:2px">${s}</span>`).join(' ');
+
+        // Domain overview
+        const domRows =
+            row('Domain', (data.ldhName||domain).toUpperCase()) +
+            row('Status', statusHTML) +
+            row('Registered', fmtDate(evMap['registration'])) +
+            row('Last Updated', fmtDate(evMap['last changed'])) +
+            row('Expires', fmtDate(evMap['expiration'])) +
+            row('WHOIS Server', data.port43||'');
+        out += section('Domain Overview', '🌐', domRows);
+
+        // Registrar
+        const regEntity = (data.entities||[]).find(e => e.roles && e.roles.map(r=>r.toLowerCase()).includes('registrar'));
+        if(regEntity){
+            let regName='', regEmail='', regPhone='', regUrl='', regAbuse='';
+            if(regEntity.vcardArray && regEntity.vcardArray[1]){
+                regEntity.vcardArray[1].forEach(item => {
+                    if(!Array.isArray(item)) return;
+                    if(item[0]==='fn') regName=item[3]||'';
+                    if(item[0]==='email') regEmail=item[3]||'';
+                    if(item[0]==='tel') regPhone=item[3]||'';
+                    if(item[0]==='url') regUrl=item[3]||'';
+                });
+            }
+            // Abuse contact from remarks
+            if(regEntity.remarks) regAbuse = regEntity.remarks.map(r=>(r.description||[]).join(' ')).join(' ');
+            // Nested abuse entity
+            const abuseEnt = (regEntity.entities||[]).find(e=>e.roles&&e.roles.includes('abuse'));
+            if(abuseEnt && abuseEnt.vcardArray && abuseEnt.vcardArray[1]){
+                abuseEnt.vcardArray[1].forEach(item=>{
+                    if(Array.isArray(item) && item[0]==='email') regAbuse = item[3]||'';
+                });
+            }
+            const regRows =
+                row('Registrar', regName || regEntity.handle || '') +
+                row('IANA ID', regEntity.handle||'') +
+                row('URL', regUrl ? `<a href="${regUrl}" target="_blank" style="color:var(--accent-color)">${regUrl}</a>` : '') +
+                row('Email', regEmail ? `<a href="mailto:${regEmail}" style="color:var(--accent-color)">${regEmail}</a>` : '') +
+                row('Phone', regPhone) +
+                row('Abuse Contact', regAbuse ? `<a href="mailto:${regAbuse}" style="color:var(--accent-color)">${regAbuse}</a>` : '');
+            out += section('Registrar', '🏢', regRows);
+        }
+
+        // Registrant / Admin / Tech contacts
+        const contactRoles = ['registrant','administrative','technical','billing'];
+        (data.entities||[]).filter(e => e.roles && e.roles.some(r=>contactRoles.includes(r.toLowerCase()))).forEach(e => {
+            let name='',org='',email='',phone='',addr='',country='';
+            if(e.vcardArray && e.vcardArray[1]){
+                e.vcardArray[1].forEach(item=>{
+                    if(!Array.isArray(item)) return;
+                    if(item[0]==='fn') name=item[3]||'';
+                    if(item[0]==='org') org=item[3]||'';
+                    if(item[0]==='email') email=item[3]||'';
+                    if(item[0]==='tel') phone=item[3]||'';
+                    if(item[0]==='adr') addr=(Array.isArray(item[3])?item[3].filter(Boolean).join(', '):item[3])||'';
+                    if(item[0]==='country-name') country=item[3]||'';
+                });
+            }
+            const roleLabel = (e.roles||[]).map(r=>r.charAt(0).toUpperCase()+r.slice(1)).join(' / ');
+            const cRows =
+                row('Name', name||'Privacy Protected') +
+                row('Organisation', org) +
+                row('Email', email ? `<a href="mailto:${email}" style="color:var(--accent-color)">${email}</a>` : '') +
+                row('Phone', phone) +
+                row('Address', addr) +
+                row('Country', country);
+            out += section(roleLabel, '👤', cRows);
+        });
 
         // Nameservers
         if(data.nameservers && data.nameservers.length){
-            const __ns = data.nameservers.map(ns => ns.ldhName || ns.handle || ns).join(', ');
-            out += `<h3>Nameservers</h3><p>${safeText(__ns)}</p>`;
-            __setOutText('ns', __ns);
-        } else {
-            out += `<h3>Nameservers</h3><p>N/A</p>`;
+            const nsRows = data.nameservers.map(ns => row('Nameserver', ns.ldhName||ns.handle||'')).join('');
+            out += section('Nameservers', '🔗', nsRows);
+            __setOutText('ns', data.nameservers.map(ns=>ns.ldhName||'').join(', '));
         }
 
-        // Contacts (admin/tech) - attempt to extract
-        if(data.entities && data.entities.length){
-            const contacts = data.entities
-              .filter(e => e.roles && e.roles.some(r => ['registrant','administrative','technical','admin','tech'].includes(String(r).toLowerCase())))
-              .map(e => {
-                let label = (e.roles || []).join(', ') || (e.handle || 'entity');
-                let info = 'N/A';
-                if(e.vcardArray && e.vcardArray[1]){
-                  info = e.vcardArray[1].map(it => (Array.isArray(it) && it.length>=4) ? it[3] : null).filter(Boolean).join(', ');
-                }
-                return `${label}: ${info}`;
-              });
-            if(contacts.length) out += `<h3>Contacts</h3><p>${safeText(contacts.join('\n'))}</p>`;
+        // DNSSEC
+        if(data.secureDNS){
+            const dns = data.secureDNS;
+            const dsRows =
+                row('Delegation Signed', dns.delegationSigned ? '✅ Yes' : '❌ No') +
+                row('Zone Signed', dns.zoneSigned ? '✅ Yes' : '❌ No') +
+                (dns.dsData ? row('DS Records', dns.dsData.length + ' record(s)') : '');
+            out += section('DNSSEC', '🔒', dsRows);
         }
 
-        // Raw JSON as fallback (small) — only if above data is sparse
-        if(out.trim().length < 50 && data){
-            out += `<h3>Raw RDAP Data</h3><p>${safeText(JSON.stringify(data, null, 2))}</p>`;
-        }
+        // Update hidden fields for any other use
+        __setOutText('domain', data.ldhName||domain);
+        __setOutText('registrar', regEntity ? ((regEntity.vcardArray&&regEntity.vcardArray[1]&&regEntity.vcardArray[1].find(v=>v[0]==='fn'))||{3:''})[3]||regEntity.handle||'' : '');
+        __setOutText('created', fmtDate(evMap['registration']));
+        __setOutText('expires', fmtDate(evMap['expiration']));
+        __setOutText('status', statuses.join(', '));
 
-        resultsEl.innerHTML = out;
+        resultsEl.innerHTML = out || '<p>No data found.</p>';
     })
-    .catch(err => {
-        resultsEl.innerHTML = `<p>Error fetching WHOIS data: ${err.message}</p>`;
-    });
+    .catch(err => { resultsEl.innerHTML = `<p>Error: ${err.message}</p>`; });
 }
 </script>
 </div>
