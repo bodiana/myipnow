@@ -360,13 +360,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-
         let button = form.querySelector("button");
-        button.innerText = "Message Sent ✔";
+        button.innerText = "Sending...";
         button.disabled = true;
 
-        // Disable inputs to prevent editing
-        form.querySelectorAll("input, textarea").forEach(el => el.disabled = true);
+        const data = new FormData(form);
+        fetch("/contact-handler.php", { method: "POST", body: data })
+            .then(r => r.json())
+            .then(res => {
+                if (res.ok) {
+                    button.innerText = "Message Sent ✔";
+                    form.querySelectorAll("input, textarea").forEach(el => el.disabled = true);
+                } else {
+                    button.innerText = "Send Message";
+                    button.disabled = false;
+                    alert("Something went wrong. Please try again.");
+                }
+            })
+            .catch(() => {
+                button.innerText = "Send Message";
+                button.disabled = false;
+                alert("Something went wrong. Please try again.");
+            });
     });
 });
 </script>
