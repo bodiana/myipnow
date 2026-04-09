@@ -459,12 +459,12 @@ For print or citation, reference this table as:
     var path = location.pathname;
     path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) return parts[0];
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){

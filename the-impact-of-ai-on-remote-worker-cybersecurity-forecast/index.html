@@ -438,21 +438,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   var LANGS = [
     {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
     {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'ES', label:'Espanol', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'FR', label:'Francais', base:'https://myipnow.net/fr/'},
+    {code:'es', flag:'ES', label:'Español', base:'https://myipnow.net/es/'},
+    {code:'fr', flag:'FR', label:'Français', base:'https://myipnow.net/fr/'},
     {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
-    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}
+    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'},
+    {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'},
+    {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'}
   ];
   function getSlug(){
     var path = location.pathname;
     path = path.replace(/^\//, '').replace(/\/$/, '');
     var parts = path.split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) parts.shift();
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
     return parts.join('/');
   }
   function getCurrentLang(){
     var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it'].indexOf(parts[0]) !== -1) return parts[0];
+    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
     return 'en';
   }
   function init(){
