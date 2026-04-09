@@ -272,12 +272,12 @@ ACTUAL FIX (no hacks, no clipping):
 <ul>
 <li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
 <ul>
-<li><a href="https://myipnow.net/nl/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Lookup</a></li>
-<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Lookup</a></li>
-<li><a href="https://myipnow.net/nl/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/nl/">IP Opzoeken</a></li>
+<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Opzoeken</a></li>
+<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Opzoeken</a></li>
+<li><a href="https://myipnow.net/nl/internet-speed-test/">Internetsnelheidstest</a></li>
 <li><a href="https://myipnow.net/nl/ping-test/">Ping Test</a></li>
-<li><a href="https://myipnow.net/nl/generate-password/">Generate Password</a></li>
+<li><a href="https://myipnow.net/nl/generate-password/">Wachtwoord Generator</a></li>
 <li><a href="https://myipnow.net/nl/ip-blacklist/">IP Blacklist</a></li>
 </ul>
 </li>
@@ -660,10 +660,10 @@ IPv6 werkt op dezelfde manier - alleen met grotere getallen, en je hebt meestal 
 </div>
 <h2>Verwant gereedschap</h2>
 <ul>
-<li><a href="https://myipnow.net/nl/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/nl/">IP Opzoeken</a></li>
+<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Opzoeken</a></li>
 <li><a href="https://myipnow.net/nl/ip-blacklist/">IP Blacklist Check</a></li>
-<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Lookup</a></li>
+<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Opzoeken</a></li>
 </ul>
 </article>
 <script>
@@ -1035,6 +1035,7 @@ IPv6 werkt op dezelfde manier - alleen met grotere getallen, en je hebt meestal 
 <a href="https://myipnow.net/it/ip-subnet-calculator/">🇮🇹 Italiano</a>
 <a href="https://myipnow.net/pt/ip-subnet-calculator/">🇧🇷 Português</a>
 <a href="https://myipnow.net/pl/ip-subnet-calculator/">🇵🇱 Polski</a>
+<a href="https://myipnow.net/nl/ip-subnet-calculator/">🇳🇱 Nederlands</a>
 </div>
 <footer class="footer">
 <ul class="footer-nav">
@@ -1811,6 +1812,8 @@ window.addEventListener('load', function() {
     var href = a.getAttribute('href');
     if (!href || !href.startsWith('https://myipnow.net/')) return;
     if (href.includes('/'+lang+'/')) return;
+    var _p = href.replace('https://myipnow.net/','').split('/')[0];
+    if (['de','es','fr','it','pt','pl','nl'].indexOf(_p) !== -1) return;
     var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
     if (path && isTranslated(path)) {
       a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');

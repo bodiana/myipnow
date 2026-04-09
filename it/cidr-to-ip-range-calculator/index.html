@@ -199,13 +199,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
 <ul>
-<li><a href="https://myipnow.net/it/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/it/dns-lookup/">DNS Lookup</a></li>
-<li><a href="https://myipnow.net/it/whois-lookup/">WHOIS Lookup</a></li>
-<li><a href="https://myipnow.net/it/internet-speed-test/">Internet Speed Test</a></li>
-<li><a href="https://myipnow.net/it/ping-test/">Ping Test</a></li>
-<li><a href="https://myipnow.net/it/generate-password/">Generate Password</a></li>
-<li><a href="https://myipnow.net/it/ip-blacklist/">IP Blacklist</a></li>
+<li><a href="https://myipnow.net/it/">Ricerca IP</a></li>
+<li><a href="https://myipnow.net/it/dns-lookup/">Ricerca DNS</a></li>
+<li><a href="https://myipnow.net/it/whois-lookup/">Ricerca WHOIS</a></li>
+<li><a href="https://myipnow.net/it/internet-speed-test/">Test Velocità Internet</a></li>
+<li><a href="https://myipnow.net/it/ping-test/">Test Ping</a></li>
+<li><a href="https://myipnow.net/it/generate-password/">Generatore di Password</a></li>
+<li><a href="https://myipnow.net/it/ip-blacklist/">Blacklist IP</a></li>
 </ul>
 </li>
 <li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
@@ -775,6 +775,8 @@ document.getElementById('btn-calc').onclick = function() {
     var href = a.getAttribute('href');
     if (!href || !href.startsWith('https://myipnow.net/')) return;
     if (href.includes('/'+lang+'/')) return;
+    var _p = href.replace('https://myipnow.net/','').split('/')[0];
+    if (['de','es','fr','it','pt','pl','nl'].indexOf(_p) !== -1) return;
     var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
     if (path && isTranslated(path)) {
       a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');

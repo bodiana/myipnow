@@ -120,13 +120,13 @@ tr:nth-child(even) {background: #f8fafc;}
 <ul>
 <li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
 <ul>
-<li><a href="https://myipnow.net/pl/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/pl/dns-lookup/">DNS Lookup</a></li>
-<li><a href="https://myipnow.net/pl/whois-lookup/">WHOIS Lookup</a></li>
-<li><a href="https://myipnow.net/pl/internet-speed-test/">Internet Speed Test</a></li>
-<li><a href="https://myipnow.net/pl/ping-test/">Ping Test</a></li>
+<li><a href="https://myipnow.net/pl/">Wyszukiwarka IP</a></li>
+<li><a href="https://myipnow.net/pl/dns-lookup/">Wyszukiwarka DNS</a></li>
+<li><a href="https://myipnow.net/pl/whois-lookup/">Wyszukiwarka WHOIS</a></li>
+<li><a href="https://myipnow.net/pl/internet-speed-test/">Test Prędkości Internetu</a></li>
+<li><a href="https://myipnow.net/pl/ping-test/">Test Ping</a></li>
 <li><a href="https://myipnow.net/pl/generate-password/">Generuj hasło</a></li>
-<li><a href="https://myipnow.net/pl/ip-blacklist/">IP Blacklist</a></li>
+<li><a href="https://myipnow.net/pl/ip-blacklist/">Czarna Lista IP</a></li>
 </ul>
 </li>
 <li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
@@ -224,7 +224,7 @@ tr:nth-child(even) {background: #f8fafc;}
 <li><a href="https://myipnow.net/pl/">What Is My IP Address</a></li>
 <li><a href="https://myipnow.net/pl/ip-subnet-calculator/">Free IP Subnet Calculator</a></li>
 <li><a href="https://myipnow.net/pl/dns-lookup/">DNS Lookup Tool</a></li>
-<li><a href="https://myipnow.net/pl/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/pl/whois-lookup/">Wyszukiwarka WHOIS</a></li>
 <li><a href="https://myipnow.net/pl/ip-blacklist/">IP Blacklist Checker</a></li>
 </ul>
 
@@ -242,6 +242,7 @@ tr:nth-child(even) {background: #f8fafc;}
 <a href="https://myipnow.net/fr/router/192.168.0.254/">🇫🇷 Français</a>
 <a href="https://myipnow.net/it/router/192.168.0.254/">🇮🇹 Italiano</a>
 <a href="https://myipnow.net/pt/router/192.168.0.254/">🇧🇷 Português</a>
+<a href="https://myipnow.net/pl/router/192.168.0.254/">🇵🇱 Polski</a>
 <a href="https://myipnow.net/nl/router/192.168.0.254/">🇳🇱 Nederlands</a>
 </div>
 <footer class="footer">
@@ -328,6 +329,8 @@ tr:nth-child(even) {background: #f8fafc;}
     var href = a.getAttribute('href');
     if (!href || !href.startsWith('https://myipnow.net/')) return;
     if (href.includes('/'+lang+'/')) return;
+    var _p = href.replace('https://myipnow.net/','').split('/')[0];
+    if (['de','es','fr','it','pt','pl','nl'].indexOf(_p) !== -1) return;
     var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
     if (path && isTranslated(path)) {
       a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');

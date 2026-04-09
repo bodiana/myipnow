@@ -561,13 +561,13 @@ details summary{list-style: none;}
 <ul>
 <li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
 <ul>
-<li><a href="https://myipnow.net/pt/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/pt/dns-lookup/">DNS Lookup</a></li>
-<li><a href="https://myipnow.net/pt/whois-lookup/">WHOIS Lookup</a></li>
-<li><a href="https://myipnow.net/pt/internet-speed-test/">Internet Speed Test</a></li>
-<li><a href="https://myipnow.net/pt/ping-test/">Ping Test</a></li>
+<li><a href="https://myipnow.net/pt/">Pesquisa de IP</a></li>
+<li><a href="https://myipnow.net/pt/dns-lookup/">Pesquisa DNS</a></li>
+<li><a href="https://myipnow.net/pt/whois-lookup/">Pesquisa WHOIS</a></li>
+<li><a href="https://myipnow.net/pt/internet-speed-test/">Teste de Velocidade</a></li>
+<li><a href="https://myipnow.net/pt/ping-test/">Teste de Ping</a></li>
 <li><a href="https://myipnow.net/pt/generate-password/">Gerar Senha</a></li>
-<li><a href="https://myipnow.net/pt/ip-blacklist/">IP Blacklist</a></li>
+<li><a href="https://myipnow.net/pt/ip-blacklist/">Lista Negra IP</a></li>
 </ul>
 </li>
 <li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
@@ -845,6 +845,7 @@ diagnosticar problemas de rede ou confirmar configurações de segurança.</p>
 <a href="https://myipnow.net/es/">🇪🇸 Español</a>
 <a href="https://myipnow.net/fr/">🇫🇷 Français</a>
 <a href="https://myipnow.net/it/">🇮🇹 Italiano</a>
+<a href="https://myipnow.net/pt/">🇧🇷 Português</a>
 <a href="https://myipnow.net/pl/">🇵🇱 Polski</a>
 <a href="https://myipnow.net/nl/">🇳🇱 Nederlands</a>
 </div>
@@ -1243,6 +1244,8 @@ if (toggleBtn && typeof map !== "undefined") {
     var href = a.getAttribute('href');
     if (!href || !href.startsWith('https://myipnow.net/')) return;
     if (href.includes('/'+lang+'/')) return;
+    var _p = href.replace('https://myipnow.net/','').split('/')[0];
+    if (['de','es','fr','it','pt','pl','nl'].indexOf(_p) !== -1) return;
     var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
     if (path && isTranslated(path)) {
       a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');

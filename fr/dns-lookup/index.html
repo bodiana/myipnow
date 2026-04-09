@@ -150,13 +150,13 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <ul>
 <li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
 <ul>
-<li><a href="https://myipnow.net/fr/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/fr/dns-lookup/">DNS Lookup</a></li>
-<li><a href="https://myipnow.net/fr/whois-lookup/">WHOIS Lookup</a></li>
-<li><a href="https://myipnow.net/fr/internet-speed-test/">Internet Speed Test</a></li>
-<li><a href="https://myipnow.net/fr/ping-test/">Ping Test</a></li>
-<li><a href="https://myipnow.net/fr/generate-password/">Generate Password</a></li>
-<li><a href="https://myipnow.net/fr/ip-blacklist/">IP Blacklist</a></li>
+<li><a href="https://myipnow.net/fr/">Recherche IP</a></li>
+<li><a href="https://myipnow.net/fr/dns-lookup/">Recherche DNS</a></li>
+<li><a href="https://myipnow.net/fr/whois-lookup/">Recherche WHOIS</a></li>
+<li><a href="https://myipnow.net/fr/internet-speed-test/">Test de Vitesse</a></li>
+<li><a href="https://myipnow.net/fr/ping-test/">Test Ping</a></li>
+<li><a href="https://myipnow.net/fr/generate-password/">Générateur de Mot de Passe</a></li>
+<li><a href="https://myipnow.net/fr/ip-blacklist/">Liste Noire IP</a></li>
 </ul>
 </li>
 <li><a href="https://myipnow.net/online-safety/">Online Safety</a></li>
@@ -245,7 +245,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <ul>
 <li><a href="https://myipnow.net/ip-lookup/">IP Lookup Tool</a></li>
 <li><a href="https://myipnow.net/fr/whois-lookup/">WHOIS Lookup Tool</a></li>
-<li><a href="https://myipnow.net/fr/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/fr/internet-speed-test/">Test de Vitesse</a></li>
 <li><a href="https://myipnow.net/fr/generate-password/">Password Generator</a></li>
 <li><a href="https://myipnow.net/fr/ip-blacklist/">IP Blacklist Checker</a></li>
 </ul>
@@ -541,6 +541,8 @@ document.addEventListener('DOMContentLoaded', function(){
     var href = a.getAttribute('href');
     if (!href || !href.startsWith('https://myipnow.net/')) return;
     if (href.includes('/'+lang+'/')) return;
+    var _p = href.replace('https://myipnow.net/','').split('/')[0];
+    if (['de','es','fr','it','pt','pl','nl'].indexOf(_p) !== -1) return;
     var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
     if (path && isTranslated(path)) {
       a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');

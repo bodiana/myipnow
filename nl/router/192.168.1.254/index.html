@@ -120,10 +120,10 @@ tr:nth-child(even) {background: #f8fafc;}
 <ul>
 <li class="nav-tools"><a href="https://myipnow.net/#/">Tools ▾</a>
 <ul>
-<li><a href="https://myipnow.net/nl/">IP Lookup</a></li>
-<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Lookup</a></li>
-<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Lookup</a></li>
-<li><a href="https://myipnow.net/nl/internet-speed-test/">Internet Speed Test</a></li>
+<li><a href="https://myipnow.net/nl/">IP Opzoeken</a></li>
+<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Opzoeken</a></li>
+<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Opzoeken</a></li>
+<li><a href="https://myipnow.net/nl/internet-speed-test/">Internetsnelheidstest</a></li>
 <li><a href="https://myipnow.net/nl/ping-test/">Ping Test</a></li>
 <li><a href="https://myipnow.net/nl/generate-password/">Wachtwoord genereren</a></li>
 <li><a href="https://myipnow.net/nl/ip-blacklist/">IP Blacklist</a></li>
@@ -224,7 +224,7 @@ tr:nth-child(even) {background: #f8fafc;}
 <li><a href="https://myipnow.net/nl/">What Is My IP Address</a></li>
 <li><a href="https://myipnow.net/nl/ip-subnet-calculator/">Free IP Subnet Calculator</a></li>
 <li><a href="https://myipnow.net/nl/dns-lookup/">DNS Lookup Tool</a></li>
-<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Lookup</a></li>
+<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Opzoeken</a></li>
 <li><a href="https://myipnow.net/nl/ip-blacklist/">IP Blacklist Checker</a></li>
 </ul>
 
@@ -243,6 +243,7 @@ tr:nth-child(even) {background: #f8fafc;}
 <a href="https://myipnow.net/it/router/192.168.1.254/">🇮🇹 Italiano</a>
 <a href="https://myipnow.net/pt/router/192.168.1.254/">🇧🇷 Português</a>
 <a href="https://myipnow.net/pl/router/192.168.1.254/">🇵🇱 Polski</a>
+<a href="https://myipnow.net/nl/router/192.168.1.254/">🇳🇱 Nederlands</a>
 </div>
 <footer class="footer">
 <ul class="footer-nav">
@@ -328,6 +329,8 @@ tr:nth-child(even) {background: #f8fafc;}
     var href = a.getAttribute('href');
     if (!href || !href.startsWith('https://myipnow.net/')) return;
     if (href.includes('/'+lang+'/')) return;
+    var _p = href.replace('https://myipnow.net/','').split('/')[0];
+    if (['de','es','fr','it','pt','pl','nl'].indexOf(_p) !== -1) return;
     var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
     if (path && isTranslated(path)) {
       a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');

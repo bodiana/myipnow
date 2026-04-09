@@ -201,6 +201,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <a href="https://myipnow.net/it/hide-my-ip/">🇮🇹 Italiano</a>
 <a href="https://myipnow.net/pt/hide-my-ip/">🇧🇷 Português</a>
 <a href="https://myipnow.net/pl/hide-my-ip/">🇵🇱 Polski</a>
+<a href="https://myipnow.net/nl/hide-my-ip/">🇳🇱 Nederlands</a>
 </div>
 <footer class="footer">
 <ul class="footer-nav">
@@ -334,6 +335,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
     var href = a.getAttribute('href');
     if (!href || !href.startsWith('https://myipnow.net/')) return;
     if (href.includes('/'+lang+'/')) return;
+    var _p = href.replace('https://myipnow.net/','').split('/')[0];
+    if (['de','es','fr','it','pt','pl','nl'].indexOf(_p) !== -1) return;
     var path = href.replace('https://myipnow.net/', '').replace(/\/$/, '');
     if (path && isTranslated(path)) {
       a.setAttribute('href', 'https://myipnow.net/' + lang + '/' + path + '/');
