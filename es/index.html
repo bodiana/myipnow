@@ -581,7 +581,7 @@ details summary{list-style: none;}
 </header>
 <main aria-label="IP Information" class="main-section">
 <section id="hero-ip">
-<h1 class="hero-title">¿Cuál es mi dirección IP?</h1>
+<h1 class="hero-title">Mi Dirección IP</h1>
 <p class="snippet-answer">
 Tu dirección IP es un número único asignado a tu dispositivo en Internet. Esta herramienta muestra al instante tu dirección pública IPv4 e IPv6, ubicación, ISP y ASN.
 </p>
@@ -614,21 +614,119 @@ Tu dirección IP es un número único asignado a tu dispositivo en Internet. Est
 </section>
 <section class="tool-grid">
 <div class="tool-left">
-<h2>¿Cuál es mi dirección IP?</h2>
-<p>Una dirección IP (Protocolo de Internet) es un número único asignado a su dispositivo cuando se conecta a internet. Permite que sitios web, servidores y servicios en línea identifiquen su conexión. Su IP pública es asignada por su proveedor de internet (ISP) y es visible para cualquier sitio web al que se conecte.</p>
-<ul>
-<li><strong>IP Pública:</strong> Visible para sitios web e internet — mostrada arriba</li>
-<li><strong>IP Privada:</strong> Usada dentro de su red local (ej. 192.168.1.x)</li>
-<li><strong>IPv4:</strong> Formato estándar de 32 bits, ej. 203.0.113.1</li>
-<li><strong>IPv6:</strong> Formato más nuevo de 128 bits, ej. 2001:db8::1</li>
-</ul>
-<p>
-Su dirección IP mostrada arriba es su IP pública real. Use nuestras herramientas gratuitas para más detalles:
-<a href="https://myipnow.net/es/whois-lookup/" style="color:var(--accent-color)">Búsqueda WHOIS</a>,
-<a href="https://myipnow.net/es/dns-lookup/" style="color:var(--accent-color)">Búsqueda DNS</a>,
-<a href="https://myipnow.net/es/ip-blacklist/" style="color:var(--accent-color)">Lista Negra IP</a>.
-</p>
-</section>
+<h2>Información sobre mi ubicación IP</h2>
+<div class="info-table">
+<div class="row"><span>Ciudad</span>
+<span class="copy-wrap">
+<span id="city">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="city">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Estado/Región</span>
+<span class="copy-wrap">
+<span id="region">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="region">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Código Postal</span>
+<span class="copy-wrap">
+<span id="postal">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="postal">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>País</span>
+<span class="copy-wrap">
+<span id="country">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="country">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>ISP</span>
+<span class="copy-wrap">
+<span id="isp">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="isp">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>ASN</span>
+<span class="copy-wrap">
+<span id="asn"><a href="https://myipnow.net/#/" id="asnLink" style="color:#4f46e5;font-weight:600;text-decoration:none;">-</a></span>
+<button aria-label="Copy" class="copy-btn" data-copy="asn">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Zona Horaria</span>
+<span class="copy-wrap">
+<span id="timezone">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="timezone">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Latitud</span>
+<span class="copy-wrap">
+<span id="latitude">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="latitude">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Longitud</span>
+<span class="copy-wrap">
+<span id="longitude">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="longitude">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<a class="cta-btn" href="https://myipnow.net/es/hide-my-ip/">🛡️ Proteger mi conexión con una VPN</a>
+</div>
+<div class="tool-right">
+<div class="map-card">
+<div class="map" id="map"></div>
+<div class="map-controls">
+<button id="refreshBtn">🔄 Refresh</button>
+<button id="toggleMapBtn">🗺️ Toggle Map</button>
+</div>
+</div>
+</div></section>
 </main>
 <div aria-label="IP calculators" class="container tool-buttons-container">
 <div class="tool-buttons-row">
@@ -652,98 +750,92 @@ Se utiliza para la comunicación, la seguridad, la geolocalización y la resoluc
 <p>Puede comprobar su dirección IP actual utilizando nuestra herramienta gratuita IP Lookup, que incluye información sobre IPv4, IPv6, ubicación, ISP y ASN.</p>
 </section>
 <section aria-label="Frequently Asked Questions" class="faq-snippet">
-<h2>Preguntas Frecuentes</h2>
-<div class="faq-item">
-<div class="faq-question">¿Cuál es mi dirección IP ahora mismo?</div>
-<div class="faq-answer">Su dirección IP pública actual se muestra en la parte superior de esta página. Se actualiza automáticamente cada vez que carga la página.</div>
-</div>
+<h2>Preguntas frecuentes</h2>
 <div class="faq-item">
 <div class="faq-question">¿Qué es una dirección IP?</div>
-<div class="faq-answer">Una dirección IP es una etiqueta numérica única asignada a cada dispositivo conectado a internet. Funciona como una dirección postal para su computadora.</div>
+<div class="faq-answer">Una dirección IP (Protocolo de Internet) es una etiqueta numérica única asignada a cada dispositivo conectado a una red informática que utiliza el Protocolo de Internet para comunicarse. Piense en ella como si fuera la dirección postal de su ordenador en Internet.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">¿Cuál es la diferencia entre IP pública y privada?</div>
-<div class="faq-answer">Su IP pública es lo que ven los sitios web, asignada por su ISP. Su IP privada (ej. 192.168.1.5) solo se usa dentro de su red local.</div>
+<div class="faq-question">¿Cuál es la diferencia entre una IP pública y una IP privada?</div>
+<div class="faq-answer">Su dirección IP pública es la que ve el mundo exterior. Una IP Privada se utiliza en tu red local. Tu router asigna IPs privadas a los dispositivos.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">¿Cuál es mi dirección IPv4?</div>
-<div class="faq-answer">Su dirección IPv4 es la dirección numérica de 32 bits en formato xxx.xxx.xxx.xxx mostrada arriba.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">¿Cuál es mi dirección IPv6?</div>
-<div class="faq-answer">Su dirección IPv6 es una dirección de 128 bits en formato hexadecimal. No todos los ISP soportan IPv6.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">¿Por qué mi ubicación no es exacta?</div>
-<div class="faq-answer">La geolocalización IP se basa en la ubicación registrada de su ISP, no en su dirección exacta. Suele ser precisa a nivel de ciudad o región.</div>
+<div class="faq-question">¿Por qué mi ubicación no es perfectamente exacta?</div>
+<div class="faq-answer">La ubicación se basa en su IP pública, vinculada a los servidores de su ISP. Suele ser precisa a nivel de ciudad o región.</div>
 </div>
 <div class="faq-item">
 <div class="faq-question">¿Mi dirección IP es estática o dinámica?</div>
-<div class="faq-answer">La mayoría de conexiones domésticas usan IPs dinámicas que cambian periódicamente. Las IPs estáticas son fijas y típicamente usadas por empresas.</div>
+<div class="faq-answer">La mayoría de las conexiones residenciales utilizan direcciones IP dinámicas. Las IP estáticas son fijas y suelen solicitarlas empresas o servidores.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">¿Cómo puedo ocultar mi dirección IP?</div>
-<div class="faq-answer">La forma más común es usar una VPN. Una VPN reemplaza su IP real con una IP de servidor, ocultando su ubicación.</div>
+<div class="faq-question">¿Cómo puedo cambiar mi dirección IP?</div>
+<div class="faq-answer">Puedes cambiar tu IP reiniciando tu router o contactando con tu ISP para obtener una IP estática.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">¿Alguien puede rastrearme con mi IP?</div>
-<div class="faq-answer">Su IP revela su ubicación aproximada e ISP, no su dirección exacta. Sin embargo, su ISP puede vincular su IP a su cuenta.</div>
+<div class="faq-question">¿Qué es IPv4?</div>
+<div class="faq-answer">IPv4 es la versión original del Protocolo de Internet, que utiliza un formato de direcciones de 32 bits. Con la explosión de dispositivos de Internet, el número limitado de direcciones IPv4 es una preocupación creciente.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">¿Cómo encuentro mi IP en Windows?</div>
-<div class="faq-answer">Abra el Símbolo del sistema y escriba ipconfig. Su IP pública siempre se muestra en la parte superior de esta página.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">¿Cómo encuentro mi IP en Mac?</div>
-<div class="faq-answer">Abra Terminal y escriba ifconfig | grep inet. O vaya a Preferencias del Sistema → Red.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">¿Cómo encuentro mi IP en iPhone o Android?</div>
-<div class="faq-answer">iPhone: Ajustes → Wi-Fi → toca tu red. Android: Ajustes → Red → Wi-Fi → toca tu red → Avanzado.</div>
+<div class="faq-question">¿Qué es IPv6?</div>
+<div class="faq-answer">IPv6 es la versión más reciente del Protocolo de Internet, que utiliza un formato de dirección de 128 bits para dar cabida a un número casi ilimitado de direcciones únicas.</div>
 </div>
 </section>
 <section class="guide-section">
-<h2>Guía de Direcciones IP: Todo lo que Necesitas Saber</h2>
+<h2>Guía definitiva sobre direcciones IP</h2>
 <div class="guide-content">
-<p>Su dirección IP es la identidad de su dispositivo en internet. Cada vez que carga una página web, envía un correo o transmite un video, su IP se usa para enrutar datos.</p>
-<h3>IP Pública vs. IP Privada</h3>
-<p>Existen dos tipos de direcciones IP:</p>
+<p>Una dirección IP es una parte fundamental del funcionamiento de Internet. Es el identificador único que permite a su
+          comunicarse con otros dispositivos y servidores de la red. Conocer tu dirección IP puede ayudarte
+          a solucionar problemas de red.</p>
+<h3>Fundamentos de las direcciones IP: Pública vs. Privada</h3>
+<p>Todos los dispositivos de una red tienen una dirección IP. Existen dos tipos principales:</p>
 <ul>
-<li><strong>IP Pública:</strong> Asignada por su ISP, visible en internet. Toda su red doméstica comparte una IP pública.</li>
-<li><strong>IP Privada:</strong> Asignada por su router a cada dispositivo (ej. 192.168.1.5). No visible fuera de su red.</li>
+<li><strong>Dirección IP pública:</strong>
+            Es la dirección asignada a su red por su proveedor de servicios de Internet (ISP). Es la dirección que
+            el resto de Internet utiliza para encontrarle y comunicarse con usted. Toda tu red doméstica comparte una dirección IP pública.</li>
+<li><strong>Dirección IP privada:</strong>
+            Se trata de una dirección única asignada a cada dispositivo (como tu teléfono, portátil o smart TV) dentro de tu red local.
+            El router utiliza estas IP privadas para dirigir el tráfico al dispositivo correcto.</li>
 </ul>
-<h3>IPv4 vs. IPv6: ¿Cuál es la Diferencia?</h3>
-<p>Existen dos versiones del protocolo de internet en uso hoy:</p>
+<h3>¿Cuál es la diferencia entre IPv4 y IPv6?</h3>
+<p>Las direcciones IP existen en dos versiones principales:</p>
 <ul>
-<li><strong>IPv4:</strong> Usa una dirección de 32 bits (ej. 203.0.113.1). Solo ~4.3 mil millones de direcciones posibles.</li>
-<li><strong>IPv6:</strong> Usa una dirección de 128 bits (ej. 2001:db8::1). Proporciona direcciones virtualmente ilimitadas.</li>
+<li><strong>IPv4:</strong>
+            El estándar original, IPv4 utiliza un formato de dirección de 32 bits (por ejemplo, 192.0.2.1). Con la explosión de
+            dispositivos conectados a Internet, el número limitado de direcciones IPv4 es una preocupación creciente.</li>
+<li><strong>IPv6:</strong>
+            La versión más reciente, IPv6 utiliza un formato de dirección de 128 bits (por ejemplo, 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Se desarrolló
+            desarrollado para solucionar la escasez de direcciones IPv4, ofreciendo un suministro prácticamente ilimitado de direcciones únicas.</li>
 </ul>
-<p>La mayoría de dispositivos soportan ambas. Si su ISP soporta IPv6, verá ambas direcciones arriba.</p>
-<h3>Cómo Encontrar su Dirección IP en Cualquier Dispositivo</h3>
+<h3>¿Por qué es importante su dirección IP?</h3>
+<p>Conocer su dirección IP es importante por varias razones:</p>
 <ul>
-<li><strong>Windows:</strong> Abrir Símbolo del sistema → escribir <code>ipconfig</code></li>
-<li><strong>Mac:</strong> Abrir Terminal → escribir <code>ifconfig | grep inet</code></li>
-<li><strong>Linux:</strong> Abrir Terminal → escribir <code>ip addr show</code></li>
-<li><strong>iPhone:</strong> Ajustes → Wi-Fi → toca el nombre de tu red</li>
-<li><strong>Android:</strong> Ajustes → Red → Wi-Fi → toca tu red → Avanzado</li>
-<li><strong>Método más fácil:</strong> Visita myipnow.net — tu IP pública se muestra instantáneamente</li>
+<li><strong>Acceso remoto:</strong>
+            Te permite conectarte a los dispositivos de tu red doméstica desde una ubicación remota.</li>
+<li><strong>Seguridad:</strong>
+            Puedes utilizar tu dirección IP para bloquear o permitir el acceso a servicios, lo cual es una parte clave de la seguridad de la red.</li>
+<li><strong>Solución de problemas:</strong>
+            Una dirección IP es lo primero que hay que comprobar cuando se diagnostican problemas de conexión a Internet.</li>
+<li><strong>Geo-targeting:</strong>
+  Los sitios web y los servicios en línea utilizan su dirección IP para determinar su ubicación aproximada y ofrecer contenidos o servicios localizados.</li>
 </ul>
-<h3>¿Qué Revela tu Dirección IP?</h3>
-<p>Su IP pública puede revelar su ciudad o región aproximada, su ISP y si está usando una VPN. No puede revelar su dirección exacta sin una orden judicial. <a href="https://myipnow.net/es/whois-lookup/" style="color:var(--accent-color)">Búsqueda WHOIS</a> <a href="https://myipnow.net/es/asn-lookup/" style="color:var(--accent-color)">ASN Lookup</a>.</p>
-<h3>Cómo Ocultar su Dirección IP</h3>
-<p>Para proteger su privacidad, puede ocultar su IP real usando una VPN. Una VPN reemplaza su IP con una IP de servidor de otra ubicación. <a href="https://myipnow.net/es/hide-my-ip/" style="color:var(--accent-color)"><strong>Ocultar IP</strong></a>.</p>
-<h3>¿Está su IP en una Lista Negra?</h3>
-<p>Si tiene problemas enviando correos o accediendo a ciertos servicios, su IP podría estar en una lista negra de spam. <a href="https://myipnow.net/es/ip-blacklist/" style="color:var(--accent-color)">Verificador de Lista Negra IP</a>.</p>
-<h3>Herramientas de Red y Dirección IP</h3>
-<p>MyIPNow ofrece una suite completa de herramientas de red gratuitas:</p>
-<ul>
-<li><a href="https://myipnow.net/es/dns-lookup/">Búsqueda DNS — verificar registros DNS de cualquier dominio</a></li>
-<li><a href="https://myipnow.net/es/whois-lookup/">Búsqueda WHOIS — encontrar detalles de registro de dominio</a></li>
-<li><a href="https://myipnow.net/es/ip-subnet-calculator/">Calculadora de Subred IP — calcular subredes y rangos CIDR</a></li>
-<li><a href="https://myipnow.net/es/ping-test/">Test de Ping — probar tiempo de respuesta del servidor</a></li>
-<li><a href="https://myipnow.net/es/internet-speed-test/">Test de Velocidad de Internet — medir velocidad de descarga y carga</a></li>
-<li><a href="https://myipnow.net/es/asn-lookup/">Búsqueda ASN — consultar números de sistema autónomo</a></li>
-</ul>
+<h3>Cómo afecta su dirección IP a la privacidad</h3>
+<p>Su dirección IP pública puede revelar información como su ubicación aproximada,
+proveedor de servicios de Internet y tipo de red. Los sitios web, los anunciantes y los servicios
+suelen utilizar direcciones IP para rastrear el comportamiento de los usuarios, aplicar restricciones regionales
+o personalizar contenidos.</p>
+<h3>Utilizar un VPN para ocultar su dirección IP</h3>
+<p>Para mejorar la privacidad en línea, muchos usuarios optan por ocultar su dirección IP utilizando un
+<a href="https://myipnow.net/es/hide-my-ip/"><strong>VPN</strong></a> (Red Privada Virtual).
+Un VPN enruta su tráfico de Internet a través de un servidor seguro y sustituye su dirección IP pública real por otra.
+IP pública real por otra, lo que hace mucho más difícil para los sitios web y terceros
+terceros puedan identificarle o seguirle.</p>
+<p>Utilizar un VPN es especialmente útil cuando se navega en redes Wi-Fi públicas,
+acceder a información sensible o evitar restricciones basadas en la ubicación.</p>
+<h3>Cómo comprobar su dirección IP</h3>
+<p>Puedes encontrar rápidamente tu dirección IP pública actual utilizando una herramienta IP Lookup.
+Esto le permite ver su dirección IP, tipo de conexión y ubicación general.
+Comprobar su dirección IP es útil para verificar conexiones VPN,
+diagnosticar problemas de red o confirmar la configuración de seguridad.</p>
 </div>
 </section>
 <style>

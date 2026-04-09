@@ -581,7 +581,7 @@ details summary{list-style: none;}
 </header>
 <main aria-label="IP Information" class="main-section">
 <section id="hero-ip">
-<h1 class="hero-title">Wat is mijn IP-adres?</h1>
+<h1 class="hero-title">Mijn IP-adres</h1>
 <p class="snippet-answer">
 Uw IP-adres is een uniek nummer dat aan uw apparaat op internet is toegewezen.
 Deze tool toont direct uw publieke IPv4- en IPv6-adres, locatie, ISP en ASN.
@@ -615,21 +615,119 @@ Deze tool toont direct uw publieke IPv4- en IPv6-adres, locatie, ISP en ASN.
 </section>
 <section class="tool-grid">
 <div class="tool-left">
-<h2>Wat is mijn IP-adres?</h2>
-<p>Een IP-adres (Internet Protocol) is een uniek nummer dat aan uw apparaat wordt toegewezen wanneer u verbinding maakt met internet. Het stelt websites, servers en online diensten in staat uw verbinding te identificeren. Uw publieke IP-adres wordt toegewezen door uw internetprovider (ISP) en is zichtbaar voor elke website waarmee u verbinding maakt.</p>
-<ul>
-<li><strong>Publiek IP:</strong> Zichtbaar voor websites en internet — hierboven weergegeven</li>
-<li><strong>Privé IP:</strong> Gebruikt binnen uw lokale netwerk (bijv. 192.168.1.x)</li>
-<li><strong>IPv4:</strong> Standaard 32-bits formaat, bijv. 203.0.113.1</li>
-<li><strong>IPv6:</strong> Nieuwer 128-bits formaat, bijv. 2001:db8::1</li>
-</ul>
-<p>
-Uw IP-adres hierboven is uw echte publieke IP. Gebruik onze gratis tools voor meer details:
-<a href="https://myipnow.net/nl/whois-lookup/" style="color:var(--accent-color)">WHOIS Opzoeken</a>,
-<a href="https://myipnow.net/nl/dns-lookup/" style="color:var(--accent-color)">DNS Opzoeken</a>,
-<a href="https://myipnow.net/nl/ip-blacklist/" style="color:var(--accent-color)">IP Blacklist</a>.
-</p>
-</section>
+<h2>Mijn IP-locatiegegevens</h2>
+<div class="info-table">
+<div class="row"><span>Stad</span>
+<span class="copy-wrap">
+<span id="city">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="city">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Staat/Regio</span>
+<span class="copy-wrap">
+<span id="region">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="region">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Postcode</span>
+<span class="copy-wrap">
+<span id="postal">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="postal">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Land</span>
+<span class="copy-wrap">
+<span id="country">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="country">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>ISP</span>
+<span class="copy-wrap">
+<span id="isp">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="isp">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>ASN</span>
+<span class="copy-wrap">
+<span id="asn"><a href="https://myipnow.net/#/" id="asnLink" style="color:#4f46e5;font-weight:600;text-decoration:none;">-</a></span>
+<button aria-label="Copy" class="copy-btn" data-copy="asn">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Tijdzone</span>
+<span class="copy-wrap">
+<span id="timezone">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="timezone">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Breedtegraad</span>
+<span class="copy-wrap">
+<span id="latitude">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="latitude">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Lengtegraad</span>
+<span class="copy-wrap">
+<span id="longitude">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="longitude">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<a class="cta-btn" href="https://myipnow.net/nl/hide-my-ip/">🛡️ Beveilig mijn verbinding met een VPN</a>
+</div>
+<div class="tool-right">
+<div class="map-card">
+<div class="map" id="map"></div>
+<div class="map-controls">
+<button id="refreshBtn">🔄 Vernieuwen</button>
+<button id="toggleMapBtn">🗺️ Kaart wisselen</button>
+</div>
+</div>
+</div></section>
 </main>
 <div aria-label="IP calculators" class="container tool-buttons-container">
 <div class="tool-buttons-row">
@@ -653,98 +751,92 @@ Het wordt gebruikt voor communicatie, beveiliging, geolokalisatie en het oplosse
 <p>Je kunt je huidige IP-adres hierboven controleren met onze gratis IP Lookup tool, inclusief informatie over IPv4, IPv6, locatie, ISP en ASN.</p>
 </section>
 <section aria-label="Frequently Asked Questions" class="faq-snippet">
-<h2>Veelgestelde Vragen</h2>
-<div class="faq-item">
-<div class="faq-question">Wat is mijn IP-adres nu?</div>
-<div class="faq-answer">Uw huidige publieke IP-adres wordt bovenaan deze pagina weergegeven. Het wordt automatisch bijgewerkt bij elke paginalaad.</div>
-</div>
+<h2>Veelgestelde vragen</h2>
 <div class="faq-item">
 <div class="faq-question">Wat is een IP-adres?</div>
-<div class="faq-answer">Een IP-adres is een uniek numeriek label dat aan elk apparaat verbonden met internet is toegewezen. Het werkt als een postadres voor uw computer.</div>
+<div class="faq-answer">Een IP-adres (Internet Protocol) is een unieke numerieke identificatie die wordt toegewezen aan elk apparaat dat is aangesloten op een computernetwerk dat het Internet Protocol gebruikt voor communicatie. Zie het als een postadres voor je computer op het internet.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Wat is het verschil tussen publiek en privé IP?</div>
-<div class="faq-answer">Uw publieke IP is wat websites zien, toegewezen door uw ISP. Uw privé IP (bijv. 192.168.1.5) wordt alleen binnen uw lokale netwerk gebruikt.</div>
+<div class="faq-question">Wat is het verschil tussen een openbaar en een privé IP-adres?</div>
+<div class="faq-answer">Je openbare IP-adres is wat de buitenwereld ziet. Een privé IP-adres wordt gebruikt in je lokale netwerk. Je router wijst privé-IP's toe aan de apparaten.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Wat is mijn IPv4-adres?</div>
-<div class="faq-answer">Uw IPv4-adres is het 32-bits numerieke adres in het formaat xxx.xxx.xxx.xxx dat hierboven wordt weergegeven.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Wat is mijn IPv6-adres?</div>
-<div class="faq-answer">Uw IPv6-adres is een 128-bits adres in hexadecimaal formaat. Niet alle ISPs ondersteunen IPv6 nog.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Waarom is mijn locatie niet nauwkeurig?</div>
-<div class="faq-answer">IP-geolocatie is gebaseerd op de geregistreerde locatie van uw ISP, niet uw exacte adres. Het is meestal nauwkeurig op stad- of regioniveau.</div>
+<div class="faq-question">Waarom is mijn locatie niet helemaal nauwkeurig?</div>
+<div class="faq-answer">De locatie is gebaseerd op je publieke IP, dat verbonden is met de servers van je ISP. Het is meestal nauwkeurig op stads- of regioniveau.</div>
 </div>
 <div class="faq-item">
 <div class="faq-question">Is mijn IP-adres statisch of dynamisch?</div>
-<div class="faq-answer">De meeste thuisverbindingen gebruiken dynamische IP-adressen die periodiek veranderen. Statische IP's zijn vast en worden typisch door bedrijven gebruikt.</div>
+<div class="faq-answer">De meeste privéverbindingen gebruiken dynamische IP-adressen. Statische IP-adressen staan vast en worden meestal aangevraagd door bedrijven of servers.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Hoe kan ik mijn IP-adres verbergen?</div>
-<div class="faq-answer">De meest gebruikelijke manier is een VPN te gebruiken. Een VPN vervangt uw echte IP door een server-IP, waardoor uw locatie wordt verborgen.</div>
+<div class="faq-question">Hoe kan ik mijn IP-adres wijzigen?</div>
+<div class="faq-answer">Je kunt je IP veranderen door je router opnieuw op te starten of door contact op te nemen met je ISP om een statisch IP te verkrijgen.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Kan iemand mij volgen met mijn IP?</div>
-<div class="faq-answer">Uw IP onthult uw geschatte locatie en ISP, niet uw exacte adres. Uw ISP kan uw IP echter koppelen aan uw account.</div>
+<div class="faq-question">Wat is IPv4?</div>
+<div class="faq-answer">IPv4 is de originele versie van het Internet Protocol dat een 32-bits adresformaat gebruikt. Met de explosie van het aantal internetapparaten wordt het beperkte aantal IPv4-adressen een steeds groter probleem.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Hoe vind ik mijn IP op Windows?</div>
-<div class="faq-answer">Open de Opdrachtprompt en typ ipconfig. Uw publieke IP wordt altijd bovenaan deze pagina weergegeven.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Hoe vind ik mijn IP op Mac?</div>
-<div class="faq-answer">Open Terminal en typ ifconfig | grep inet. Of ga naar Systeemvoorkeuren → Netwerk.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Hoe vind ik mijn IP op iPhone of Android?</div>
-<div class="faq-answer">iPhone: Instellingen → Wi-Fi → tik op uw netwerk. Android: Instellingen → Netwerk → Wi-Fi → tik op uw netwerk → Geavanceerd.</div>
+<div class="faq-question">Wat is IPv6?</div>
+<div class="faq-answer">IPv6 is de nieuwste versie van het Internet Protocol, dat een 128-bits adresindeling gebruikt om een bijna onbeperkt aantal unieke adressen mogelijk te maken.</div>
 </div>
 </section>
 <section class="guide-section">
-<h2>IP-adres Gids: Alles wat U Moet Weten</h2>
+<h2>De ultieme gids voor IP-adressen</h2>
 <div class="guide-content">
-<p>Uw IP-adres is de identiteit van uw apparaat op internet. Elke keer dat u een webpagina laadt, een e-mail verstuurt of een video streamt, wordt uw IP gebruikt om gegevens te routeren.</p>
-<h3>Publiek vs. Privé IP-adres</h3>
-<p>Er zijn twee soorten IP-adressen:</p>
+<p>Een IP-adres is een essentieel onderdeel van hoe het internet werkt. Het is de unieke identificatie waarmee uw computer kan
+          computer kan communiceren met andere apparaten en servers op het internet. Het kennen van je IP-adres kan je helpen
+          van online beveiliging tot het oplossen van netwerkproblemen.</p>
+<h3>Basisprincipes van het IP-adres: Publiek vs. privé</h3>
+<p>Elk apparaat in een netwerk heeft een IP-adres. Er zijn twee hoofdtypen:</p>
 <ul>
-<li><strong>Publiek IP:</strong> Toegewezen door uw ISP, zichtbaar op internet. Uw hele thuisnetwerk deelt één publiek IP.</li>
-<li><strong>Privé IP:</strong> Toegewezen door uw router aan elk apparaat (bijv. 192.168.1.5). Niet zichtbaar buiten uw netwerk.</li>
+<li><strong>Publiek IP-adres:</strong
+            Dit is het adres dat aan je netwerk is toegewezen door je Internet Service Provider (ISP). Het is het adres dat
+            de rest van het internet gebruikt om je te vinden en met je te communiceren. Je hele thuisnetwerk deelt één openbaar IP-adres.</li>
+<li><strong>Privé IP-adres:</strong>
+            Dit is een uniek adres dat wordt toegewezen aan elk apparaat (bijv. je telefoon, laptop of smart-tv) op je lokale netwerk.
+            Je router gebruikt deze privé-IP's om verkeer naar het juiste apparaat te leiden.</li>
 </ul>
-<h3>IPv4 vs. IPv6: Wat is het Verschil?</h3>
-<p>Er zijn twee versies van het internetprotocol in gebruik vandaag:</p>
+<h3>Wat is het verschil tussen IPv4 en IPv6?</h3>
+<p>IP-adressen zijn beschikbaar in twee versies:</p>
 <ul>
-<li><strong>IPv4:</strong> Gebruikt een 32-bits adres (bijv. 203.0.113.1). Slechts ~4,3 miljard mogelijke adressen.</li>
-<li><strong>IPv6:</strong> Gebruikt een 128-bits adres (bijv. 2001:db8::1). Biedt vrijwel onbeperkte adressen.</li>
+<li><strong>IPv4:</strong>
+            De oorspronkelijke standaard, IPv4, gebruikt een 32-bits adresindeling (bijv. 192.0.2.1). Met de explosieve groei van
+            van apparaten die op internet zijn aangesloten, wordt het beperkte aantal IPv4-adressen een steeds groter probleem.</li>
+<li><strong>IPv6:</strong>
+            De nieuwere versie, IPv6, gebruikt een 128-bits adresindeling (bijvoorbeeld 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Het werd
+            ontwikkeld om het adrestekort van IPv4 op te lossen en biedt een vrijwel onbeperkte voorraad unieke adressen.</li>
 </ul>
-<p>De meeste apparaten ondersteunen beide. Als uw ISP IPv6 ondersteunt, ziet u beide adressen hierboven.</p>
-<h3>Hoe u Uw IP-adres Vindt op Elk Apparaat</h3>
+<h3>Waarom is je IP-adres belangrijk?</h3>
+<p>Je IP-adres kennen is om verschillende redenen belangrijk:</p>
 <ul>
-<li><strong>Windows:</strong> Open Opdrachtprompt → typ <code>ipconfig</code></li>
-<li><strong>Mac:</strong> Open Terminal → typ <code>ifconfig | grep inet</code></li>
-<li><strong>Linux:</strong> Open Terminal → typ <code>ip addr show</code></li>
-<li><strong>iPhone:</strong> Instellingen → Wi-Fi → tik op uw netwerknaam</li>
-<li><strong>Android:</strong> Instellingen → Netwerk → Wi-Fi → tik op uw netwerk → Geavanceerd</li>
-<li><strong>Eenvoudigste methode:</strong> Bezoek myipnow.net — uw publieke IP wordt direct weergegeven</li>
+<li><strong>Toegang op afstand:</strong>
+            Hiermee kun je op afstand verbinding maken met apparaten in je thuisnetwerk.</li>
+<li><strong>Veiligheid:</strong>
+            Je kunt je IP-adres gebruiken om toegang tot services te blokkeren of toe te staan, wat een belangrijk onderdeel van netwerkbeveiliging is.</li>
+<li><strong>Problemen oplossen:</strong>
+            Het IP-adres is het eerste dat moet worden gecontroleerd bij het diagnosticeren van problemen met internetverbindingen.</li>
+<li><strong>Geo targeting:</strong>
+  Websites en online diensten gebruiken uw IP-adres om uw locatie bij benadering te bepalen en gelokaliseerde inhoud of diensten aan te bieden.</li>
 </ul>
-<h3>Wat Onthult Uw IP-adres?</h3>
-<p>Uw publieke IP kan uw geschatte stad of regio, uw ISP en of u een VPN gebruikt onthullen. Het kan uw exacte adres niet onthullen zonder gerechtelijk bevel. <a href="https://myipnow.net/nl/whois-lookup/" style="color:var(--accent-color)">WHOIS Opzoeken</a> <a href="https://myipnow.net/nl/asn-lookup/" style="color:var(--accent-color)">ASN Lookup</a>.</p>
-<h3>Hoe u Uw IP-adres Verbergt</h3>
-<p>Om uw privacy online te beschermen, kunt u uw echte IP verbergen met een VPN. Een VPN vervangt uw IP door een server-IP van een andere locatie. <a href="https://myipnow.net/nl/hide-my-ip/" style="color:var(--accent-color)"><strong>IP Verbergen</strong></a>.</p>
-<h3>Staat Uw IP op een Blacklist?</h3>
-<p>Als u problemen heeft met het versturen van e-mails of toegang tot bepaalde diensten, kan uw IP op een spam-blacklist staan. <a href="https://myipnow.net/nl/ip-blacklist/" style="color:var(--accent-color)">IP Blacklist Checker</a>.</p>
-<h3>IP- en Netwerktools</h3>
-<p>MyIPNow biedt een complete suite van gratis netwerktools:</p>
-<ul>
-<li><a href="https://myipnow.net/nl/dns-lookup/">DNS Opzoeken — controleer DNS-records voor elk domein</a></li>
-<li><a href="https://myipnow.net/nl/whois-lookup/">WHOIS Opzoeken — vind domeinregistratiedetails</a></li>
-<li><a href="https://myipnow.net/nl/ip-subnet-calculator/">IP Subnet Calculator — bereken subnetten en CIDR-bereiken</a></li>
-<li><a href="https://myipnow.net/nl/ping-test/">Ping Test — test serverreactietijd vanaf meerdere locaties</a></li>
-<li><a href="https://myipnow.net/nl/internet-speed-test/">Internetsnelheidstest — meet download- en uploadsnelheid</a></li>
-<li><a href="https://myipnow.net/nl/asn-lookup/">ASN Opzoeken — zoek autonome systeemnummers op</a></li>
-</ul>
+<h3>Hoe je IP-adres gegevensbescherming beïnvloedt</h3>
+<p>Uw openbare IP-adres kan informatie onthullen zoals uw locatie bij benadering,
+internetserviceprovider en netwerktype. Websites, adverteerders en analysediensten
+en analysediensten gebruiken IP-adressen vaak om gebruikersgedrag te volgen, regionale beperkingen toe te passen of inhoud te personaliseren.
+of inhoud te personaliseren.</p>
+<h3>Gebruik van een VPN om je IP-adres te verbergen</h3>
+<p>Om de online privacy te verbeteren, kiezen veel gebruikers ervoor om hun IP-adres te verbergen door gebruik te maken van een
+<a href="HTTPS://MyIPNow.net/nl/hide-my-ip/"><strong>VPN</strong></a> (Virtual Private Network).
+Een VPN routeert je internetverkeer via een beveiligde server en vervangt je echte IP-adres door een ander.
+IP-adres door een ander, waardoor het veel moeilijker wordt voor websites en derden om
+je te identificeren of te volgen.</p>
+<p>Het gebruik van een VPN is vooral handig als je op openbare Wi-Fi-netwerken surft,
+toegang hebt tot gevoelige informatie of locatiebeperkingen wilt omzeilen.</p>
+<h3>Hoe je je IP-adres kunt controleren</h3>
+<p>Je kunt een IP Lookup-tool gebruiken om snel je huidige openbare IP-adres te bepalen.
+Hiermee kunt u uw IP-adres, verbindingstype en algemene locatie bekijken.
+Het controleren van uw IP-adres is handig bij het controleren van VPN verbindingen,
+het diagnosticeren van netwerkproblemen of het bevestigen van beveiligingsinstellingen.</p>
 </div>
 </section>
 <style>

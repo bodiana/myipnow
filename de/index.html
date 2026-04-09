@@ -581,7 +581,7 @@ details summary{list-style: none;}
 </header>
 <main aria-label="IP Information" class="main-section">
 <section id="hero-ip">
-<h1 class="hero-title">Was ist meine IP-Adresse?</h1>
+<h1 class="hero-title">Meine IP Adresse</h1>
 <p class="snippet-answer">
 Ihre IP-Adresse ist eine eindeutige Nummer, die Ihrem Gerät im Internet zugewiesen ist. Dieses Tool zeigt sofort Ihre öffentliche IPv4- und IPv6-Adresse, Standort, ISP und ASN.
 </p>
@@ -614,21 +614,119 @@ Ihre IP-Adresse ist eine eindeutige Nummer, die Ihrem Gerät im Internet zugewie
 </section>
 <section class="tool-grid">
 <div class="tool-left">
-<h2>Was ist meine IP-Adresse?</h2>
-<p>Eine IP-Adresse (Internet-Protokoll-Adresse) ist eine eindeutige Nummer, die Ihrem Gerät zugewiesen wird, wenn Sie sich mit dem Internet verbinden. Sie ermöglicht es Websites, Servern und Online-Diensten, Ihre Verbindung zu identifizieren und Daten an das richtige Ziel zu senden. Ihre öffentliche IP-Adresse wird von Ihrem Internetanbieter (ISP) vergeben und ist für jede Website sichtbar, mit der Sie sich verbinden.</p>
-<ul>
-<li><strong>Öffentliche IP:</strong> Für Websites und das Internet sichtbar — wird oben angezeigt</li>
-<li><strong>Private IP:</strong> Wird in Ihrem lokalen Netzwerk verwendet (z.B. 192.168.1.x)</li>
-<li><strong>IPv4:</strong> Standard-32-Bit-Adressformat, z.B. 203.0.113.1</li>
-<li><strong>IPv6:</strong> Neueres 128-Bit-Adressformat, z.B. 2001:db8::1</li>
-</ul>
-<p>
-Ihre oben angezeigte IP-Adresse ist Ihre echte öffentliche IP — die, die Websites, Streaming-Dienste und Online-Spiele sehen. Nutzen Sie unsere kostenlosen Tools für mehr Details:
-<a href="https://myipnow.net/de/whois-lookup/" style="color:var(--accent-color)">WHOIS-Suche</a>,
-<a href="https://myipnow.net/de/dns-lookup/" style="color:var(--accent-color)">DNS-Suche</a>,
-<a href="https://myipnow.net/de/ip-blacklist/" style="color:var(--accent-color)">Blacklist-Check</a>.
-</p>
-</section>
+<h2>Meine IP-Standortinformationen</h2>
+<div class="info-table">
+<div class="row"><span>Stadt</span>
+<span class="copy-wrap">
+<span id="city">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="city">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Bundesland/Region</span>
+<span class="copy-wrap">
+<span id="region">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="region">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Postleitzahl</span>
+<span class="copy-wrap">
+<span id="postal">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="postal">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Land</span>
+<span class="copy-wrap">
+<span id="country">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="country">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>ISP</span>
+<span class="copy-wrap">
+<span id="isp">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="isp">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>ASN</span>
+<span class="copy-wrap">
+<span id="asn"><a href="https://myipnow.net/#/" id="asnLink" style="color:#4f46e5;font-weight:600;text-decoration:none;">-</a></span>
+<button aria-label="Copy" class="copy-btn" data-copy="asn">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Zeitzone</span>
+<span class="copy-wrap">
+<span id="timezone">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="timezone">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Breitengrad</span>
+<span class="copy-wrap">
+<span id="latitude">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="latitude">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+<div class="row"><span>Längengrad</span>
+<span class="copy-wrap">
+<span id="longitude">-</span>
+<button aria-label="Copy" class="copy-btn" data-copy="longitude">
+<svg height="14" viewbox="0 0 24 24" width="14">
+<rect height="13" rx="2" width="13" x="9" y="9"></rect>
+<path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+</svg>
+</button>
+</span>
+</div>
+</div>
+<a class="cta-btn" href="https://myipnow.net/de/hide-my-ip/">🛡️ Meine Verbindung mit einem VPN sichern</a>
+</div>
+<div class="tool-right">
+<div class="map-card">
+<div class="map" id="map"></div>
+<div class="map-controls">
+<button id="refreshBtn">🔄 Refresh</button>
+<button id="toggleMapBtn">🗺️ Toggle Map</button>
+</div>
+</div>
+</div></section>
 </main>
 <div aria-label="IP calculators" class="container tool-buttons-container">
 <div class="tool-buttons-row">
@@ -654,96 +752,90 @@ Sie wird für Kommunikation, Sicherheit, Geolokalisierung und Fehlerbehebung bei
 <section aria-label="Frequently Asked Questions" class="faq-snippet">
 <h2>Häufig gestellte Fragen</h2>
 <div class="faq-item">
-<div class="faq-question">Was ist gerade meine IP-Adresse?</div>
-<div class="faq-answer">Ihre aktuelle öffentliche IP-Adresse wird oben auf dieser Seite angezeigt. Sie wird bei jedem Seitenaufruf automatisch aktualisiert.</div>
-</div>
-<div class="faq-item">
 <div class="faq-question">Was ist eine IP-Adresse?</div>
-<div class="faq-answer">Eine IP-Adresse ist eine eindeutige numerische Bezeichnung, die jedem Gerät im Internet zugewiesen wird. Sie funktioniert wie eine Postadresse für Ihren Computer.</div>
+<div class="faq-answer">Eine IP-Adresse (Internet Protocol) ist eine eindeutige numerische Kennzeichnung, die jedem Gerät zugewiesen wird, das an ein Computernetz angeschlossen ist, das das Internetprotokoll für die Kommunikation verwendet. Stellen Sie sich das wie eine Postanschrift für Ihren Computer im Internet vor.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Was ist der Unterschied zwischen öffentlicher und privater IP?</div>
-<div class="faq-answer">Ihre öffentliche IP ist das, was Websites sehen — sie wird von Ihrem ISP vergeben. Ihre private IP (z.B. 192.168.1.5) wird nur in Ihrem lokalen Netzwerk verwendet.</div>
+<div class="faq-question">Was ist der Unterschied zwischen einer öffentlichen und einer privaten IP?</div>
+<div class="faq-answer">Ihre öffentliche IP-Adresse ist das, was die Außenwelt sieht. Eine private IP-Adresse wird in Ihrem lokalen Netzwerk verwendet. Ihr Router weist den Geräten private IPs zu.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Was ist meine IPv4-Adresse?</div>
-<div class="faq-answer">Ihre IPv4-Adresse ist die 32-Bit-Adresse im Format xxx.xxx.xxx.xxx, die oben angezeigt wird. Dies ist der häufigste IP-Adresstyp im Internet.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Was ist meine IPv6-Adresse?</div>
-<div class="faq-answer">Ihre IPv6-Adresse ist eine 128-Bit-Adresse im Hexadezimalformat. Nicht alle ISPs unterstützen IPv6, daher wird sie möglicherweise nicht angezeigt.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Warum ist mein Standort nicht genau?</div>
-<div class="faq-answer">Die IP-Geolokalisierung basiert auf dem registrierten Standort Ihres ISPs, nicht auf Ihrer genauen Adresse. Sie ist normalerweise auf Stadt- oder Regionsebene genau.</div>
+<div class="faq-question">Warum ist mein Standort nicht ganz genau?</div>
+<div class="faq-answer">Der Standort basiert auf Ihrer öffentlichen IP, die mit den Servern Ihres ISP verbunden ist. Er ist normalerweise auf Stadt- oder Regionsebene genau.</div>
 </div>
 <div class="faq-item">
 <div class="faq-question">Ist meine IP-Adresse statisch oder dynamisch?</div>
-<div class="faq-answer">Die meisten Heimverbindungen verwenden dynamische IP-Adressen, die sich regelmäßig ändern. Statische IPs sind fest und werden typischerweise von Unternehmen verwendet.</div>
+<div class="faq-answer">Die meisten privaten Anschlüsse verwenden dynamische IP-Adressen. Statische IP-Adressen sind fest und werden in der Regel von Unternehmen oder Servern beantragt.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Wie kann ich meine IP-Adresse verbergen?</div>
-<div class="faq-answer">Der häufigste Weg ist ein VPN (Virtual Private Network). Ein VPN ersetzt Ihre echte IP durch eine Server-IP und verbirgt Ihren Standort.</div>
+<div class="faq-question">Wie kann ich meine IP-Adresse ändern?</div>
+<div class="faq-answer">Sie können Ihre IP ändern, indem Sie Ihren Router neu starten oder sich an Ihren ISP wenden, um eine statische IP zu erhalten.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Kann jemand mich mit meiner IP verfolgen?</div>
-<div class="faq-answer">Ihre IP zeigt Ihren ungefähren Standort und ISP, nicht Ihre genaue Adresse. Ihr ISP kann Ihre IP jedoch mit Ihrem Konto verknüpfen.</div>
+<div class="faq-question">Was ist IPv4?</div>
+<div class="faq-answer">IPv4 ist die ursprüngliche Version des Internet-Protokolls, die ein 32-Bit-Adressformat verwendet. Mit der explosionsartigen Zunahme von Internet-Geräten wird die begrenzte Anzahl von IPv4-Adressen zu einem wachsenden Problem.</div>
 </div>
 <div class="faq-item">
-<div class="faq-question">Wie finde ich meine IP unter Windows?</div>
-<div class="faq-answer">Öffnen Sie die Eingabeaufforderung und geben Sie ipconfig ein. Ihre öffentliche IP wird immer oben auf dieser Seite angezeigt.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Wie finde ich meine IP auf dem Mac?</div>
-<div class="faq-answer">Öffnen Sie das Terminal und geben Sie ifconfig | grep inet ein. Oder gehen Sie zu Systemeinstellungen → Netzwerk.</div>
-</div>
-<div class="faq-item">
-<div class="faq-question">Wie finde ich meine IP auf iPhone oder Android?</div>
-<div class="faq-answer">iPhone: Einstellungen → WLAN → Netzwerk antippen. Android: Einstellungen → Netzwerk → WLAN → Netzwerk antippen → Erweitert.</div>
+<div class="faq-question">Was ist IPv6?</div>
+<div class="faq-answer">IPv6 ist die neueste Version des Internet-Protokolls, die ein 128-Bit-Adressformat verwendet, um eine nahezu unbegrenzte Anzahl von eindeutigen Adressen zu ermöglichen.</div>
 </div>
 </section>
 <section class="guide-section">
-<h2>IP-Adressen-Leitfaden: Alles was Sie wissen müssen</h2>
+<h2>Der ultimative Leitfaden für IP-Adressen</h2>
 <div class="guide-content">
-<p>Ihre IP-Adresse ist die Identität Ihres Geräts im Internet. Jedes Mal, wenn Sie eine Webseite laden, eine E-Mail senden oder ein Video streamen, wird Ihre IP-Adresse verwendet, um Daten zu und von Ihrem Gerät zu leiten.</p>
-<h3>Öffentliche vs. Private IP-Adresse</h3>
-<p>Es gibt zwei Arten von IP-Adressen:</p>
+<p>Eine IP-Adresse ist ein wesentlicher Bestandteil der Funktionsweise des Internets. Sie ist die eindeutige Kennung, die es Ihrem
+          Computer mit anderen Geräten und Servern im Internet kommunizieren kann. Das Wissen um Ihre IP-Adresse kann Ihnen helfen
+          von der Online-Sicherheit bis zur Fehlerbehebung bei Netzwerkproblemen.</p>
+<h3>Grundlagen der IP-Adresse: Öffentlich vs. Privat</h3>
+<p>Jedes Gerät in einem Netzwerk hat eine IP-Adresse. Es gibt zwei Haupttypen:</p>
 <ul>
-<li><strong>Öffentliche IP-Adresse:</strong> Von Ihrem ISP vergeben, im Internet sichtbar. Ihr gesamtes Heimnetzwerk teilt eine öffentliche IP. Diese wird oben auf dieser Seite angezeigt.</li>
-<li><strong>Private IP-Adresse:</strong> Von Ihrem Router an jedes Gerät in Ihrem lokalen Netzwerk vergeben (z.B. 192.168.1.5). Außerhalb Ihres Heimnetzwerks nicht sichtbar.</li>
+<li><strong>Öffentliche IP-Adresse:</strong>
+            Dies ist die Adresse, die Ihrem Netzwerk von Ihrem Internet Service Provider (ISP) zugewiesen wurde. Es ist die Adresse, die
+            der Rest des Internets verwendet, um Sie zu finden und mit Ihnen zu kommunizieren. Ihr gesamtes Heimnetzwerk teilt sich eine öffentliche IP-Adresse.</li>
+<li><strong>Private IP-Adresse:</strong>
+            Dies ist eine eindeutige Adresse, die jedem Gerät (z. B. Ihrem Telefon, Laptop oder Smart-TV) in Ihrem lokalen Netzwerk zugewiesen wird.
+            Ihr Router verwendet diese privaten IPs, um den Datenverkehr an das richtige Gerät zu leiten.</li>
 </ul>
-<h3>IPv4 vs. IPv6: Was ist der Unterschied?</h3>
-<p>Es gibt zwei heute verwendete Versionen des Internetprotokolls:</p>
+<h3>Was ist der Unterschied zwischen IPv4 und IPv6?</h3>
+<p>IP-Adressen gibt es in zwei Hauptversionen:</p>
 <ul>
-<li><strong>IPv4:</strong> Verwendet eine 32-Bit-Adresse (z.B. 203.0.113.1). Nur ~4,3 Milliarden Adressen möglich.</li>
-<li><strong>IPv6:</strong> Verwendet eine 128-Bit-Adresse (z.B. 2001:db8::1). Bietet praktisch unbegrenzte Adressen.</li>
+<li><strong>IPv4:</strong>
+            Der ursprüngliche Standard, IPv4, verwendet ein 32-Bit-Adressformat (z. B. 192.0.2.1). Mit der explosionsartigen Zunahme von
+            von mit dem Internet verbundenen Geräten wird die begrenzte Anzahl von IPv4-Adressen zu einem wachsenden Problem.</li>
+<li><strong>IPv6:</strong>
+            Die neuere Version, IPv6, verwendet ein 128-Bit-Adressformat (z. B. 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Es wurde
+            entwickelt, um die Adressenknappheit von IPv4 zu beheben, und bietet einen praktisch unbegrenzten Vorrat an eindeutigen Adressen.</li>
 </ul>
-<p>Die meisten Geräte unterstützen heute beide. Wenn Ihr ISP IPv6 unterstützt, werden beide Adressen oben angezeigt.</p>
-<h3>So finden Sie Ihre IP-Adresse auf jedem Gerät</h3>
+<h3>Warum ist Ihre IP-Adresse von Bedeutung?</h3>
+<p>Die Kenntnis Ihrer IP-Adresse ist aus mehreren Gründen wichtig:</p>
 <ul>
-<li><strong>Windows:</strong> Eingabeaufforderung öffnen → <code>ipconfig</code> eingeben → IPv4-Adresse suchen</li>
-<li><strong>Mac:</strong> Terminal öffnen → <code>ifconfig | grep inet</code> eingeben</li>
-<li><strong>Linux:</strong> Terminal öffnen → <code>ip addr show</code> eingeben</li>
-<li><strong>iPhone:</strong> Einstellungen → WLAN → Netzwerknamen antippen → IP-Adresse</li>
-<li><strong>Android:</strong> Einstellungen → Netzwerk → WLAN → Netzwerk antippen → Erweitert</li>
-<li><strong>Einfachste Methode:</strong> Besuchen Sie einfach myipnow.net — Ihre öffentliche IP wird sofort angezeigt</li>
+<li><strong>Fernzugriff:</strong>
+            Damit können Sie von einem entfernten Standort aus eine Verbindung zu Geräten in Ihrem Heimnetzwerk herstellen.</li>
+<li><strong>Sicherheit:</strong>
+            Sie können Ihre IP-Adresse verwenden, um den Zugang zu Diensten zu sperren oder zu erlauben, was ein wichtiger Bestandteil der Netzwerksicherheit ist.</li>
+<li><strong>Fehlersuche:</strong>
+            Die IP-Adresse ist das erste, was bei der Diagnose von Internetverbindungsproblemen zu prüfen ist.</li>
+<li><strong>Geo-Targeting:</strong>
+  Websites und Online-Dienste verwenden Ihre IP-Adresse, um Ihren ungefähren Standort zu ermitteln und lokalisierte Inhalte oder Dienste bereitzustellen.</li>
 </ul>
-<h3>Was verrät Ihre IP-Adresse?</h3>
-<p>Ihre öffentliche IP kann Ihren ungefähren Stadt- oder Regionsnamen, Ihren ISP, Ihre ASN und ob Sie ein VPN oder Proxy verwenden, preisgeben. Sie kann nicht Ihre genaue Heimadresse oder persönliche Daten ohne einen Gerichtsbeschluss an Ihren ISP preisgeben. <a href="https://myipnow.net/de/whois-lookup/" style="color:var(--accent-color)">WHOIS-Suche</a> <a href="https://myipnow.net/de/asn-lookup/" style="color:var(--accent-color)">ASN Lookup</a>.</p>
-<h3>Wie Sie Ihre IP-Adresse verbergen</h3>
-<p>Um Ihre Privatsphäre online zu schützen, können Sie Ihre echte IP-Adresse mit einem VPN (Virtual Private Network) verbergen. Ein VPN ersetzt Ihre IP durch eine Server-IP von einem anderen Standort. <a href="https://myipnow.net/de/hide-my-ip/" style="color:var(--accent-color)"><strong>IP verbergen</strong></a>.</p>
-<h3>Ist Ihre IP-Adresse auf einer Blacklist?</h3>
-<p>Wenn Sie Probleme beim Versenden von E-Mails oder beim Zugriff auf bestimmte Dienste haben, könnte Ihre IP auf einer Spam-Blacklist stehen. <a href="https://myipnow.net/de/ip-blacklist/" style="color:var(--accent-color)">IP-Blacklist-Checker</a>.</p>
-<h3>IP-Adress- und Netzwerk-Tools</h3>
-<p>MyIPNow bietet eine vollständige Suite kostenloser Netzwerk-Tools:</p>
-<ul>
-<li><a href="https://myipnow.net/de/dns-lookup/">DNS-Suche — DNS-Einträge für jede Domain prüfen</a></li>
-<li><a href="https://myipnow.net/de/whois-lookup/">WHOIS-Suche — Domain-Registrierungsdetails finden</a></li>
-<li><a href="https://myipnow.net/de/ip-subnet-calculator/">IP-Subnetz-Rechner — Subnetze und CIDR-Bereiche berechnen</a></li>
-<li><a href="https://myipnow.net/de/ping-test/">Ping-Test — Server-Antwortzeit von mehreren Standorten testen</a></li>
-<li><a href="https://myipnow.net/de/internet-speed-test/">Internetgeschwindigkeitstest — Download- und Upload-Geschwindigkeit messen</a></li>
-<li><a href="https://myipnow.net/de/asn-lookup/">ASN-Suche — Autonome Systemnummern nachschlagen</a></li>
-</ul>
+<h3>Wie sich Ihre IP-Adresse auf den Datenschutz auswirkt</h3>
+<p>Ihre öffentliche IP-Adresse kann Informationen wie Ihren ungefähren Standort preisgeben,
+Internetdienstanbieter und Netzwerktyp. Websites, Werbetreibende und Analysedienste
+und Analysedienste verwenden IP-Adressen häufig, um das Nutzerverhalten zu verfolgen, regionale Beschränkungen anzuwenden
+oder Inhalte zu personalisieren.</p>
+<h3>Verwendung eines VPN zum Verbergen Ihrer IP-Adresse</h3>
+<p>Um die Online-Privatsphäre zu verbessern, entscheiden sich viele Nutzer dafür, ihre IP-Adresse zu verbergen, indem sie eine
+<a href="https://myipnow.net/de/hide-my-ip/"><strong>VPN</strong></a> (Virtual Private Network).
+Ein VPN leitet Ihren Internetverkehr über einen sicheren Server und ersetzt Ihre echte
+IP-Adresse durch eine andere, wodurch es für Websites und Dritte viel schwieriger wird
+Sie zu identifizieren oder zu verfolgen.</p>
+<p>Die Verwendung eines VPN ist besonders hilfreich, wenn Sie in öffentlichen Wi-Fi-Netzwerken surfen,
+auf sensible Informationen zugreifen oder standortbezogene Einschränkungen umgehen möchten.</p>
+<h3>Wie Sie Ihre IP-Adresse überprüfen können</h3>
+<p>Mit einem IP Lookup-Tool können Sie schnell Ihre aktuelle öffentliche IP-Adresse ermitteln.
+Damit können Sie Ihre IP-Adresse, den Verbindungstyp und den allgemeinen Standort einsehen.
+Die Überprüfung Ihrer IP-Adresse ist nützlich bei der Überprüfung von VPN-Verbindungen,
+bei der Diagnose von Netzwerkproblemen oder bei der Bestätigung von Sicherheitseinstellungen.</p>
 </div>
 </section>
 <style>
