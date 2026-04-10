@@ -267,6 +267,32 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <a href="https://myipnow.net/pl/ip-blacklist/">🇵🇱 Polski</a>
 <a href="https://myipnow.net/nl/ip-blacklist/">🇳🇱 Nederlands</a>
 </div>
+
+<script>
+(function(){
+  function getIPParam(){
+    return new URLSearchParams(window.location.search).get('ip') || '';
+  }
+  // Auto-fill and run on load
+  document.addEventListener('DOMContentLoaded', function(){
+    var ip = getIPParam();
+    if(ip){
+      var input = document.getElementById('blacklistIP');
+      if(input){ input.value = ip; }
+      setTimeout(function(){ if(typeof checkBlacklist==='function') checkBlacklist(); }, 400);
+    }
+    // Update lang-links to preserve ?ip= param
+    if(ip){
+      document.querySelectorAll('.lang-links a').forEach(function(a){
+        var href = a.getAttribute('href');
+        if(href && href.includes('ip-blacklist')){
+          a.setAttribute('href', href + '?ip=' + encodeURIComponent(ip));
+        }
+      });
+    }
+  });
+})();
+</script>
 <footer class="footer">
 <ul class="footer-nav">
 <li><a href="https://myipnow.net/about/">About</a></li>
