@@ -462,6 +462,16 @@ function lookupBlacklist(){
 <script>
 /* === TOOL PATCH: ensure Lookup works (no UI changes) === */
 document.addEventListener('DOMContentLoaded', function(){
+  // Auto-run if ?ip= param present
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var ip = params.get('ip');
+    if(ip){
+      var input = document.getElementById('blacklistIP');
+      if(input){ input.value = ip; }
+      setTimeout(function(){ checkBlacklist(); }, 300);
+    }
+  })();
   var fn = (typeof window['lookupBlacklist']==='function' ? window['lookupBlacklist'] : null) || (typeof window['lookupIPBlacklist']==='function' ? window['lookupIPBlacklist'] : null) || (typeof window['checkBlacklist']==='function' ? window['checkBlacklist'] : null) || (typeof window['runBlacklistCheck']==='function' ? window['runBlacklistCheck'] : null);
   if(!fn) return;
 
