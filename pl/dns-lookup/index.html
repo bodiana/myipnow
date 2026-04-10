@@ -274,6 +274,71 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <a href="https://myipnow.net/pl/dns-lookup/">🇵🇱 Polski</a>
 <a href="https://myipnow.net/nl/dns-lookup/">🇳🇱 Nederlands</a>
 </div>
+<script>
+(function(){
+  var INPUT_ID = 'dnsDomain';
+  var URL_PARAM = 'q';
+  var STORAGE_KEY = 'tool_input_dns-lookup';
+  var RUN_FN = 'lookupDNS';
+
+  function getParam(){
+    return new URLSearchParams(window.location.search).get(URL_PARAM) || '';
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var input = document.getElementById(INPUT_ID);
+    if(!input) return;
+
+    // Priority: URL param > sessionStorage
+    var val = getParam() || sessionStorage.getItem(STORAGE_KEY) || '';
+    if(val){
+      input.value = val;
+      if(getParam()) setTimeout(function(){ if(typeof window[RUN_FN]==='function') window[RUN_FN](); }, 400);
+    }
+
+    // Save on every keystroke
+    input.addEventListener('input', function(){
+      sessionStorage.setItem(STORAGE_KEY, input.value);
+    });
+
+    // Update lang-links and switcher to preserve param
+    function updateLinks(){
+      var cur = input.value.trim();
+      if(!cur) return;
+      // Static lang-links
+      document.querySelectorAll('.lang-links a').forEach(function(a){
+        var href = a.getAttribute('href').split('?')[0];
+        a.setAttribute('href', href + '?' + URL_PARAM + '=' + encodeURIComponent(cur));
+      });
+    }
+
+    input.addEventListener('change', updateLinks);
+    input.addEventListener('input', updateLinks);
+    setTimeout(updateLinks, 500);
+
+    // Hook lang-switcher buildMenu to add param
+    var origBuild = null;
+    var checkInterval = setInterval(function(){
+      // Patch lang-switcher links after they're built
+      document.querySelectorAll('.lang-switcher-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          setTimeout(function(){
+            var cur = input.value.trim();
+            if(!cur) return;
+            document.querySelectorAll('[data-lang-href], .floatingMenu a, body > ul a').forEach(function(a){
+              var href = a.getAttribute('href') || '';
+              if(href.includes('dns-lookup')){
+                a.setAttribute('href', href.split('?')[0] + '?' + URL_PARAM + '=' + encodeURIComponent(cur));
+              }
+            });
+          }, 100);
+        });
+      });
+      clearInterval(checkInterval);
+    }, 1000);
+  });
+})();
+</script>
 <footer class="footer">
 <ul class="footer-nav">
 <li><a href="https://myipnow.net/about/">About</a></li>
