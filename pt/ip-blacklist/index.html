@@ -603,6 +603,11 @@ if (typeof setDL !== "function") {
         // If page is translated point to same page in that lang, else point to lang homepage
         if(isTranslated){
           a.href = lang.base + (slug ? slug + '/' : '');
+          // Preserve ?ip= param on blacklist pages
+          if(slug === 'ip-blacklist'){
+            var ipParam = new URLSearchParams(window.location.search).get('ip');
+            if(ipParam) a.href += '?ip=' + encodeURIComponent(ipParam);
+          }
         } else {
           a.href = lang.base;
         }
