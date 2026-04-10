@@ -54,6 +54,25 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 .affiliate-btn{background:var(--hide-ip-color);color:#fff;font-weight:700;font-size:1.25rem;padding:1rem 3rem;border-radius:12px;box-shadow:0 8px 20px rgba(16,185,129,0.5);text-decoration:none;display:inline-block;transition:background .2s ease,transform .2s ease;}
 .affiliate-btn:hover{background:#059669;transform:translateY(-3px);}
 .affiliate-btn-small{padding:0.75rem 2rem;font-size:1rem;border-radius:8px;}
+.vpn-comparison{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;}
+@media(max-width:600px){.vpn-comparison{grid-template-columns:1fr;}}
+.vpn-card{border-radius:16px;padding:2rem;text-align:center;border:2px solid #e2e8f0;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.07);display:flex;flex-direction:column;align-items:center;gap:0.75rem;}
+.vpn-card.nord{border-color:#4687FF;}
+.vpn-card.surf{border-color:#10b981;}
+.vpn-card .vpn-name{font-size:1.3rem;font-weight:800;margin:0;}
+.vpn-card .vpn-badge{font-size:0.75rem;font-weight:700;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:0.25rem;}
+.vpn-card.nord .vpn-badge{background:#e8f0ff;color:#4687FF;}
+.vpn-card.surf .vpn-badge{background:#d1fae5;color:#059669;}
+.vpn-card .vpn-features{list-style:none;padding:0;margin:0;text-align:left;font-size:0.9rem;color:var(--text-secondary);width:100%;}
+.vpn-card .vpn-features li{padding:4px 0;border-bottom:1px solid #f1f5f9;}
+.vpn-card .vpn-features li:last-child{border:none;}
+.vpn-card .vpn-features li::before{content:"✓ ";color:#10b981;font-weight:700;}
+.vpn-btn-nord{background:#4687FF;color:#fff;font-weight:700;font-size:1.05rem;padding:0.85rem 2rem;border-radius:10px;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;margin-top:auto;}
+.vpn-btn-nord:hover{background:#2563eb;transform:translateY(-2px);}
+.vpn-btn-surf{background:#10b981;color:#fff;font-weight:700;font-size:1.05rem;padding:0.85rem 2rem;border-radius:10px;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;margin-top:auto;}
+.vpn-btn-surf:hover{background:#059669;transform:translateY(-2px);}
+.vpn-compare-title{text-align:center;font-size:1.5rem;font-weight:700;margin-bottom:0.25rem;}
+.vpn-compare-sub{text-align:center;color:var(--text-secondary);font-size:0.95rem;margin-bottom:1rem;}
 .controls{text-align:center;margin-bottom:2rem;display:flex;justify-content:center;gap:1rem;}
 .action-btn{border:none;padding:0.75rem 1.5rem;border-radius:8px;font-size:1rem;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;}
 .check-ip-btn{background:var(--hide-ip-color);color:#fff;font-weight:600;font-size:1.1rem;padding:1rem 2rem;}
@@ -107,12 +126,35 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <h1>🛡️ How to Hide Your IP Address</h1>
 <div class="subtitle">The definitive guide to digital anonymity and enhanced security.</div>
 </header>
-<section aria-label="Surfshark Promotion Top" class="affiliate-banner">
-<h2>🥇 Easiest &amp; Safest Way to Hide Your IP</h2>
-<p>A VPN is the only method that offers high-speed masking AND bulletproof encryption. Get protected instantly.</p>
-<a class="affiliate-btn" href="https://get.surfshark.net/SH4dY" rel="noopener noreferrer" target="_blank">
-                Secure My IP with Surfshark
-            </a>
+<section class="affiliate-banner" style="border-color:#e2e8f0;padding:2rem;">
+<p class="vpn-compare-title">🛡️ Choose Your VPN Protection</p>
+<p class="vpn-compare-sub">Both are trusted, fast, and fully protect your IP. Pick the one that suits you.</p>
+<div class="vpn-comparison">
+  <div class="vpn-card nord">
+    <span class="vpn-badge">Most Popular</span>
+    <p class="vpn-name">🔵 NordVPN</p>
+    <ul class="vpn-features">
+      <li>6,000+ servers in 111 countries</li>
+      <li>Double VPN &amp; Onion over VPN</li>
+      <li>Threat Protection built-in</li>
+      <li>6 simultaneous devices</li>
+      <li>No-logs policy audited</li>
+    </ul>
+    <a class="vpn-btn-nord" href="https://go.nordvpn.net/aff_c?offer_id=1002&aff_id=132402" rel="noopener noreferrer sponsored" target="_blank">Get NordVPN</a>
+  </div>
+  <div class="vpn-card surf">
+    <span class="vpn-badge">Best Value</span>
+    <p class="vpn-name">🟢 Surfshark</p>
+    <ul class="vpn-features">
+      <li>3,200+ servers in 100 countries</li>
+      <li>Unlimited simultaneous devices</li>
+      <li>CleanWeb ad &amp; malware blocker</li>
+      <li>MultiHop &amp; Camouflage mode</li>
+      <li>No-logs policy verified</li>
+    </ul>
+    <a class="vpn-btn-surf" href="https://get.surfshark.net/SH4dY" rel="noopener noreferrer sponsored" target="_blank">Get Surfshark</a>
+  </div>
+</div>
 </section>
 <main aria-label="Reasons to Hide IP" class="card-section">
 <h2 class="section-title">Why You Need to Mask Your Identity</h2>
@@ -159,12 +201,35 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 </div>
 </div>
 </section>
-<section aria-label="Surfshark Promotion Middle" class="affiliate-banner">
-<h2>🚀 Don't Compromise: Get Speed &amp; Security</h2>
-<p>Only a premium VPN like Surfshark offers the perfect balance of blazing fast speeds and military-grade privacy features. Protect all your devices simultaneously.</p>
-<a class="affiliate-btn affiliate-btn-small" href="https://get.surfshark.net/SH4dY" rel="noopener noreferrer" target="_blank">
-                See Surfshark Plans
-            </a>
+<section class="affiliate-banner" style="border-color:#e2e8f0;padding:2rem;">
+<p class="vpn-compare-title">🛡️ Choose Your VPN Protection</p>
+<p class="vpn-compare-sub">Both are trusted, fast, and fully protect your IP. Pick the one that suits you.</p>
+<div class="vpn-comparison">
+  <div class="vpn-card nord">
+    <span class="vpn-badge">Most Popular</span>
+    <p class="vpn-name">🔵 NordVPN</p>
+    <ul class="vpn-features">
+      <li>6,000+ servers in 111 countries</li>
+      <li>Double VPN &amp; Onion over VPN</li>
+      <li>Threat Protection built-in</li>
+      <li>6 simultaneous devices</li>
+      <li>No-logs policy audited</li>
+    </ul>
+    <a class="vpn-btn-nord" href="https://go.nordvpn.net/aff_c?offer_id=1002&aff_id=132402" rel="noopener noreferrer sponsored" target="_blank">Get NordVPN</a>
+  </div>
+  <div class="vpn-card surf">
+    <span class="vpn-badge">Best Value</span>
+    <p class="vpn-name">🟢 Surfshark</p>
+    <ul class="vpn-features">
+      <li>3,200+ servers in 100 countries</li>
+      <li>Unlimited simultaneous devices</li>
+      <li>CleanWeb ad &amp; malware blocker</li>
+      <li>MultiHop &amp; Camouflage mode</li>
+      <li>No-logs policy verified</li>
+    </ul>
+    <a class="vpn-btn-surf" href="https://get.surfshark.net/SH4dY" rel="noopener noreferrer sponsored" target="_blank">Get Surfshark</a>
+  </div>
+</div>
 </section>
 <section aria-label="The Best Method" class="card-section">
 <h2 class="section-title">Why VPN is the Undisputed Best Choice</h2>
@@ -181,12 +246,35 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <nav aria-label="IP Checker Link at Bottom" class="controls">
 <a class="action-btn check-ip-btn" href="https://myipnow.net/">⬅️ Go Back to IP Checker Tool</a>
 </nav>
-<section aria-label="Surfshark Promotion Bottom" class="affiliate-banner">
-<h2>✅ Our Final Recommendation: Surfshark</h2>
-<p>Ready to secure your connection, hide your IP, and enjoy true internet freedom? Surfshark is our top choice for reliability and speed.</p>
-<a class="affiliate-btn" href="https://get.surfshark.net/SH4dY" rel="noopener noreferrer" target="_blank">
-                Get Protected with Surfshark Today!
-            </a>
+<section class="affiliate-banner" style="border-color:#e2e8f0;padding:2rem;">
+<p class="vpn-compare-title">🛡️ Choose Your VPN Protection</p>
+<p class="vpn-compare-sub">Both are trusted, fast, and fully protect your IP. Pick the one that suits you.</p>
+<div class="vpn-comparison">
+  <div class="vpn-card nord">
+    <span class="vpn-badge">Most Popular</span>
+    <p class="vpn-name">🔵 NordVPN</p>
+    <ul class="vpn-features">
+      <li>6,000+ servers in 111 countries</li>
+      <li>Double VPN &amp; Onion over VPN</li>
+      <li>Threat Protection built-in</li>
+      <li>6 simultaneous devices</li>
+      <li>No-logs policy audited</li>
+    </ul>
+    <a class="vpn-btn-nord" href="https://go.nordvpn.net/aff_c?offer_id=1002&aff_id=132402" rel="noopener noreferrer sponsored" target="_blank">Get NordVPN</a>
+  </div>
+  <div class="vpn-card surf">
+    <span class="vpn-badge">Best Value</span>
+    <p class="vpn-name">🟢 Surfshark</p>
+    <ul class="vpn-features">
+      <li>3,200+ servers in 100 countries</li>
+      <li>Unlimited simultaneous devices</li>
+      <li>CleanWeb ad &amp; malware blocker</li>
+      <li>MultiHop &amp; Camouflage mode</li>
+      <li>No-logs policy verified</li>
+    </ul>
+    <a class="vpn-btn-surf" href="https://get.surfshark.net/SH4dY" rel="noopener noreferrer sponsored" target="_blank">Get Surfshark</a>
+  </div>
+</div>
 </section>
 
 <footer class="footer">
