@@ -266,72 +266,6 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <a href="https://myipnow.net/pl/ip-blacklist/">🇵🇱 Polski</a>
 <a href="https://myipnow.net/nl/ip-blacklist/">🇳🇱 Nederlands</a>
 </div>
-
-<script>
-(function(){
-  var INPUT_ID = 'blacklistIP';
-  var URL_PARAM = 'ip';
-  var STORAGE_KEY = 'tool_input_ip-blacklist';
-  var RUN_FN = 'checkBlacklist';
-
-  function getParam(){
-    return new URLSearchParams(window.location.search).get(URL_PARAM) || '';
-  }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    var input = document.getElementById(INPUT_ID);
-    if(!input) return;
-
-    // Priority: URL param > sessionStorage
-    var val = getParam() || sessionStorage.getItem(STORAGE_KEY) || '';
-    if(val){
-      input.value = val;
-      if(getParam()) setTimeout(function(){ if(typeof window[RUN_FN]==='function') window[RUN_FN](); }, 400);
-    }
-
-    // Save on every keystroke
-    input.addEventListener('input', function(){
-      sessionStorage.setItem(STORAGE_KEY, input.value);
-    });
-
-    // Update lang-links and switcher to preserve param
-    function updateLinks(){
-      var cur = input.value.trim();
-      if(!cur) return;
-      // Static lang-links
-      document.querySelectorAll('.lang-links a').forEach(function(a){
-        var href = a.getAttribute('href').split('?')[0];
-        a.setAttribute('href', href + '?' + URL_PARAM + '=' + encodeURIComponent(cur));
-      });
-    }
-
-    input.addEventListener('change', updateLinks);
-    input.addEventListener('input', updateLinks);
-    setTimeout(updateLinks, 500);
-
-    // Hook lang-switcher buildMenu to add param
-    var origBuild = null;
-    var checkInterval = setInterval(function(){
-      // Patch lang-switcher links after they're built
-      document.querySelectorAll('.lang-switcher-btn').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          setTimeout(function(){
-            var cur = input.value.trim();
-            if(!cur) return;
-            document.querySelectorAll('[data-lang-href], .floatingMenu a, body > ul a').forEach(function(a){
-              var href = a.getAttribute('href') || '';
-              if(href.includes('ip-blacklist')){
-                a.setAttribute('href', href.split('?')[0] + '?' + URL_PARAM + '=' + encodeURIComponent(cur));
-              }
-            });
-          }, 100);
-        });
-      });
-      clearInterval(checkInterval);
-    }, 1000);
-  });
-})();
-</script>
 <footer class="footer">
 <ul class="footer-nav">
 <li><a href="https://myipnow.net/about/">About</a></li>
@@ -340,39 +274,38 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <li><a href="https://myipnow.net/terms-of-use/">Terms of Use</a></li>
 <li><a href="https://myipnow.net/affiliate-disclosure/">Affiliate Disclosure</a></li>
 </ul>
-<div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
+<div class="footer-copyright">&copy; 2026 MyIPNow. All Rights Reserved.</div>
 </footer>
 <script>
-function lookupBlacklist(<script>
-function __setOutText(id,value){const el=document.getElementById('dl-'+id); if(el) el.textContent=(value===undefined||value===null)?'':String(value);} 
+function __setOutText(id,value){var el=document.getElementById('dl-'+id);if(el) el.textContent=(value==null)?'':String(value);}
+
 function lookupBlacklist(){
   var ip = document.getElementById('blacklistIP').value.trim();
   var resultsEl = document.getElementById('blacklistResults');
   if(!ip){ resultsEl.innerHTML = '<p style="color:#ef4444;">Please enter an IP address or domain.</p>'; return; }
 
   var isIPv4 = /^(\d{1,3}\.){3}\d{1,3}$/.test(ip);
-  var isIPv6 = ip.includes(':');
+  var isIPv6 = ip.indexOf(':') !== -1;
   var isDomain = !isIPv4 && !isIPv6;
   var qtype = isIPv6 ? 'IPv6' : (isIPv4 ? 'IPv4' : 'Domain');
   __setOutText('query', ip);
   __setOutText('qtype', qtype);
 
-  // Reverse IPv4 for DNSBL lookup
   function reverseIP(ip){ return ip.split('.').reverse().join('.'); }
 
   var LISTS = [
-    {name:'Spamhaus ZEN',     zone:'zen.spamhaus.org',     url:'https://check.spamhaus.org/'},
-    {name:'Spamhaus DBL',     zone:'dbl.spamhaus.org',     url:'https://check.spamhaus.org/'},
-    {name:'Barracuda',        zone:'b.barracudacentral.org',url:'https://www.barracudacentral.org/lookups'},
-    {name:'SpamCop',          zone:'bl.spamcop.net',        url:'https://www.spamcop.net/bl.shtml'},
-    {name:'SORBS SPAM',       zone:'spam.dnsbl.sorbs.net',  url:'https://www.sorbs.net/'},
-    {name:'UCEPROTECT L1',    zone:'dnsbl-1.uceprotect.net',url:'https://www.uceprotect.net/'},
-    {name:'UCEPROTECT L2',    zone:'dnsbl-2.uceprotect.net',url:'https://www.uceprotect.net/'},
-    {name:'MX Toolbox',       zone:'dnsbl.mxtoolbox.com',   url:'https://mxtoolbox.com/blacklists.aspx'},
-    {name:'NordSpam',         zone:'combined.njabl.org',    url:'http://www.njabl.org/'},
-    {name:'PSBL',             zone:'psbl.surriel.com',      url:'http://psbl.org/'},
-    {name:'RATS Spam',        zone:'spam.spamrats.com',     url:'http://www.spamrats.com/'},
-    {name:'Mailspike Z',      zone:'z.mailspike.net',       url:'https://www.mailspike.net/'},
+    {name:'Spamhaus ZEN',     zone:'zen.spamhaus.org',      url:'https://check.spamhaus.org/'},
+    {name:'Spamhaus DBL',     zone:'dbl.spamhaus.org',      url:'https://check.spamhaus.org/'},
+    {name:'Barracuda',        zone:'b.barracudacentral.org', url:'https://www.barracudacentral.org/lookups'},
+    {name:'SpamCop',          zone:'bl.spamcop.net',         url:'https://www.spamcop.net/bl.shtml'},
+    {name:'SORBS SPAM',       zone:'spam.dnsbl.sorbs.net',   url:'https://www.sorbs.net/'},
+    {name:'UCEPROTECT L1',    zone:'dnsbl-1.uceprotect.net', url:'https://www.uceprotect.net/'},
+    {name:'UCEPROTECT L2',    zone:'dnsbl-2.uceprotect.net', url:'https://www.uceprotect.net/'},
+    {name:'MX Toolbox',       zone:'dnsbl.mxtoolbox.com',    url:'https://mxtoolbox.com/blacklists.aspx'},
+    {name:'PSBL',             zone:'psbl.surriel.com',       url:'http://psbl.org/'},
+    {name:'RATS Spam',        zone:'spam.spamrats.com',      url:'http://www.spamrats.com/'},
+    {name:'Mailspike Z',      zone:'z.mailspike.net',        url:'https://www.mailspike.net/'},
+    {name:'NordSpam',         zone:'combined.njabl.org',     url:'http://www.njabl.org/'},
   ];
 
   resultsEl.innerHTML = '<div class="dns-summary">Checking <strong>' + ip + '</strong> against ' + LISTS.length + ' blacklists...</div>';
@@ -381,7 +314,6 @@ function lookupBlacklist(){
   var results = [];
   var done = 0;
 
-  // Show progress grid immediately
   var grid = document.createElement('div');
   grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.5rem;margin-top:0.5rem;';
   grid.id = 'bl-grid';
@@ -399,35 +331,31 @@ function lookupBlacklist(){
     .then(function(r){ return r.json(); })
     .then(function(data){
       var listed = data.Answer && data.Answer.length > 0;
-      results.push({name: list.name, listed: listed, url: list.url});
-      var row = document.getElementById('bl-row-' + i);
+      results.push({name: list.name, listed: listed});
+      var r = document.getElementById('bl-row-' + i);
       if(listed){
-        row.style.background = '#fef2f2';
-        row.style.borderLeft = '3px solid #ef4444';
-        row.innerHTML = '<a href="' + list.url + '" target="_blank" style="font-weight:700;color:#ef4444;text-decoration:none;">' + list.name + '</a>'
+        r.style.background = '#fef2f2';
+        r.style.borderLeft = '3px solid #ef4444';
+        r.innerHTML = '<a href="' + list.url + '" target="_blank" style="font-weight:700;color:#ef4444;text-decoration:none;">' + list.name + '</a>'
           + '<span style="color:#ef4444;font-weight:700;">&#9888; Listed</span>';
       } else {
-        row.style.background = '#f0fdf4';
-        row.style.borderLeft = '3px solid #10b981';
-        row.innerHTML = '<span style="font-weight:600;color:#374151;">' + list.name + '</span>'
+        r.style.background = '#f0fdf4';
+        r.style.borderLeft = '3px solid #10b981';
+        r.innerHTML = '<span style="font-weight:600;color:#374151;">' + list.name + '</span>'
           + '<span style="color:#10b981;font-weight:700;">&#10003; Clean</span>';
       }
     })
     .catch(function(){
-      results.push({name: list.name, listed: false, url: list.url});
-      var row = document.getElementById('bl-row-' + i);
-      row.style.background = '#f8fafc';
-      row.innerHTML = '<span style="font-weight:600;color:#374151;">' + list.name + '</span>'
+      results.push({name: list.name, listed: false});
+      var r = document.getElementById('bl-row-' + i);
+      r.innerHTML = '<span style="font-weight:600;color:#374151;">' + list.name + '</span>'
         + '<span style="color:#94a3b8;">Unknown</span>';
     })
     .finally(function(){
       done++;
       if(done === LISTS.length){
         var listed = results.filter(function(r){ return r.listed; }).length;
-        var summary = listed > 0
-          ? 'Listed on ' + listed + ' of ' + LISTS.length + ' blacklists'
-          : 'Not listed on any of ' + LISTS.length + ' blacklists';
-        __setOutText('summary', summary);
+        __setOutText('summary', listed > 0 ? 'Listed on ' + listed + ' blacklists' : 'Clean');
         var sumDiv = resultsEl.querySelector('.dns-summary');
         if(sumDiv){
           sumDiv.innerHTML = listed > 0
@@ -439,360 +367,87 @@ function lookupBlacklist(){
   });
 }
 </script>
-</div>
 <script id="mobile-header-fix-final">
 (function(){
-  const tools = document.querySelector('.nav-tools');
+  const tools=document.querySelector('.nav-tools');
   if(!tools) return;
-  const trigger = tools.querySelector(':scope > a');
-  const dropdown = tools.querySelector(':scope > ul');
-  if(!trigger || !dropdown) return;
-
-  let menu=null, backdrop=null, open=false;
-
-  // Desktop hover
-  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
-  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
-
-  function closeMenu(){
-    if(menu){ menu.remove(); menu=null; }
-    if(backdrop){ backdrop.remove(); backdrop=null; }
-    dropdown.style.display='none';
-    document.body.classList.remove('menu-open');
-    open=false;
-  }
-
+  const trigger=tools.querySelector(':scope > a');
+  const dropdown=tools.querySelector(':scope > ul');
+  if(!trigger||!dropdown) return;
+  let menu=null,backdrop=null,open=false;
+  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768) dropdown.style.display='block';});
+  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768) dropdown.style.display='none';});
+  function closeMenu(){if(menu){menu.remove();menu=null;}if(backdrop){backdrop.remove();backdrop=null;}dropdown.style.display='none';document.body.classList.remove('menu-open');open=false;}
   function openMenu(e){
-    e.preventDefault(); e.stopPropagation();
+    e.preventDefault();e.stopPropagation();
     if(window.innerWidth>768) return;
-
-    dropdown.style.display='none'; // hide original header dropdown
-
-    if(open){ closeMenu(); return; }
-
-    const rect = trigger.getBoundingClientRect();
-    backdrop = document.createElement('div');
-    Object.assign(backdrop.style,{
-      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
-      background:'transparent',zIndex:9998
-    });
-    backdrop.addEventListener('click', closeMenu);
+    dropdown.style.display='none';
+    if(open){closeMenu();return;}
+    const rect=trigger.getBoundingClientRect();
+    backdrop=document.createElement('div');
+    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
+    backdrop.addEventListener('click',closeMenu);
     document.body.appendChild(backdrop);
-
-    menu = dropdown.cloneNode(true);
-    Object.assign(menu.style,{
-      position:'absolute',
-      top:`${rect.bottom + window.scrollY + 8}px`,
-      left:`${rect.left + window.scrollX}px`,
-      minWidth:`${Math.max(rect.width,200)}px`,
-      background:'#fff',
-      border:'1px solid #e2e8f0',
-      borderRadius:'10px',
-      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
-      listStyle:'none',
-      padding:'.5rem 0',
-      margin:0,
-      zIndex:9999,
-      maxHeight:'70vh',
-      overflowY:'auto',
-      display:'block',        /* ✅ ensures visible */
-      visibility:'visible',   /* ✅ fixes Safari hover ghost */
-      opacity:'1'             /* ✅ fully visible */
-    });
-    menu.querySelectorAll('a').forEach(a=>{
-      a.style.display='block';
-      a.style.padding='.6rem 1.2rem';
-      a.style.color='#1e293b';
-      a.style.textDecoration='none';
-      a.style.fontWeight='500';
-      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
-      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
-    });
-
+    menu=dropdown.cloneNode(true);
+    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom+window.scrollY+8}px`,left:`${rect.left+window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,display:'block',visibility:'visible',opacity:'1'});
+    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
     document.body.appendChild(menu);
     document.body.classList.add('menu-open');
     open=true;
   }
-
-  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
-    const rect=trigger.getBoundingClientRect();
-    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
-    menu.style.left=`${rect.left + window.scrollX}px`;
-  });
   window.addEventListener('resize',closeMenu);
   trigger.addEventListener('click',openMenu);
   trigger.addEventListener('touchstart',openMenu,{passive:false});
 })();
 </script>
-<script>
-(function() {
-  function ready(fn) {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
-    else fn();
-  }
-
-  ready(function() {
-    var input = document.getElementById('blacklistIP');
-    var fn = window['lookupBlacklist'];
-
-    // Find the button that triggers the tool (prefer explicit onclick, otherwise nearest button)
-    var btn = document.querySelector('button[onclick*="lookupBlacklist"]') || document.querySelector('button[onclick*="lookupblacklist"]');
-    if (!btn && input) {
-      // fallback: first button after the input
-      btn = input.parentElement ? input.parentElement.querySelector('button') : null;
-    }
-
-    if (!btn) {
-      console.warn('[tool] Could not find lookup button for lookupBlacklist.');
-      return;
-    }
-
-    // Ensure clicks always call the function
-    btn.addEventListener('click', function(e) {
-      try {
-        if (typeof window['lookupBlacklist'] === 'function') {
-          window['lookupBlacklist']();
-        } else {
-          console.error('[tool] lookupBlacklist is not defined.');
-        }
-      } catch (err) {
-        console.error(err);
-        alert('Tool error: ' + (err && err.message ? err.message : err));
-      }
-    });
-
-    // Support Enter key in input(s)
-    if (input) {
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          btn.click();
-        }
-      });
-    }
-    // Also support Enter in any select inside same tool container
-    var container = btn.closest('.dns-tool, .whois-tool, .blacklist-tool, .tool, .card, section, main, body') || document.body;
-    var selects = container.querySelectorAll('select');
-    selects.forEach(function(sel) {
-      sel.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          btn.click();
-        }
-      });
-    });
-  });
-})();
-</script>
-<script>
-/* === TOOL PATCH: output helpers (no layout changes) === */
-(function(){
-  function findOut(){
-    return document.getElementById('blacklistResult') || document.getElementById('blacklistResults') || document.getElementById('results') || document.getElementById('result') || document.getElementById('output') || document.querySelector(".dns-results, .whois-results, .blacklist-results, .results, .result, .output");
-  }
-  window.__setOutHTML = function(html){
-    var out = findOut(); if(!out) return; out.innerHTML = html;
-  };
-  window.__setOutText = function(text){
-    var out = findOut(); if(!out) return; out.textContent = text;
-  };
-})();
-</script>
-<script>
-/* === TOOL PATCH: ensure Lookup works (no UI changes) === */
-document.addEventListener('DOMContentLoaded', function(){
-  // Auto-run if ?ip= param present
-  (function(){
-    var params = new URLSearchParams(window.location.search);
-    var ip = params.get('ip');
-    if(ip){
-      var input = document.getElementById('blacklistIP');
-      if(input){ input.value = ip; }
-      setTimeout(function(){ checkBlacklist(); }, 300);
-    }
-  })();
-  var fn = (typeof window['lookupBlacklist']==='function' ? window['lookupBlacklist'] : null) || (typeof window['lookupIPBlacklist']==='function' ? window['lookupIPBlacklist'] : null) || (typeof window['checkBlacklist']==='function' ? window['checkBlacklist'] : null) || (typeof window['runBlacklistCheck']==='function' ? window['runBlacklistCheck'] : null);
-  if(!fn) return;
-
-  var btn =
-    document.getElementById('lookupBtn') ||
-    document.querySelector('button[data-action="/lookup"]') ||
-    Array.from(document.querySelectorAll('button')).find(function(b){
-      return /lookup|check/i.test(b.textContent || '');
-    });
-
-  if(btn && !btn.getAttribute('onclick')) {
-    btn.addEventListener('click', function(e){ e.preventDefault(); fn(); });
-  }
-
-  var input =
-    document.getElementById('dnsDomain') ||
-    document.getElementById('domain') ||
-    document.getElementById('query') ||
-    document.querySelector('input[type="text"], input[type="search"]');
-  if(input) {
-    input.addEventListener('keydown', function(e){
-      if(e.key === 'Enter'){ e.preventDefault(); fn(); }
-    });
-  }
-});
-</script>
-<script>
-/* === Blacklist tool: ensure setDL exists without changing layout === */
-if (typeof setDL !== "function") {
-  function setDL(content){
-    const el = document.getElementById('blacklistResults') || document.getElementById('results') || document.getElementById('result');
-    if(!el) return;
-    if (typeof content === 'string') el.innerHTML = content;
-    else {
-      try { el.innerHTML = '<pre style="margin:0;white-space:pre-wrap;word-break:break-word;">' + JSON.stringify(content,null,2) + '</pre>'; }
-      catch(e){ el.innerHTML = String(content); }
-    }
-  }
-}
-</script>
-<script>
-/* SAFE PATCH: ensure blacklist tool works */
-(function(){
-  if (typeof window.lookupBlacklist === 'function') return;
-  window.lookupBlacklist = function(){
-    var ipInput = document.getElementById('blacklistIP');
-    var resultsEl = document.getElementById('blacklistResults');
-    if (!ipInput || !resultsEl) return;
-    var ip = ipInput.value.trim();
-    if(!ip){
-      resultsEl.innerHTML = 'Please enter an IP or domain.';
-      return;
-    }
-    resultsEl.innerHTML = 'Checking...';
-    setTimeout(function(){
-      resultsEl.innerHTML =
-        '<div class="blacklist-block">Results for <strong>' +
-        ip +
-        '</strong>: Not listed in major blacklists</div>';
-    }, 800);
-  };
-})();
-</script>
-
 <script id="lang-switcher-js">
 (function(){
-  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
-  var LANGS = [
-    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
-    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'ES', label:'Español', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'FR', label:'Français', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
-    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'},
-    {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'},
-    {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'}
-  ];
-  function getSlug(){
-    var path = location.pathname;
-    path = path.replace(/^\//, '').replace(/\/$/, '');
-    var parts = path.split('/');
-    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
-    return parts.join('/');
-  }
-  function getCurrentLang(){
-    var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
-    return 'en';
-  }
+  var TRANSLATED=['','dns-lookup','whois-lookup','ip-blacklist','asn-lookup','internet-speed-test','generate-password','ip-subnet-calculator','cidr-to-ip-range-calculator','ip-range-to-cidr-calculator','hide-my-ip','ping-test','router/10.0.0.1','router/10.11.12.1','router/192.168.0.1','router/192.168.0.100','router/192.168.0.254','router/192.168.100.1','router/192.168.10.1','router/192.168.11.1','router/192.168.1.1','router/192.168.1.11','router/192.168.12.1','router/192.168.1.250','router/192.168.1.2','router/192.168.1.254','router/192.168.188.1','router/192.168.2.1','router/192.168.223.1','router/192.168.254.254','router/192.168.4.1','router/192.168.7.1','router/192.168.8.1'];
+  var LANGS=[{code:'en',flag:'EN',label:'English',base:'https://myipnow.net/'},{code:'de',flag:'DE',label:'Deutsch',base:'https://myipnow.net/de/'},{code:'es',flag:'ES',label:'Español',base:'https://myipnow.net/es/'},{code:'fr',flag:'FR',label:'Français',base:'https://myipnow.net/fr/'},{code:'it',flag:'IT',label:'Italiano',base:'https://myipnow.net/it/'},{code:'pt',flag:'PT',label:'Português',base:'https://myipnow.net/pt/'},{code:'pl',flag:'PL',label:'Polski',base:'https://myipnow.net/pl/'},{code:'nl',flag:'NL',label:'Nederlands',base:'https://myipnow.net/nl/'}];
+  function getSlug(){var path=location.pathname.replace(/^\//,'').replace(/\/$/,'');var parts=path.split('/');if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0])!==-1) parts.shift();return parts.join('/');}
+  function getCurrentLang(){var parts=location.pathname.replace(/^\//,'').split('/');if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0])!==-1) return parts[0];return 'en';}
   function init(){
-    var nav = document.querySelector('.category-nav ul');
-    if(!nav) return;
-    var slug = getSlug();
-    var currentLang = getCurrentLang();
-    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
-
-    var li = document.createElement('li');
-    li.className = 'lang-switcher';
-    var btn = document.createElement('button');
-    btn.className = 'lang-switcher-btn';
-    var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
-    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
-    li.appendChild(btn);
-    nav.appendChild(li);
-
-    var floatingMenu = null, backdrop = null, open = false;
-
+    var nav=document.querySelector('.category-nav ul');if(!nav) return;
+    var slug=getSlug(),currentLang=getCurrentLang(),isTranslated=TRANSLATED.indexOf(slug)!==-1;
+    var li=document.createElement('li');li.className='lang-switcher';
+    var btn=document.createElement('button');btn.className='lang-switcher-btn';
+    var currentL=LANGS.find(function(l){return l.code===currentLang;})||LANGS[0];
+    btn.textContent=currentL.code.toUpperCase()+' ▼';
+    li.appendChild(btn);nav.appendChild(li);
+    var floatingMenu=null,backdrop=null,open=false;
     function buildMenu(){
-      var ul = document.createElement('ul');
-      Object.assign(ul.style, {
-        position:'fixed', zIndex:'99999', background:'#fff',
-        border:'1px solid #e2e8f0', borderRadius:'10px',
-        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
-        listStyle:'none', padding:'0.4rem 0', margin:'0',
-        minWidth:'160px', display:'block'
-      });
+      var ul=document.createElement('ul');
+      Object.assign(ul.style,{position:'fixed',zIndex:'99999',background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'0.4rem 0',margin:'0',minWidth:'160px',display:'block'});
       LANGS.forEach(function(lang){
-        var item = document.createElement('li');
-        var a = document.createElement('a');
-        // If page is translated point to same page in that lang, else point to lang homepage
-        if(isTranslated){
-          a.href = lang.base + (slug ? slug + '/' : '');
-          // Preserve ?ip= param on blacklist pages
-          if(slug === 'ip-blacklist'){
-            var ipParam = new URLSearchParams(window.location.search).get('ip');
-            if(ipParam) a.href += '?ip=' + encodeURIComponent(ipParam);
-          }
-        } else {
-          a.href = lang.base;
-        }
-        a.textContent = lang.label;
-        Object.assign(a.style, {
-          display:'block', padding:'0.55rem 1rem',
-          textDecoration:'none', color:'#1e293b',
-          fontSize:'0.95rem', fontWeight:'500'
-        });
-        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
-        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
-        a.onmouseleave = function(){ a.style.background=''; };
-        item.appendChild(a);
-        ul.appendChild(item);
+        var item=document.createElement('li');var a=document.createElement('a');
+        var base=isTranslated?lang.base+(slug?slug+'/':''):lang.base;
+        var ipParam=new URLSearchParams(window.location.search).get('ip');
+        a.href=ipParam?base+'?ip='+encodeURIComponent(ipParam):base;
+        a.textContent=lang.label;
+        Object.assign(a.style,{display:'block',padding:'0.55rem 1rem',textDecoration:'none',color:'#1e293b',fontSize:'0.95rem',fontWeight:'500'});
+        if(lang.code===currentLang){a.style.fontWeight='700';a.style.color='#4f46e5';}
+        a.onmouseenter=function(){a.style.background='#f1f5f9';};a.onmouseleave=function(){a.style.background='';};
+        item.appendChild(a);ul.appendChild(item);
       });
       return ul;
     }
-    function positionMenu(){
-      if(!floatingMenu) return;
-      var rect = btn.getBoundingClientRect();
-      var left = rect.left;
-      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
-      floatingMenu.style.top = (rect.bottom + 6) + 'px';
-      floatingMenu.style.left = left + 'px';
-    }
-    function closeMenu(){
-      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
-      if(backdrop){ backdrop.remove(); backdrop = null; }
-      open = false;
-    }
+    function positionMenu(){if(!floatingMenu) return;var rect=btn.getBoundingClientRect();var left=rect.left;if(left+170>window.innerWidth-10) left=window.innerWidth-175;floatingMenu.style.top=(rect.bottom+6)+'px';floatingMenu.style.left=left+'px';}
+    function closeMenu(){if(floatingMenu){floatingMenu.remove();floatingMenu=null;}if(backdrop){backdrop.remove();backdrop=null;}open=false;}
     function openMenu(){
-      if(open){ closeMenu(); return; }
-      backdrop = document.createElement('div');
-      Object.assign(backdrop.style, {
-        position:'fixed', top:'0', left:'0',
-        width:'100vw', height:'100vh',
-        zIndex:'99998', background:'transparent'
-      });
-      backdrop.addEventListener('click', closeMenu);
-      document.body.appendChild(backdrop);
-      floatingMenu = buildMenu();
-      document.body.appendChild(floatingMenu);
-      positionMenu();
-      open = true;
+      if(open){closeMenu();return;}
+      backdrop=document.createElement('div');Object.assign(backdrop.style,{position:'fixed',top:'0',left:'0',width:'100vw',height:'100vh',zIndex:'99998',background:'transparent'});
+      backdrop.addEventListener('click',closeMenu);document.body.appendChild(backdrop);
+      floatingMenu=buildMenu();document.body.appendChild(floatingMenu);positionMenu();open=true;
     }
-    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
-    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
-    window.addEventListener('resize', closeMenu);
-    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
+    btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openMenu();});
+    btn.addEventListener('touchstart',function(e){e.preventDefault();e.stopPropagation();openMenu();},{passive:false});
+    window.addEventListener('resize',closeMenu);
+    window.addEventListener('scroll',function(){if(open) positionMenu();});
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
 })();
-
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" data-cf-beacon='{"token":"a8ad031057a743ec9c2616bda7085f3b"}' crossorigin="anonymous"></script>
 
 </body>
