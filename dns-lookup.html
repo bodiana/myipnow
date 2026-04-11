@@ -381,56 +381,48 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
 </footer>
 <script>
-function escapeHtml(s){function __setOutText(id,value){const el=document.getElementById('dl-'+id); if(el) el.textContent = (value===undefined||value===null)?'':String(value);}
-
+function __setOutText(id,value){
+  var el=document.getElementById('dl-'+id);
+  if(el) el.textContent=(value===undefined||value===null)?'':String(value);
+}
+function escapeHtml(s){
   return String(s)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
 }
 function recordTypeName(code){
-  const map = {1:'A',28:'AAAA',15:'MX',2:'NS',16:'TXT',5:'CNAME',6:'SOA'};
-  return map[code] || String(code);
+  var map={1:'A',28:'AAAA',15:'MX',2:'NS',16:'TXT',5:'CNAME',6:'SOA'};
+  return map[code]||String(code);
 }
 function lookupDNS(){
-  const domain = document.getElementById('dnsDomain').value.trim();
-  const type = document.getElementById('dnsType').value || 'ALL';
-  if(type==='ALL'){ lookupAllDNS(); return; }
-  __setOutText('domain', domain);
-  __setOutText('type', type);
-  __setOutText('count','');
-  __setOutText('first','');
-  const resultsEl = document.getElementById('dnsResults');
-  if(!domain){ resultsEl.innerHTML = '<div class="dns-record"><div class="dns-data">Please enter a domain.</div></div>'; return; }
-  resultsEl.innerHTML = '<div class="dns-record"><div class="dns-data">Loading...</div></div>';
-
-  fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=${encodeURIComponent(type)}`)
-  .then(res=>res.json())
-  .then(data=>{
-    resultsEl.innerHTML = '';
-    if(!data || !data.Answer || data.Answer.length===0){
-      resultsEl.innerHTML = '<div class="dns-record"><div class="dns-data">No records found.</div></div>';
-      __setOutText('count','0');
-      __setOutText('first','');
+  var domain=document.getElementById('dnsDomain').value.trim();
+  var type=document.getElementById('dnsType').value||'ALL';
+  if(type==='ALL'){lookupAllDNS();return;}
+  var resultsEl=document.getElementById('dnsResults');
+  if(!domain){resultsEl.innerHTML='<div class="dns-summary">Please enter a domain.</div>';return;}
+  resultsEl.innerHTML='<div class="dns-summary">Looking up '+escapeHtml(type)+' records for <strong>'+escapeHtml(domain)+'</strong>...</div>';
+  __setOutText('domain',domain);__setOutText('type',type);
+  fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(type))
+  .then(function(r){return r.json();})
+  .then(function(data){
+    resultsEl.innerHTML='';
+    var records=data.Answer||[];
+    if(records.length===0){
+      resultsEl.innerHTML='<div class="dns-summary">No '+escapeHtml(type)+' records found for <strong>'+escapeHtml(domain)+'</strong>.</div>';
       return;
     }
-    __setOutText('count', data.Answer.length);
-    let __firstSet = false;
-    data.Answer.forEach(a=>{
-      const typeName = (typeof a.type==='number')?recordTypeName(a.type):escapeHtml(a.type);
-      const name = escapeHtml(a.name||domain);
-      const ttl = a.TTL||a.ttl||0 ? `TTL: ${a.TTL??a.ttl}`:'';
-      const rawData = a.data||a.rdata||'';
-      if(!__firstSet){ __setOutText('first', rawData); __firstSet = true; }
-      const block = document.createElement('div');
-      block.className='dns-record';
-      block.innerHTML=`<div class="dns-type">${typeName} — ${name}</div><div class="dns-data">${escapeHtml(rawData)}</div><div class="dns-meta">${escapeHtml(ttl)}</div>`;
-      resultsEl.appendChild(block);
-    });
+    var summary=document.createElement('div');
+    summary.className='dns-summary';
+    summary.innerHTML='Found <strong>'+records.length+'</strong> '+escapeHtml(type)+' record'+(records.length!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
+    resultsEl.appendChild(summary);
+    renderDNSTable(records,type,resultsEl,true);
+    __setOutText('count',records.length);
+    __setOutText('first',records[0]?records[0].data||'':'');
   })
-  .catch(err=>{ resultsEl.innerHTML = `<div class="dns-record"><div class="dns-data">Error fetching DNS records: ${escapeHtml(err.message)}</div></div>`; });
+  .catch(function(err){resultsEl.innerHTML='<div class="dns-summary">Error: '+escapeHtml(err.message)+'</div>';});
 }
 </script>
 </div>
