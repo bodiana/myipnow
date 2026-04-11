@@ -543,16 +543,7 @@ function lookupDNS(){
 
     // Ensure clicks always call the function
     btn.addEventListener('click', function(e) {
-      try {
-        if (typeof window['lookupDNS'] === 'function') {
-          window['lookupDNS']();
-        } else {
-          console.error('[tool] lookupDNS is not defined.');
-        }
-      } catch (err) {
-        console.error(err);
-        alert('Tool error: ' + (err && err.message ? err.message : err));
-      }
+      if (typeof window['lookupDNS'] === 'function') window['lookupDNS']();
     });
 
     // Support Enter key in input(s)
