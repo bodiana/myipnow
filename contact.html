@@ -366,18 +366,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const data = new FormData(form);
         fetch("/contact-handler.php", { method: "POST", body: data })
-            .then(r => r.json())
-            .then(res => {
+            .then(function(r){ return r.text(); })
+            .then(function(text){
+                var res = JSON.parse(text);
                 if (res.ok) {
                     button.innerText = "Message Sent ✔";
-                    form.querySelectorAll("input, textarea").forEach(el => el.disabled = true);
+                    form.querySelectorAll("input, textarea").forEach(function(el){ el.disabled = true; });
                 } else {
                     button.innerText = "Send Message";
                     button.disabled = false;
                     alert("Something went wrong. Please try again.");
                 }
             })
-            .catch(() => {
+            .catch(function(err){
+                console.error(err);
                 button.innerText = "Send Message";
                 button.disabled = false;
                 alert("Something went wrong. Please try again.");
