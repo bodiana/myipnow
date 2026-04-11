@@ -346,16 +346,19 @@ function setDnsType(btn){
   document.querySelectorAll('.dns-type-btn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
   document.getElementById('dnsType').value=btn.getAttribute('data-type');
+  var domain=document.getElementById('dnsDomain').value.trim();
+  if(domain) lookupDNS();
 }
 
 function dnsLinks(val){
+  var v=val.replace(/\.$/,'');
   var out='';
-  if(/^(\d{1,3}\.){3}\d{1,3}$/.test(val.replace(/\.$/,''))){
-    out+='<a class="dns-action-link" href="/ip-blacklist/?ip='+encodeURIComponent(val)+'" target="_blank">Blacklist</a>';
-    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(val)+'" target="_blank">WHOIS</a>';
-    out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(val)+'" target="_blank">ASN</a>';
-  } else if(/^[a-z0-9.-]+\.[a-z]{2,}\.?$/i.test(val)){
-    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(val.replace(/\.$/,''))+'" target="_blank">WHOIS</a>';
+  if(/^(\d{1,3}\.){3}\d{1,3}$/.test(v)){
+    out+='<a class="dns-action-link" href="/ip-blacklist/?ip='+encodeURIComponent(v)+'" target="_blank">Blacklist</a>';
+    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+    out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(v)+'" target="_blank">ASN</a>';
+  } else if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(v)){
+    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
   }
   return out;
 }
@@ -384,7 +387,7 @@ function renderSection(records, type, container){
       +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
       +'<td style="font-family:monospace;word-break:break-all;" id="'+copyId+'">'+escapeHtml(data)+'</td>'
       +'<td style="white-space:nowrap;">'+dnsLinks(data)
-        +'<button onclick="var el=document.getElementById(''+copyId+'');navigator.clipboard.writeText(el.textContent);this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Copy';},1200);" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
+        +'<button onclick="var el=document.getElementById(this.dataset.cid);navigator.clipboard.writeText(el.textContent);this.textContent=\'Copied!\';var b=this;setTimeout(function(){b.textContent=\'Copy\';},1200);" data-cid="'+copyId+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
       +'</td>';
     tb.appendChild(tr);
   });
