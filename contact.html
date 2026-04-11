@@ -365,9 +365,15 @@ document.addEventListener("DOMContentLoaded", function () {
         button.disabled = true;
 
         const data = new FormData(form);
+        let dots = 0;
+        const sending = setInterval(function(){
+            dots = (dots + 1) % 4;
+            button.innerText = "Sending" + ".".repeat(dots);
+        }, 400);
         fetch("/contact-handler.php", { method: "POST", body: data })
             .then(function(r){ return r.text(); })
             .then(function(text){
+                clearInterval(sending);
                 var res = JSON.parse(text);
                 if (res.ok) {
                     button.innerText = "Message Sent ✔";
@@ -379,6 +385,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(function(err){
+                clearInterval(sending);
                 console.error(err);
                 button.innerText = "Send Message";
                 button.disabled = false;
