@@ -354,11 +354,11 @@ function dnsLinks(val){
   var v=val.replace(/\.$/,'');
   var out='';
   if(/^(\d{1,3}\.){3}\d{1,3}$/.test(v)){
-    out+='<a class="dns-action-link" href="/ip-blacklist/?ip='+encodeURIComponent(v)+'" target="_blank">Blacklist</a>';
-    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
-    out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(v)+'" target="_blank">ASN</a>';
+    out+='<a class="dns-action-link" href="'+langPfx+'/ip-blacklist/?ip='+encodeURIComponent(v)+'" target="_blank">Blacklist</a>';
+    out+='<a class="dns-action-link" href="'+langPfx+'/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+    out+='<a class="dns-action-link" href="'+langPfx+'/asn-lookup/?asn='+encodeURIComponent(v)+'" target="_blank">ASN</a>';
   } else if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(v)){
-    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+    out+='<a class="dns-action-link" href="'+langPfx+'/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
   }
   return out;
 }
