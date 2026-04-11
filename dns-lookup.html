@@ -195,10 +195,16 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <option value="MX">MX</option>
 <option value="NS">NS</option>
 <option value="TXT">TXT</option>
+<option value="CNAME">CNAME</option>
+<option value="SOA">SOA</option>
+<option value="CAA">CAA</option>
+<option value="PTR">PTR</option>
+<option value="SRV">SRV</option>
 </select>
 <button onclick="lookupDNS()">Lookup</button>
-<div class="dns-results" id="dnsResults"></div>
 </div>
+<button class="dns-tool-all" onclick="lookupAllDNS()" style="max-width:700px;display:block;margin:0.5rem auto 0;">&#128269; Lookup All Record Types</button>
+<div class="dns-results" id="dnsResults"></div>
 <dl aria-hidden="true" class="ip-semantic">
 <dt>Domain</dt><dd id="dl-domain"></dd>
 <dt>Record Type</dt><dd id="dl-type"></dd>
