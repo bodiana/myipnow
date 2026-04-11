@@ -340,7 +340,7 @@ function renderSection(records,type,container){
       +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
       +'<td style="font-family:monospace;word-break:break-all;" id="'+cid+'">'+escapeHtml(data)+'</td>'
       +'<td style="white-space:nowrap;">'+dnsLinks(data)
-        +'<button onclick="var el=document.getElementById(this.dataset.cid);navigator.clipboard.writeText(el.textContent);this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Copy';},1200);" data-cid="'+cid+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
+        +'<button onclick="var el=document.getElementById(this.dataset.cid);navigator.clipboard.writeText(el.textContent);this.textContent=\'Copied!\';var b=this;setTimeout(function(){b.textContent=\'Copy\';},1200);" data-cid="'+cid+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
       +'</td>';
     tb.appendChild(tr);
   });
