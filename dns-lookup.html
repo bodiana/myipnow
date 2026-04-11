@@ -410,6 +410,8 @@ function setDnsType(btn){
   document.querySelectorAll('.dns-type-btn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
   document.getElementById('dnsType').value=btn.getAttribute('data-type');
+  var domain=document.getElementById('dnsDomain').value.trim();
+  if(domain) lookupDNS();
 }
 
 function dnsLinks(val){
