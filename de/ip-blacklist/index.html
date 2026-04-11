@@ -45,10 +45,11 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 .article-body ul {list-style: disc; padding-left: 1.5rem;}
 
 /* Blacklist tool */
-.blacklist-tool {display: flex; flex-direction: row; gap: 0.75rem; max-width: 700px; margin: 1rem auto; align-items: center;}
-.blacklist-tool input {flex: 1; min-width: 0; padding: 0.75rem 1rem; font-size: 1rem; border-radius: 8px; border: 1px solid #e2e8f0;}
+.blacklist-tool {display: flex; flex-direction: row; gap: 0.75rem; max-width: 700px; margin: 1rem auto; align-items: center; flex-wrap: wrap;}
+.blacklist-tool input {flex: 1; min-width: 200px; padding: 0.75rem 1rem; font-size: 1rem; border-radius: 8px; border: 1px solid #e2e8f0;}
 .blacklist-tool button {padding: 0.75rem 1.5rem; font-size: 1rem; border: none; border-radius: 8px; background: var(--hide-ip-color); color: white; cursor: pointer; font-weight: 600; white-space: nowrap; transition: background var(--transition-speed);}
 .blacklist-tool button:hover {background: #059669;}
+@media(max-width:600px){.blacklist-tool{flex-direction:column;}.blacklist-tool input,.blacklist-tool button{width:100%;box-sizing:border-box;}}
 
 /* Results block (NO SCROLL) */
 .blacklist-results {margin-top: 1rem;}
