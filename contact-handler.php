@@ -13,8 +13,8 @@ if (!$name || !$email || !$message || !filter_var($email, FILTER_VALIDATE_EMAIL)
 
 $to      = 'contact@myipnow.net';
 $subject = 'MyIPNow Contact: ' . $name;
-$body    = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-$headers = "From: noreply@myipnow.net\r\nReply-To: $email\r\nContent-Type: text/plain; charset=UTF-8";
+$body    = "Name: $name\nEmail: $email\n\nMessage:\n$message\n\n---\nReply directly to this email to respond to $name at $email";
+$headers = "From: $name <$email>\r\nReply-To: $email\r\nContent-Type: text/plain; charset=UTF-8";
 
 $sent = mail($to, $subject, $body, $headers);
 header('Content-Type: application/json');
