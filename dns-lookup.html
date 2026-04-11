@@ -381,450 +381,240 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
 </footer>
 <script>
+/* ===== DNS LOOKUP - CLEAN IMPLEMENTATION ===== */
+
 function __setOutText(id,value){
   var el=document.getElementById('dl-'+id);
-  if(el) el.textContent=(value===undefined||value===null)?'':String(value);
+  if(el) el.textContent=(value==null)?'':String(value);
 }
+
 function escapeHtml(s){
-  return String(s)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;')
-    .replace(/'/g,'&#039;');
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 }
-function recordTypeName(code){
-  var map={1:'A',28:'AAAA',15:'MX',2:'NS',16:'TXT',5:'CNAME',6:'SOA'};
-  return map[code]||String(code);
+
+var DNS_COLORS={
+  A:{bg:'#dbeafe',color:'#1d4ed8'},
+  AAAA:{bg:'#ede9fe',color:'#6d28d9'},
+  MX:{bg:'#fef3c7',color:'#b45309'},
+  NS:{bg:'#d1fae5',color:'#065f46'},
+  TXT:{bg:'#f3f4f6',color:'#374151'},
+  CNAME:{bg:'#fce7f3',color:'#9d174d'},
+  SOA:{bg:'#e0f2fe',color:'#0369a1'},
+  CAA:{bg:'#ffedd5',color:'#c2410c'},
+  PTR:{bg:'#f0fdf4',color:'#166534'},
+  SRV:{bg:'#fdf4ff',color:'#7e22ce'},
+  DS:{bg:'#fff7ed',color:'#c2410c'}
+};
+
+function setDnsType(btn){
+  document.querySelectorAll('.dns-type-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.getElementById('dnsType').value=btn.getAttribute('data-type');
 }
+
+function dnsLinks(val){
+  var out='';
+  if(/^(\d{1,3}\.){3}\d{1,3}$/.test(val.replace(/\.$/,''))){
+    out+='<a class="dns-action-link" href="/ip-blacklist/?ip='+encodeURIComponent(val)+'" target="_blank">Blacklist</a>';
+    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(val)+'" target="_blank">WHOIS</a>';
+    out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(val)+'" target="_blank">ASN</a>';
+  } else if(/^[a-z0-9.-]+\.[a-z]{2,}\.?$/i.test(val)){
+    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(val.replace(/\.$/,''))+'" target="_blank">WHOIS</a>';
+  }
+  return out;
+}
+
+function renderSection(records, type, container){
+  if(!records||!records.length) return;
+  var c=DNS_COLORS[type]||{bg:'#f1f5f9',color:'#4f46e5'};
+  var sec=document.createElement('div');
+  sec.style.marginBottom='1.5rem';
+  var badge=document.createElement('div');
+  badge.style.cssText='background:'+c.bg+';color:'+c.color+';font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
+  badge.textContent=type+' — '+records.length+' record'+(records.length!==1?'s':'');
+  sec.appendChild(badge);
+  var tbl=document.createElement('table');
+  tbl.className='dns-table';
+  tbl.innerHTML='<thead><tr><th>Name</th><th>TTL</th><th>Data</th><th></th></tr></thead>';
+  var tb=document.createElement('tbody');
+  records.forEach(function(a){
+    var name=(a.name||'').replace(/\.$/,'');
+    var ttl=a.TTL||a.ttl||'';
+    var data=(a.data||a.rdata||'').replace(/\.$/,'');
+    var tr=document.createElement('tr');
+    var copyId='cp_'+Math.random().toString(36).slice(2);
+    tr.innerHTML=
+      '<td style="color:var(--text-secondary);font-size:0.85rem;">'+escapeHtml(name)+'</td>'
+      +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
+      +'<td style="font-family:monospace;word-break:break-all;" id="'+copyId+'">'+escapeHtml(data)+'</td>'
+      +'<td style="white-space:nowrap;">'+dnsLinks(data)
+        +'<button onclick="var el=document.getElementById(''+copyId+'');navigator.clipboard.writeText(el.textContent);this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Copy';},1200);" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
+      +'</td>';
+    tb.appendChild(tr);
+  });
+  tbl.appendChild(tb);
+  sec.appendChild(tbl);
+  container.appendChild(sec);
+}
+
 function lookupDNS(){
   var domain=document.getElementById('dnsDomain').value.trim();
   var type=document.getElementById('dnsType').value||'ALL';
+  var el=document.getElementById('dnsResults');
+  if(!domain){el.innerHTML='<div class="dns-summary">Please enter a domain name.</div>';return;}
   if(type==='ALL'){lookupAllDNS();return;}
-  var resultsEl=document.getElementById('dnsResults');
-  if(!domain){resultsEl.innerHTML='<div class="dns-summary">Please enter a domain.</div>';return;}
-  resultsEl.innerHTML='<div class="dns-summary">Looking up '+escapeHtml(type)+' records for <strong>'+escapeHtml(domain)+'</strong>...</div>';
-  __setOutText('domain',domain);__setOutText('type',type);
+  el.innerHTML='<div class="dns-summary">Looking up <strong>'+escapeHtml(type)+'</strong> records for <strong>'+escapeHtml(domain)+'</strong>...</div>';
   fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(type))
   .then(function(r){return r.json();})
   .then(function(data){
-    resultsEl.innerHTML='';
+    el.innerHTML='';
     var records=data.Answer||[];
-    if(records.length===0){
-      resultsEl.innerHTML='<div class="dns-summary">No '+escapeHtml(type)+' records found for <strong>'+escapeHtml(domain)+'</strong>.</div>';
-      return;
+    var sum=document.createElement('div');
+    sum.className='dns-summary';
+    if(!records.length){
+      sum.innerHTML='No <strong>'+escapeHtml(type)+'</strong> records found for <strong>'+escapeHtml(domain)+'</strong>.';
+      el.appendChild(sum);return;
     }
-    var summary=document.createElement('div');
-    summary.className='dns-summary';
-    summary.innerHTML='Found <strong>'+records.length+'</strong> '+escapeHtml(type)+' record'+(records.length!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
-    resultsEl.appendChild(summary);
-    renderDNSTable(records,type,resultsEl,true);
-    __setOutText('count',records.length);
-    __setOutText('first',records[0]?records[0].data||'':'');
+    sum.innerHTML='Found <strong>'+records.length+'</strong> '+escapeHtml(type)+' record'+(records.length!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
+    el.appendChild(sum);
+    renderSection(records,type,el);
+    __setOutText('domain',domain);__setOutText('type',type);__setOutText('count',records.length);
   })
-  .catch(function(err){resultsEl.innerHTML='<div class="dns-summary">Error: '+escapeHtml(err.message)+'</div>';});
+  .catch(function(err){el.innerHTML='<div class="dns-summary">Error: '+escapeHtml(err.message)+'</div>';});
 }
+
+function lookupAllDNS(){
+  var domain=document.getElementById('dnsDomain').value.trim();
+  var el=document.getElementById('dnsResults');
+  if(!domain){el.innerHTML='<div class="dns-summary">Please enter a domain name.</div>';return;}
+  var types=['A','AAAA','MX','NS','TXT','CNAME','SOA','CAA'];
+  el.innerHTML='<div class="dns-summary">Looking up all record types for <strong>'+escapeHtml(domain)+'</strong>...</div>';
+  Promise.all(types.map(function(t){
+    return fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(t))
+    .then(function(r){return r.json();})
+    .then(function(d){return{type:t,records:d.Answer||[]};})
+    .catch(function(){return{type:t,records:[]};});
+  })).then(function(results){
+    el.innerHTML='';
+    var total=results.reduce(function(s,r){return s+r.records.length;},0);
+    var sum=document.createElement('div');
+    sum.className='dns-summary';
+    if(!total){
+      sum.innerHTML='No DNS records found for <strong>'+escapeHtml(domain)+'</strong>.';
+      el.appendChild(sum);return;
+    }
+    sum.innerHTML='Found <strong>'+total+'</strong> DNS record'+(total!==1?'s':'')+' across all types for <strong>'+escapeHtml(domain)+'</strong>';
+    el.appendChild(sum);
+    results.forEach(function(r){if(r.records.length) renderSection(r.records,r.type,el);});
+    __setOutText('domain',domain);__setOutText('count',total);
+  });
+}
+
+// Enter key support
+document.addEventListener('DOMContentLoaded',function(){
+  var input=document.getElementById('dnsDomain');
+  if(input) input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();lookupDNS();}});
+
+  // URL param / session storage
+  var params=new URLSearchParams(window.location.search);
+  var q=params.get('q')||sessionStorage.getItem('tool_input_dns-lookup')||'';
+  if(q&&input){
+    input.value=q;
+    if(params.get('q')) setTimeout(lookupDNS,400);
+  }
+  if(input) input.addEventListener('input',function(){
+    sessionStorage.setItem('tool_input_dns-lookup',input.value);
+    // update lang-links
+    var cur=input.value.trim();
+    document.querySelectorAll('.lang-links a').forEach(function(a){
+      var href=a.getAttribute('href').split('?')[0];
+      if(cur) a.setAttribute('href',href+'?q='+encodeURIComponent(cur));
+      else a.setAttribute('href',href);
+    });
+  });
+});
 </script>
-</div>
 <script id="mobile-header-fix-final">
 (function(){
-  const tools = document.querySelector('.nav-tools');
+  const tools=document.querySelector('.nav-tools');
   if(!tools) return;
-  const trigger = tools.querySelector(':scope > a');
-  const dropdown = tools.querySelector(':scope > ul');
-  if(!trigger || !dropdown) return;
-
-  let menu=null, backdrop=null, open=false;
-
-  // Desktop hover
-  tools.addEventListener('mouseenter',()=>{ if(window.innerWidth>768) dropdown.style.display='block'; });
-  tools.addEventListener('mouseleave',()=>{ if(window.innerWidth>768) dropdown.style.display='none'; });
-
-  function closeMenu(){
-    if(menu){ menu.remove(); menu=null; }
-    if(backdrop){ backdrop.remove(); backdrop=null; }
-    dropdown.style.display='none';
-    document.body.classList.remove('menu-open');
-    open=false;
-  }
-
+  const trigger=tools.querySelector(':scope > a');
+  const dropdown=tools.querySelector(':scope > ul');
+  if(!trigger||!dropdown) return;
+  let menu=null,backdrop=null,open=false;
+  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768) dropdown.style.display='block';});
+  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768) dropdown.style.display='none';});
+  function closeMenu(){if(menu){menu.remove();menu=null;}if(backdrop){backdrop.remove();backdrop=null;}dropdown.style.display='none';document.body.classList.remove('menu-open');open=false;}
   function openMenu(e){
-    e.preventDefault(); e.stopPropagation();
+    e.preventDefault();e.stopPropagation();
     if(window.innerWidth>768) return;
-
-    dropdown.style.display='none'; // hide original header dropdown
-
-    if(open){ closeMenu(); return; }
-
-    const rect = trigger.getBoundingClientRect();
-    backdrop = document.createElement('div');
-    Object.assign(backdrop.style,{
-      position:'fixed',top:0,left:0,width:'100vw',height:'100vh',
-      background:'transparent',zIndex:9998
-    });
-    backdrop.addEventListener('click', closeMenu);
+    dropdown.style.display='none';
+    if(open){closeMenu();return;}
+    const rect=trigger.getBoundingClientRect();
+    backdrop=document.createElement('div');
+    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
+    backdrop.addEventListener('click',closeMenu);
     document.body.appendChild(backdrop);
-
-    menu = dropdown.cloneNode(true);
-    Object.assign(menu.style,{
-      position:'absolute',
-      top:`${rect.bottom + window.scrollY + 8}px`,
-      left:`${rect.left + window.scrollX}px`,
-      minWidth:`${Math.max(rect.width,200)}px`,
-      background:'#fff',
-      border:'1px solid #e2e8f0',
-      borderRadius:'10px',
-      boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
-      listStyle:'none',
-      padding:'.5rem 0',
-      margin:0,
-      zIndex:9999,
-      maxHeight:'70vh',
-      overflowY:'auto',
-      display:'block',        /* ✅ ensures visible */
-      visibility:'visible',   /* ✅ fixes Safari hover ghost */
-      opacity:'1'             /* ✅ fully visible */
-    });
-    menu.querySelectorAll('a').forEach(a=>{
-      a.style.display='block';
-      a.style.padding='.6rem 1.2rem';
-      a.style.color='#1e293b';
-      a.style.textDecoration='none';
-      a.style.fontWeight='500';
-      a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');
-      a.addEventListener('mouseleave',()=>a.style.color='#1e293b');
-    });
-
+    menu=dropdown.cloneNode(true);
+    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom+window.scrollY+8}px`,left:`${rect.left+window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,display:'block',visibility:'visible',opacity:'1'});
+    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
     document.body.appendChild(menu);
     document.body.classList.add('menu-open');
     open=true;
   }
-
-  window.addEventListener('scroll',()=>{ if(!open||!menu)return;
-    const rect=trigger.getBoundingClientRect();
-    menu.style.top=`${rect.bottom + window.scrollY + 8}px`;
-    menu.style.left=`${rect.left + window.scrollX}px`;
-  });
   window.addEventListener('resize',closeMenu);
   trigger.addEventListener('click',openMenu);
   trigger.addEventListener('touchstart',openMenu,{passive:false});
 })();
 </script>
-<script>
-(function() {
-  function ready(fn) {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
-    else fn();
-  }
-
-  ready(function() {
-    var input = document.getElementById('dnsDomain');
-    var fn = window['lookupDNS'];
-
-    // Find the button that triggers the tool (prefer explicit onclick, otherwise nearest button)
-    var btn = document.querySelector('button[onclick*="lookupDNS"]') || document.querySelector('button[onclick*="lookupdns"]');
-    if (!btn && input) {
-      // fallback: first button after the input
-      btn = input.parentElement ? input.parentElement.querySelector('button') : null;
-    }
-
-    if (!btn) {
-      console.warn('[tool] Could not find lookup button for lookupDNS.');
-      return;
-    }
-
-    // Ensure clicks always call the function
-    btn.addEventListener('click', function(e) {
-      if (typeof window['lookupDNS'] === 'function') window['lookupDNS']();
-    });
-
-    // Support Enter key in input(s)
-    if (input) {
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          btn.click();
-        }
-      });
-    }
-    // Also support Enter in any select inside same tool container
-    var container = btn.closest('.dns-tool, .whois-tool, .blacklist-tool, .tool, .card, section, main, body') || document.body;
-    var selects = container.querySelectorAll('select');
-    selects.forEach(function(sel) {
-      sel.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          btn.click();
-        }
-      });
-    });
-  });
-})();
-</script>
-<script>
-/* === TOOL PATCH: output helpers (no layout changes) === */
-(function(){
-  function findOut(){
-    return document.getElementById('dnsResults') || document.getElementById('dns-results') || document.getElementById('results') || document.getElementById('result') || document.getElementById('output') || document.querySelector(".dns-results, .whois-results, .blacklist-results, .results, .result, .output");
-  }
-  window.__setOutHTML = function(html){
-    var out = findOut(); if(!out) return; out.innerHTML = html;
-  };
-  window.__setOutText = function(text){
-    var out = findOut(); if(!out) return; out.textContent = text;
-  };
-})();
-</script>
-<script>
-/* === TOOL PATCH: ensure Lookup works (no UI changes) === */
-function setDnsType(btn){
-  document.querySelectorAll('.dns-type-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  document.getElementById('dnsType').value = btn.getAttribute('data-type');
-}
-
-function dnsActionLinks(value, type){
-  var links = '';
-  // If value looks like an IP, add links
-  var ipv4 = /^(\d{1,3}\.){3}\d{1,3}$/;
-  var domain = /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z]{2,})+\.?$/;
-  if(ipv4.test(value.replace(/\.$/,''))){
-    links += '<a class="dns-action-link" href="/ip-blacklist/?ip='+encodeURIComponent(value)+'" target="_blank">Blacklist</a>';
-    links += '<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(value)+'" target="_blank">WHOIS</a>';
-    links += '<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(value)+'" target="_blank">ASN</a>';
-  } else if(domain.test(value.replace(/\.$/,''))){
-    links += '<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(value.replace(/\.$/,''))+'" target="_blank">WHOIS</a>';
-  }
-  return links;
-}
-
-function renderDNSTable(records, type, resultsEl, append){
-  if(!records||records.length===0) return;
-  const colors = DNS_TYPE_COLORS[type]||{bg:'#f1f5f9',color:'#4f46e5'};
-  const section = document.createElement('div');
-  section.className = 'dns-section';
-  section.style.marginBottom = '1.5rem';
-  const title = document.createElement('div');
-  title.className = 'dns-section-title';
-  title.style.cssText = 'background:'+colors.bg+';color:'+colors.color+';font-weight:700;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
-  title.textContent = type + ' — ' + records.length + ' record' + (records.length!==1?'s':'');
-  section.appendChild(title);
-  const table = document.createElement('table');
-  table.className = 'dns-table';
-  table.innerHTML = '<thead><tr><th>Name</th><th>TTL</th><th>Data</th><th></th></tr></thead>';
-  const tbody = document.createElement('tbody');
-  records.forEach(function(a){
-    const name = (a.name||'').replace(/\.$/,'');
-    const ttl = a.TTL||a.ttl||'';
-    const data = (a.data||a.rdata||'').replace(/\.$/,'');
-    const tr = document.createElement('tr');
-    tr.innerHTML = '<td style="color:var(--text-secondary);font-size:0.85rem;">'+escapeHtml(name)+'</td>'
-      +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
-      +'<td style="font-family:monospace;">'+escapeHtml(data)+'</td>'
-      +'<td style="white-space:nowrap;">'+dnsActionLinks(data, type)
-        +'<button onclick="navigator.clipboard.writeText(''+escapeHtml(data).replace(/'/g,"\'")+'');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1200);" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
-      +'</td>';
-    tbody.appendChild(tr);
-  });
-  table.appendChild(tbody);
-  section.appendChild(table);
-  resultsEl.appendChild(section);
-}
-
-const DNS_TYPE_COLORS = {
-  A:{bg:'#dbeafe',color:'#1d4ed8'},AAAA:{bg:'#ede9fe',color:'#6d28d9'},
-  MX:{bg:'#fef3c7',color:'#b45309'},NS:{bg:'#d1fae5',color:'#065f46'},
-  TXT:{bg:'#f3f4f6',color:'#374151'},CNAME:{bg:'#fce7f3',color:'#9d174d'},
-  SOA:{bg:'#e0f2fe',color:'#0369a1'},CAA:{bg:'#ffedd5',color:'#c2410c'},
-  PTR:{bg:'#f0fdf4',color:'#166534'},SRV:{bg:'#fdf4ff',color:'#7e22ce'},
-};
-function renderDNSRecords(records, type, resultsEl, append){
-  if(!append) resultsEl.innerHTML = '';
-  if(!records||records.length===0) return;
-  const colors = DNS_TYPE_COLORS[type]||{bg:'#f1f5f9',color:'#4f46e5'};
-  const section = document.createElement('div');
-  section.className = 'dns-section';
-  const title = document.createElement('div');
-  title.className = 'dns-section-title';
-  title.style.background = colors.bg;
-  title.style.color = colors.color;
-  title.textContent = type+' Records ('+records.length+')';
-  section.appendChild(title);
-  records.forEach(function(a){
-    const rawData = a.data||a.rdata||'';
-    const ttl = (a.TTL||a.ttl) ? 'TTL: '+(a.TTL||a.ttl)+' s' : '';
-    const block = document.createElement('div');
-    block.className = 'dns-record';
-    block.innerHTML = '<div class="dns-record-left"><div class="dns-data">'+escapeHtml(rawData)+'</div><div class="dns-meta">'+escapeHtml(ttl)+'</div></div>'
-      +'<button class="dns-copy-btn" onclick="navigator.clipboard.writeText(this.getAttribute('data-val'))" data-val="'+escapeHtml(rawData)+'">Copy</button>';
-    section.appendChild(block);
-  });
-  resultsEl.appendChild(section);
-}
-function lookupAllDNS(){
-  const domain = document.getElementById('dnsDomain').value.trim();
-  const resultsEl = document.getElementById('dnsResults');
-  if(!domain){ resultsEl.innerHTML = '<div class="dns-record"><div class="dns-record-left"><div class="dns-data">Please enter a domain.</div></div></div>'; return; }
-  const types = ['A','AAAA','MX','NS','TXT','CNAME','SOA','CAA'];
-  resultsEl.innerHTML = '<div class="dns-summary">Looking up all record types for <strong>'+escapeHtml(domain)+'</strong>...</div>';
-  Promise.all(types.map(function(t){
-    return fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(t))
-    .then(function(r){return r.json();})
-    .then(function(data){return {type:t,records:data.Answer||[]};})
-    .catch(function(){return {type:t,records:[]};});
-  })).then(function(results){
-    resultsEl.innerHTML = '';
-    var total = results.reduce(function(s,r){return s+r.records.length;},0);
-    var summary = document.createElement('div');
-    summary.className = 'dns-summary';
-    summary.innerHTML = 'Found <strong>'+total+'</strong> DNS record'+(total!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
-    resultsEl.appendChild(summary);
-    results.forEach(function(r){ if(r.records.length) renderDNSTable(r.records,r.type,resultsEl,true); });
-    if(total===0) resultsEl.innerHTML = '<div class="dns-record"><div class="dns-record-left"><div class="dns-data">No DNS records found for '+escapeHtml(domain)+'.</div></div></div>';
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function(){
-  var fn = (typeof window['lookupDNS']==='function' ? window['lookupDNS'] : null) || (typeof window['lookupDns']==='function' ? window['lookupDns'] : null) || (typeof window['doDNSLookup']==='function' ? window['doDNSLookup'] : null) || (typeof window['runDNSLookup']==='function' ? window['runDNSLookup'] : null);
-  if(!fn) return;
-
-  var btn =
-    document.getElementById('lookupBtn') ||
-    document.querySelector('button[data-action="/lookup"]') ||
-    Array.from(document.querySelectorAll('button')).find(function(b){
-      return /lookup|check/i.test(b.textContent || '');
-    });
-
-  if(btn && !btn.getAttribute('onclick')) {
-    btn.addEventListener('click', function(e){ e.preventDefault(); fn(); });
-  }
-
-  var input =
-    document.getElementById('dnsDomain') ||
-    document.getElementById('domain') ||
-    document.getElementById('query') ||
-    document.querySelector('input[type="text"], input[type="search"]');
-  if(input) {
-    input.addEventListener('keydown', function(e){
-      if(e.key === 'Enter'){ e.preventDefault(); fn(); }
-    });
-  }
-});
-</script>
-
 <script id="lang-switcher-js">
 (function(){
-  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
-  var LANGS = [
-    {code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'},
-    {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'},
-    {code:'es', flag:'ES', label:'Español', base:'https://myipnow.net/es/'},
-    {code:'fr', flag:'FR', label:'Français', base:'https://myipnow.net/fr/'},
-    {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'},
-    {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'},
-    {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'},
-    {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'}
-  ];
-  function getSlug(){
-    var path = location.pathname;
-    path = path.replace(/^\//, '').replace(/\/$/, '');
-    var parts = path.split('/');
-    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
-    return parts.join('/');
-  }
-  function getCurrentLang(){
-    var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
-    return 'en';
-  }
+  var TRANSLATED=['','dns-lookup','whois-lookup','ip-blacklist','asn-lookup','internet-speed-test','generate-password','ip-subnet-calculator','cidr-to-ip-range-calculator','ip-range-to-cidr-calculator','hide-my-ip','ping-test','router/10.0.0.1','router/10.11.12.1','router/192.168.0.1','router/192.168.0.100','router/192.168.0.254','router/192.168.100.1','router/192.168.10.1','router/192.168.11.1','router/192.168.1.1','router/192.168.1.11','router/192.168.12.1','router/192.168.1.250','router/192.168.1.2','router/192.168.1.254','router/192.168.188.1','router/192.168.2.1','router/192.168.223.1','router/192.168.254.254','router/192.168.4.1','router/192.168.7.1','router/192.168.8.1'];
+  var LANGS=[{code:'en',flag:'EN',label:'English',base:'https://myipnow.net/'},{code:'de',flag:'DE',label:'Deutsch',base:'https://myipnow.net/de/'},{code:'es',flag:'ES',label:'Español',base:'https://myipnow.net/es/'},{code:'fr',flag:'FR',label:'Français',base:'https://myipnow.net/fr/'},{code:'it',flag:'IT',label:'Italiano',base:'https://myipnow.net/it/'},{code:'pt',flag:'PT',label:'Português',base:'https://myipnow.net/pt/'},{code:'pl',flag:'PL',label:'Polski',base:'https://myipnow.net/pl/'},{code:'nl',flag:'NL',label:'Nederlands',base:'https://myipnow.net/nl/'}];
+  function getSlug(){var path=location.pathname.replace(/^\//,'').replace(/\/$/,'');var parts=path.split('/');if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0])!==-1) parts.shift();return parts.join('/');}
+  function getCurrentLang(){var parts=location.pathname.replace(/^\//,'').split('/');if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0])!==-1) return parts[0];return 'en';}
   function init(){
-    var nav = document.querySelector('.category-nav ul');
-    if(!nav) return;
-    var slug = getSlug();
-    var currentLang = getCurrentLang();
-    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
-
-    var li = document.createElement('li');
-    li.className = 'lang-switcher';
-    var btn = document.createElement('button');
-    btn.className = 'lang-switcher-btn';
-    var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
-    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
-    li.appendChild(btn);
-    nav.appendChild(li);
-
-    var floatingMenu = null, backdrop = null, open = false;
-
+    var nav=document.querySelector('.category-nav ul');if(!nav) return;
+    var slug=getSlug(),currentLang=getCurrentLang(),isTranslated=TRANSLATED.indexOf(slug)!==-1;
+    var li=document.createElement('li');li.className='lang-switcher';
+    var btn=document.createElement('button');btn.className='lang-switcher-btn';
+    var currentL=LANGS.find(function(l){return l.code===currentLang;})||LANGS[0];
+    btn.textContent=currentL.code.toUpperCase()+' ▼';
+    li.appendChild(btn);nav.appendChild(li);
+    var floatingMenu=null,backdrop=null,open=false;
     function buildMenu(){
-      var ul = document.createElement('ul');
-      Object.assign(ul.style, {
-        position:'fixed', zIndex:'99999', background:'#fff',
-        border:'1px solid #e2e8f0', borderRadius:'10px',
-        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
-        listStyle:'none', padding:'0.4rem 0', margin:'0',
-        minWidth:'160px', display:'block'
-      });
+      var ul=document.createElement('ul');
+      Object.assign(ul.style,{position:'fixed',zIndex:'99999',background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'0.4rem 0',margin:'0',minWidth:'160px',display:'block'});
       LANGS.forEach(function(lang){
-        var item = document.createElement('li');
-        var a = document.createElement('a');
-        // If page is translated point to same page in that lang, else point to lang homepage
-        if(isTranslated){
-          a.href = lang.base + (slug ? slug + '/' : '');
-        } else {
-          a.href = lang.base;
-        }
-        a.textContent = lang.label;
-        Object.assign(a.style, {
-          display:'block', padding:'0.55rem 1rem',
-          textDecoration:'none', color:'#1e293b',
-          fontSize:'0.95rem', fontWeight:'500'
-        });
-        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
-        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
-        a.onmouseleave = function(){ a.style.background=''; };
-        item.appendChild(a);
-        ul.appendChild(item);
+        var item=document.createElement('li');var a=document.createElement('a');
+        var base=isTranslated?lang.base+(slug?slug+'/':''):lang.base;
+        var qParam=new URLSearchParams(window.location.search).get('q');
+        a.href=qParam?base+'?q='+encodeURIComponent(qParam):base;
+        a.textContent=lang.label;
+        Object.assign(a.style,{display:'block',padding:'0.55rem 1rem',textDecoration:'none',color:'#1e293b',fontSize:'0.95rem',fontWeight:'500'});
+        if(lang.code===currentLang){a.style.fontWeight='700';a.style.color='#4f46e5';}
+        a.onmouseenter=function(){a.style.background='#f1f5f9';};a.onmouseleave=function(){a.style.background='';};
+        item.appendChild(a);ul.appendChild(item);
       });
       return ul;
     }
-    function positionMenu(){
-      if(!floatingMenu) return;
-      var rect = btn.getBoundingClientRect();
-      var left = rect.left;
-      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
-      floatingMenu.style.top = (rect.bottom + 6) + 'px';
-      floatingMenu.style.left = left + 'px';
-    }
-    function closeMenu(){
-      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
-      if(backdrop){ backdrop.remove(); backdrop = null; }
-      open = false;
-    }
+    function positionMenu(){if(!floatingMenu) return;var rect=btn.getBoundingClientRect();var left=rect.left;if(left+170>window.innerWidth-10) left=window.innerWidth-175;floatingMenu.style.top=(rect.bottom+6)+'px';floatingMenu.style.left=left+'px';}
+    function closeMenu(){if(floatingMenu){floatingMenu.remove();floatingMenu=null;}if(backdrop){backdrop.remove();backdrop=null;}open=false;}
     function openMenu(){
-      if(open){ closeMenu(); return; }
-      backdrop = document.createElement('div');
-      Object.assign(backdrop.style, {
-        position:'fixed', top:'0', left:'0',
-        width:'100vw', height:'100vh',
-        zIndex:'99998', background:'transparent'
-      });
-      backdrop.addEventListener('click', closeMenu);
-      document.body.appendChild(backdrop);
-      floatingMenu = buildMenu();
-      document.body.appendChild(floatingMenu);
-      positionMenu();
-      open = true;
+      if(open){closeMenu();return;}
+      backdrop=document.createElement('div');Object.assign(backdrop.style,{position:'fixed',top:'0',left:'0',width:'100vw',height:'100vh',zIndex:'99998',background:'transparent'});
+      backdrop.addEventListener('click',closeMenu);document.body.appendChild(backdrop);
+      floatingMenu=buildMenu();document.body.appendChild(floatingMenu);positionMenu();open=true;
     }
-    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
-    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
-    window.addEventListener('resize', closeMenu);
-    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
+    btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openMenu();});
+    btn.addEventListener('touchstart',function(e){e.preventDefault();e.stopPropagation();openMenu();},{passive:false});
+    window.addEventListener('resize',closeMenu);
+    window.addEventListener('scroll',function(){if(open) positionMenu();});
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
 })();
-
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" data-cf-beacon='{"token":"a8ad031057a743ec9c2616bda7085f3b"}' crossorigin="anonymous"></script>
 </body>
 </html>
