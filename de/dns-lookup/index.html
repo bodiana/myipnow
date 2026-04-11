@@ -295,9 +295,31 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
 </footer>
 <script>
-function __setOutText(id,value){var el=document.getElementById('dl-'+id);if(el) el.textContent=(value==null)?'':String(value);}
-function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
-var DNS_COLORS={A:{bg:'#dbeafe',color:'#1d4ed8'},AAAA:{bg:'#ede9fe',color:'#6d28d9'},MX:{bg:'#fef3c7',color:'#b45309'},NS:{bg:'#d1fae5',color:'#065f46'},TXT:{bg:'#f3f4f6',color:'#374151'},CNAME:{bg:'#fce7f3',color:'#9d174d'},SOA:{bg:'#e0f2fe',color:'#0369a1'},CAA:{bg:'#ffedd5',color:'#c2410c'},PTR:{bg:'#f0fdf4',color:'#166534'},SRV:{bg:'#fdf4ff',color:'#7e22ce'},DS:{bg:'#fff7ed',color:'#c2410c'}};
+/* ===== DNS LOOKUP - CLEAN IMPLEMENTATION ===== */
+
+function __setOutText(id,value){
+  var el=document.getElementById('dl-'+id);
+  if(el) el.textContent=(value==null)?'':String(value);
+}
+
+function escapeHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
+var DNS_COLORS={
+  A:{bg:'#dbeafe',color:'#1d4ed8'},
+  AAAA:{bg:'#ede9fe',color:'#6d28d9'},
+  MX:{bg:'#fef3c7',color:'#b45309'},
+  NS:{bg:'#d1fae5',color:'#065f46'},
+  TXT:{bg:'#f3f4f6',color:'#374151'},
+  CNAME:{bg:'#fce7f3',color:'#9d174d'},
+  SOA:{bg:'#e0f2fe',color:'#0369a1'},
+  CAA:{bg:'#ffedd5',color:'#c2410c'},
+  PTR:{bg:'#f0fdf4',color:'#166534'},
+  SRV:{bg:'#fdf4ff',color:'#7e22ce'},
+  DS:{bg:'#fff7ed',color:'#c2410c'}
+};
+
 function setDnsType(btn){
   document.querySelectorAll('.dns-type-btn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
@@ -305,6 +327,7 @@ function setDnsType(btn){
   var domain=document.getElementById('dnsDomain').value.trim();
   if(domain) lookupDNS();
 }
+
 function dnsLinks(val){
   var v=val.replace(/\.$/,'');
   var out='';
@@ -313,20 +336,22 @@ function dnsLinks(val){
     out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
     out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(v)+'" target="_blank">ASN</a>';
   } else if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(v)){
-    var parts=v.split('.');
-    if(parts.length===2) out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
   }
   return out;
 }
-function renderSection(records,type,container){
+
+function renderSection(records, type, container){
   if(!records||!records.length) return;
   var c=DNS_COLORS[type]||{bg:'#f1f5f9',color:'#4f46e5'};
-  var sec=document.createElement('div');sec.style.marginBottom='1.5rem';
+  var sec=document.createElement('div');
+  sec.style.marginBottom='1.5rem';
   var badge=document.createElement('div');
   badge.style.cssText='background:'+c.bg+';color:'+c.color+';font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
-  badge.textContent=type+' - '+records.length+' record'+(records.length!==1?'s':'');
+  badge.textContent=type+' — '+records.length+' record'+(records.length!==1?'s':'');
   sec.appendChild(badge);
-  var tbl=document.createElement('table');tbl.className='dns-table';
+  var tbl=document.createElement('table');
+  tbl.className='dns-table';
   tbl.innerHTML='<thead><tr><th>Name</th><th>TTL</th><th>Data</th><th></th></tr></thead>';
   var tb=document.createElement('tbody');
   records.forEach(function(a){
@@ -334,17 +359,21 @@ function renderSection(records,type,container){
     var ttl=a.TTL||a.ttl||'';
     var data=(a.data||a.rdata||'').replace(/\.$/,'');
     var tr=document.createElement('tr');
-    var cid='cp_'+Math.random().toString(36).slice(2);
-    tr.innerHTML='<td style="color:var(--text-secondary);font-size:0.85rem;">'+escapeHtml(name)+'</td>'
+    var copyId='cp_'+Math.random().toString(36).slice(2);
+    tr.innerHTML=
+      '<td style="color:var(--text-secondary);font-size:0.85rem;">'+escapeHtml(name)+'</td>'
       +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
-      +'<td style="font-family:monospace;word-break:break-all;" id="'+cid+'">'+escapeHtml(data)+'</td>'
+      +'<td style="font-family:monospace;word-break:break-all;" id="'+copyId+'">'+escapeHtml(data)+'</td>'
       +'<td style="white-space:nowrap;">'+dnsLinks(data)
-        +'<button onclick="navigator.clipboard.writeText(document.getElementById(this.dataset.cid).textContent);this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Copy';},1200);" data-cid="'+cid+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
+        +'<button onclick="var el=document.getElementById(this.dataset.cid);navigator.clipboard.writeText(el.textContent);this.textContent=\'Copied!\';var b=this;setTimeout(function(){b.textContent=\'Copy\';},1200);" data-cid="'+copyId+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
       +'</td>';
     tb.appendChild(tr);
   });
-  tbl.appendChild(tb);sec.appendChild(tbl);container.appendChild(sec);
+  tbl.appendChild(tb);
+  sec.appendChild(tbl);
+  container.appendChild(sec);
 }
+
 function lookupDNS(){
   var domain=document.getElementById('dnsDomain').value.trim();
   var type=document.getElementById('dnsType').value||'ALL';
@@ -357,14 +386,20 @@ function lookupDNS(){
   .then(function(data){
     el.innerHTML='';
     var records=data.Answer||[];
-    var sum=document.createElement('div');sum.className='dns-summary';
-    if(!records.length){sum.innerHTML='No <strong>'+escapeHtml(type)+'</strong> records found for <strong>'+escapeHtml(domain)+'</strong>.';el.appendChild(sum);return;}
+    var sum=document.createElement('div');
+    sum.className='dns-summary';
+    if(!records.length){
+      sum.innerHTML='No <strong>'+escapeHtml(type)+'</strong> records found for <strong>'+escapeHtml(domain)+'</strong>.';
+      el.appendChild(sum);return;
+    }
     sum.innerHTML='Found <strong>'+records.length+'</strong> '+escapeHtml(type)+' record'+(records.length!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
-    el.appendChild(sum);renderSection(records,type,el);
+    el.appendChild(sum);
+    renderSection(records,type,el);
     __setOutText('domain',domain);__setOutText('type',type);__setOutText('count',records.length);
   })
   .catch(function(err){el.innerHTML='<div class="dns-summary">Error: '+escapeHtml(err.message)+'</div>';});
 }
+
 function lookupAllDNS(){
   var domain=document.getElementById('dnsDomain').value.trim();
   var el=document.getElementById('dnsResults');
@@ -379,138 +414,124 @@ function lookupAllDNS(){
   })).then(function(results){
     el.innerHTML='';
     var total=results.reduce(function(s,r){return s+r.records.length;},0);
-    var sum=document.createElement('div');sum.className='dns-summary';
-    if(!total){sum.innerHTML='No DNS records found for <strong>'+escapeHtml(domain)+'</strong>.';el.appendChild(sum);return;}
-    sum.innerHTML='Found <strong>'+total+'</strong> DNS record'+(total!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
+    var sum=document.createElement('div');
+    sum.className='dns-summary';
+    if(!total){
+      sum.innerHTML='No DNS records found for <strong>'+escapeHtml(domain)+'</strong>.';
+      el.appendChild(sum);return;
+    }
+    sum.innerHTML='Found <strong>'+total+'</strong> DNS record'+(total!==1?'s':'')+' across all types for <strong>'+escapeHtml(domain)+'</strong>';
     el.appendChild(sum);
     results.forEach(function(r){if(r.records.length) renderSection(r.records,r.type,el);});
     __setOutText('domain',domain);__setOutText('count',total);
   });
 }
+
+// Enter key support
 document.addEventListener('DOMContentLoaded',function(){
   var input=document.getElementById('dnsDomain');
-  if(input){
-    input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();lookupDNS();}});
-    var params=new URLSearchParams(window.location.search);
-    var q=params.get('q')||sessionStorage.getItem('tool_input_dns-lookup')||'';
-    if(q){input.value=q;if(params.get('q')) setTimeout(lookupDNS,400);}
-    input.addEventListener('input',function(){
-      sessionStorage.setItem('tool_input_dns-lookup',input.value);
-      var cur=input.value.trim();
-      document.querySelectorAll('.lang-links a').forEach(function(a){
-        var href=a.getAttribute('href').split('?')[0];
-        if(cur) a.setAttribute('href',href+'?q='+encodeURIComponent(cur));
-        else a.setAttribute('href',href);
-      });
-    });
+  if(input) input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();lookupDNS();}});
+
+  // URL param / session storage
+  var params=new URLSearchParams(window.location.search);
+  var q=params.get('q')||sessionStorage.getItem('tool_input_dns-lookup')||'';
+  if(q&&input){
+    input.value=q;
+    if(params.get('q')) setTimeout(lookupDNS,400);
   }
+  if(input) input.addEventListener('input',function(){
+    sessionStorage.setItem('tool_input_dns-lookup',input.value);
+    // update lang-links
+    var cur=input.value.trim();
+    document.querySelectorAll('.lang-links a').forEach(function(a){
+      var href=a.getAttribute('href').split('?')[0];
+      if(cur) a.setAttribute('href',href+'?q='+encodeURIComponent(cur));
+      else a.setAttribute('href',href);
+    });
+  });
 });
+</script>
+<script id="mobile-header-fix-final">
+(function(){
+  const tools=document.querySelector('.nav-tools');
+  if(!tools) return;
+  const trigger=tools.querySelector(':scope > a');
+  const dropdown=tools.querySelector(':scope > ul');
+  if(!trigger||!dropdown) return;
+  let menu=null,backdrop=null,open=false;
+  tools.addEventListener('mouseenter',()=>{if(window.innerWidth>768) dropdown.style.display='block';});
+  tools.addEventListener('mouseleave',()=>{if(window.innerWidth>768) dropdown.style.display='none';});
+  function closeMenu(){if(menu){menu.remove();menu=null;}if(backdrop){backdrop.remove();backdrop=null;}dropdown.style.display='none';document.body.classList.remove('menu-open');open=false;}
+  function openMenu(e){
+    e.preventDefault();e.stopPropagation();
+    if(window.innerWidth>768) return;
+    dropdown.style.display='none';
+    if(open){closeMenu();return;}
+    const rect=trigger.getBoundingClientRect();
+    backdrop=document.createElement('div');
+    Object.assign(backdrop.style,{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'transparent',zIndex:9998});
+    backdrop.addEventListener('click',closeMenu);
+    document.body.appendChild(backdrop);
+    menu=dropdown.cloneNode(true);
+    Object.assign(menu.style,{position:'absolute',top:`${rect.bottom+window.scrollY+8}px`,left:`${rect.left+window.scrollX}px`,minWidth:`${Math.max(rect.width,200)}px`,background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'.5rem 0',margin:0,zIndex:9999,display:'block',visibility:'visible',opacity:'1'});
+    menu.querySelectorAll('a').forEach(a=>{a.style.display='block';a.style.padding='.6rem 1.2rem';a.style.color='#1e293b';a.style.textDecoration='none';a.style.fontWeight='500';a.addEventListener('mouseenter',()=>a.style.color='#4f46e5');a.addEventListener('mouseleave',()=>a.style.color='#1e293b');});
+    document.body.appendChild(menu);
+    document.body.classList.add('menu-open');
+    open=true;
+  }
+  window.addEventListener('resize',closeMenu);
+  trigger.addEventListener('click',openMenu);
+  trigger.addEventListener('touchstart',openMenu,{passive:false});
+})();
 </script>
 <script id="lang-switcher-js">
 (function(){
-  var TRANSLATED = ['', 'dns-lookup', 'whois-lookup', 'ip-blacklist', 'asn-lookup', 'internet-speed-test', 'generate-password', 'ip-subnet-calculator', 'cidr-to-ip-range-calculator', 'ip-range-to-cidr-calculator', 'hide-my-ip', 'ping-test', 'router/10.0.0.1', 'router/10.11.12.1', 'router/192.168.0.1', 'router/192.168.0.100', 'router/192.168.0.254', 'router/192.168.100.1', 'router/192.168.10.1', 'router/192.168.11.1', 'router/192.168.1.1', 'router/192.168.1.11', 'router/192.168.12.1', 'router/192.168.1.250', 'router/192.168.1.2', 'router/192.168.1.254', 'router/192.168.188.1', 'router/192.168.2.1', 'router/192.168.223.1', 'router/192.168.254.254', 'router/192.168.4.1', 'router/192.168.7.1', 'router/192.168.8.1'];
-  var LANGS = [{code:'en', flag:'EN', label:'English', base:'https://myipnow.net/'}, {code:'de', flag:'DE', label:'Deutsch', base:'https://myipnow.net/de/'}, {code:'es', flag:'ES', label:'Español', base:'https://myipnow.net/es/'}, {code:'fr', flag:'FR', label:'Français', base:'https://myipnow.net/fr/'}, {code:'it', flag:'IT', label:'Italiano', base:'https://myipnow.net/it/'}, {code:'pt', flag:'PT', label:'Português', base:'https://myipnow.net/pt/'}, {code:'pl', flag:'PL', label:'Polski', base:'https://myipnow.net/pl/'}, {code:'nl', flag:'NL', label:'Nederlands', base:'https://myipnow.net/nl/'}];
-  function getSlug(){
-    var path = location.pathname;
-    path = path.replace(/^\//, '').replace(/\/$/, '');
-    var parts = path.split('/');
-    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) parts.shift();
-    return parts.join('/');
-  }
-  function getCurrentLang(){
-    var parts = location.pathname.replace(/^\//, '').split('/');
-    if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0]) !== -1) return parts[0];
-    return 'en';
-  }
+  var TRANSLATED=['','dns-lookup','whois-lookup','ip-blacklist','asn-lookup','internet-speed-test','generate-password','ip-subnet-calculator','cidr-to-ip-range-calculator','ip-range-to-cidr-calculator','hide-my-ip','ping-test','router/10.0.0.1','router/10.11.12.1','router/192.168.0.1','router/192.168.0.100','router/192.168.0.254','router/192.168.100.1','router/192.168.10.1','router/192.168.11.1','router/192.168.1.1','router/192.168.1.11','router/192.168.12.1','router/192.168.1.250','router/192.168.1.2','router/192.168.1.254','router/192.168.188.1','router/192.168.2.1','router/192.168.223.1','router/192.168.254.254','router/192.168.4.1','router/192.168.7.1','router/192.168.8.1'];
+  var LANGS=[{code:'en',flag:'EN',label:'English',base:'https://myipnow.net/'},{code:'de',flag:'DE',label:'Deutsch',base:'https://myipnow.net/de/'},{code:'es',flag:'ES',label:'Español',base:'https://myipnow.net/es/'},{code:'fr',flag:'FR',label:'Français',base:'https://myipnow.net/fr/'},{code:'it',flag:'IT',label:'Italiano',base:'https://myipnow.net/it/'},{code:'pt',flag:'PT',label:'Português',base:'https://myipnow.net/pt/'},{code:'pl',flag:'PL',label:'Polski',base:'https://myipnow.net/pl/'},{code:'nl',flag:'NL',label:'Nederlands',base:'https://myipnow.net/nl/'}];
+  function getSlug(){var path=location.pathname.replace(/^\//,'').replace(/\/$/,'');var parts=path.split('/');if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0])!==-1) parts.shift();return parts.join('/');}
+  function getCurrentLang(){var parts=location.pathname.replace(/^\//,'').split('/');if(['de','es','fr','it','pt','pl','nl'].indexOf(parts[0])!==-1) return parts[0];return 'en';}
   function init(){
-    var nav = document.querySelector('.category-nav ul');
-    if(!nav) return;
-    var slug = getSlug();
-    var currentLang = getCurrentLang();
-    var isTranslated = TRANSLATED.indexOf(slug) !== -1;
-
-    var li = document.createElement('li');
-    li.className = 'lang-switcher';
-    var btn = document.createElement('button');
-    btn.className = 'lang-switcher-btn';
-    var currentL = LANGS.find(function(l){return l.code===currentLang;}) || LANGS[0];
-    btn.textContent = currentL.code.toUpperCase() + ' \u25bc';
-    li.appendChild(btn);
-    nav.appendChild(li);
-
-    var floatingMenu = null, backdrop = null, open = false;
-
+    var nav=document.querySelector('.category-nav ul');if(!nav) return;
+    var slug=getSlug(),currentLang=getCurrentLang(),isTranslated=TRANSLATED.indexOf(slug)!==-1;
+    var li=document.createElement('li');li.className='lang-switcher';
+    var btn=document.createElement('button');btn.className='lang-switcher-btn';
+    var currentL=LANGS.find(function(l){return l.code===currentLang;})||LANGS[0];
+    btn.textContent=currentL.code.toUpperCase()+' ▼';
+    li.appendChild(btn);nav.appendChild(li);
+    var floatingMenu=null,backdrop=null,open=false;
     function buildMenu(){
-      var ul = document.createElement('ul');
-      Object.assign(ul.style, {
-        position:'fixed', zIndex:'99999', background:'#fff',
-        border:'1px solid #e2e8f0', borderRadius:'10px',
-        boxShadow:'0 10px 30px rgba(0,0,0,0.15)',
-        listStyle:'none', padding:'0.4rem 0', margin:'0',
-        minWidth:'160px', display:'block'
-      });
+      var ul=document.createElement('ul');
+      Object.assign(ul.style,{position:'fixed',zIndex:'99999',background:'#fff',border:'1px solid #e2e8f0',borderRadius:'10px',boxShadow:'0 10px 30px rgba(0,0,0,0.15)',listStyle:'none',padding:'0.4rem 0',margin:'0',minWidth:'160px',display:'block'});
       LANGS.forEach(function(lang){
-        var item = document.createElement('li');
-        var a = document.createElement('a');
-        // If page is translated point to same page in that lang, else point to lang homepage
-        if(isTranslated){
-          a.href = lang.base + (slug ? slug + '/' : '');
-        } else {
-          a.href = lang.base;
-        }
-        a.textContent = lang.label;
-        Object.assign(a.style, {
-          display:'block', padding:'0.55rem 1rem',
-          textDecoration:'none', color:'#1e293b',
-          fontSize:'0.95rem', fontWeight:'500'
-        });
-        if(lang.code === currentLang){ a.style.fontWeight='700'; a.style.color='#4f46e5'; }
-        a.onmouseenter = function(){ a.style.background='#f1f5f9'; };
-        a.onmouseleave = function(){ a.style.background=''; };
-        item.appendChild(a);
-        ul.appendChild(item);
+        var item=document.createElement('li');var a=document.createElement('a');
+        var base=isTranslated?lang.base+(slug?slug+'/':''):lang.base;
+        var qParam=new URLSearchParams(window.location.search).get('q');
+        a.href=qParam?base+'?q='+encodeURIComponent(qParam):base;
+        a.textContent=lang.label;
+        Object.assign(a.style,{display:'block',padding:'0.55rem 1rem',textDecoration:'none',color:'#1e293b',fontSize:'0.95rem',fontWeight:'500'});
+        if(lang.code===currentLang){a.style.fontWeight='700';a.style.color='#4f46e5';}
+        a.onmouseenter=function(){a.style.background='#f1f5f9';};a.onmouseleave=function(){a.style.background='';};
+        item.appendChild(a);ul.appendChild(item);
       });
       return ul;
     }
-    function positionMenu(){
-      if(!floatingMenu) return;
-      var rect = btn.getBoundingClientRect();
-      var left = rect.left;
-      if(left + 170 > window.innerWidth - 10) left = window.innerWidth - 175;
-      floatingMenu.style.top = (rect.bottom + 6) + 'px';
-      floatingMenu.style.left = left + 'px';
-    }
-    function closeMenu(){
-      if(floatingMenu){ floatingMenu.remove(); floatingMenu = null; }
-      if(backdrop){ backdrop.remove(); backdrop = null; }
-      open = false;
-    }
+    function positionMenu(){if(!floatingMenu) return;var rect=btn.getBoundingClientRect();var left=rect.left;if(left+170>window.innerWidth-10) left=window.innerWidth-175;floatingMenu.style.top=(rect.bottom+6)+'px';floatingMenu.style.left=left+'px';}
+    function closeMenu(){if(floatingMenu){floatingMenu.remove();floatingMenu=null;}if(backdrop){backdrop.remove();backdrop=null;}open=false;}
     function openMenu(){
-      if(open){ closeMenu(); return; }
-      backdrop = document.createElement('div');
-      Object.assign(backdrop.style, {
-        position:'fixed', top:'0', left:'0',
-        width:'100vw', height:'100vh',
-        zIndex:'99998', background:'transparent'
-      });
-      backdrop.addEventListener('click', closeMenu);
-      document.body.appendChild(backdrop);
-      floatingMenu = buildMenu();
-      document.body.appendChild(floatingMenu);
-      positionMenu();
-      open = true;
+      if(open){closeMenu();return;}
+      backdrop=document.createElement('div');Object.assign(backdrop.style,{position:'fixed',top:'0',left:'0',width:'100vw',height:'100vh',zIndex:'99998',background:'transparent'});
+      backdrop.addEventListener('click',closeMenu);document.body.appendChild(backdrop);
+      floatingMenu=buildMenu();document.body.appendChild(floatingMenu);positionMenu();open=true;
     }
-    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); });
-    btn.addEventListener('touchstart', function(e){ e.preventDefault(); e.stopPropagation(); openMenu(); }, {passive:false});
-    window.addEventListener('resize', closeMenu);
-    window.addEventListener('scroll', function(){ if(open) positionMenu(); });
+    btn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openMenu();});
+    btn.addEventListener('touchstart',function(e){e.preventDefault();e.stopPropagation();openMenu();},{passive:false});
+    window.addEventListener('resize',closeMenu);
+    window.addEventListener('scroll',function(){if(open) positionMenu();});
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
 })();
-
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" data-cf-beacon='{"token":"a8ad031057a743ec9c2616bda7085f3b"}' crossorigin="anonymous"></script>
 
 </body>
-</html>
