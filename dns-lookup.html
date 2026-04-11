@@ -220,8 +220,8 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <dl aria-hidden="true" class="ip-semantic">
 <dt>Domain</dt><dd id="dl-domain"></dd>
 <dt>Record Type</dt><dd id="dl-type"></dd>
-<dt>Result Count</dt><dd id="dl-count"></dd>
-<dt>First Result</dt><dd id="dl-first"></dd>
+<dd id="dl-count"></dd>
+<dd id="dl-first"></dd>
 </dl>
 <section class="explanation-section">
 <h3>DNS Record Types Explained</h3>
@@ -579,6 +579,59 @@ function lookupDNS(){
 </script>
 <script>
 /* === TOOL PATCH: ensure Lookup works (no UI changes) === */
+const DNS_TYPE_COLORS = {
+  A:{bg:'#dbeafe',color:'#1d4ed8'},AAAA:{bg:'#ede9fe',color:'#6d28d9'},
+  MX:{bg:'#fef3c7',color:'#b45309'},NS:{bg:'#d1fae5',color:'#065f46'},
+  TXT:{bg:'#f3f4f6',color:'#374151'},CNAME:{bg:'#fce7f3',color:'#9d174d'},
+  SOA:{bg:'#e0f2fe',color:'#0369a1'},CAA:{bg:'#ffedd5',color:'#c2410c'},
+  PTR:{bg:'#f0fdf4',color:'#166534'},SRV:{bg:'#fdf4ff',color:'#7e22ce'},
+};
+function renderDNSRecords(records, type, resultsEl, append){
+  if(!append) resultsEl.innerHTML = '';
+  if(!records||records.length===0) return;
+  const colors = DNS_TYPE_COLORS[type]||{bg:'#f1f5f9',color:'#4f46e5'};
+  const section = document.createElement('div');
+  section.className = 'dns-section';
+  const title = document.createElement('div');
+  title.className = 'dns-section-title';
+  title.style.background = colors.bg;
+  title.style.color = colors.color;
+  title.textContent = type+' Records ('+records.length+')';
+  section.appendChild(title);
+  records.forEach(function(a){
+    const rawData = a.data||a.rdata||'';
+    const ttl = (a.TTL||a.ttl) ? 'TTL: '+(a.TTL||a.ttl)+' s' : '';
+    const block = document.createElement('div');
+    block.className = 'dns-record';
+    block.innerHTML = '<div class="dns-record-left"><div class="dns-data">'+escapeHtml(rawData)+'</div><div class="dns-meta">'+escapeHtml(ttl)+'</div></div>'
+      +'<button class="dns-copy-btn" onclick="navigator.clipboard.writeText(this.getAttribute('data-val'))" data-val="'+escapeHtml(rawData)+'">Copy</button>';
+    section.appendChild(block);
+  });
+  resultsEl.appendChild(section);
+}
+function lookupAllDNS(){
+  const domain = document.getElementById('dnsDomain').value.trim();
+  const resultsEl = document.getElementById('dnsResults');
+  if(!domain){ resultsEl.innerHTML = '<div class="dns-record"><div class="dns-record-left"><div class="dns-data">Please enter a domain.</div></div></div>'; return; }
+  const types = ['A','AAAA','MX','NS','TXT','CNAME','SOA','CAA'];
+  resultsEl.innerHTML = '<div class="dns-summary">Looking up all record types for <strong>'+escapeHtml(domain)+'</strong>...</div>';
+  Promise.all(types.map(function(t){
+    return fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(t))
+    .then(function(r){return r.json();})
+    .then(function(data){return {type:t,records:data.Answer||[]};})
+    .catch(function(){return {type:t,records:[]};});
+  })).then(function(results){
+    resultsEl.innerHTML = '';
+    var total = results.reduce(function(s,r){return s+r.records.length;},0);
+    var summary = document.createElement('div');
+    summary.className = 'dns-summary';
+    summary.innerHTML = 'Found <strong>'+total+'</strong> DNS record'+(total!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
+    resultsEl.appendChild(summary);
+    results.forEach(function(r){ if(r.records.length) renderDNSRecords(r.records,r.type,resultsEl,true); });
+    if(total===0) resultsEl.innerHTML = '<div class="dns-record"><div class="dns-record-left"><div class="dns-data">No DNS records found for '+escapeHtml(domain)+'.</div></div></div>';
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function(){
   var fn = (typeof window['lookupDNS']==='function' ? window['lookupDNS'] : null) || (typeof window['lookupDns']==='function' ? window['lookupDns'] : null) || (typeof window['doDNSLookup']==='function' ? window['doDNSLookup'] : null) || (typeof window['runDNSLookup']==='function' ? window['runDNSLookup'] : null);
   if(!fn) return;
