@@ -422,7 +422,11 @@ function dnsLinks(val){
     out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
     out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(v)+'" target="_blank">ASN</a>';
   } else if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(v)){
-    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+    // Only show WHOIS for root domains (one dot), not subdomains like ns1.example.com
+    var parts=v.split('.');
+    if(parts.length===2){
+      out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+    }
   }
   return out;
 }
