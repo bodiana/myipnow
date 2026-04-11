@@ -380,167 +380,6 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 </ul>
 <div class="footer-copyright">© 2026 MyIPNow. All Rights Reserved.</div>
 </footer>
-<script>
-/* ===== DNS LOOKUP - CLEAN IMPLEMENTATION ===== */
-
-function __setOutText(id,value){
-  var el=document.getElementById('dl-'+id);
-  if(el) el.textContent=(value==null)?'':String(value);
-}
-
-function escapeHtml(s){
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-}
-
-var DNS_COLORS={
-  A:{bg:'#dbeafe',color:'#1d4ed8'},
-  AAAA:{bg:'#ede9fe',color:'#6d28d9'},
-  MX:{bg:'#fef3c7',color:'#b45309'},
-  NS:{bg:'#d1fae5',color:'#065f46'},
-  TXT:{bg:'#f3f4f6',color:'#374151'},
-  CNAME:{bg:'#fce7f3',color:'#9d174d'},
-  SOA:{bg:'#e0f2fe',color:'#0369a1'},
-  CAA:{bg:'#ffedd5',color:'#c2410c'},
-  PTR:{bg:'#f0fdf4',color:'#166534'},
-  SRV:{bg:'#fdf4ff',color:'#7e22ce'},
-  DS:{bg:'#fff7ed',color:'#c2410c'}
-};
-
-function setDnsType(btn){
-  document.querySelectorAll('.dns-type-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  document.getElementById('dnsType').value=btn.getAttribute('data-type');
-  var domain=document.getElementById('dnsDomain').value.trim();
-  if(domain) lookupDNS();
-}
-
-function dnsLinks(val){
-  var v=val.replace(/\.$/,'');
-  var out='';
-  if(/^(\d{1,3}\.){3}\d{1,3}$/.test(v)){
-    out+='<a class="dns-action-link" href="/ip-blacklist/?ip='+encodeURIComponent(v)+'" target="_blank">Blacklist</a>';
-    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
-    out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(v)+'" target="_blank">ASN</a>';
-  } else if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(v)){
-    // Only show WHOIS for root domains (one dot), not subdomains like ns1.example.com
-    var parts=v.split('.');
-    if(parts.length===2){
-      out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
-    }
-  }
-  return out;
-}
-
-function renderSection(records, type, container){
-  if(!records||!records.length) return;
-  var c=DNS_COLORS[type]||{bg:'#f1f5f9',color:'#4f46e5'};
-  var sec=document.createElement('div');
-  sec.style.marginBottom='1.5rem';
-  var badge=document.createElement('div');
-  badge.style.cssText='background:'+c.bg+';color:'+c.color+';font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
-  badge.textContent=type+' — '+records.length+' record'+(records.length!==1?'s':'');
-  sec.appendChild(badge);
-  var tbl=document.createElement('table');
-  tbl.className='dns-table';
-  tbl.innerHTML='<thead><tr><th>Name</th><th>TTL</th><th>Data</th><th></th></tr></thead>';
-  var tb=document.createElement('tbody');
-  records.forEach(function(a){
-    var name=(a.name||'').replace(/\.$/,'');
-    var ttl=a.TTL||a.ttl||'';
-    var data=(a.data||a.rdata||'').replace(/\.$/,'');
-    var tr=document.createElement('tr');
-    var copyId='cp_'+Math.random().toString(36).slice(2);
-    tr.innerHTML=
-      '<td style="color:var(--text-secondary);font-size:0.85rem;">'+escapeHtml(name)+'</td>'
-      +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
-      +'<td style="font-family:monospace;word-break:break-all;" id="'+copyId+'">'+escapeHtml(data)+'</td>'
-      +'<td style="white-space:nowrap;">'+dnsLinks(data)
-        +'<button onclick="var el=document.getElementById(this.dataset.cid);navigator.clipboard.writeText(el.textContent);this.textContent=\'Copied!\';var b=this;setTimeout(function(){b.textContent=\'Copy\';},1200);" data-cid="'+copyId+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
-      +'</td>';
-    tb.appendChild(tr);
-  });
-  tbl.appendChild(tb);
-  sec.appendChild(tbl);
-  container.appendChild(sec);
-}
-
-function lookupDNS(){
-  var domain=document.getElementById('dnsDomain').value.trim();
-  var type=document.getElementById('dnsType').value||'ALL';
-  var el=document.getElementById('dnsResults');
-  if(!domain){el.innerHTML='<div class="dns-summary">Please enter a domain name.</div>';return;}
-  if(type==='ALL'){lookupAllDNS();return;}
-  el.innerHTML='<div class="dns-summary">Looking up <strong>'+escapeHtml(type)+'</strong> records for <strong>'+escapeHtml(domain)+'</strong>...</div>';
-  fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(type))
-  .then(function(r){return r.json();})
-  .then(function(data){
-    el.innerHTML='';
-    var records=data.Answer||[];
-    var sum=document.createElement('div');
-    sum.className='dns-summary';
-    if(!records.length){
-      sum.innerHTML='No <strong>'+escapeHtml(type)+'</strong> records found for <strong>'+escapeHtml(domain)+'</strong>.';
-      el.appendChild(sum);return;
-    }
-    sum.innerHTML='Found <strong>'+records.length+'</strong> '+escapeHtml(type)+' record'+(records.length!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
-    el.appendChild(sum);
-    renderSection(records,type,el);
-    __setOutText('domain',domain);__setOutText('type',type);__setOutText('count',records.length);
-  })
-  .catch(function(err){el.innerHTML='<div class="dns-summary">Error: '+escapeHtml(err.message)+'</div>';});
-}
-
-function lookupAllDNS(){
-  var domain=document.getElementById('dnsDomain').value.trim();
-  var el=document.getElementById('dnsResults');
-  if(!domain){el.innerHTML='<div class="dns-summary">Please enter a domain name.</div>';return;}
-  var types=['A','AAAA','MX','NS','TXT','CNAME','SOA','CAA'];
-  el.innerHTML='<div class="dns-summary">Looking up all record types for <strong>'+escapeHtml(domain)+'</strong>...</div>';
-  Promise.all(types.map(function(t){
-    return fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(t))
-    .then(function(r){return r.json();})
-    .then(function(d){return{type:t,records:d.Answer||[]};})
-    .catch(function(){return{type:t,records:[]};});
-  })).then(function(results){
-    el.innerHTML='';
-    var total=results.reduce(function(s,r){return s+r.records.length;},0);
-    var sum=document.createElement('div');
-    sum.className='dns-summary';
-    if(!total){
-      sum.innerHTML='No DNS records found for <strong>'+escapeHtml(domain)+'</strong>.';
-      el.appendChild(sum);return;
-    }
-    sum.innerHTML='Found <strong>'+total+'</strong> DNS record'+(total!==1?'s':'')+' across all types for <strong>'+escapeHtml(domain)+'</strong>';
-    el.appendChild(sum);
-    results.forEach(function(r){if(r.records.length) renderSection(r.records,r.type,el);});
-    __setOutText('domain',domain);__setOutText('count',total);
-  });
-}
-
-// Enter key support
-document.addEventListener('DOMContentLoaded',function(){
-  var input=document.getElementById('dnsDomain');
-  if(input) input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();lookupDNS();}});
-
-  // URL param / session storage
-  var params=new URLSearchParams(window.location.search);
-  var q=params.get('q')||sessionStorage.getItem('tool_input_dns-lookup')||'';
-  if(q&&input){
-    input.value=q;
-    if(params.get('q')) setTimeout(lookupDNS,400);
-  }
-  if(input) input.addEventListener('input',function(){
-    sessionStorage.setItem('tool_input_dns-lookup',input.value);
-    // update lang-links
-    var cur=input.value.trim();
-    document.querySelectorAll('.lang-links a').forEach(function(a){
-      var href=a.getAttribute('href').split('?')[0];
-      if(cur) a.setAttribute('href',href+'?q='+encodeURIComponent(cur));
-      else a.setAttribute('href',href);
-    });
-  });
-});
-</script>
 <script id="mobile-header-fix-final">
 (function(){
   const tools=document.querySelector('.nav-tools');
@@ -573,6 +412,118 @@ document.addEventListener('DOMContentLoaded',function(){
   trigger.addEventListener('click',openMenu);
   trigger.addEventListener('touchstart',openMenu,{passive:false});
 })();
+</script>
+<script>
+function __setOutText(id,value){var el=document.getElementById('dl-'+id);if(el) el.textContent=(value==null)?'':String(value);}
+function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+var DNS_COLORS={A:{bg:'#dbeafe',color:'#1d4ed8'},AAAA:{bg:'#ede9fe',color:'#6d28d9'},MX:{bg:'#fef3c7',color:'#b45309'},NS:{bg:'#d1fae5',color:'#065f46'},TXT:{bg:'#f3f4f6',color:'#374151'},CNAME:{bg:'#fce7f3',color:'#9d174d'},SOA:{bg:'#e0f2fe',color:'#0369a1'},CAA:{bg:'#ffedd5',color:'#c2410c'},PTR:{bg:'#f0fdf4',color:'#166534'},SRV:{bg:'#fdf4ff',color:'#7e22ce'},DS:{bg:'#fff7ed',color:'#c2410c'}};
+function setDnsType(btn){
+  document.querySelectorAll('.dns-type-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.getElementById('dnsType').value=btn.getAttribute('data-type');
+  var domain=document.getElementById('dnsDomain').value.trim();
+  if(domain) lookupDNS();
+}
+function dnsLinks(val){
+  var v=val.replace(/\.$/,'');
+  var out='';
+  if(/^(\d{1,3}\.){3}\d{1,3}$/.test(v)){
+    out+='<a class="dns-action-link" href="/ip-blacklist/?ip='+encodeURIComponent(v)+'" target="_blank">Blacklist</a>';
+    out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+    out+='<a class="dns-action-link" href="/asn-lookup/?asn='+encodeURIComponent(v)+'" target="_blank">ASN</a>';
+  } else if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(v)){
+    var parts=v.split('.');
+    if(parts.length===2) out+='<a class="dns-action-link" href="/whois-lookup/?q='+encodeURIComponent(v)+'" target="_blank">WHOIS</a>';
+  }
+  return out;
+}
+function renderSection(records,type,container){
+  if(!records||!records.length) return;
+  var c=DNS_COLORS[type]||{bg:'#f1f5f9',color:'#4f46e5'};
+  var sec=document.createElement('div');sec.style.marginBottom='1.5rem';
+  var badge=document.createElement('div');
+  badge.style.cssText='background:'+c.bg+';color:'+c.color+';font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
+  badge.textContent=type+' - '+records.length+' record'+(records.length!==1?'s':'');
+  sec.appendChild(badge);
+  var tbl=document.createElement('table');tbl.className='dns-table';
+  tbl.innerHTML='<thead><tr><th>Name</th><th>TTL</th><th>Data</th><th></th></tr></thead>';
+  var tb=document.createElement('tbody');
+  records.forEach(function(a){
+    var name=(a.name||'').replace(/\.$/,'');
+    var ttl=a.TTL||a.ttl||'';
+    var data=(a.data||a.rdata||'').replace(/\.$/,'');
+    var tr=document.createElement('tr');
+    var cid='cp_'+Math.random().toString(36).slice(2);
+    tr.innerHTML='<td style="color:var(--text-secondary);font-size:0.85rem;">'+escapeHtml(name)+'</td>'
+      +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
+      +'<td style="font-family:monospace;word-break:break-all;" id="'+cid+'">'+escapeHtml(data)+'</td>'
+      +'<td style="white-space:nowrap;">'+dnsLinks(data)
+        +'<button onclick="navigator.clipboard.writeText(document.getElementById(this.dataset.cid).textContent);this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Copy';},1200);" data-cid="'+cid+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
+      +'</td>';
+    tb.appendChild(tr);
+  });
+  tbl.appendChild(tb);sec.appendChild(tbl);container.appendChild(sec);
+}
+function lookupDNS(){
+  var domain=document.getElementById('dnsDomain').value.trim();
+  var type=document.getElementById('dnsType').value||'ALL';
+  var el=document.getElementById('dnsResults');
+  if(!domain){el.innerHTML='<div class="dns-summary">Please enter a domain name.</div>';return;}
+  if(type==='ALL'){lookupAllDNS();return;}
+  el.innerHTML='<div class="dns-summary">Looking up <strong>'+escapeHtml(type)+'</strong> records for <strong>'+escapeHtml(domain)+'</strong>...</div>';
+  fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(type))
+  .then(function(r){return r.json();})
+  .then(function(data){
+    el.innerHTML='';
+    var records=data.Answer||[];
+    var sum=document.createElement('div');sum.className='dns-summary';
+    if(!records.length){sum.innerHTML='No <strong>'+escapeHtml(type)+'</strong> records found for <strong>'+escapeHtml(domain)+'</strong>.';el.appendChild(sum);return;}
+    sum.innerHTML='Found <strong>'+records.length+'</strong> '+escapeHtml(type)+' record'+(records.length!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
+    el.appendChild(sum);renderSection(records,type,el);
+    __setOutText('domain',domain);__setOutText('type',type);__setOutText('count',records.length);
+  })
+  .catch(function(err){el.innerHTML='<div class="dns-summary">Error: '+escapeHtml(err.message)+'</div>';});
+}
+function lookupAllDNS(){
+  var domain=document.getElementById('dnsDomain').value.trim();
+  var el=document.getElementById('dnsResults');
+  if(!domain){el.innerHTML='<div class="dns-summary">Please enter a domain name.</div>';return;}
+  var types=['A','AAAA','MX','NS','TXT','CNAME','SOA','CAA'];
+  el.innerHTML='<div class="dns-summary">Looking up all record types for <strong>'+escapeHtml(domain)+'</strong>...</div>';
+  Promise.all(types.map(function(t){
+    return fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+encodeURIComponent(t))
+    .then(function(r){return r.json();})
+    .then(function(d){return{type:t,records:d.Answer||[]};})
+    .catch(function(){return{type:t,records:[]};});
+  })).then(function(results){
+    el.innerHTML='';
+    var total=results.reduce(function(s,r){return s+r.records.length;},0);
+    var sum=document.createElement('div');sum.className='dns-summary';
+    if(!total){sum.innerHTML='No DNS records found for <strong>'+escapeHtml(domain)+'</strong>.';el.appendChild(sum);return;}
+    sum.innerHTML='Found <strong>'+total+'</strong> DNS record'+(total!==1?'s':'')+' for <strong>'+escapeHtml(domain)+'</strong>';
+    el.appendChild(sum);
+    results.forEach(function(r){if(r.records.length) renderSection(r.records,r.type,el);});
+    __setOutText('domain',domain);__setOutText('count',total);
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var input=document.getElementById('dnsDomain');
+  if(input){
+    input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();lookupDNS();}});
+    var params=new URLSearchParams(window.location.search);
+    var q=params.get('q')||sessionStorage.getItem('tool_input_dns-lookup')||'';
+    if(q){input.value=q;if(params.get('q')) setTimeout(lookupDNS,400);}
+    input.addEventListener('input',function(){
+      sessionStorage.setItem('tool_input_dns-lookup',input.value);
+      var cur=input.value.trim();
+      document.querySelectorAll('.lang-links a').forEach(function(a){
+        var href=a.getAttribute('href').split('?')[0];
+        if(cur) a.setAttribute('href',href+'?q='+encodeURIComponent(cur));
+        else a.setAttribute('href',href);
+      });
+    });
+  }
+});
 </script>
 <script id="lang-switcher-js">
 (function(){

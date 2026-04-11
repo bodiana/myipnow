@@ -210,7 +210,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 </div>
 <div class="dns-results" id="dnsResults"></div>
 <input id="dnsType" type="hidden" value="ALL"/>
-<dl aria-hidden<dl aria-hidden="true" class="ip-semantic">
+<dl aria-hidden="true" class="ip-semantic">
 <dt>Domain</dt><dd id="dl-domain"></dd>
 <dt>Record Type</dt><dd id="dl-type"></dd>
 <dt>Result Count</dt><dd id="dl-count"></dd>
@@ -325,7 +325,7 @@ function renderSection(records,type,container){
   var sec=document.createElement('div');sec.style.marginBottom='1.5rem';
   var badge=document.createElement('div');
   badge.style.cssText='background:'+c.bg+';color:'+c.color+';font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
-  badge.textContent=type+' — '+records.length+' record'+(records.length!==1?'s':'');
+  badge.textContent=type+' - '+records.length+' record'+(records.length!==1?'s':'');
   sec.appendChild(badge);
   var tbl=document.createElement('table');tbl.className='dns-table';
   tbl.innerHTML='<thead><tr><th>Name</th><th>TTL</th><th>Data</th><th></th></tr></thead>';
@@ -340,7 +340,7 @@ function renderSection(records,type,container){
       +'<td style="color:var(--text-secondary);font-size:0.85rem;white-space:nowrap;">'+escapeHtml(String(ttl))+'s</td>'
       +'<td style="font-family:monospace;word-break:break-all;" id="'+cid+'">'+escapeHtml(data)+'</td>'
       +'<td style="white-space:nowrap;">'+dnsLinks(data)
-        +'<button onclick="var el=document.getElementById(this.dataset.cid);navigator.clipboard.writeText(el.textContent);this.textContent=\'Copied!\';var b=this;setTimeout(function(){b.textContent=\'Copy\';},1200);" data-cid="'+cid+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
+        +'<button onclick="navigator.clipboard.writeText(document.getElementById(this.dataset.cid).textContent);this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Copy';},1200);" data-cid="'+cid+'" style="margin-left:4px;background:none;border:1px solid #e2e8f0;border-radius:4px;padding:2px 8px;cursor:pointer;font-size:0.75rem;color:var(--text-secondary);">Copy</button>'
       +'</td>';
     tb.appendChild(tr);
   });
