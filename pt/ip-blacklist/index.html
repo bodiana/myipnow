@@ -45,9 +45,9 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 .article-body ul {list-style: disc; padding-left: 1.5rem;}
 
 /* Blacklist tool */
-.blacklist-tool {display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: 1rem auto;}
-.blacklist-tool input {padding: 0.5rem; font-size: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; width: 100%;}
-.blacklist-tool button {padding: 0.5rem; font-size: 1rem; border: none; border-radius: 8px; background: var(--hide-ip-color); color: white; cursor: pointer; transition: background var(--transition-speed);}
+.blacklist-tool {display: flex; flex-direction: row; gap: 0.75rem; max-width: 700px; margin: 1rem auto; align-items: center;}
+.blacklist-tool input {flex: 1; min-width: 0; padding: 0.75rem 1rem; font-size: 1rem; border-radius: 8px; border: 1px solid #e2e8f0;}
+.blacklist-tool button {padding: 0.75rem 1.5rem; font-size: 1rem; border: none; border-radius: 8px; background: var(--hide-ip-color); color: white; cursor: pointer; font-weight: 600; white-space: nowrap; transition: background var(--transition-speed);}
 .blacklist-tool button:hover {background: #059669;}
 
 /* Results block (NO SCROLL) */
