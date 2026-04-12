@@ -376,7 +376,7 @@ function renderSection(records, type, container){
   sec.style.marginBottom='1.5rem';
   var badge=document.createElement('div');
   badge.style.cssText='background:'+c.bg+';color:'+c.color+';font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
-  badge.textContent=type+' — '+records.length+' record'+(records.length!==1?'s':'');
+  badge.textContent=type+' - '+records.length+' record'+(records.length!==1?'s':'');
   sec.appendChild(badge);
   var tbl=document.createElement('table');
   tbl.className='dns-table';
