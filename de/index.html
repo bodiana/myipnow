@@ -69,13 +69,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .main-section,
     .map-section,
     .faq-section,
-    .guide-section,
-    .snippet-section {background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+    .guide-section {background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+    .snippet-section {background: var(--card-bg); padding: 1.25rem 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
     .main-section h2 {font-size: 1rem; font-weight: 500; color: var(--accent-color); margin-bottom: 1rem; text-align: center;}
 
     /* --- FEATURED SNIPPET SECTION --- */
-    .snippet-section h2 {text-align: center; font-size: 1.5rem; margin-bottom: 1rem;}
-    .snippet-section p {text-align: center; font-size: 1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;}
+    .snippet-section h2 {text-align: center; font-size: 1.3rem; margin-bottom: 0.75rem;}
+    .snippet-section p {text-align: left; font-size: 0.95rem; color: var(--text-secondary); max-width: 100%; margin: 0 0 0.75rem 0;}
     .snippet-section a {color: var(--accent-color); text-decoration: none; font-weight: 500;}
     .snippet-section ul {max-width: 700px; margin: 0 auto; text-align: left; color: var(--text-secondary);}
     .snippet-section ul li {margin-bottom: 0.5rem;}
@@ -611,6 +611,18 @@ Finden Sie heraus, wo Sie sich gerade befinden. Dieses Tool zeigt sofort Ihre ö
 </svg>
 </button>
 </div>
+<div class="faq-item">
+<div class="faq-question">Wie funktioniert eine IP-Adresse?</div>
+<div class="faq-answer">Wenn Sie sich mit dem Internet verbinden, weist Ihr ISP Ihrem Gerät eine IP-Adresse zu. Bei jedem Webseitenaufruf sendet Ihr Gerät eine Anfrage mit dieser IP. Der Server liest Ihre IP und sendet Daten zurück. Dieser Prozess erfolgt automatisch bei jedem Seitenaufruf, jeder E-Mail und jedem Video-Stream.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Was ist der Unterschied zwischen IPv4 und IPv6?</div>
+<div class="faq-answer">IPv4 verwendet 32-Bit-Adressen und unterstützt etwa 4,3 Milliarden eindeutige Adressen. IPv6 verwendet 128-Bit-Adressen und bietet praktisch unbegrenzte Adressen. Die meisten modernen Geräte unterstützen beide.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Was ist eine dynamische vs. statische IP-Adresse?</div>
+<div class="faq-answer">Eine dynamische IP ändert sich regelmäßig und wird von den meisten Heimverbindungen genutzt. Eine statische IP bleibt fest und wird typischerweise von Servern oder Unternehmen genutzt.</div>
+</div>
 </section>
 <section class="tool-grid">
 <div class="tool-left">
@@ -736,7 +748,7 @@ Finden Sie heraus, wo Sie sich gerade befinden. Dieses Tool zeigt sofort Ihre ö
 </div>
 </div>
 <section aria-label="IP Address Explanation" class="snippet-section">
-<h2>Wie funktioniert eine IP-Adresse?</h2>
+<h2>Was ist eine IP-Adresse?</h2>
 <p>
 Eine IP-Adresse (Internet-Protokoll-Adresse) ist eine eindeutige Nummer, die Ihrem Gerät zugewiesen wird, wenn Sie sich mit dem Internet verbinden.
 Sie ermöglicht es Websites, Servern und Online-Diensten, Ihre Verbindung zu identifizieren und Daten an das richtige Ziel zu senden.

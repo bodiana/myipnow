@@ -69,13 +69,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .main-section,
     .map-section,
     .faq-section,
-    .guide-section,
-    .snippet-section {background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+    .guide-section {background: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+    .snippet-section {background: var(--card-bg); padding: 1.25rem 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
     .main-section h2 {font-size: 1rem; font-weight: 500; color: var(--accent-color); margin-bottom: 1rem; text-align: center;}
 
     /* --- FEATURED SNIPPET SECTION --- */
-    .snippet-section h2 {text-align: center; font-size: 1.5rem; margin-bottom: 1rem;}
-    .snippet-section p {text-align: center; font-size: 1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;}
+    .snippet-section h2 {text-align: center; font-size: 1.3rem; margin-bottom: 0.75rem;}
+    .snippet-section p {text-align: left; font-size: 0.95rem; color: var(--text-secondary); max-width: 100%; margin: 0 0 0.75rem 0;}
     .snippet-section a {color: var(--accent-color); text-decoration: none; font-weight: 500;}
     .snippet-section ul {max-width: 700px; margin: 0 auto; text-align: left; color: var(--text-secondary);}
     .snippet-section ul li {margin-bottom: 0.5rem;}
@@ -611,6 +611,18 @@ Sprawdź, gdzie jesteś teraz. To narzędzie natychmiast pokazuje Twój publiczn
 </svg>
 </button>
 </div>
+<div class="faq-item">
+<div class="faq-question">Jak działa adres IP?</div>
+<div class="faq-answer">Gdy łączysz się z internetem, Twój ISP przydziela adres IP Twojemu urządzeniu. Za każdym razem gdy odwiedzasz stronę, Twoje urządzenie wysyła żądanie używając tego IP. Serwer odczytuje Twoje IP i odsyła dane. Ten proces odbywa się automatycznie przy każdym ładowaniu strony.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Jaka jest różnica między IPv4 a IPv6?</div>
+<div class="faq-answer">IPv4 używa 32-bitowych adresów z ~4,3 miliardami unikalnych adresów. IPv6 używa 128-bitowych adresów z praktycznie nieograniczoną liczbą adresów. Większość nowoczesnych urządzeń obsługuje oba.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Czym różni się dynamiczny od statycznego adresu IP?</div>
+<div class="faq-answer">Dynamiczny IP zmienia się okresowo i jest używany przez większość połączeń domowych. Statyczny IP pozostaje stały i jest zazwyczaj używany przez serwery lub firmy.</div>
+</div>
 </section>
 <section class="tool-grid">
 <div class="tool-left">
@@ -736,7 +748,7 @@ Sprawdź, gdzie jesteś teraz. To narzędzie natychmiast pokazuje Twój publiczn
 </div>
 </div>
 <section aria-label="IP Address Explanation" class="snippet-section">
-<h2>Jak działa adres IP?</h2>
+<h2>Co to jest adres IP?</h2>
 <p>
 Adres IP (Internet Protocol) to unikalny numer przypisany do Twojego urządzenia po połączeniu z internetem.
 Umożliwia stronom internetowym, serwerom i usługom online identyfikację Twojego połączenia i wysyłanie danych do właściwego miejsca docelowego.
