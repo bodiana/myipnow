@@ -205,7 +205,7 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
 <section aria-label="DNS Lookup Definition" class="snippet-section">
 <h2>What Is a DNS Lookup?</h2>
 <p>
-    A DNS lookup is a query that asks the Domain Name System which records a domain publishes — such as A/AAAA (IP addresses),
+    A DNS lookup is a query that asks the Domain Name System which records a domain publishes - such as A/AAAA (IP addresses),
     MX (mail servers), NS (authoritative name servers), and TXT (verification/SPF/DKIM). It’s used to troubleshoot routing,
     email delivery, and domain ownership verification.
   </p>
@@ -383,7 +383,7 @@ function renderSection(records, type, container){
   sec.style.marginBottom='1.5rem';
   var badge=document.createElement('div');
   badge.style.cssText='background:'+c.bg+';color:'+c.color+';font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;';
-  badge.textContent=type+' — '+records.length+' record'+(records.length!==1?'s':'');
+  badge.textContent=type+' - '+records.length+' record'+(records.length!==1?'s':'');
   sec.appendChild(badge);
   var tbl=document.createElement('table');
   tbl.className='dns-table';
