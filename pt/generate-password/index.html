@@ -114,19 +114,19 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
   .nav-tools.open ul {display: block !important;}
   body.menu-open {overflow: hidden;}
 }</style>
-<style id="password-tool-fix">/* Fix for password generator layout */
-.password-tool {display: flex; flex-direction: column; align-items: stretch; justify-content: center; width: 100%; max-width: 500px; margin: 1.5rem auto; position: static !important; z-index: auto !important;}
-
-.password-input-wrapper {position: relative; display: flex; align-items: center;}
-
-.password-input-wrapper input[type="text"] {flex: 1; width: 100%; box-sizing: border-box;}
-
-.password-settings {display: flex; flex-direction: column; gap: 0.5rem;}
-
-@media (max-width: 768px) {.password-tool {
-    max-width: 100%; margin: 1rem auto;}
-  .password-input-wrapper .icon {font-size: 1.3rem;}
-}</style>
+<style id="password-tool-fix">
+.password-tool {display:flex;flex-direction:column;gap:0.75rem;width:100%;max-width:100%;margin:1.5rem 0;}
+.password-input-wrapper {position:relative;display:flex;align-items:center;}
+.password-input-wrapper input[type="text"] {flex:1;width:100%;box-sizing:border-box;padding:0.75rem 5rem 0.75rem 1rem;font-size:1.1rem;font-family:monospace;border-radius:8px;border:1px solid #e2e8f0;background:#f8fafc;}
+.password-input-wrapper .icon {position:absolute;top:50%;transform:translateY(-50%);cursor:pointer;font-size:1.3rem;color:var(--accent-color);}
+.password-input-wrapper .reload {right:2.75rem;}
+.password-input-wrapper .copy {right:0.75rem;}
+.password-settings {display:flex;flex-direction:column;gap:0.5rem;}
+.password-settings input[type="range"] {width:100%;accent-color:var(--accent-color);}
+@media(max-width:600px){
+  .password-input-wrapper input[type="text"]{font-size:0.95rem;}
+}
+</style>
 <link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
