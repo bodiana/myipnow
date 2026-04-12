@@ -249,18 +249,18 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
   <div id="strengthLabel" style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.5rem;text-align:right;min-height:1.2em;"></div>
   <button class="generate-btn" onclick="generatePassword()">Passwort generieren</button>
   <div class="password-settings">
-    <label>Password Length: <span id="lengthVal">16</span></label>
+    <label>Passwortlänge: <span id="lengthVal">16</span></label>
     <input id="lengthSlider" max="64" min="6" type="range" value="16"/>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.25rem 1rem;margin-top:0.5rem;">
-      <label><input checked="" id="uppercase" type="checkbox"/> Uppercase (A-Z)</label>
-      <label><input checked="" id="lowercase" type="checkbox"/> Lowercase (a-z)</label>
-      <label><input checked="" id="numbers" type="checkbox"/> Numbers (0-9)</label>
-      <label><input checked="" id="symbols" type="checkbox"/> Symbols (!@#$)</label>
-      <label><input id="excludeSimilar" type="checkbox"/> Exclude similar (0/O, 1/l)</label>
-      <label><input id="excludeAmbiguous" type="checkbox"/> Exclude ambiguous</label>
+      <label><input checked="" id="uppercase" type="checkbox"/> Großbuchstaben (A-Z)</label>
+      <label><input checked="" id="lowercase" type="checkbox"/> Kleinbuchstaben (a-z)</label>
+      <label><input checked="" id="numbers" type="checkbox"/> Zahlen (0-9)</label>
+      <label><input checked="" id="symbols" type="checkbox"/> Sonderzeichen (!@#$)</label>
+      <label><input id="excludeSimilar" type="checkbox"/> Ähnliche ausschließen (0/O, 1/l)</label>
+      <label><input id="excludeAmbiguous" type="checkbox"/> Mehrdeutige ausschließen</label>
     </div>
     <div style="margin-top:0.75rem;">
-      <label style="font-weight:600;margin-bottom:0.25rem;display:block;">How many passwords:</label>
+      <label style="font-weight:600;margin-bottom:0.25rem;display:block;">Wie viele Passwörter:</label>
       <div style="display:flex;gap:0.5rem;flex-wrap:wrap;" id="countBtns">
         <button class="pwd-count-btn active" data-count="1" onclick="setPwdCount(this)">1</button>
         <button class="pwd-count-btn" data-count="5" onclick="setPwdCount(this)">5</button>
@@ -475,10 +475,10 @@ body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; p
     if(/[a-z]/.test(pwd)) score++;
     if(/[0-9]/.test(pwd)) score++;
     if(/[^A-Za-z0-9]/.test(pwd)) score++;
-    if(score <= 2) return {label:'Weak',        color:'#ef4444', pct:20};
-    if(score <= 4) return {label:'Fair',         color:'#f59e0b', pct:45};
-    if(score <= 6) return {label:'Strong',       color:'#10b981', pct:72};
-    return              {label:'Very Strong',  color:'#4f46e5', pct:100};
+    if(score <= 2) return {label:'Schwach',        color:'#ef4444', pct:20};
+    if(score <= 4) return {label:'Mittel',         color:'#f59e0b', pct:45};
+    if(score <= 6) return {label:'Stark',       color:'#10b981', pct:72};
+    return              {label:'Sehr stark',  color:'#4f46e5', pct:100};
   }
 
   function updateStrength(pwd){
