@@ -202,6 +202,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <div class="ping-stat"><div class="ping-stat-label">Avg</div><div class="ping-stat-value" id="statAvg">-</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Max</div><div class="ping-stat-value" id="statMax">-</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Packet Loss</div><div class="ping-stat-value" id="statLoss">-</div><div class="ping-stat-unit">%</div></div>
+<div class="ping-stat"><div class="ping-stat-label">Jitter</div><div class="ping-stat-value" id="statJitter">-</div><div class="ping-stat-unit">ms</div></div>
 </div>
 <div class="ping-results" id="pingResults">
 <p class="ping-info">Cliquez sur Ping pour tester votre connexion, ou entrez un domaine/IP spécifique.</p>
@@ -389,6 +390,13 @@ async function runPing() {
       document.getElementById('statAvg').textContent = avg;
       document.getElementById('statMax').textContent = max;
       document.getElementById('statLoss').textContent = totalLoss;
+      let jitter = 0;
+      if (allRtts.length > 1) {
+        let diffs = 0;
+        for (let i = 1; i < allRtts.length; i++) diffs += Math.abs(allRtts[i] - allRtts[i-1]);
+        jitter = (diffs / (allRtts.length - 1)).toFixed(1);
+      }
+      document.getElementById('statJitter').textContent = jitter;
 
       // Color avg based on quality
       const avgEl = document.getElementById('statAvg');
@@ -396,7 +404,7 @@ async function runPing() {
       else if (avg < 100) avgEl.style.color = '#d97706';
       else avgEl.style.color = '#dc2626';
 
-      statsEl.style.display = 'grid';
+      statsEl.style.display = 'flex';
     }
 
   } catch(e) {

@@ -398,7 +398,7 @@ async function runPing() {
       else if (avg < 100) avgEl.style.color = '#d97706';
       else avgEl.style.color = '#dc2626';
 
-      statsEl.style.display = 'grid';
+      statsEl.style.display = 'flex';
     }
 
   } catch(e) {
@@ -492,7 +492,7 @@ async function runAutoPing() {
     if (avg < 50) avgEl.style.color = '#059669';
     else if (avg < 100) avgEl.style.color = '#d97706';
     else avgEl.style.color = '#dc2626';
-    statsEl.style.display = 'grid';
+    statsEl.style.display = 'flex';
   }
 
   btn.disabled = false;
