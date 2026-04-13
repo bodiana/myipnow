@@ -62,7 +62,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 @media(max-width:768px){.page-header h1{font-size:1.6rem;}.page-header{padding:1.5rem 1rem;}}
 .page-header p{font-size:1rem;color:var(--text-secondary);margin:0 auto;max-width:700px;}
 .article-body{background:var(--card-bg);padding:2.5rem 3rem;border-radius:var(--border-radius);box-shadow:var(--card-shadow);margin-bottom:2rem;}
-.ping-tool{max-width:700px;margin:0 auto 2rem auto;}
+.ping-tool{max-width:100%;margin:0 auto 2rem auto;}
 .ping-input-row{display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;}
 .ping-input-row input{flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:1rem;outline-color:var(--accent-color);}
 .ping-input-row select{padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:1rem;background:#fff;cursor:pointer;}
@@ -75,11 +75,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 .ping-results .ping-timeout{color:#dc2626;}
 .ping-results .ping-info{color:var(--text-secondary);}
 .ping-results .ping-summary{color:var(--text-primary);font-weight:700;border-top:1px solid #e2e8f0;margin-top:0.5rem;padding-top:0.5rem;}
-.ping-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:1rem;}
-.ping-stat{background:#fff;border-radius:10px;padding:1rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.ping-stat-label{font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;}
-.ping-stat-value{font-size:1.5rem;font-weight:700;color:var(--text-primary);}
-.ping-stat-unit{font-size:0.8rem;color:var(--text-secondary);}
+.ping-stats{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;}
+.ping-stat{background:#f1f5f9;border-radius:8px;padding:0.4rem 0.9rem;display:flex;align-items:center;gap:0.35rem;}
+.ping-stat-label{font-size:0.78rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em;font-weight:500;}
+.ping-stat-value{font-size:0.95rem;font-weight:700;color:var(--text-primary);}
+.ping-stat-unit{font-size:0.75rem;color:var(--text-secondary);}
 .faq-section{margin-top:2rem;}
 .faq-item{background:#f1f5f9;border-radius:8px;padding:1rem;margin-bottom:1rem;cursor:pointer;}
 .faq-item:hover{background:#e2e8f0;}
@@ -197,15 +197,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 </select>
 <button class="ping-btn" id="pingBtn" onclick="runPing()">Ping</button>
 </div>
-<div class="ping-results" id="pingResults">
-<p class="ping-info">Klik op Ping om uw verbinding te testen, of voer een domein/IP in.</p>
-</div>
 <div class="ping-stats" id="pingStats" style="display:none;">
 <div class="ping-stat"><div class="ping-stat-label">Min</div><div class="ping-stat-value" id="statMin">-</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Avg</div><div class="ping-stat-value" id="statAvg">-</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Max</div><div class="ping-stat-value" id="statMax">-</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Packet Loss</div><div class="ping-stat-value" id="statLoss">-</div><div class="ping-stat-unit">%</div></div>
 </div>
+<div class="ping-results" id="pingResults">
+<p class="ping-info">Klik op Ping om uw verbinding te testen, of voer een domein/IP in.</p>
+</div>
+
 </div>
 
 <section class="faq-section">
