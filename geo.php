@@ -13,6 +13,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 /* =========================
+   ORIGIN CHECK
+========================= */
+$origin = $_SERVER['HTTP_ORIGIN'] ?? $_SERVER['HTTP_REFERER'] ?? '';
+$allowed = [
+    'https://myipnow.net',
+    'chrome-extension://',
+    'moz-extension://'
+];
+// Allow if origin matches, or if no origin (server-side / direct browser nav)
+$ok = ($origin === '');
+foreach ($allowed as $prefix) {
+    if (str_starts_with($origin, $prefix)) { $ok = true; break; }
+}
+if (!$ok) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Forbidden']);
+    exit;
+}
+
+
+
+/* =========================
    AUTOLOAD
 ========================= */
 require_once __DIR__ . '/vendor/autoload.php';
