@@ -12,7 +12,7 @@
 <meta property="og:type" content="website"/>
 <meta property="og:image" content="https://myipnow.net/preview.png"/>
 <meta name="robots" content="index,follow"/>
-<link rel="canonical" href="https://myipnow.net/fr/fr/ping-test/"/>
+<link rel="canonical" href="https://myipnow.net/fr/ping-test/"/>
 <link href="/css/fonts.css" rel="stylesheet"/>
 <link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
@@ -415,6 +415,64 @@ async function runPing() {
   btn.textContent = 'Ping';
 }
 
+
+async function runAutoPing() {
+  const AUTO_TARGETS = ["cloudflare.com", "google.com", "myipnow.net", "amazon.com"];
+  const resultsEl = document.getElementById("pingResults");
+  const statsEl = document.getElementById("pingStats");
+  const btn = document.getElementById("pingBtn");
+  const location = document.getElementById("pingLocation").value;
+  btn.disabled = true; btn.textContent = "Pinging...";
+  resultsEl.innerHTML = "<p class="ping-info">Testing your connection to key servers...</p>";
+  statsEl.style.display = "none";
+  let html = "", allRtts = [], totalLoss = 0;
+  for (const target of AUTO_TARGETS) {
+    try {
+      const createRes = await fetch("https://api.globalping.io/v1/measurements", {
+        method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({type:"ping",target,locations:[{magic:location}],measurementOptions:{packets:4}})
+      });
+      const {id} = await createRes.json();
+      let result = null;
+      for (let i = 0; i < 10; i++) {
+        await new Promise(r => setTimeout(r, 1000));
+        const d = await (await fetch("https://api.globalping.io/v1/measurements/" + id)).json();
+        if (d.status === "finished") { result = d; break; }
+      }
+      result.results.forEach(probe => {
+        const locStr = [probe.probe.city, probe.probe.country].filter(Boolean).join(", ") || location;
+        html += "<p class="ping-info">PING " + target + " from " + locStr + "</p>";
+        if (probe.result.status === "finished" && probe.result.stats) {
+          const stats = probe.result.stats;
+          (probe.result.timings || []).forEach((t, i) => {
+            if (t.rtt !== undefined) { html += "<p class="ping-ok">Reply from " + target + ": seq=" + (i+1) + " time=" + t.rtt.toFixed(1) + " ms</p>"; allRtts.push(t.rtt); }
+            else html += "<p class="ping-timeout">Request timeout for seq " + (i+1) + "</p>";
+          });
+          html += "<p class="ping-summary">--- " + target + ": min=" + stats.min.toFixed(1) + " avg=" + stats.avg.toFixed(1) + " max=" + stats.max.toFixed(1) + " ms, loss=" + stats.loss + "% ---</p>";
+          totalLoss = Math.max(totalLoss, stats.loss);
+        }
+      });
+      resultsEl.innerHTML = html;
+    } catch(e) {}
+  }
+  if (allRtts.length > 0) {
+    const min = Math.min(...allRtts).toFixed(1), max = Math.max(...allRtts).toFixed(1);
+    const avg = (allRtts.reduce((a,b)=>a+b,0)/allRtts.length).toFixed(1);
+    let jitter = 0;
+    if (allRtts.length > 1) { let d=0; for(let i=1;i<allRtts.length;i++) d+=Math.abs(allRtts[i]-allRtts[i-1]); jitter=(d/(allRtts.length-1)).toFixed(1); }
+    document.getElementById("statMin").textContent = min;
+    document.getElementById("statAvg").textContent = avg;
+    document.getElementById("statMax").textContent = max;
+    document.getElementById("statLoss").textContent = totalLoss;
+    document.getElementById("statJitter").textContent = jitter;
+    const avgEl = document.getElementById("statAvg");
+    if (avg < 50) avgEl.style.color = "#059669";
+    else if (avg < 100) avgEl.style.color = "#d97706";
+    else avgEl.style.color = "#dc2626";
+    statsEl.style.display = "flex";
+  }
+  btn.disabled = false; btn.textContent = "Ping";
+}
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('pingHost').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') runPing();
