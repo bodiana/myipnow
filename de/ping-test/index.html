@@ -12,7 +12,7 @@
 <meta property="og:type" content="website"/>
 <meta property="og:image" content="https://myipnow.net/preview.png"/>
 <meta name="robots" content="index,follow"/>
-<link rel="canonical" href="https://myipnow.net/de/de/ping-test/"/>
+<link rel="canonical" href="https://myipnow.net/de/ping-test/"/>
 <link href="/css/fonts.css" rel="stylesheet"/>
 <link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
@@ -173,9 +173,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <div class="howto">
 <h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">Verwendung dieses ping-Tests</h3>
 <ol>
-<li>Geben Sie eine Domäne (z. B. google.com) oder eine IP-Adresse ein.</li>
-<li>Wählen Sie eine Sondenposition.</li>
-<li>Klicken Sie auf <strong>ping</strong>, um den Test zu starten.</li>
+<li>Klicken Sie auf <strong>Ping</strong>, um Ihre Verbindung zu wichtigen Servern sofort zu testen.</li>
+<li>Oder geben Sie eine Domain oder IP-Adresse ein, um ein bestimmtes Ziel zu testen.</li>
+<li>Wählen Sie einen Sondenstandort, um aus einer bestimmten Region zu testen.</li>
 </ol>
 </div>
 </section>
@@ -198,7 +198,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <button class="ping-btn" id="pingBtn" onclick="runPing()">Ping</button>
 </div>
 <div class="ping-results" id="pingResults">
-<p class="ping-info">Geben Sie oben eine Domäne oder IP-Adresse ein und klicken Sie auf ping, um zu starten.</p>
+<p class="ping-info">Klicken Sie auf Ping, um Ihre Verbindung zu testen, oder geben Sie eine Domain/IP ein.</p>
 </div>
 <div class="ping-stats" id="pingStats" style="display:none;">
 <div class="ping-stat"><div class="ping-stat-label">Min</div><div class="ping-stat-value" id="statMin">-</div><div class="ping-stat-unit">ms</div></div>
@@ -293,7 +293,7 @@ async function runPing() {
   const btn = document.getElementById('pingBtn');
 
   if (!host) {
-    resultsEl.innerHTML = '<p class="ping-timeout">Please enter a domain or IP address.</p>';
+    await runAutoPing();
     return;
   }
 

@@ -173,9 +173,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <div class="howto">
 <h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">Come utilizzare il test ping</h3>
 <ol>
-<li>Inserire un dominio (ad esempio, google.com) o un indirizzo IP.</li>
-<li>Selezionare la posizione della sonda.</li>
-<li>Fare clic su <strong>ping</strong> per avviare il test.</li>
+<li>Fai clic su <strong>Ping</strong> per testare istantaneamente la tua connessione ai server principali.</li>
+<li>Oppure inserisci un dominio o un indirizzo IP specifico per testare un target personalizzato.</li>
+<li>Seleziona una posizione della sonda per testare da una regione specifica.</li>
 </ol>
 </div>
 </section>
@@ -293,7 +293,7 @@ async function runPing() {
   const btn = document.getElementById('pingBtn');
 
   if (!host) {
-    resultsEl.innerHTML = '<p class="ping-timeout">Please enter a domain or IP address.</p>';
+    await runAutoPing();
     return;
   }
 

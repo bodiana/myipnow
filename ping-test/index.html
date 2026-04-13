@@ -164,9 +164,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <div class="howto">
 <h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">How to use this Ping Test</h3>
 <ol>
-<li>Enter a domain (e.g. google.com) or IP address.</li>
-<li>Select a probe location.</li>
-<li>Click <strong>Ping</strong> to start the test.</li>
+<li>Click <strong>Ping</strong> to instantly test your connection to key servers.</li>
+<li>Or enter a specific domain or IP address to test a custom target.</li>
+<li>Select a probe location to test from a specific region.</li>
 </ol>
 </div>
 </section>
@@ -189,13 +189,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <button class="ping-btn" id="pingBtn" onclick="runPing()">Ping</button>
 </div>
 <div class="ping-results" id="pingResults">
-<p class="ping-info">Enter a domain or IP address above and click Ping to start.</p>
+<p class="ping-info">Click Ping to test your connection, or enter a domain/IP for a specific target.</p>
 </div>
 <div class="ping-stats" id="pingStats" style="display:none;">
 <div class="ping-stat"><div class="ping-stat-label">Min</div><div class="ping-stat-value" id="statMin">—</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Avg</div><div class="ping-stat-value" id="statAvg">—</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Max</div><div class="ping-stat-value" id="statMax">—</div><div class="ping-stat-unit">ms</div></div>
 <div class="ping-stat"><div class="ping-stat-label">Packet Loss</div><div class="ping-stat-value" id="statLoss">—</div><div class="ping-stat-unit">%</div></div>
+<div class="ping-stat"><div class="ping-stat-label">Jitter</div><div class="ping-stat-value" id="statJitter">—</div><div class="ping-stat-unit">ms</div></div>
 </div>
 </div>
 
@@ -277,14 +278,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 </div>
 <script>
 async function runPing() {
-  const host = document.getElementById('pingHost').value.trim();
+  let host = document.getElementById('pingHost').value.trim();
   const location = document.getElementById('pingLocation').value;
   const resultsEl = document.getElementById('pingResults');
   const statsEl = document.getElementById('pingStats');
   const btn = document.getElementById('pingBtn');
 
+  // If no host entered, auto-ping reliable servers
   if (!host) {
-    resultsEl.innerHTML = '<p class="ping-timeout">Please enter a domain or IP address.</p>';
+    await runAutoPing();
     return;
   }
 
@@ -380,6 +382,15 @@ async function runPing() {
       document.getElementById('statMax').textContent = max;
       document.getElementById('statLoss').textContent = totalLoss;
 
+      // Jitter = avg deviation between consecutive RTTs
+      let jitter = 0;
+      if (allRtts.length > 1) {
+        let diffs = 0;
+        for (let i = 1; i < allRtts.length; i++) diffs += Math.abs(allRtts[i] - allRtts[i-1]);
+        jitter = (diffs / (allRtts.length - 1)).toFixed(1);
+      }
+      document.getElementById('statJitter').textContent = jitter;
+
       // Color avg based on quality
       const avgEl = document.getElementById('statAvg');
       if (avg < 50) avgEl.style.color = '#059669';
@@ -391,6 +402,96 @@ async function runPing() {
 
   } catch(e) {
     resultsEl.innerHTML = '<p class="ping-timeout">Error: ' + e.message + '</p>';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Ping';
+}
+
+
+async function runAutoPing() {
+  const AUTO_TARGETS = ['cloudflare.com', 'google.com', 'myipnow.net', 'amazon.com'];
+  const resultsEl = document.getElementById('pingResults');
+  const statsEl = document.getElementById('pingStats');
+  const btn = document.getElementById('pingBtn');
+  const location = document.getElementById('pingLocation').value;
+
+  btn.disabled = true;
+  btn.textContent = 'Pinging...';
+  resultsEl.innerHTML = '<p class="ping-info">Testing your connection to key servers...</p>';
+  statsEl.style.display = 'none';
+
+  let html = '';
+  let allRtts = [];
+  let totalLoss = 0;
+
+  for (const target of AUTO_TARGETS) {
+    try {
+      const createRes = await fetch('https://api.globalping.io/v1/measurements', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          type: 'ping',
+          target: target,
+          locations: [{magic: location}],
+          measurementOptions: {packets: 4}
+        })
+      });
+      if (!createRes.ok) continue;
+      const {id} = await createRes.json();
+
+      let result = null;
+      for (let i = 0; i < 10; i++) {
+        await new Promise(r => setTimeout(r, 1000));
+        const pollRes = await fetch('https://api.globalping.io/v1/measurements/' + id);
+        const data = await pollRes.json();
+        if (data.status === 'finished') { result = data; break; }
+      }
+      if (!result) continue;
+
+      result.results.forEach(probe => {
+        const loc = probe.probe;
+        const locStr = [loc.city, loc.country].filter(Boolean).join(', ') || location;
+        html += '<p class="ping-info">PING ' + target + ' from ' + locStr + '</p>';
+        if (probe.result.status === 'finished' && probe.result.stats) {
+          const stats = probe.result.stats;
+          const times = probe.result.timings || [];
+          times.forEach((t, i) => {
+            if (t.rtt !== undefined) {
+              html += '<p class="ping-ok">Reply from ' + target + ': seq=' + (i+1) + ' time=' + t.rtt.toFixed(1) + ' ms</p>';
+              allRtts.push(t.rtt);
+            } else {
+              html += '<p class="ping-timeout">Request timeout for seq ' + (i+1) + '</p>';
+            }
+          });
+          html += '<p class="ping-summary">--- ' + target + ': min=' + stats.min.toFixed(1) + ' avg=' + stats.avg.toFixed(1) + ' max=' + stats.max.toFixed(1) + ' ms, loss=' + stats.loss + '% ---</p>';
+          totalLoss = Math.max(totalLoss, stats.loss);
+        }
+      });
+      resultsEl.innerHTML = html;
+    } catch(e) {}
+  }
+
+  if (allRtts.length > 0) {
+    const min = Math.min(...allRtts).toFixed(1);
+    const max = Math.max(...allRtts).toFixed(1);
+    const avg = (allRtts.reduce((a,b) => a+b, 0) / allRtts.length).toFixed(1);
+    let jitter = 0;
+    if (allRtts.length > 1) {
+      let diffs = 0;
+      for (let i = 1; i < allRtts.length; i++) diffs += Math.abs(allRtts[i] - allRtts[i-1]);
+      jitter = (diffs / (allRtts.length - 1)).toFixed(1);
+    }
+    document.getElementById('statMin').textContent = min;
+    document.getElementById('statAvg').textContent = avg;
+    document.getElementById('statMax').textContent = max;
+    document.getElementById('statLoss').textContent = totalLoss;
+    document.getElementById('statJitter').textContent = jitter;
+    const avgEl = document.getElementById('statAvg');
+    if (avg < 50) avgEl.style.color = '#059669';
+    else if (avg < 100) avgEl.style.color = '#d97706';
+    else avgEl.style.color = '#dc2626';
+    statsEl.style.display = 'grid';
   }
 
   btn.disabled = false;

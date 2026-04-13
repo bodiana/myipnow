@@ -173,9 +173,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <div class="howto">
 <h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary)">Cómo utilizar esta prueba ping</h3>
 <ol>
-<li>Introduce un dominio (por ejemplo, google.com) o una dirección IP.</li>
-<li>Seleccione una ubicación para la sonda.</li>
-<li>Haga clic en <strong>ping</strong> para iniciar la prueba.</li>
+<li>Haga clic en <strong>Ping</strong> para probar instantáneamente su conexión a servidores clave.</li>
+<li>O introduzca un dominio o dirección IP específica para probar un destino personalizado.</li>
+<li>Seleccione una ubicación de sonda para probar desde una región específica.</li>
 </ol>
 </div>
 </section>
@@ -198,7 +198,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg-color);margin:0;padding:
 <button class="ping-btn" id="pingBtn" onclick="runPing()">Ping</button>
 </div>
 <div class="ping-results" id="pingResults">
-<p class="ping-info">Introduzca un dominio o dirección IP arriba y haga clic en ping para comenzar.</p>
+<p class="ping-info">Haga clic en Ping para probar su conexión, o introduzca un dominio/IP específico.</p>
 </div>
 <div class="ping-stats" id="pingStats" style="display:none;">
 <div class="ping-stat"><div class="ping-stat-label">Min</div><div class="ping-stat-value" id="statMin">-</div><div class="ping-stat-unit">ms</div></div>
@@ -293,7 +293,7 @@ async function runPing() {
   const btn = document.getElementById('pingBtn');
 
   if (!host) {
-    resultsEl.innerHTML = '<p class="ping-timeout">Please enter a domain or IP address.</p>';
+    await runAutoPing();
     return;
   }
 
