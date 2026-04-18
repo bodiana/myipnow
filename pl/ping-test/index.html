@@ -421,12 +421,48 @@ async function runPing() {
 
 
 async function runAutoPing() {
-  const AUTO_TARGETS = [
-    { host: '1.1.1.1',       label: 'Cloudflare DNS' },
-    { host: '8.8.8.8',       label: 'Google DNS' },
-    { host: '9.9.9.9',       label: 'Quad9 DNS' },
-    { host: '208.67.222.222',label: 'OpenDNS' },
-  ];
+  const REGION_TARGETS = {
+    'world': [
+      { host: '1.1.1.1', label: 'Cloudflare' },
+      { host: '8.8.8.8', label: 'Google' },
+    ],
+    'us': [
+      { host: '4.2.2.1', label: 'Level3 US' },
+      { host: '209.244.0.3', label: 'CenturyLink US' },
+    ],
+    'eu': [
+      { host: '193.110.81.0', label: 'DNS0 EU' },
+      { host: '185.253.5.0', label: 'DNS4EU' },
+    ],
+    'de': [
+      { host: '194.150.168.168', label: 'DNS.SB Germany' },
+      { host: '193.110.81.0', label: 'DNS0 EU' },
+    ],
+    'gb': [
+      { host: '212.58.224.1', label: 'BBC UK' },
+      { host: '8.8.8.8', label: 'Google' },
+    ],
+    'fr': [
+      { host: '80.67.169.12', label: 'FDN France' },
+      { host: '193.110.81.0', label: 'DNS0 EU' },
+    ],
+    'sg': [
+      { host: '202.166.207.138', label: 'SingTel SG' },
+      { host: '8.8.8.8', label: 'Google' },
+    ],
+    'au': [
+      { host: '203.2.222.222', label: 'Exetel AU' },
+      { host: '139.130.4.5', label: 'Telstra AU' },
+    ],
+    'br': [
+      { host: '200.160.0.8', label: 'NIC.br Brazil' },
+      { host: '8.8.8.8', label: 'Google' },
+    ],
+    'jp': [
+      { host: '210.130.0.1', label: 'IIJ Japan' },
+      { host: '8.8.8.8', label: 'Google' },
+    ],
+  };
   const resultsEl = document.getElementById('pingResults');
   const statsEl = document.getElementById('pingStats');
   const btn = document.getElementById('pingBtn');
@@ -441,7 +477,8 @@ async function runAutoPing() {
   let allRtts = [];
   let totalLoss = 0;
 
-  for (const target of AUTO_TARGETS) {
+  const targets = REGION_TARGETS[location] || REGION_TARGETS['world'];
+  for (const target of targets) {
     try {
       const createRes = await fetch('https://api.globalping.io/v1/measurements', {
         method: 'POST',
@@ -449,7 +486,7 @@ async function runAutoPing() {
         body: JSON.stringify({
           type: 'ping',
           target: target.host,
-          locations: [{magic: location}],
+          locations: [{magic: 'world'}],
           measurementOptions: {packets: 4}
         })
       });
