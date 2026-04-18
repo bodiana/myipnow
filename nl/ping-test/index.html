@@ -421,7 +421,12 @@ async function runPing() {
 
 
 async function runAutoPing() {
-  const AUTO_TARGETS = ['cloudflare.com', 'google.com', 'myipnow.net', 'amazon.com'];
+  const AUTO_TARGETS = [
+    { host: '1.1.1.1',       label: 'Cloudflare DNS' },
+    { host: '8.8.8.8',       label: 'Google DNS' },
+    { host: '9.9.9.9',       label: 'Quad9 DNS' },
+    { host: '208.67.222.222',label: 'OpenDNS' },
+  ];
   const resultsEl = document.getElementById('pingResults');
   const statsEl = document.getElementById('pingStats');
   const btn = document.getElementById('pingBtn');
@@ -443,7 +448,7 @@ async function runAutoPing() {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           type: 'ping',
-          target: target,
+          target: target.host,
           locations: [{magic: location}],
           measurementOptions: {packets: 4}
         })
@@ -463,19 +468,19 @@ async function runAutoPing() {
       result.results.forEach(probe => {
         const loc = probe.probe;
         const locStr = [loc.city, loc.country].filter(Boolean).join(', ') || location;
-        html += '<p class="ping-info">PING ' + target + ' from ' + locStr + '</p>';
+        html += '<p class="ping-info">PING ' + target.label + ' (' + target.host + ') from ' + locStr + '</p>';
         if (probe.result.status === 'finished' && probe.result.stats) {
           const stats = probe.result.stats;
           const times = probe.result.timings || [];
           times.forEach((t, i) => {
             if (t.rtt !== undefined) {
-              html += '<p class="ping-ok">Reply from ' + target + ': seq=' + (i+1) + ' time=' + t.rtt.toFixed(1) + ' ms</p>';
+              html += '<p class="ping-ok">Reply from ' + target.host + ': seq=' + (i+1) + ' time=' + t.rtt.toFixed(1) + ' ms</p>';
               allRtts.push(t.rtt);
             } else {
               html += '<p class="ping-timeout">Request timeout for seq ' + (i+1) + '</p>';
             }
           });
-          html += '<p class="ping-summary">--- ' + target + ': min=' + stats.min.toFixed(1) + ' avg=' + stats.avg.toFixed(1) + ' max=' + stats.max.toFixed(1) + ' ms, loss=' + stats.loss + '% ---</p>';
+          html += '<p class="ping-summary">--- ' + target.label + ': min=' + stats.min.toFixed(1) + ' avg=' + stats.avg.toFixed(1) + ' max=' + stats.max.toFixed(1) + ' ms, loss=' + stats.loss + '% ---</p>';
           totalLoss = Math.max(totalLoss, stats.loss);
         }
       });
