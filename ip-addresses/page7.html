@@ -69,7 +69,6 @@ body {font-family: 'Inter', sans-serif; background: var(--bg-color); margin: 0; 
 .footer-nav a {color: var(--text-secondary); text-decoration: none; font-size: 1rem; transition: color 0.2s ease;}
 .footer-nav a:hover {color: var(--accent-color);}
 .footer-copyright {font-size: 0.95rem; color: var(--text-secondary);}</style>
-<script src="https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1" nonce=""></script>
 <script>
 (function() {
   function signalGooglefcPresent() {
@@ -83,7 +82,12 @@ body {font-family: 'Inter', sans-serif; background: var(--bg-color); margin: 0; 
       } else { setTimeout(signalGooglefcPresent, 0); }
     }
   }
-  signalGooglefcPresent();
+  window.addEventListener('load', function() {
+    var s = document.createElement('script');
+    s.src = 'https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1';
+    document.head.appendChild(s);
+    signalGooglefcPresent();
+  });
 })();
 </script>
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script><style>@media (max-width: 768px) {.category-nav {

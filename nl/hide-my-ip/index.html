@@ -17,7 +17,6 @@
 <link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
 <meta content="#ffffff" name="theme-color"/>
-<script src="https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1" nonce=""></script>
 <script>
 (function() {
   function signalGooglefcPresent() {
@@ -31,7 +30,12 @@
       } else { setTimeout(signalGooglefcPresent, 0); }
     }
   }
-  signalGooglefcPresent();
+  window.addEventListener('load', function() {
+    var s = document.createElement('script');
+    s.src = 'https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1';
+    document.head.appendChild(s);
+    signalGooglefcPresent();
+  });
 })();
 </script>
 <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>

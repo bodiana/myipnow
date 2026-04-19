@@ -78,7 +78,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .related-card-content a:hover {color: #1e293b;}</style>
 <style>.nav {text-align: center !important;}
 .nav li {display: inline-block !important; float: none !important;}</style>
-<script src="https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1" nonce=""></script>
 <script>
 (function() {
   function signalGooglefcPresent() {
@@ -92,7 +91,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       } else { setTimeout(signalGooglefcPresent, 0); }
     }
   }
-  signalGooglefcPresent();
+  window.addEventListener('load', function() {
+    var s = document.createElement('script');
+    s.src = 'https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1';
+    document.head.appendChild(s);
+    signalGooglefcPresent();
+  });
 })();
 </script>
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
