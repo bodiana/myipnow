@@ -1,0 +1,11 @@
+Cause,Why It Happens,Example,Typical Error,Notes
+Carrier-Grade NAT (CGNAT),Mobile users share IPs,Mobile ISP IP mapped to HQ,50–500 km,Common on 4G/5G
+Cloud Hosting,IP belongs to data center,AWS IP shown as US,Country-level,Not user location
+VPN Services,Traffic exits elsewhere,User in EU exits via US,Country-level,Intentional masking
+Proxy Networks,Shared exit nodes,Residential proxy pool,100–1000 km,High churn
+Outdated GeoIP DB,Stale assignments,Reallocated IP,City/region,Update lag
+Anycast Routing,Same IP in many places,CDN edge IP,City-level,Normal behavior
+ISP Centralization,Traffic routed centrally,Rural user → capital,50–200 km,Common in small countries
+Corporate Networks,Office egress points,Remote worker,City/region,VPN backhaul
+Satellite Internet,Ground station mapping,Starlink user,Country/region,Emerging issue
+IPv6 Transition,IPv4 mapped via tunnel,6to4 relay,Country,Legacy setups

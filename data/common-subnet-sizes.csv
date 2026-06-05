@@ -1,0 +1,14 @@
+CIDR,Total IPs,Usable Hosts,Typical Use
+/30,4,2,Point-to-point links
+/29,8,6,Small network segment
+/28,16,14,Small office / VLAN
+/27,32,30,Small office / VLAN
+/26,64,62,Office / lab
+/25,128,126,Office / campus
+/24,256,254,Typical LAN
+/23,512,510,Larger LAN
+/22,1024,1022,Large office / VLAN
+/21,2048,2046,Campus / enterprise
+/20,4096,4094,Enterprise segment
+/19,8192,8190,Large enterprise
+/16,65536,65534,Very large network (legacy)

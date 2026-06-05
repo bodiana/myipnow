@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<script src="/cookie-consent.js"></script>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta content="/website" property="og:type"/>
+
+<meta content="/preview.png" property="og:image"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+
+<style>body {font-family: 'Inter', sans-serif; background: var(--bg-color, #f7f8f9); margin: 0; color: var(--text, #1e293b); line-height: 1.7;}
+
+    .container {max-width: 1200px; margin: 0 auto; padding: 1rem;}
+
+    .site-header {background: var(--card-bg, #fff); padding: 1rem; margin-bottom: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+
+    .header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border, #e2e8f0);}
+
+    .logo {font-size: 1.5rem; font-weight: 700; color: var(--text, #1e293b); text-decoration: none;}
+
+    .search-form {display: flex; flex-grow: 0; width: 480px; max-width: 100%;}
+
+    .search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border, #e2e8f0); border-radius: 8px 0 0 8px; font-size: 1rem;}
+
+    .search-form button {padding: 0.75rem 1rem; border: none; background: #10b981; color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+
+    .category-nav {padding-top: 1rem; position: relative;}
+
+    .category-nav ul {display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+
+.nav-tools {position: relative;}
+
+.nav-tools > a {cursor: default;}
+
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: var(--card-bg, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: var(--text, #1e293b); text-decoration: none;}
+
+.nav-tools ul li a:hover {color: #4f46e5;}
+
+.nav-tools:hover ul {display: block;}
+
+@media(max-width:768px){.category-nav ul {
+
+    overflow-x: auto; white-space: nowrap; padding-bottom: 10px;}
+
+.nav-tools {position: relative;}
+
+.nav-tools > a {cursor: default;}
+
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: var(--card-bg, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: var(--text, #1e293b); text-decoration: none;}
+
+.nav-tools ul li a:hover {color: #4f46e5;}
+
+.nav-tools:hover ul {display: block;}
+
+}
+
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 1rem; font-weight: 500; transition: color var(--transition-speed);}
+
+.category-nav a:hover {color: var(--accent-color);}
+
+    .page-header {background: var(--card-bg, #fff); padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;}
+
+    .page-header h1 {font-size: 2.2rem; margin: 0 0 0.5rem;}
+
+    .page-header p {font-size: 1rem; color: var(--text-secondary, #475569); margin: 0;}
+
+    .article-body {background: var(--card-bg, #fff); padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+
+    .article-body h2 {margin-top: 2rem; font-size: 1.5rem;}
+
+    .article-body h3 {margin-top: 1.2rem; font-size: 1.2rem;}
+
+    .related {background: var(--card-bg, #fff); padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 2rem;}
+
+    .related h3 {margin-top: 0;}
+
+    .related ul {list-style: none; padding: 0;}
+
+    .related li {margin-bottom: 0.5rem;}
+
+    .related a {text-decoration: none; color: #4f46e5;}
+
+    .article-pagination {display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem;}
+
+    .article-pagination a {background: var(--card-bg, #fff); padding: 0.75rem 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; color: var(--text, #1e293b); font-weight: 500;}
+
+    .article-pagination a:hover {background: #4f46e5; color: white;}
+
+    .footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; background: var(--card-bg, #fff); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+
+    .footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 2.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+
+    .footer-nav a {color: var(--text-secondary, #475569); text-decoration: none; font-size: 1rem;}
+
+    .footer-nav a:hover {color: #4f46e5;}
+
+    .footer-copyright {font-size: 0.85rem; color: var(--text-secondary, #475569);}
+
+   
+
+.related-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;}
+
+.related-card {display: flex; flex-direction: column; background: var(--card-alt, #f1f5f9); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease;}
+
+.related-card:hover {transform: translateY(-4px);}
+
+.related-card img {width: 100%; height: 140px; object-fit: cover;}
+
+.related-card-content {padding: 1rem;}
+
+.related-card-content h4 {margin: 0 0 0.5rem; font-size: 1rem;}
+
+.related-card-content p {font-size: 0.9rem; color: var(--text-secondary, #475569); margin: 0;}
+
+.related-card-content a {text-decoration: none; color: #4f46e5; font-weight: 600;}
+
+.related-card-content a:hover {color: var(--text, #1e293b);}</style>
+
+<style>.nav {text-align: center !important;}
+
+.nav li {display: inline-block !important; float: none !important;}</style>
+
+<script>
+
+(function() {
+
+  function signalGooglefcPresent() {
+
+    if (!window.frames["googlefcPresent"]) {
+
+      if (document.body) {
+
+        var iframe = document.createElement("iframe");
+
+        iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;";
+
+        iframe.style.display = "none";
+
+        iframe.name = "googlefcPresent";
+
+        document.body.appendChild(iframe);
+
+      } else { setTimeout(signalGooglefcPresent, 0); }
+
+    }
+
+  }
+
+  window.addEventListener('load', function() {
+
+    var s = document.createElement('script');
+
+    s.src = 'https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1';
+
+    document.head.appendChild(s);
+
+    signalGooglefcPresent();
+
+  });
+
+})();
+
+</script>
+
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+
+<style>@media (max-width: 768px) {.nav-tools {
+
+    position: static !important;}
+
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: var(--card-bg, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+
+  .nav-tools.open ul {display: block !important;}
+
+  body.menu-open {overflow: hidden;}
+
+}</style>
+
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+
+<meta content="#ffffff" name="theme-color"/>
+
+<link href="https://myipnow.net/what-is-whois" rel="canonical"/>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "MyIPNow", "url": "https://myipnow.net/", "logo": {"@type": "ImageObject", "url": "https://myipnow.net/favicon-96x96.png"}}, {"@type": "WebSite", "name": "MyIPNow", "url": "https://myipnow.net/"}, {"@type": "WebPage", "name": "What is WHOIS?. | MyIPNow", "description": "What is WHOIS?. Learn more with MyIPNow. Accurate, fast, and privacy-focused internet tools.", "url": "https://myipnow.net/what-is-whois", "inLanguage": "en", "mainEntityOfPage": "https://myipnow.net/what-is-whois/", "@id": "https://myipnow.net/what-is-whois"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://myipnow.net/"}, {"@type": "ListItem", "position": 2, "name": "What is WHOIS?. | MyIPNow", "item": "https://myipnow.net/what-is-whois/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What information can I find using WHOIS?", "acceptedAnswer": {"@type": "Answer", "text": "WHOIS provides details about domain registrants, administrative and technical contacts, registrar information, domain status, important dates, and name servers."}}, {"@type": "Question", "name": "Is WHOIS data always publicly available?", "acceptedAnswer": {"@type": "Answer", "text": "No. Due to privacy regulations like GDPR, some WHOIS data is redacted or limited. Proxy services and tiered access models are used to protect personal information."}}, {"@type": "Question", "name": "How can I perform a WHOIS lookup?", "acceptedAnswer": {"@type": "Answer", "text": "You can use online WHOIS lookup tools or command-line utilities to query WHOIS servers. For detailed information, performing a domain WHOIS search is recommended."}}, {"@type": "Question", "name": "What is the difference between WHOIS and RDAP?", "acceptedAnswer": {"@type": "Answer", "text": "RDAP is a newer protocol designed to replace WHOIS, offering standardized, secure, and privacy-compliant access to registration data, whereas WHOIS is an older, simpler protocol without encryption or standardization."}}, {"@type": "Question", "name": "Why is WHOIS important for cybersecurity?", "acceptedAnswer": {"@type": "Answer", "text": "WHOIS helps identify domain owners involved in malicious activities, supports investigations into cybercrime, and aids in blocking or mitigating threats associated with suspicious domains."}}]}]}</script>
+
+<title>What Is WHOIS? Domain Lookup Basics | MyIPNow</title><meta content="Learn how WHOIS works to reveal domain registrant information, IP ownership details, and registration history in seconds." name="description"/><meta content="What Is WHOIS? Domain Lookup Basics | MyIPNow" property="og:title"/><meta content="Learn how WHOIS works to reveal domain registrant information, IP ownership details, and registration history in seconds." property="og:description"/><meta content="https://myipnow.net/what-is-whois" property="og:url"/>
+
+  <link rel="stylesheet" href="/shared.css">
+
+<style id="lookup-mobile-fix">
+@media (max-width: 768px) {
+  .article-body,
+  .page-content,
+  .tool-content,
+  .tool-page,
+  .tool-section,
+  .tool-wrapper,
+  .tool-body,
+  .tool-results,
+  .results-panel,
+  .result-panel {
+    overflow-x: hidden;
+  }
+
+  .article-body table,
+  .page-content table,
+  .tool-content table,
+  .tool-page table,
+  .tool-section table,
+  .tool-wrapper table,
+  .tool-body table,
+  .tool-results table,
+  .results-panel table,
+  .result-panel table,
+  .results-table,
+  .result-table,
+  .result-list table,
+  .lookup-results table,
+  .dns-results table,
+  .whois-results table,
+  .ping-results table,
+  .speed-results table,
+  .ip-results table,
+  .whois-result table,
+  .record-table,
+  .records-table,
+  .table-wrap table,
+  .responsive-table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .article-body table th,
+  .article-body table td,
+  .page-content table th,
+  .page-content table td,
+  .tool-content table th,
+  .tool-content table td,
+  .tool-page table th,
+  .tool-page table td,
+  .tool-section table th,
+  .tool-section table td,
+  .tool-wrapper table th,
+  .tool-wrapper table td,
+  .tool-body table th,
+  .tool-body table td,
+  .tool-results table th,
+  .tool-results table td,
+  .results-panel table th,
+  .results-panel table td,
+  .result-panel table th,
+  .result-panel table td {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
+    vertical-align: top;
+  }
+
+  .result-row,
+  .lookup-row,
+  .dns-row,
+  .whois-row,
+  .ping-row,
+  .speed-row,
+  .ip-row,
+  .record-row,
+  .key-value-row,
+  .field-row,
+  .result-item,
+  .lookup-item,
+  .dns-item,
+  .whois-item,
+  .ping-item,
+  .speed-item,
+  .ip-item,
+  .result-card,
+  .lookup-card,
+  .dns-card,
+  .whois-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+    min-width: 0 !important;
+  }
+
+  .result-label,
+  .lookup-label,
+  .dns-label,
+  .whois-label,
+  .ping-label,
+  .speed-label,
+  .ip-label,
+  .record-label,
+  .field-label,
+  .result-name,
+  .lookup-name,
+  .dns-name,
+  .whois-name {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .result-value,
+  .lookup-value,
+  .dns-value,
+  .whois-value,
+  .ping-value,
+  .speed-value,
+  .ip-value,
+  .record-value,
+  .field-value,
+  .result-data,
+  .lookup-data,
+  .dns-data,
+  .whois-data,
+  pre,
+  code {
+    min-width: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .results-grid,
+  .lookup-grid,
+  .dns-grid,
+  .whois-grid,
+  .ping-grid,
+  .speed-grid,
+  .ip-grid,
+  .record-grid,
+  .field-grid,
+  .result-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .article-body input,
+  .article-body select,
+  .article-body button,
+  .page-content input,
+  .page-content select,
+  .page-content button,
+  .tool-content input,
+  .tool-content select,
+  .tool-content button,
+  .tool-page input,
+  .tool-page select,
+  .tool-page button,
+  .tool-section input,
+  .tool-section select,
+  .tool-section button,
+  .tool-wrapper input,
+  .tool-wrapper select,
+  .tool-wrapper button,
+  .tool-body input,
+  .tool-body select,
+  .tool-body button {
+    max-width: 100%;
+  }
+}
+</style>
+
+
+<style id="header-nav-align-fix">
+.site-header .category-nav ul {
+  align-items: center !important;
+}
+
+.site-header .category-nav ul > li {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.site-header .category-nav ul > li > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.site-header .category-nav ul > li:first-child > a {
+  margin-top: 0 !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .site-header .category-nav ul > li:first-child > a {
+    transform: none !important;
+  }
+}
+</style>
+
+
+<style id="hdr-nav-align-fix">
+.hdr-nav .hdr-nav-list {
+  align-items: center !important;
+}
+
+.hdr-nav .hdr-nav-list > li {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.hdr-nav .hdr-nav-list > li > a,
+.hdr-nav .hdr-nav-list > li > button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  min-height: 40px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  vertical-align: middle !important;
+}
+
+.hdr-nav .hdr-nav-list > li:first-child > a {
+  position: relative !important;
+  top: -1px !important;
+}
+
+@media (max-width: 768px) {
+  .hdr-nav .hdr-nav-list > li:first-child > a {
+    top: 0 !important;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+
+<div class="container">
+
+<div class="hdr">
+
+  <!-- ROW 1 -->
+
+  <div class="hdr-top">
+
+    <a class="hdr-logo" href="/">
+
+      <img src="/logo-small.webp" alt="MyIPNow" onerror="this.style.display='none'">
+
+      <span>MyIPNow.net</span>
+
+    </a>
+
+    <form class="hdr-search" action="/search.html" method="get">
+
+      <input type="search" name="q" placeholder="Search..." aria-label="Search">
+
+      <button type="submit">Search</button>
+
+    </form>
+
+    <div class="hdr-actions">
+
+      
+
+      <button class="hdr-burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Desktop nav -->
+
+  <nav class="hdr-nav" aria-label="Main">
+
+    <ul class="hdr-nav-list">
+
+      <li><a href="/">What Is My IP?</a></li>
+
+      <li>
+
+        <button>IP Tools <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd">
+
+          <a href="/">IP Lookup</a>
+
+          <a href="/whois-lookup/">WHOIS Lookup</a>
+
+          <a href="/asn-lookup/">ASN Lookup</a>
+
+          <a href="/ip-blacklist/">IP Blacklist Check</a>
+
+          <a href="/ip-subnet-calculator/">Subnet Calculator</a>
+
+          <a href="/cidr-to-ip-range-calculator/">CIDR Calculator</a>
+
+          <a href="/ip-range-to-cidr-calculator/">IP Range to CIDR</a>
+
+        </div>
+
+      </li>
+
+      <li>
+
+        <button>Network <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd">
+
+          <a href="/dns-lookup/">DNS Lookup</a>
+
+          <a href="/ping-test/">Ping Test</a>
+
+          <a href="/internet-speed-test/">Speed Test</a>
+
+        </div>
+
+      </li>
+
+      <li>
+
+        <button>Security <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd">
+
+          <a href="/hide-my-ip/">Hide My IP</a>
+
+          <a href="/generate-password/">Password Generator</a>
+
+          <a href="/ip-blacklist/">Blacklist Check</a>
+
+        </div>
+
+      </li>
+
+      <li>
+
+        <button>Learn <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd hdr-dd-wide">
+
+          <div class="hdr-dd-cols">
+
+            <div>
+
+              <div class="hdr-dd-label">IP Basics</div>
+
+              <a href="/ip-address-types/">IP Address Types</a>
+
+              <a href="/ipv4-vs-ipv6/">IPv4 vs IPv6</a>
+
+              <a href="/public-vs-private-ip/">Public vs Private IP</a>
+
+              <a href="/static-vs-dynamic-ip/">Static vs Dynamic IP</a>
+
+              <div class="hdr-dd-label">VPN &amp; Privacy</div>
+
+              <a href="/what-is-a-vpn/">What Is a VPN?</a>
+
+              <a href="/vpn-vs-proxy/">VPN vs Proxy</a>
+
+              <a href="/vpn-vs-tor/">VPN vs Tor</a>
+
+            </div>
+
+            <div>
+
+              <div class="hdr-dd-label">Router Logins</div>
+
+              <a href="/router/192.168.1.1/">192.168.1.1</a>
+
+              <a href="/router/192.168.0.1/">192.168.0.1</a>
+
+              <a href="/router/10.0.0.1/">10.0.0.1</a>
+
+              <div class="hdr-dd-label">IP Details</div>
+
+              <a href="/ip/185.63.253.200/">185.63.253.200</a>
+
+              <a href="/ip/134.209.250.149/">134.209.250.149</a>
+
+              <a href="/ip/64.227.120.231/">64.227.120.231</a>
+
+              <div class="hdr-dd-label">DNS &amp; Network</div>
+
+              <a href="/what-is-a-dns-record/">What Is a DNS Record?</a>
+
+              <a href="/types-of-dns-records/">Types of DNS Records</a>
+
+              <a href="/bgp-explained/">BGP Explained</a>
+
+              <a href="/asn-explained/">ASN Explained</a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </li>
+
+      <li class="hdr-lang">
+
+        <button id="langBtn">EN <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd" id="langDrop"></div>
+
+      </li>
+
+    </ul>
+
+  </nav>
+
+</div>
+
+<!-- MOBILE DRAWER -->
+
+<div class="m-overlay" id="mOv"></div>
+
+<nav class="m-drawer" id="mDr" aria-label="Mobile navigation">
+
+  <div class="m-head">
+
+    <span>Menu</span>
+
+    <button class="m-close" id="mCl">&times;</button>
+
+  </div>
+
+  <div class="m-body">
+
+    <div class="m-sec" style="padding:.75rem 1rem">
+
+      <form class="hdr-search" style="display:flex;max-width:none;width:100%" action="/search.html" method="get">
+
+        <input type="search" name="q" placeholder="Search..." aria-label="Search">
+
+        <button type="submit">Search</button>
+
+      </form>
+
+    </div>
+
+    <div class="m-sec"><a href="/"><strong>What Is My IP?</strong></a></div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">IP Tools</div>
+
+      <a href="/">IP Lookup</a>
+
+      <a href="/whois-lookup/">WHOIS Lookup</a>
+
+      <a href="/asn-lookup/">ASN Lookup</a>
+
+      <a href="/ip-blacklist/">IP Blacklist Check</a>
+
+      <a href="/ip-subnet-calculator/">Subnet Calculator</a>
+
+      <a href="/cidr-to-ip-range-calculator/">CIDR Calculator</a>
+
+      <a href="/ip-range-to-cidr-calculator/">IP Range to CIDR</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Network</div>
+
+      <a href="/dns-lookup/">DNS Lookup</a>
+
+      <a href="/ping-test/">Ping Test</a>
+
+      <a href="/internet-speed-test/">Speed Test</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Security</div>
+
+      <a href="/hide-my-ip/">Hide My IP</a>
+
+      <a href="/generate-password/">Password Generator</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Learn</div>
+
+      <a href="/ip-address-types/">IP Address Types</a>
+
+      <a href="/ipv4-vs-ipv6/">IPv4 vs IPv6</a>
+
+      <a href="/what-is-a-vpn/">What Is a VPN?</a>
+
+      <a href="/router/192.168.1.1/">192.168.1.1 Login</a>
+
+      <a href="/router/192.168.0.1/">192.168.0.1 Login</a>
+
+      <div class="m-lbl">IP Details</div>
+
+      <a href="/ip/185.63.253.200/">185.63.253.200</a>
+
+      <a href="/ip/134.209.250.149/">134.209.250.149</a>
+
+      <a href="/ip/64.227.120.231/">64.227.120.231</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Language</div>
+
+      <div id="mLangs"></div>
+
+    </div>
+
+  </div>
+
+  <div class="m-foot">
+
+    
+
+    <span>Dark Mode</span>
+
+  </div>
+
+</nav>
+
+<header class="page-header">
+
+<h1>What is WHOIS?</h1>
+
+</header>
+
+<article class="article-body">
+
+<p>WHOIS is basically an Internet protocol and database that lets you look up who owns a domain name or IP address. Think of it like a phonebook for domain registration data. You can find out who owns a domain, how to contact them, when it was registered, and who handles the technical and admin stuff. It's important because it keeps things transparent and helps with security investigations, protecting intellectual property, and managing networks.</p>
+
+<h2>The Origins and Purpose of WHOIS</h2>
+
+<p>WHOIS started back in the early days of the Internet as a simple way to store and look up domain registration information. The Internet Assigned Numbers Authority (IANA) got it going, and then regional Internet registries and domain registrars took over as things grew. The whole system evolved to handle the increasingly complicated domain name system (DNS).</p>
+
+<p>Really, WHOIS exists to make sure people are accountable for what domains they own. By making this data public, it helps prevent disputes over who owns what domain, gives law enforcement a way to investigate cybercrime, and helps IT folks manage domain-related problems.</p>
+
+<h2>How WHOIS Works</h2>
+
+<p>WHOIS uses a basic client-server setup. You ask for information about a domain, your client sends that request to a WHOIS server, and the server sends back the registration details for that domain or IP address.</p>
+
+<h3>WHOIS Protocol</h3>
+
+<p>The WHOIS protocol is pretty simple-it's text-based and runs over port 43 using TCP. It lets you query databases run by domain registries and registrars. Because it's so simple, though, it doesn't have encryption or much standardization, which means different companies implement it in different ways.</p>
+
+<h3>WHOIS Databases</h3>
+
+<p>WHOIS information lives in multiple databases managed by:</p>
+
+<ul>
+
+<li><strong>Domain Registries:</strong> These organizations run top-level domains like .com, .org, and country-specific TLDs.</li>
+
+<li><strong>Domain Registrars:</strong> These are the companies that sell domain names to people and keep track of who owns them.</li>
+
+<li><strong>Regional Internet Registries (RIRs):</strong> These groups manage IP address assignments and the associated WHOIS data.</li>
+
+</ul>
+
+<p>When you do a WHOIS lookup, your request gets sent to the right server based on which domain or IP you're asking about.</p>
+
+<h2>Information Provided by WHOIS</h2>
+
+<p>A standard WHOIS record includes a bunch of useful info about a domain:</p>
+
+<ul>
+
+<li><strong>Registrant Details:</strong> The domain owner's name, organization, address, email, and phone number.</li>
+
+<li><strong>Administrative Contact:</strong> Who handles the administrative side of things for the domain.</li>
+
+<li><strong>Technical Contact:</strong> The person or team that deals with technical issues.</li>
+
+<li><strong>Registrar Information:</strong> The company that registered the domain and manages it.</li>
+
+<li><strong>Domain Status:</strong> Whether the domain is active, expired, locked, or something else.</li>
+
+<li><strong>Important Dates:</strong> When it was created, last updated, and when it expires.</li>
+
+<li><strong>Name Servers:</strong> The DNS servers that handle the domain.</li>
+
+</ul>
+
+<h2>Applications of WHOIS</h2>
+
+<p>WHOIS data gets used for a lot of important stuff across the internet:</p>
+
+<ul>
+
+<li><strong>Domain Ownership Verification:</strong> Making sure someone actually owns a domain during sales or if there's a dispute.</li>
+
+<li><strong>Cybersecurity:</strong> Tracking down malicious domains, phishing attacks, and spam sources.</li>
+
+<li><strong>Intellectual Property Protection:</strong> Helping companies find domains that infringe on their trademarks.</li>
+
+<li><strong>Network Troubleshooting:</strong> IT people use it to fix DNS and connectivity problems.</li>
+
+<li><strong>Law Enforcement:</strong> Supporting investigations into cybercrime and fraud.</li>
+
+</ul>
+
+<h2>Privacy and Regulatory Challenges</h2>
+
+<p>WHOIS data used to be completely public, but privacy concerns and laws like the European Union's General Data Protection Regulation (GDPR) have changed that significantly.</p>
+
+<p>GDPR basically says you can't just share people's personal information publicly. So now a lot of registrars and registries hide or limit WHOIS information to protect people's privacy. To work around this, they've come up with alternatives like:</p>
+
+<ul>
+
+<li><strong>WHOIS Proxy Services:</strong> These let people keep their personal info hidden by using a third-party contact instead.</li>
+
+<li><strong>Tiered Access Models:</strong> Full WHOIS data only goes to people who are authorized and agree to strict terms.</li>
+
+<li><strong>RDAP (Registration Data Access Protocol):</strong> This is a newer protocol meant to replace WHOIS. It's more standardized, secure, and respects privacy better.</li>
+
+</ul>
+
+<h2>Performing a WHOIS Lookup</h2>
+
+<p>If you want to look up WHOIS information, you've got options. You can use online tools or command-line utilities that query WHOIS servers and show you the registration details.</p>
+
+<p>If you need to get detailed domain ownership information, the easiest way is to do a <a href="https://myipnow.net/whois-lookup/">domain WHOIS search</a>. This helps you verify a domain is legit, check out suspicious sites, or find contact info for administrative reasons.</p>
+
+<h2>Limitations of WHOIS</h2>
+
+<p>As useful as WHOIS is, it's got some real problems:</p>
+
+<ul>
+
+<li><strong>Data Accuracy:</strong> People sometimes put in wrong or outdated information when they register.</li>
+
+<li><strong>Privacy Restrictions:</strong> New regulations mean a lot of personal data isn't available anymore.</li>
+
+<li><strong>Lack of Standardization:</strong> Different registries use different formats and fields, which makes it hard to automate things.</li>
+
+<li><strong>Security Concerns:</strong> Because there's no encryption, the protocol is vulnerable to abuse and scraping.</li>
+
+</ul>
+
+<h2>The Future of WHOIS</h2>
+
+<p>WHOIS is changing to address privacy, security, and usability issues. RDAP is being adopted to create a more secure, standardized, and privacy-friendly way to access domain registration data. Plus, organizations like ICANN are having ongoing discussions about how to balance transparency with people's right to privacy.</p>
+
+<h2>FAQ</h2>
+
+<h3>What information can I find using WHOIS?</h3>
+
+<p>WHOIS provides details about domain registrants, administrative and technical contacts, registrar information, domain status, important dates, and name servers.</p>
+
+<h3>Is WHOIS data always publicly available?</h3>
+
+<p>No. Due to privacy regulations like GDPR, some WHOIS data is redacted or limited. Proxy services and tiered access models are used to protect personal information.</p>
+
+<h3>How can I perform a WHOIS lookup?</h3>
+
+<p>You can use online WHOIS lookup tools or command-line utilities to query WHOIS servers. For detailed information, performing a <a href="https://myipnow.net/whois-lookup/">domain WHOIS search</a> is recommended.</p>
+
+<h3>What is the difference between WHOIS and RDAP?</h3>
+
+<p>RDAP is a newer protocol designed to replace WHOIS, offering standardized, secure, and privacy-compliant access to registration data, whereas WHOIS is an older, simpler protocol without encryption or standardization.</p>
+
+<h3>Why is WHOIS important for cybersecurity?</h3>
+
+<p>WHOIS helps identify domain owners involved in malicious activities, supports investigations into cybercrime, and aids in blocking or mitigating threats associated with suspicious domains.</p><section class="see-also"><h2>See Also</h2><ul><li><a href="/whois-lookup/">WHOIS Lookup</a></li><li><a href="/how-to-use-whois-lookup/">How to Use WHOIS Lookup</a></li><li><a href="/what-information-does-whois-show/">What Information Does WHOIS Show</a></li><li><a href="/whois-fields-explained/">WHOIS Fields Explained</a></li></ul></section></article>
+
+<div class="store-wrapper">
+
+  <p style="font-size:1rem;font-weight:700;color:var(--text,#1e293b);margin:0 0 1rem;">📱 Also available on mobile & browser</p>
+
+  <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+
+    <a href="https://apps.apple.com/app/myipnow-ip-network-tools/id6763992136" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+
+      App Store
+
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=net.myipnow.app" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76a2 2 0 0 0 2.07-.22l11.65-6.72-2.55-2.55-11.17 9.49Z" fill="#EA4335"/><path d="M20.65 10.04 17.1 8.02l-2.87 2.87 2.87 2.87 3.57-2.05a1.43 1.43 0 0 0 0-2.67Z" fill="#FBBC04"/><path d="M3.18.24A2 2 0 0 0 2 2.08v19.84a2 2 0 0 0 1.18 1.84l.11.06 11.12-11.12v-.26L3.29.18l-.11.06Z" fill="#4285F4"/><path d="m14.41 12-2.55-2.55L3.18.24a2 2 0 0 1 2.07.22l11.65 6.72-2.49 2.49L14.41 12Z" fill="#34A853"/></svg>
+
+      Google Play
+
+    </a>
+
+    <a href="https://chromewebstore.google.com/detail/myipnow-ip-network-tool/ekiopmobgbbdhnogkoljmnnmclmofmpj" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#4285F4"/><circle cx="12" cy="12" r="4" fill="white"/><path d="M12 8h8.5A10 10 0 0 0 3.5 6.5L7.75 14A4 4 0 0 1 12 8Z" fill="#EA4335"/><path d="M12 16a4 4 0 0 1-4.25-2L3.5 6.5A10 10 0 0 0 12 22v-6Z" fill="#34A853"/><path d="M12 16a4 4 0 0 0 4.25-2L20.5 6.5A10 10 0 0 1 12 22v-6Z" fill="#FBBC05"/></svg>
+
+      Chrome
+
+    </a>
+
+    <a href="https://addons.mozilla.org/en-US/firefox/addon/myipnow-ip-network-tools/" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Z" fill="#FF6611"/><path d="M12 4c1.8 0 3.5.5 4.9 1.4-1.1-.3-2.3-.2-3.4.3-2.1.9-3.4 3-3.2 5.3.1 1.5.9 2.8 2 3.7-1.8-.2-3.4-1.3-4.2-3C7.2 9.8 8 7 10 5.5 10.6 4.6 11.3 4 12 4Z" fill="#FF9500"/><path d="M17 6.5c.8 1 1.4 2.3 1.5 3.7.2 2.8-1.5 5.4-4.1 6.4-1.3.5-2.7.5-4 .1 1.2.8 2.7 1.1 4.2.8 3-.6 5.1-3.3 4.9-6.4-.1-1.8-.9-3.4-2.1-4.6H17Z" fill="#FFCC00"/></svg>
+
+      Firefox
+
+    </a>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+
+<ul class="footer-nav">
+
+<li>
+
+<a href="https://myipnow.net/about/">
+
+       About
+
+      </a>
+
+</li>
+
+<li>
+
+<a href="https://myipnow.net/contact/">
+
+       Contact
+
+      </a>
+
+</li>
+
+<li>
+
+<a href="https://myipnow.net/privacy-policy/">
+
+       Privacy Policy
+
+      </a>
+
+</li>
+
+<li>
+
+<a href="https://myipnow.net/terms-of-use/">
+
+       Terms of Use
+
+      </a>
+
+</li>
+
+<li>
+
+<a href="https://myipnow.net/affiliate-disclosure/">
+
+       Affiliate Disclosure
+
+      </a>
+
+</li>
+
+</ul>
+
+<div class="footer-copyright">
+
+     © 2026 MyIPNow. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+</div><!-- /container --></div>
+
+<script id="article-return-v3">
+
+(function(){
+
+  var KEY='catStateV3'; // { url, scroll }
+
+  var CAT_RE=/^\/(online-safety|online-privacy|networking|ip-addresses|home-computing|general-topics)\//;
+
+  function init(){
+
+    var btn = document.getElementById('returnToCategory');
+
+    if (!btn) return;
+
+    var raw = null, url=null;
+
+    try {
+
+      raw = sessionStorage.getItem(KEY);
+
+      if (raw){
+
+        var st = JSON.parse(raw);
+
+        url = st && st.url;
+
+      }
+
+    } catch(e){}
+
+    // If we have a stored category URL, use it
+
+    if (url && CAT_RE.test(url)) {
+
+      btn.setAttribute('href', url);
+
+      return;
+
+    }
+
+    // Fallback: deduce category from article path and use /<cat>/index
+
+    var parts = location.pathname.split('/').filter(Boolean);
+
+    if (parts.length > 0) {
+
+      var cat = '/' + parts[0] + '/';
+
+      if (CAT_RE.test(cat)) {
+
+        btn.setAttribute('href', cat + 'index');
+
+      }
+
+    }
+
+  }
+
+  if (document.readyState === 'loading') {
+
+    document.addEventListener('DOMContentLoaded', init);
+
+  } else {
+
+    init();
+
+  }
+
+})();
+
+</script>
+
+<script>
+
+(function(){
+
+  // Theme
+
+  
+
+  // Mobile drawer
+
+  var bur=document.getElementById('burgerBtn'),
+
+      dr=document.getElementById('mDr'),
+
+      ov=document.getElementById('mOv'),
+
+      cl=document.getElementById('mCl');
+
+  function mOpen(){dr.classList.add('open');ov.classList.add('open');bur.classList.add('open');document.body.style.overflow='hidden'}
+
+  function mClose(){dr.classList.remove('open');ov.classList.remove('open');bur.classList.remove('open');document.body.style.overflow=''}
+
+  bur.onclick=function(){dr.classList.contains('open')?mClose():mOpen()};
+
+  ov.onclick=mClose;cl.onclick=mClose;
+
+  // Languages
+
+  var LL=[{c:'en',l:'English',b:'/what-is-whois/'},{c:'de',l:'Deutsch',b:'/de/'},{c:'es',l:'Español',b:'/es/'},{c:'fr',l:'Français',b:'/fr/'},{c:'it',l:'Italiano',b:'/it/'},{c:'pt',l:'Português',b:'/pt/'},{c:'pl',l:'Polski',b:'/pl/'},{c:'nl',l:'Nederlands',b:'/nl/'}];
+
+  var cur=(function(){var x=location.pathname.replace(/^\//,'').split('/');return['de','es','fr','it','pt','pl','nl'].indexOf(x[0])>-1?x[0]:'en'})();
+
+  document.getElementById('langBtn').innerHTML=cur.toUpperCase()+' <span class="hdr-arrow">▾</span>';
+
+  function fill(el){LL.forEach(function(L){var a=document.createElement('a');a.href=L.b;a.textContent=L.l;if(L.c===cur){a.style.fontWeight='700';a.style.color='var(--accent)'}el.appendChild(a)})}
+
+  fill(document.getElementById('langDrop'));
+
+  fill(document.getElementById('mLangs'));
+
+})();
+
+</script>
+
+</body>
+
+</html>

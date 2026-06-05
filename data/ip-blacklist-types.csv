@@ -1,0 +1,9 @@
+Blacklist Type,Used By,Primary Purpose,Detection Method,Example Source,Notes
+DNSBL (DNS-based Blacklist),Email servers,Spam filtering,Real-time DNS queries,Spamhaus ZEN,"Fast, email-focused"
+RBL (Realtime Blackhole List),Firewalls / mail,Block abusive IPs,Centralized lookup,SORBS,General abuse
+Reputation Database,Web apps / CDNs,Risk scoring,Behavior analysis,Google Safe Browsing,Score-based
+Proxy/VPN List,Fraud prevention,Detect anonymizers,Heuristic detection,IP2Proxy,False positives
+Botnet List,Security systems,Block malware C2,Threat intelligence,Abuse.ch,High confidence
+Hosting Abuse List,Web security,Block datacenters,ASN/IP grouping,Spamhaus DROP,Aggressive
+Dynamic IP List,Web apps,Identify residential IPs,ISP heuristics,Various,Contextual
+TOR Exit Nodes,Security / censorship,Block Tor traffic,Published node list,Tor Project,Public list

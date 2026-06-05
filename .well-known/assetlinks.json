@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "net.myipnow.app",
+      "sha256_cert_fingerprints": [
+        "34:65:FD:70:BE:5C:89:CE:65:BF:B7:B0:B1:3D:BB:4A:DF:F3:8E:27:10:A4:04:CC:BE:81:EF:8D:39:46:93:8E"
+      ]
+    }
+  }
+]

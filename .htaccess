@@ -1,0 +1,39 @@
+Options -MultiViews -Indexes
+RewriteEngine On
+RewriteBase /
+
+# 1. FORCE HTTPS AND WWW (Recommended for Absolute SEO)
+# This ensures everyone lands on the exact absolute domain you used in your canonicals
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://myipnow.net/$1 [R=301,L]
+
+# 2. REDIRECT .html EXTENSION TO CLEAN URL (Permanent 301)
+# If a user or bot visits /asn-lookup.html, send them to /asn-lookup
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.+)\.html\ HTTP/
+RewriteRule ^(.+)\.html$ https://myipnow.net/$1 [R=301,L]
+
+# 3. REDIRECT INDEX.HTML TO ROOT (Permanent 301)
+# If someone visits /index.html, send them to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ https://myipnow.net/ [R=301,L]
+
+# 4. REMOVE TRAILING SLASHES
+# Ensures /asn-lookup/ redirects to /asn-lookup to match sitemap/canonicals
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ https://myipnow.net/$1 [R=301,L]
+
+# 5. INTERNAL MAPPING (The "Secret" serve)
+# This tells the server: "When a clean URL is requested, show the .html file without changing the URL bar"
+# Check if the .html file exists at the root
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([^/]+)$ $1.html [L]
+
+# Check if the .html file exists in a subfolder (for categories)
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 6. HANDLE FOLDER INDEXES (Categories)
+# If a folder is requested, secretly serve the index.html inside it
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)$ $1/index.html [L]

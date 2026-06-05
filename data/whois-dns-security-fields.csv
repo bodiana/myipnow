@@ -1,0 +1,4 @@
+Field,Description,Source
+Name Servers,Authoritative DNS servers,DNS/WHOIS
+DNSSEC,DNSSEC enabled/disabled,DNS
+DS Record,DNSSEC delegation signer,DNSSEC

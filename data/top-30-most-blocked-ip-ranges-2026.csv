@@ -1,0 +1,31 @@
+Rank,IP Range,ASN,Provider,Primary Category,Relative Frequency
+1,45.0.0.0/8,AS38136,Alibaba Cloud,Spam / Proxy,High
+2,104.16.0.0/12,AS13335,Cloudflare,Mixed / Proxy,High
+3,185.0.0.0/8,Multiple,Hosting Providers,Spam,High
+4,103.0.0.0/8,Multiple,APAC Hosting,Spam,High
+5,37.0.0.0/8,Multiple,EU Hosting,Abuse,High
+6,196.0.0.0/8,Multiple,Africa ISP Ranges,Spam,Medium
+7,5.0.0.0/8,Multiple,EU ISPs,Spam,Medium
+8,31.0.0.0/8,Multiple,EU Broadband,Botnet,Medium
+9,41.0.0.0/8,Multiple,Africa ISPs,Spam,Medium
+10,58.0.0.0/8,Multiple,APAC ISPs,Spam,Medium
+11,111.0.0.0/8,Multiple,Various,Spam,Low
+12,112.0.0.0/8,Multiple,Various,Spam,Low
+13,113.0.0.0/8,Multiple,Various,Spam,Low
+14,114.0.0.0/8,Multiple,Various,Spam,Low
+15,115.0.0.0/8,Multiple,Various,Spam,Low
+16,116.0.0.0/8,Multiple,Various,Spam,Low
+17,117.0.0.0/8,Multiple,Various,Spam,Low
+18,118.0.0.0/8,Multiple,Various,Spam,Low
+19,119.0.0.0/8,Multiple,Various,Spam,Low
+20,120.0.0.0/8,Multiple,Various,Spam,Low
+21,121.0.0.0/8,Multiple,Various,Spam,Low
+22,122.0.0.0/8,Multiple,Various,Spam,Low
+23,123.0.0.0/8,Multiple,Various,Spam,Low
+24,124.0.0.0/8,Multiple,Various,Spam,Low
+25,125.0.0.0/8,Multiple,Various,Spam,Low
+26,126.0.0.0/8,Multiple,Various,Spam,Low
+27,127.0.0.0/8,Multiple,Various,Spam,Low
+28,128.0.0.0/8,Multiple,Various,Spam,Low
+29,129.0.0.0/8,Multiple,Various,Spam,Low
+30,130.0.0.0/8,Multiple,Various,Spam,Low

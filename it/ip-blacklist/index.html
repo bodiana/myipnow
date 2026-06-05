@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+
+<script src="/cookie-consent.js"></script>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<meta content="/website" property="og:type"/>
+
+<meta content="/preview.png" property="og:image"/>
+
+<link href="/css/fonts.css" rel="stylesheet"/>
+
+<style>body {font-family: 'Inter',sans-serif; background: var(--bg-color); margin: 0; padding: 0; color: var(--text-primary); line-height: 1.7;}
+
+.container {max-width: 1200px; margin: 0 auto; padding: 1rem;}
+
+/* Header & nav */
+
+.site-header {background: var(--card-bg); padding: 1rem; margin-bottom: 2rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: visible;}
+
+.header-top {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border, #e2e8f0);}
+
+.logo {font-size: 1.75rem; font-weight: 700; color: var(--text-primary); text-decoration: none;}
+
+.search-form {display: flex; flex-grow: 0; width: 480px; max-width: 100%;}
+
+.search-form input {width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border, #e2e8f0); border-radius: 8px 0 0 8px; font-size: 1rem;}
+
+.search-form button {padding: 0.75rem 1rem; border: none; background: var(--hide-ip-color); color: white; border-radius: 0 8px 8px 0; cursor: pointer; font-weight: 500;}
+
+.search-form button:hover {background: #059669;}
+
+.category-nav {padding-top: 1rem; position: relative;}
+
+.category-nav ul {display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; justify-content: center !important;}
+
+.category-nav a {text-decoration: none; color: var(--text-primary); font-size: 1rem; font-weight: 500; transition: color var(--transition-speed);}
+
+.category-nav a:hover {color: var(--accent-color);}
+
+.nav-tools {position: relative;}
+
+.nav-tools > a {cursor: default;}
+
+.nav-tools ul {display: none; position: absolute; top: 100%; left: 0; background: var(--card-bg, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); list-style: none; padding: .5rem 0; margin: 0; min-width: 220px; z-index: 999;}
+
+.nav-tools ul li a {display: block; padding: .5rem 1rem; color: var(--text-primary); text-decoration: none;}
+
+.nav-tools ul li a:hover {color: var(--accent-color);}
+
+.nav-tools:hover ul {display: block;}
+
+/* Page header & article */
+
+.page-header {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; text-align: center;}
+
+.page-header h1 {font-size: 2.5rem; margin: 0 0 0.5rem;} @media(max-width:768px){.page-header h1{font-size: 1.6rem;} .page-header{padding: 1.5rem 1rem;}}
+
+.page-header p {font-size: 1rem; color: var(--text-secondary); margin: 0;}
+
+.article-body {background: var(--card-bg); padding: 2.5rem 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem; max-width: 100%;}
+
+.article-body h2, .article-body h3 {margin-top: 2rem;}
+
+.article-body p, .article-body li {font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;}
+
+.article-body ul {list-style: disc; padding-left: 1.5rem;}
+
+/* Blacklist tool */
+
+.blacklist-tool {display: flex; flex-direction: row; gap: 0.75rem; max-width: 700px; margin: 1rem auto; align-items: center; flex-wrap: wrap;}
+
+.blacklist-tool input {flex: 1; min-width: 200px; padding: 0.75rem 1rem; font-size: 1rem; border-radius: 8px; border: 1px solid var(--border, #e2e8f0);}
+
+.blacklist-tool button {padding: 0.75rem 1.5rem; font-size: 1rem; border: none; border-radius: 8px; background: var(--hide-ip-color); color: white; cursor: pointer; font-weight: 600; white-space: nowrap; transition: background var(--transition-speed);}
+
+.blacklist-tool button:hover {background: #059669;}
+
+@media(max-width:600px){.blacklist-tool{flex-direction:column;}.blacklist-tool input,.blacklist-tool button{width:100%;box-sizing:border-box;}}
+
+/* Results block (NO SCROLL) */
+
+.blacklist-results {margin-top: 1rem;}
+
+.blacklist-block {background: var(--card-alt, #f1f5f9); padding: 0.8rem 1rem; margin-bottom: 0.8rem; border-radius: 8px; line-height: 1.4; color: var(--text-primary);}
+
+.blacklist-block a {text-decoration: none; color: var(--accent-color);}
+
+.blacklist-block a:hover {color: var(--text-primary);}
+
+/* FAQ and see also */
+
+.faq-section {margin-top: 2rem;}
+
+.faq-item {background: var(--card-alt, #f1f5f9); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; cursor: pointer;}
+
+.faq-item:hover {background: var(--card-hover, #e2e8f0);}
+
+.faq-question {font-weight: 600; font-size: 1rem;}
+
+.faq-answer {display: block; font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5;}
+
+.see-also {background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 2rem;}
+
+.see-also h2 {margin-top: 0;}
+
+.see-also ul {list-style: none; padding: 0;}
+
+.see-also li {margin-bottom: 0.5rem;}
+
+.see-also a {text-decoration: none; color: var(--accent-color); font-weight: 500;}
+
+.see-also a:hover {color: var(--text-primary);}
+
+.footer {text-align: center; padding: 2rem 1rem; margin: 2rem auto 0; max-width: 1200px; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--card-shadow);}
+
+.footer-nav {display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem 2.5rem; list-style: none; padding: 0; margin: 0 0 1rem;}
+
+.footer-nav a {color: var(--text-secondary); text-decoration: none; font-size: 1rem;}
+
+.footer-nav a:hover {color: var(--accent-color);}
+
+.footer-copyright {font-size: 0.95rem; color: var(--text-secondary);}</style>
+
+<style>@media (max-width: 768px) {.nav-tools {
+
+    position: static !important;}
+
+  .nav-tools ul {position: fixed !important; top: 60px !important; left: 10px; right: 10px; display: none; background: var(--card-bg, #fff); border: 1px solid var(--border, #e2e8f0); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;}
+
+  .nav-tools.open ul {display: block !important;}
+
+  body.menu-open {overflow: hidden;}
+
+}
+
+/* ===== SEO: hidden semantic <dl> mirror (tool pages only) ===== */
+
+.ip-semantic{position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;}
+
+.snippet-section{background: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin: 0 auto 2rem auto; max-width: 1200px;}
+
+.snippet-section h2{margin: 0 0 .5rem 0; text-align: center;}
+
+.snippet-section p{margin: 0 auto; text-align: center; color: var(--text-secondary); max-width: 760px;}
+
+.howto{margin-top: 1rem; max-width: 760px; margin-left: auto; margin-right: auto; color: var(--text-secondary);}
+
+.howto ol{margin: .5rem auto 0 auto; padding-left: 1.25rem; text-align: left;}</style>
+
+<link href="https://myipnow.net/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+
+<link href="https://myipnow.net/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+
+<link href="https://myipnow.net/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+
+<link href="https://myipnow.net/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+
+<link href="https://myipnow.net/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+
+<link href="https://myipnow.net/android-chrome-512x512.png" rel="icon" sizes="512x512" type="image/png"/>
+
+<link href="https://myipnow.net/favicon.ico" rel="shortcut icon"/>
+
+<meta content="#ffffff" name="theme-color"/>
+
+<link href="https://myipnow.net/llms.txt/" rel="alternate" title="AI Context" type="text/markdown"/>
+
+<script>
+
+(function() {
+
+  function signalGooglefcPresent() {
+
+    if (!window.frames["googlefcPresent"]) {
+
+      if (document.body) {
+
+        var iframe = document.createElement("iframe");
+
+        iframe.style = "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;";
+
+        iframe.style.display = "none";
+
+        iframe.name = "googlefcPresent";
+
+        document.body.appendChild(iframe);
+
+      } else { setTimeout(signalGooglefcPresent, 0); }
+
+    }
+
+  }
+
+  window.addEventListener('load', function() {
+
+    var s = document.createElement('script');
+
+    s.src = 'https://fundingchoicesmessages.google.com/i/ca-pub-1226342433058379?ers=1';
+
+    document.head.appendChild(s);
+
+    signalGooglefcPresent();
+
+  });
+
+})();
+
+</script>
+
+<script async="" crossorigin="anonymous" data-ad-frequency-hint="30s" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1226342433058379"></script>
+
+<link href="https://myipnow.net/it/ip-blacklist/" rel="canonical"/>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://myipnow.net/#organization", "name": "MyIPNow", "url": "https://myipnow.net/", "logo": {"@type": "ImageObject", "url": "https://myipnow.net/favicon-96x96.png"}}, {"@type": "WebSite", "@id": "https://myipnow.net/#website", "url": "https://myipnow.net/", "name": "MyIPNow", "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "WebPage", "@id": "https://myipnow.net/ip-blacklist/#webpage", "url": "https://myipnow.net/ip-blacklist/", "name": "IP Blacklist Checker", "description": "Check if an IP address or domain is listed in major spam and DNS-based blacklists. Diagnose reputation and email delivery issues quickly.", "isPartOf": {"@id": "https://myipnow.net/#website"}}, {"@type": "SoftwareApplication", "@id": "https://myipnow.net/ip-blacklist/#app", "name": "IP Blacklist Checker", "applicationCategory": "WebApplication", "applicationSubCategory": "Security Tool", "operatingSystem": "All", "url": "https://myipnow.net/ip-blacklist/", "browserRequirements": "Requires JavaScript", "description": "Check whether an IP address or domain appears in major spam and threat intelligence blacklists. Useful for diagnosing blocked email delivery and server reputation issues.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@id": "https://myipnow.net/#organization"}}, {"@type": "FAQPage", "@id": "https://myipnow.net/ip-blacklist/#faq", "mainEntity": [{"@type": "Question", "name": "Le blacklist influenzano il traffico web o solo le email?", "acceptedAnswer": {"@type": "Answer", "text": "La maggior parte delle blacklist IP influenza principalmente la consegna delle email. Alcuni servizi di sicurezza bloccano anche il traffico web. Le blacklist come Google Safe Browsing si concentrano su siti di malware e phishing."}}, {"@type": "Question", "name": "Cos'è un punteggio di reputazione IP?", "acceptedAnswer": {"@type": "Answer", "text": "Un punteggio di reputazione IP riflette quanto è affidabile un indirizzo IP in base alla sua storia di spam, malware o abusi. I server di posta e i firewall usano questi punteggi."}}, {"@type": "Question", "name": "Questo strumento è gratuito?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, questo IP Blacklist Checker è completamente gratuito senza registrazione richiesta."}}, {"@type": "Question", "name": "Quali database vengono controllati?", "acceptedAnswer": {"@type": "Answer", "text": "Questo strumento controlla il tuo IP contro i principali database di blacklist inclusi Spamhaus, Barracuda, SORBS e SpamCop."}}, {"@type": "Question", "name": "Un IP di hosting condiviso può influire sulla mia deliverability?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Con l'hosting condiviso, condividi un IP con altri siti web. Se un vicino invia spam, l'IP condiviso può essere messo in blacklist."}}, {"@type": "Question", "name": "Come posso impedire che il mio IP venga di nuovo blacklistato?", "acceptedAnswer": {"@type": "Answer", "text": "Proteggi i dispositivi compromessi, smetti di inviare email non richieste, configura i record SPF, DKIM e DMARC e monitora il tuo IP regolarmente."}}, {"@type": "Question", "name": "Un IP in blacklist può influire sulla consegna delle email?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Se il tuo IP è su una blacklist importante, i server di posta riceventi rifiuteranno o filtreranno le tue email."}}, {"@type": "Question", "name": "Quanto tempo ci vuole per essere rimossi da una blacklist?", "acceptedAnswer": {"@type": "Answer", "text": "I tempi di rimozione variano per provider. La rimozione automatica può richiedere 1-7 giorni dopo che l'attività di spam si ferma."}}]}, {"@type": "BreadcrumbList", "@id": "https://myipnow.net/ip-blacklist/#breadcrumbs", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://myipnow.net/"}, {"@type": "ListItem", "position": 2, "name": "IP Blacklist Checker", "item": "https://myipnow.net/ip-blacklist/"}]}]}</script>
+
+<title>IP Blacklist Checker - Controlla Reputazione IP | MyIPNow</title><meta content="Verifica blacklist IP gratis - controlla istantaneamente se il tuo IP è in lista nera su Spamhaus, SORBS, Barracuda e altri database di spam. Rimozione blacklist IP." name="description"/><meta content="Verifica IP Blacklist - Controlla Reputazione IP Gratis | MyIPNow" property="og:title"/><meta content="Verifica blacklist IP gratis - controlla istantaneamente se il tuo IP è in lista nera su Spamhaus, SORBS, Barracuda e altri database di spam." property="og:description"/><meta content="https://myipnow.net/it/ip-blacklist.html" property="og:url"/>
+
+<link rel="alternate" hreflang="en" href="https://myipnow.net/it/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="x-default" href="https://myipnow.net/it/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="de" href="https://myipnow.net/de/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="es" href="https://myipnow.net/es/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="fr" href="https://myipnow.net/fr/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="it" href="https://myipnow.net/it/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="pt" href="https://myipnow.net/pt/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="pl" href="https://myipnow.net/pl/ip-blacklist/"/>
+
+<link rel="alternate" hreflang="nl" href="https://myipnow.net/nl/ip-blacklist/"/>
+
+  
+
+  
+
+  <link rel="stylesheet" href="../../shared.css">
+
+<style id="lookup-mobile-fix">
+@media (max-width: 768px) {
+  .article-body,
+  .page-content,
+  .tool-content,
+  .tool-page,
+  .tool-section,
+  .tool-wrapper,
+  .tool-body,
+  .tool-results,
+  .results-panel,
+  .result-panel {
+    overflow-x: hidden;
+  }
+
+  .article-body table,
+  .page-content table,
+  .tool-content table,
+  .tool-page table,
+  .tool-section table,
+  .tool-wrapper table,
+  .tool-body table,
+  .tool-results table,
+  .results-panel table,
+  .result-panel table,
+  .results-table,
+  .result-table,
+  .result-list table,
+  .lookup-results table,
+  .dns-results table,
+  .whois-results table,
+  .ping-results table,
+  .speed-results table,
+  .ip-results table,
+  .whois-result table,
+  .record-table,
+  .records-table,
+  .table-wrap table,
+  .responsive-table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .article-body table th,
+  .article-body table td,
+  .page-content table th,
+  .page-content table td,
+  .tool-content table th,
+  .tool-content table td,
+  .tool-page table th,
+  .tool-page table td,
+  .tool-section table th,
+  .tool-section table td,
+  .tool-wrapper table th,
+  .tool-wrapper table td,
+  .tool-body table th,
+  .tool-body table td,
+  .tool-results table th,
+  .tool-results table td,
+  .results-panel table th,
+  .results-panel table td,
+  .result-panel table th,
+  .result-panel table td {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
+    vertical-align: top;
+  }
+
+  .result-row,
+  .lookup-row,
+  .dns-row,
+  .whois-row,
+  .ping-row,
+  .speed-row,
+  .ip-row,
+  .record-row,
+  .key-value-row,
+  .field-row,
+  .result-item,
+  .lookup-item,
+  .dns-item,
+  .whois-item,
+  .ping-item,
+  .speed-item,
+  .ip-item,
+  .result-card,
+  .lookup-card,
+  .dns-card,
+  .whois-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+    min-width: 0 !important;
+  }
+
+  .result-label,
+  .lookup-label,
+  .dns-label,
+  .whois-label,
+  .ping-label,
+  .speed-label,
+  .ip-label,
+  .record-label,
+  .field-label,
+  .result-name,
+  .lookup-name,
+  .dns-name,
+  .whois-name {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .result-value,
+  .lookup-value,
+  .dns-value,
+  .whois-value,
+  .ping-value,
+  .speed-value,
+  .ip-value,
+  .record-value,
+  .field-value,
+  .result-data,
+  .lookup-data,
+  .dns-data,
+  .whois-data,
+  pre,
+  code {
+    min-width: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .results-grid,
+  .lookup-grid,
+  .dns-grid,
+  .whois-grid,
+  .ping-grid,
+  .speed-grid,
+  .ip-grid,
+  .record-grid,
+  .field-grid,
+  .result-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .article-body input,
+  .article-body select,
+  .article-body button,
+  .page-content input,
+  .page-content select,
+  .page-content button,
+  .tool-content input,
+  .tool-content select,
+  .tool-content button,
+  .tool-page input,
+  .tool-page select,
+  .tool-page button,
+  .tool-section input,
+  .tool-section select,
+  .tool-section button,
+  .tool-wrapper input,
+  .tool-wrapper select,
+  .tool-wrapper button,
+  .tool-body input,
+  .tool-body select,
+  .tool-body button {
+    max-width: 100%;
+  }
+}
+</style>
+
+<style id="tool-compact-shell">
+@media (max-width: 768px) {
+  .tool-shell,
+  .tool-area,
+  .tool-content,
+  .tool-card,
+  .lookup-tool,
+  .dns-tool,
+  .whois-tool,
+  .ping-tool,
+  .speed-tool,
+  .ipblacklist-tool,
+  .password-tool {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.9rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .tool-shell form,
+  .tool-area form,
+  .tool-content form,
+  .tool-card form,
+  .lookup-tool form,
+  .dns-tool form,
+  .whois-tool form,
+  .ping-tool form,
+  .ipblacklist-tool form,
+  .password-tool form,
+  .article-body form[data-tool],
+  .article-body form.tool-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .tool-shell input,
+  .tool-shell select,
+  .tool-shell textarea,
+  .tool-area input,
+  .tool-area select,
+  .tool-area textarea,
+  .tool-content input,
+  .tool-content select,
+  .tool-content textarea,
+  .tool-card input,
+  .tool-card select,
+  .tool-card textarea,
+  .lookup-tool input,
+  .lookup-tool select,
+  .lookup-tool textarea,
+  .dns-tool input,
+  .dns-tool select,
+  .dns-tool textarea,
+  .whois-tool input,
+  .whois-tool select,
+  .whois-tool textarea,
+  .ping-tool input,
+  .ping-tool select,
+  .ping-tool textarea,
+  .ipblacklist-tool input,
+  .ipblacklist-tool select,
+  .ipblacklist-tool textarea,
+  .password-tool input,
+  .password-tool select,
+  .password-tool textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .tool-shell button,
+  .tool-area button,
+  .tool-content button,
+  .tool-card button,
+  .lookup-tool button,
+  .dns-tool button,
+  .whois-tool button,
+  .ping-tool button,
+  .ipblacklist-tool button,
+  .password-tool button,
+  .article-body form[data-tool] button,
+  .article-body form.tool-form button {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .tool-shell .results,
+  .tool-area .results,
+  .tool-content .results,
+  .tool-card .results,
+  .lookup-tool .results,
+  .dns-tool .results,
+  .whois-tool .results,
+  .ping-tool .results,
+  .ipblacklist-tool .results,
+  .password-tool .results,
+  .tool-shell .result,
+  .tool-area .result,
+  .tool-content .result,
+  .tool-card .result,
+  .lookup-tool .result,
+  .dns-tool .result,
+  .whois-tool .result,
+  .ping-tool .result,
+  .ipblacklist-tool .result {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+}
+</style>
+
+
+<style id="header-nav-align-fix">
+.site-header .category-nav ul {
+  align-items: center !important;
+}
+
+.site-header .category-nav ul > li {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.site-header .category-nav ul > li > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.site-header .category-nav ul > li:first-child > a {
+  margin-top: 0 !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .site-header .category-nav ul > li:first-child > a {
+    transform: none !important;
+  }
+}
+</style>
+
+
+<style id="home-nav-current-fix">
+.home .category-nav ul > li:first-child,
+body.home .category-nav ul > li:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  transform: translateY(-6px) !important;
+}
+
+.home .category-nav ul > li:first-child > a,
+body.home .category-nav ul > li:first-child > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .home .category-nav ul > li:first-child,
+  body.home .category-nav ul > li:first-child,
+  .home .category-nav ul > li:first-child > a,
+  body.home .category-nav ul > li:first-child > a {
+    transform: none !important;
+  }
+}
+</style>
+
+
+<style id="hdr-nav-align-fix">
+.hdr-nav .hdr-nav-list {
+  align-items: center !important;
+}
+
+.hdr-nav .hdr-nav-list > li {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.hdr-nav .hdr-nav-list > li > a,
+.hdr-nav .hdr-nav-list > li > button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  min-height: 40px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  vertical-align: middle !important;
+}
+
+.hdr-nav .hdr-nav-list > li:first-child > a {
+  position: relative !important;
+  top: -1px !important;
+}
+
+@media (max-width: 768px) {
+  .hdr-nav .hdr-nav-list > li:first-child > a {
+    top: 0 !important;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns?id=GTM-T6F8FV6T" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+
+<div class="container">
+
+<div class="hdr">
+
+  <!-- ROW 1 -->
+
+  <div class="hdr-top">
+
+    <a class="hdr-logo" href="/it/">
+
+      <img src="/logo-small.webp" alt="MyIPNow" onerror="this.style.display='none'">
+
+      <span>MyIPNow.net</span>
+
+    </a>
+
+    <form class="hdr-search" action="/it/search.html" method="get">
+
+      <input type="search" name="q" placeholder="Cerca..." aria-label="Cerca">
+
+      <button type="submit">Cerca</button>
+
+    </form>
+
+    <div class="hdr-actions">
+
+      
+
+      <button class="hdr-burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Desktop nav -->
+
+  <nav class="hdr-nav" aria-label="Main">
+
+    <ul class="hdr-nav-list">
+
+      <li><a href="/it/">What Is My IP?</a></li>
+
+      <li>
+
+        <button>IP Tools <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd">
+
+          <a href="/it/">IP Lookup</a>
+
+          <a href="/it/whois-lookup/">WHOIS Lookup</a>
+
+          <a href="/it/asn-lookup/">ASN Lookup</a>
+
+          <a href="/it/ip-blacklist/">IP Blacklist Check</a>
+
+          <a href="/it/ip-subnet-calculator/">Subnet Calculator</a>
+
+          <a href="/it/cidr-to-ip-range-calculator/">CIDR Calculator</a>
+
+          <a href="/it/ip-range-to-cidr-calculator/">IP Range to CIDR</a>
+
+        </div>
+
+      </li>
+
+      <li>
+
+        <button>Network <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd">
+
+          <a href="/it/dns-lookup/">DNS Lookup</a>
+
+          <a href="/it/ping-test/">Ping Test</a>
+
+          <a href="/it/internet-speed-test/">Speed Test</a>
+
+        </div>
+
+      </li>
+
+      <li>
+
+        <button>Security <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd">
+
+          <a href="/it/hide-my-ip/">Hide My IP</a>
+
+          <a href="/it/generate-password/">Password Generator</a>
+
+          <a href="/it/ip-blacklist/">Blacklist Check</a>
+
+        </div>
+
+      </li>
+
+      <li>
+
+        <button>Learn <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd hdr-dd-wide">
+
+          <div class="hdr-dd-cols">
+
+            <div>
+
+              <div class="hdr-dd-label">IP Basics</div>
+
+              <a href="/ip-address-types/">IP Address Types</a>
+
+              <a href="/ipv4-vs-ipv6/">IPv4 vs IPv6</a>
+
+              <a href="/public-vs-private-ip/">Public vs Private IP</a>
+
+              <a href="/static-vs-dynamic-ip/">Static vs Dynamic IP</a>
+
+              <div class="hdr-dd-label">VPN &amp; Privacy</div>
+
+              <a href="/what-is-a-vpn/">What Is a VPN?</a>
+
+              <a href="/vpn-vs-proxy/">VPN vs Proxy</a>
+
+              <a href="/vpn-vs-tor/">VPN vs Tor</a>
+
+            </div>
+
+            <div>
+
+              <div class="hdr-dd-label">Router Logins</div>
+
+              <a href="/it/router/192.168.1.1/">192.168.1.1</a>
+
+              <a href="/it/router/192.168.0.1/">192.168.0.1</a>
+
+              <a href="/it/router/10.0.0.1/">10.0.0.1</a>
+
+              <div class="hdr-dd-label">IP Details</div>
+
+              <a href="/ip/185.63.253.200/">185.63.253.200</a>
+
+              <a href="/ip/134.209.250.149/">134.209.250.149</a>
+
+              <a href="/ip/64.227.120.231/">64.227.120.231</a>
+
+              <div class="hdr-dd-label">DNS &amp; Network</div>
+
+              <a href="/what-is-a-dns-record/">What Is a DNS Record?</a>
+
+              <a href="/types-of-dns-records/">Types of DNS Records</a>
+
+              <a href="/bgp-explained/">BGP Explained</a>
+
+              <a href="/asn-explained/">ASN Explained</a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </li>
+
+      <li class="hdr-lang">
+
+        <button id="langBtn">IT <span class="hdr-arrow">▾</span></button>
+
+        <div class="hdr-dd" id="langDrop"></div>
+
+      </li>
+
+    </ul>
+
+  </nav>
+
+</div>
+
+<!-- MOBILE DRAWER -->
+
+<div class="m-overlay" id="mOv"></div>
+
+<nav class="m-drawer" id="mDr" aria-label="Mobile navigation">
+
+  <div class="m-head">
+
+    <span>Menu</span>
+
+    <button class="m-close" id="mCl">&times;</button>
+
+  </div>
+
+  <div class="m-body">
+
+    <div class="m-sec" style="padding:.75rem 1rem">
+
+      <form class="hdr-search" style="display:flex;max-width:none;width:100%" action="/it/search.html" method="get">
+
+        <input type="search" name="q" placeholder="Cerca..." aria-label="Cerca">
+
+        <button type="submit">Cerca</button>
+
+      </form>
+
+    </div>
+
+    <div class="m-sec"><a href="/it/"><strong>What Is My IP?</strong></a></div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">IP Tools</div>
+
+      <a href="/it/">IP Lookup</a>
+
+      <a href="/it/whois-lookup/">WHOIS Lookup</a>
+
+      <a href="/it/asn-lookup/">ASN Lookup</a>
+
+      <a href="/it/ip-blacklist/">IP Blacklist Check</a>
+
+      <a href="/it/ip-subnet-calculator/">Subnet Calculator</a>
+
+      <a href="/it/cidr-to-ip-range-calculator/">CIDR Calculator</a>
+
+      <a href="/it/ip-range-to-cidr-calculator/">IP Range to CIDR</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Network</div>
+
+      <a href="/it/dns-lookup/">DNS Lookup</a>
+
+      <a href="/it/ping-test/">Ping Test</a>
+
+      <a href="/it/internet-speed-test/">Speed Test</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Security</div>
+
+      <a href="/it/hide-my-ip/">Hide My IP</a>
+
+      <a href="/it/generate-password/">Password Generator</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Learn</div>
+
+      <a href="/ip-address-types/">IP Address Types</a>
+
+      <a href="/ipv4-vs-ipv6/">IPv4 vs IPv6</a>
+
+      <a href="/what-is-a-vpn/">What Is a VPN?</a>
+
+      <a href="/it/router/192.168.1.1/">192.168.1.1 Login</a>
+
+      <a href="/it/router/192.168.0.1/">192.168.0.1 Login</a>
+
+    </div>
+
+    <div class="m-sec">
+
+      <div class="m-lbl">Language</div>
+
+      <div id="mLangs"></div>
+
+    </div>
+
+  </div>
+
+  <div class="m-foot">
+
+    
+
+    <span>Dark Mode</span>
+
+  </div>
+
+</nav>
+
+<header class="page-header">
+
+<h1>Verifica IP Blacklist</h1>
+
+<p>Verificate se un indirizzo IP è inserito nelle principali liste nere di spam e nelle liste nere basate su DNS. Proteggete la reputazione della vostra e-mail e del vostro server all'istante.</p>
+
+</header>
+
+<article class="article-body">
+
+<section aria-label="IP Blacklist Definition" class="snippet-section">
+
+<h2>Che cos'è un controllo della lista nera IP?</h2>
+
+<p>Un controllo della lista nera IP indica se un indirizzo IP o un dominio è presente nelle liste di blocco di spam e abusi più comuni. L'inserimento nella lista
+
+    può causare errori di consegna delle e-mail, sfide CAPTCHA o richieste rifiutate. Il controllo della reputazione aiuta a diagnosticare
+
+    problemi e decidere se rimediare, eliminare dalla lista o cambiare l'infrastruttura.</p>
+
+<div aria-label="How to use IP Blacklist Checker" class="howto">
+
+<h3 style="text-align:center;margin:1rem 0 .25rem 0;color:var(--text-primary,#1e293b)">Come utilizzare questo IP Blacklist Checker</h3>
+
+<ol>
+
+<li>Inserire un indirizzo IP o un dominio.</li>
+
+<li>Fare clic su <strong>Controlla lista nera</strong>.</li>
+
+<li>Verificare se l'obiettivo è elencato e quali database lo riportano.</li>
+
+</ol>
+
+</div>
+
+</section>
+
+<div class="blacklist-tool">
+
+<input id="blacklistIP" placeholder="Inserisci IP o dominio, es. 8.8.8.8 o example.com" type="text"/>
+
+<button onclick="lookupBlacklist()" type="button">Controlla lista nera</button>
+
+</div>
+
+<div class="blacklist-results" id="blacklistResults"></div>
+
+<dl aria-hidden="true" class="ip-semantic">
+
+<dt>Query</dt><dd id="dl-query"></dd>
+
+<dt>Query Type</dt><dd id="dl-qtype"></dd>
+
+<dt>Summary</dt><dd id="dl-summary"></dd>
+
+</dl>
+
+<section class="article-section">
+
+<h2>Che cos'è una lista nera IP?</h2>
+
+<p>Una lista nera IP (chiamata anche blocklist o DNSBL) è un database in tempo reale di indirizzi IP segnalati per l'invio di spam, l'hosting di malware o l'esecuzione di attività dannose. I server di posta elettronica, i firewall e i sistemi di sicurezza interrogano automaticamente questi elenchi per bloccare il traffico proveniente da fonti note come dannose. Se il vostro IP compare in una lista nera, le vostre e-mail potrebbero essere rifiutate e il traffico del vostro sito web potrebbe essere filtrato.</p>
+
+<h3>Come verificare se il vostro IP è nella blacklist</h3>
+
+<p>Inserite il vostro indirizzo IP nel checker qui sopra. Lo strumento interroga contemporaneamente i più importanti database di blacklist e mostra il risultato per ciascuno di essi. Un risultato pulito significa che il vostro IP non è presente nella lista. Un risultato contrassegnato mostra quali database hanno inserito il vostro IP, in modo che possiate avviare il processo di cancellazione.</p>
+
+<h3>Come rimuovere il proprio IP da una lista nera</h3>
+
+<p>Per prima cosa identificate e risolvete il problema di fondo, di solito un dispositivo compromesso che invia spam o un server di posta mal configurato che consente l'open relay. Quindi visitate il sito web della blacklist specifica e inviate una richiesta di cancellazione. La maggior parte delle principali blacklist, tra cui Spamhaus, prevede un processo self-service. Dopo la cancellazione, la consegna delle e-mail riprende in genere entro poche ore.</p>
+
+<h3>Perché il mio IP è nella lista nera?</h3>
+
+<p>I motivi più comuni sono: un dispositivo della rete infettato da malware e utilizzato per inviare spam, un server di posta erroneamente configurato come relay aperto, il vostro IP precedentemente assegnato a qualcuno che è stato inserito nella blacklist o il vostro IP inserito in una blacklist di massa di un intervallo di hosting condiviso. Controllate la rete per individuare eventuali dispositivi infetti e rivedete la configurazione del server di posta.</p>
+
+</section>
+
+<section class="faq-section">
+
+<h2>Domande frequenti</h2>
+
+<div class="faq-item"><div class="faq-question">Le blacklist influenzano il traffico web o solo le email?</div><div class="faq-answer">La maggior parte delle blacklist IP influenza principalmente la consegna delle email. Tuttavia, alcuni servizi di sicurezza e firewall bloccano anche il traffico web dagli IP in blacklist. Le blacklist basate su browser come Google Safe Browsing operano separatamente e si concentrano su siti di malware e phishing.</div></div>
+
+<div class="faq-item"><div class="faq-question">Cos'è un punteggio di reputazione IP?</div><div class="faq-answer">Un punteggio di reputazione IP riflette quanto è affidabile un indirizzo IP in base alla sua storia di spam, malware o abusi. I server di posta e i firewall usano questi punteggi per decidere se accettare o bloccare il traffico da un IP.</div></div>
+
+<div class="faq-item"><div class="faq-question">Questo strumento è gratuito?</div><div class="faq-answer">Sì, questo IP Blacklist Checker è completamente gratuito senza registrazione richiesta.</div></div>
+
+<div class="faq-item"><div class="faq-question">Quali database vengono controllati?</div><div class="faq-answer">Questo strumento controlla il tuo IP contro i principali database di blacklist inclusi Spamhaus, Barracuda, SORBS, SpamCop e altri utilizzati dai provider di posta elettronica in tutto il mondo.</div></div>
+
+<div class="faq-item"><div class="faq-question">Un IP di hosting condiviso può influire sulla mia deliverability?</div><div class="faq-answer">Sì. Con l'hosting condiviso, condividi un IP con altri siti web. Se un vicino invia spam, l'IP condiviso può essere messo in blacklist, influenzando la tua deliverability email anche se non hai fatto nulla di sbagliato.</div></div>
+
+<div class="faq-item"><div class="faq-question">Come posso impedire che il mio IP venga di nuovo blacklistato?</div><div class="faq-answer">Proteggi i dispositivi compromessi, smetti di inviare email non richieste, configura i record SPF, DKIM e DMARC e monitora il tuo IP regolarmente. Se gestisci un mail server, assicurati che non sia un relay aperto.</div></div>
+
+<div class="faq-item"><div class="faq-question">Un IP in blacklist può influire sulla consegna delle email?</div><div class="faq-answer">Sì. Se il tuo IP è su una blacklist importante, i server di posta riceventi rifiuteranno o filtreranno le tue email. Controllare e rimuovere il tuo IP dalla lista prontamente è fondamentale per la deliverability.</div></div>
+
+<div class="faq-item"><div class="faq-question">Quanto tempo ci vuole per essere rimossi da una blacklist?</div><div class="faq-answer">I tempi di rimozione variano per provider. Alcuni rimuovono gli IP entro ore da una richiesta, altri impiegano giorni. La rimozione automatica può richiedere 1-7 giorni dopo che l'attività di spam si ferma.</div></div>
+
+</section>
+
+
+
+<section class="tool-related"><h2>Guide correlate</h2><ul><li><a href="/it/what-is-an-ip-blacklist/">What Is an IP Blacklist</a></li><li><a href="/it/why-is-my-ip-blacklisted/">Why Is My IP Blacklisted</a></li><li><a href="/it/how-to-check-if-ip-is-blacklisted/">How to Check If IP Is Blacklisted</a></li><li><a href="/it/how-to-remove-ip-from-blacklist/">How to Remove IP From Blacklist</a></li><li><a href="/it/how-to-prevent-ip-blacklisting/">How to Prevent IP Blacklisting</a></li><li><a href="/it/shared-ip-blacklisting/">Shared IP Blacklisting</a></li><li><a href="/it/ip-reputation-score-explained/">IP Reputation Score Explained</a></li></ul></section>
+<section class="related-network-tools mvp-tool-footer"><h2>Related Network Tools</h2><ul><li><a href="/asn-lookup/">ASN Lookup</a></li><li><a href="/whois-lookup/">WHOIS Lookup</a></li><li><a href="/dns-lookup/">DNS Lookup</a></li><li><a href="/ip-blacklist/">IP Blacklist Checker</a></li><li><a href="/ip-subnet-calculator/">IP Subnet Calculator</a></li><li><a href="/internet-speed-test/">Internet Speed Test</a></li><li><a href="/generate-password/">Password Generator</a></li></ul></section>
+</article>
+
+<div class="store-wrapper">
+
+  <p style="font-size:1rem;font-weight:700;color:var(--text,#1e293b);margin:0 0 1rem;">📱 Also available on mobile & browser</p>
+
+  <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+
+    <a href="https://apps.apple.com/app/myipnow-ip-network-tools/id6763992136" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+
+      App Store
+
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=net.myipnow.app" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76a2 2 0 0 0 2.07-.22l11.65-6.72-2.55-2.55-11.17 9.49Z" fill="#EA4335"/><path d="M20.65 10.04 17.1 8.02l-2.87 2.87 2.87 2.87 3.57-2.05a1.43 1.43 0 0 0 0-2.67Z" fill="#FBBC04"/><path d="M3.18.24A2 2 0 0 0 2 2.08v19.84a2 2 0 0 0 1.18 1.84l.11.06 11.12-11.12v-.26L3.29.18l-.11.06Z" fill="#4285F4"/><path d="m14.41 12-2.55-2.55L3.18.24a2 2 0 0 1 2.07.22l11.65 6.72-2.49 2.49L14.41 12Z" fill="#34A853"/></svg>
+
+      Google Play
+
+    </a>
+
+    <a href="https://chromewebstore.google.com/detail/myipnow-ip-network-tool/ekiopmobgbbdhnogkoljmnnmclmofmpj" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#4285F4"/><circle cx="12" cy="12" r="4" fill="white"/><path d="M12 8h8.5A10 10 0 0 0 3.5 6.5L7.75 14A4 4 0 0 1 12 8Z" fill="#EA4335"/><path d="M12 16a4 4 0 0 1-4.25-2L3.5 6.5A10 10 0 0 0 12 22v-6Z" fill="#34A853"/><path d="M12 16a4 4 0 0 0 4.25-2L20.5 6.5A10 10 0 0 1 12 22v-6Z" fill="#FBBC05"/></svg>
+
+      Chrome
+
+    </a>
+
+    <a href="https://addons.mozilla.org/en-US/firefox/addon/myipnow-ip-network-tools/" target="_blank" rel="noopener" class="store-btn">
+
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Z" fill="#FF6611"/><path d="M12 4c1.8 0 3.5.5 4.9 1.4-1.1-.3-2.3-.2-3.4.3-2.1.9-3.4 3-3.2 5.3.1 1.5.9 2.8 2 3.7-1.8-.2-3.4-1.3-4.2-3C7.2 9.8 8 7 10 5.5 10.6 4.6 11.3 4 12 4Z" fill="#FF9500"/><path d="M17 6.5c.8 1 1.4 2.3 1.5 3.7.2 2.8-1.5 5.4-4.1 6.4-1.3.5-2.7.5-4 .1 1.2.8 2.7 1.1 4.2.8 3-.6 5.1-3.3 4.9-6.4-.1-1.8-.9-3.4-2.1-4.6H17Z" fill="#FFCC00"/></svg>
+
+      Firefox
+
+    </a>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+
+<ul class="footer-nav">
+
+<li><a href="https://myipnow.net/about/">About</a></li>
+
+<li><a href="https://myipnow.net/contact/">Contact</a></li>
+
+<li><a href="https://myipnow.net/privacy-policy/">Privacy Policy</a></li>
+
+<li><a href="https://myipnow.net/terms-of-use/">Terms of Use</a></li>
+
+<li><a href="https://myipnow.net/affiliate-disclosure/">Affiliate Disclosure</a></li>
+
+</ul>
+
+<div class="footer-copyright">&copy; 2026 MyIPNow. All Rights Reserved.</div>
+
+</footer>
+
+</div><!-- /container -->
+
+<script>
+
+function __setOutText(id,value){var el=document.getElementById('dl-'+id);if(el) el.textContent=(value==null)?'':String(value);}
+
+function lookupBlacklist(){
+
+  var ip = document.getElementById('blacklistIP').value.trim();
+
+  var resultsEl = document.getElementById('blacklistResults');
+
+  if(!ip){ resultsEl.innerHTML = '<p style="color:#ef4444;">Please enter an IP address or domain.</p>'; return; }
+
+  var isIPv4 = /^(\d{1,3}\.){3}\d{1,3}$/.test(ip);
+
+  var isIPv6 = ip.indexOf(':') !== -1;
+
+  var isDomain = !isIPv4 && !isIPv6;
+
+  var qtype = isIPv6 ? 'IPv6' : (isIPv4 ? 'IPv4' : 'Domain');
+
+  __setOutText('query', ip);
+
+  __setOutText('qtype', qtype);
+
+  function reverseIP(ip){ return ip.split('.').reverse().join('.'); }
+
+  var LISTS = [
+
+    {name:'Spamhaus ZEN',        zone:'zen.spamhaus.org',                url:'https://check.spamhaus.org/'},
+
+    {name:'Spamhaus SBL',        zone:'sbl.spamhaus.org',                url:'https://check.spamhaus.org/'},
+
+    {name:'Spamhaus XBL',        zone:'xbl.spamhaus.org',                url:'https://check.spamhaus.org/'},
+
+    {name:'Spamhaus PBL',        zone:'pbl.spamhaus.org',                url:'https://check.spamhaus.org/'},
+
+    {name:'Spamhaus DBL',        zone:'dbl.spamhaus.org',                url:'https://check.spamhaus.org/'},
+
+    {name:'Barracuda',           zone:'b.barracudacentral.org',           url:'https://www.barracudacentral.org/lookups'},
+
+    {name:'SpamCop',             zone:'bl.spamcop.net',                   url:'https://www.spamcop.net/bl.shtml'},
+
+    {name:'SORBS SPAM',          zone:'spam.dnsbl.sorbs.net',             url:'https://www.sorbs.net/'},
+
+    {name:'SORBS HTTP',          zone:'http.dnsbl.sorbs.net',             url:'https://www.sorbs.net/'},
+
+    {name:'SORBS SOCKS',         zone:'socks.dnsbl.sorbs.net',            url:'https://www.sorbs.net/'},
+
+    {name:'SORBS MISC',          zone:'misc.dnsbl.sorbs.net',             url:'https://www.sorbs.net/'},
+
+    {name:'SORBS SMTP',          zone:'smtp.dnsbl.sorbs.net',             url:'https://www.sorbs.net/'},
+
+    {name:'SORBS NEW',           zone:'new.spam.dnsbl.sorbs.net',         url:'https://www.sorbs.net/'},
+
+    {name:'UCEPROTECT L1',       zone:'dnsbl-1.uceprotect.net',           url:'https://www.uceprotect.net/'},
+
+    {name:'UCEPROTECT L2',       zone:'dnsbl-2.uceprotect.net',           url:'https://www.uceprotect.net/'},
+
+    {name:'UCEPROTECT L3',       zone:'dnsbl-3.uceprotect.net',           url:'https://www.uceprotect.net/'},
+
+    {name:'PSBL',                zone:'psbl.surriel.com',                 url:'http://psbl.org/'},
+
+    {name:'RATS Spam',           zone:'spam.spamrats.com',                url:'http://www.spamrats.com/'},
+
+    {name:'RATS NoPtr',          zone:'noptr.spamrats.com',               url:'http://www.spamrats.com/'},
+
+    {name:'RATS Auth',           zone:'auth.spamrats.com',                url:'http://www.spamrats.com/'},
+
+    {name:'Mailspike Z',         zone:'z.mailspike.net',                  url:'https://www.mailspike.net/'},
+
+    {name:'Mailspike BL',        zone:'bl.mailspike.net',                 url:'https://www.mailspike.net/'},
+
+    {name:'Mailspike REP',       zone:'rep.mailspike.net',                url:'https://www.mailspike.net/'},
+
+    {name:'MX Toolbox',          zone:'dnsbl.mxtoolbox.com',              url:'https://mxtoolbox.com/blacklists.aspx'},
+
+    {name:'CBL Abuseat',         zone:'cbl.abuseat.org',                  url:'https://www.abuseat.org/'},
+
+    {name:'DroneBlList',         zone:'dnsbl.dronebl.org',                url:'https://dronebl.org/'},
+
+    {name:'EFnet RBL',           zone:'rbl.efnetrbl.org',                 url:'http://rbl.efnetrbl.org/'},
+
+    {name:'S5H',                 zone:'all.s5h.net',                      url:'http://www.s5h.net/'},
+
+    {name:'WPBL',                zone:'db.wpbl.info',                     url:'http://www.wpbl.info/'},
+
+    {name:'SpamCannibal',        zone:'bl.spamcannibal.org',              url:'http://www.spamcannibal.org/'},
+
+    {name:'Lashback UBL',        zone:'ubl.unsubscore.com',               url:'http://www.lashback.com/'},
+
+    {name:'Truncate',            zone:'truncate.gbudb.net',               url:'https://www.gbudb.com/truncate/'},
+
+    {name:'NordSpam',            zone:'combined.njabl.org',               url:'http://www.njabl.org/'},
+
+    {name:'Spamgrouper',         zone:'spamgrouper.to',                   url:'https://www.spamgrouper.to/'},
+
+    {name:'Abusix Mail',         zone:'combined.mail.abusix.zone',        url:'https://abusix.com/'},
+
+    {name:'Abusix Black',        zone:'black.mail.abusix.zone',           url:'https://abusix.com/'},
+
+    {name:'Abusix Exploit',      zone:'exploit.mail.abusix.zone',         url:'https://abusix.com/'},
+
+    {name:'Sectoor Exitnodes',   zone:'tor.dnsbl.sectoor.de',             url:'http://www.sectoor.de/tor.php'},
+
+    {name:'DAN TOR',             zone:'tor.dan.me.uk',                    url:'https://www.dan.me.uk/torlist/'},
+
+    {name:'Spamhausp CSS',       zone:'css.spamhaus.org',                 url:'https://check.spamhaus.org/'},
+
+    {name:'INPS',                zone:'rbl.inps.de',                      url:'http://www.inps.de/'},
+
+    {name:'BACKSCATTERER',       zone:'ips.backscatterer.org',            url:'https://www.backscatterer.org/'},
+
+    {name:'KEMPTBL',             zone:'mail-abuse.blacklist.jippg.org',   url:'http://jippg.org/'},
+
+    {name:'BLOCKLIST DE',        zone:'bl.blocklist.de',                  url:'https://www.blocklist.de/'},
+
+    {name:'Swinog',              zone:'spamrbl.imp.ch',                   url:'https://antispam.imp.ch/'},
+
+    {name:'Spamhaus HBL',        zone:'hbl.spamhaus.org',                 url:'https://check.spamhaus.org/'},
+
+    {name:'NIXSPAM',             zone:'ix.dnsbl.manitu.net',              url:'https://www.nixspam.net/'},
+
+    {name:'HOSTKARMA Black',     zone:'hostkarma.junkemailfilter.com',    url:'https://junkemailfilter.com/'},
+
+    {name:'MSRBL Spam',          zone:'spam.msrbl.com',                   url:'https://www.msrbl.com/'},
+
+    {name:'MSRBL Images',        zone:'images.msrbl.com',                 url:'https://www.msrbl.com/'},
+
+    {name:'TORUM RBL',           zone:'rbl2.torum.com',                   url:'https://torum.com/'},
+
+    {name:'Spamlab',             zone:'spamlab.mailspike.net',            url:'https://www.mailspike.net/'},
+
+    {name:'SORBS DUL',           zone:'dul.dnsbl.sorbs.net',              url:'https://www.sorbs.net/'},
+
+    {name:'SORBS ZOMBIE',        zone:'zombie.dnsbl.sorbs.net',           url:'https://www.sorbs.net/'},
+
+    {name:'SORBS Escalations',   zone:'escalations.dnsbl.sorbs.net',      url:'https://www.sorbs.net/'},
+
+    {name:'AHBL',                zone:'dnsbl.ahbl.org',                   url:'http://www.ahbl.org/'},
+
+    {name:'RSBL',                zone:'rsbl.aupads.org',                  url:'http://rsbl.aupads.org/'},
+
+    {name:'ANTISPAM URIBL',      zone:'multi.uribl.com',                  url:'https://uribl.com/'},
+
+    {name:'SURBL',               zone:'multi.surbl.org',                  url:'https://www.surbl.org/'},
+
+    {name:'IMP Spam',            zone:'spamrbl.imp.ch',                   url:'https://antispam.imp.ch/'},
+
+    {name:'SPAMHAUS DROP',       zone:'drop.spamhaus.org',                url:'https://check.spamhaus.org/'},
+
+    {name:'DRMX',                zone:'drmx.arleil.fr',                   url:'https://arleil.fr/'},
+
+    {name:'Spamhaus BCK',        zone:'sbl-xbl.spamhaus.org',             url:'https://check.spamhaus.org/'},
+
+    {name:'DNSWL Low',           zone:'list.dnswl.org',                   url:'https://www.dnswl.org/'},
+
+    {name:'Interserver',         zone:'rbl.interserver.net',              url:'https://rbl.interserver.net/'},
+
+    {name:'ASPEWS L2',           zone:'l2.apews.org',                     url:'http://www.apews.org/'},
+
+    {name:'ICMFILTER',           zone:'spam.icmfilter.net',               url:'https://icmfilter.net/'},
+
+    {name:'SPFBL',               zone:'dnsbl.spfbl.net',                  url:'https://spfbl.net/'},
+
+    {name:'FABELSOURCES',        zone:'rbl.fabelsources.net',             url:'https://fabelsources.net/'},
+
+    {name:'GREENVIEW',           zone:'rbl.greenviewdata.com',            url:'https://greenviewdata.com/'},
+
+    {name:'METUNET',             zone:'blackholes.mail-abuse.org',        url:'https://mail-abuse.com/'},
+
+    {name:'WPBL',                zone:'db.wpbl.info',                     url:'http://www.wpbl.info/'},
+
+    {name:'ANTISPAM',            zone:'dnsbl.anticaptcha.net',            url:'https://anticaptcha.net/'},
+
+    {name:'SWINOG RBL',          zone:'rbl.swinog.ch',                    url:'https://www.swinog.ch/'},
+
+    {name:'NiX Spam',            zone:'dnsbl.nixspam.net',                url:'https://www.nixspam.net/'},
+
+    {name:'SORBS DUHL',          zone:'duhl.dnsbl.sorbs.net',             url:'https://www.sorbs.net/'},
+
+    {name:'SPAMBAG',             zone:'out.meulie.net',                   url:'https://meulie.net/'},
+
+    {name:'Spam Eating Monkey',  zone:'netblock.pedantic.org',            url:'http://www.pedantic.org/'},
+
+    {name:'RATS DYNA',           zone:'dyna.spamrats.com',                url:'http://www.spamrats.com/'},
+
+  ];
+
+  resultsEl.innerHTML = '<div class="dns-summary">Checking <strong>' + ip + '</strong> against ' + LISTS.length + ' blacklists...</div>';
+
+  var query = isDomain ? ip : reverseIP(ip);
+
+  var results = [];
+
+  var done = 0;
+
+  var grid = document.createElement('div');
+
+  grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.5rem;margin-top:0.5rem;';
+
+  grid.id = 'bl-grid';
+
+  resultsEl.appendChild(grid);
+
+  LISTS.forEach(function(list, i){
+
+    var row = document.createElement('div');
+
+    row.id = 'bl-row-' + i;
+
+    row.style.cssText = 'background:#f8fafc;border-radius:8px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;font-size:0.88rem;';
+
+    row.innerHTML = '<span style="font-weight:600;">' + list.name + '</span><span style="color:#334155;">Checking...</span>';
+
+    grid.appendChild(row);
+
+    var lookup = query + '.' + list.zone;
+
+    fetch('https://dns.google/resolve?name=' + encodeURIComponent(lookup) + '&type=A')
+
+    .then(function(r){ return r.json(); })
+
+    .then(function(data){
+
+      var listed = data.Answer && data.Answer.length > 0;
+
+      results.push({name: list.name, listed: listed});
+
+      var r = document.getElementById('bl-row-' + i);
+
+      if(listed){
+
+        r.style.background = '#fef2f2';
+
+        r.style.borderLeft = '3px solid #ef4444';
+
+        r.innerHTML = '<a href="' + list.url + '" target="_blank" style="font-weight:700;color:#ef4444;text-decoration:none;">' + list.name + '</a>'
+
+          + '<span style="color:#ef4444;font-weight:700;">&#9888; Listed</span>';
+
+      } else {
+
+        r.style.background = '#f0fdf4';
+
+        r.style.borderLeft = '3px solid #10b981';
+
+        r.innerHTML = '<span style="font-weight:600;color:#1e293b;">' + list.name + '</span>'
+
+          + '<span style="color:#10b981;font-weight:700;">&#10003; Clean</span>';
+
+      }
+
+    })
+
+    .catch(function(){
+
+      results.push({name: list.name, listed: false});
+
+      var r = document.getElementById('bl-row-' + i);
+
+      r.innerHTML = '<span style="font-weight:600;color:#1e293b;">' + list.name + '</span>'
+
+        + '<span style="color:#334155;">Unknown</span>';
+
+    })
+
+    .finally(function(){
+
+      done++;
+
+      if(done === LISTS.length){
+
+        var listed = results.filter(function(r){ return r.listed; }).length;
+
+        __setOutText('summary', listed > 0 ? 'Listed on ' + listed + ' blacklists' : 'Clean');
+
+        var sumDiv = resultsEl.querySelector('.dns-summary');
+
+        if(sumDiv){
+
+          sumDiv.innerHTML = listed > 0
+
+            ? '<strong style="color:#ef4444;">&#9888; ' + ip + ' is listed on ' + listed + ' blacklist' + (listed>1?'s':'') + '!</strong>'
+
+            : '<strong style="color:#10b981;">&#10003; ' + ip + ' is clean - not listed on any blacklist.</strong>';
+
+        }
+
+      }
+
+    });
+
+  });
+
+}
+
+</script>
+
+<script>
+
+(function(){
+
+  // Theme
+
+  
+
+  // Mobile drawer
+
+  var bur=document.getElementById('burgerBtn'),
+
+      dr=document.getElementById('mDr'),
+
+      ov=document.getElementById('mOv'),
+
+      cl=document.getElementById('mCl');
+
+  function mOpen(){dr.classList.add('open');ov.classList.add('open');bur.classList.add('open');document.body.style.overflow='hidden'}
+
+  function mClose(){dr.classList.remove('open');ov.classList.remove('open');bur.classList.remove('open');document.body.style.overflow=''}
+
+  bur.onclick=function(){dr.classList.contains('open')?mClose():mOpen()};
+
+  ov.onclick=mClose;cl.onclick=mClose;
+
+  // Languages
+
+  var LL=[{c:'en',l:'English',b:'/ip-blacklist/'},{c:'de',l:'Deutsch',b:'/de/ip-blacklist/'},{c:'es',l:'Español',b:'/es/ip-blacklist/'},{c:'fr',l:'Français',b:'/fr/ip-blacklist/'},{c:'it',l:'Italiano',b:'/it/ip-blacklist/'},{c:'pt',l:'Português',b:'/pt/ip-blacklist/'},{c:'pl',l:'Polski',b:'/pl/ip-blacklist/'},{c:'nl',l:'Nederlands',b:'/nl/ip-blacklist/'}];
+
+  var cur=(function(){var x=location.pathname.replace(/^\//,'').split('/');return['de','es','fr','it','pt','pl','nl'].indexOf(x[0])>-1?x[0]:'en'})();
+
+  function fill(el){LL.forEach(function(L){var a=document.createElement('a');a.href=L.b;a.textContent=L.l;if(L.c===cur){a.style.fontWeight='700';a.style.color='var(--accent)'}el.appendChild(a)})}
+
+  fill(document.getElementById('langDrop'));
+
+  fill(document.getElementById('mLangs'));
+
+})();
+
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" data-cf-beacon='{"token":"a8ad031057a743ec9c2616bda7085f3b"}' crossorigin="anonymous"></script>
+
+<script id="blacklist-tool-js">
+
+(function(){
+
+  window.checkBlacklist=function(){
+
+    var input=document.getElementById('blInput')||document.getElementById('ipInput')||document.getElementById('blacklistInput');
+
+    var results=document.getElementById('blResults')||document.getElementById('blacklistResults');
+
+    if(!input||!results){console.error('Blacklist: input/results not found');return;}
+
+    var ip=input.value.trim();
+
+    if(!ip){results.innerHTML='<div class="bl-summary">Please enter an IP address.</div>';return;}
+
+    results.innerHTML='<div class="bl-summary">Checking <strong>'+ip+'</strong> against blacklists...</div>';
+
+    fetch('/blacklist-check.php?ip='+encodeURIComponent(ip))
+
+      .then(function(r){return r.json();})
+
+      .then(function(data){
+
+        var listed=data.filter(function(d){return d.listed;});
+
+        var html='<div class="bl-summary">'+ip+': <strong>'+(listed.length?listed.length+' blacklist'+(listed.length>1?'s':''):'Clean')+'</strong> ('+data.length+' checked)</div>';
+
+        data.forEach(function(d){
+
+          html+='<div class="bl-row" style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border,#e2e8f0);">'
+
+            +'<span style="width:12px;height:12px;border-radius:50%;background:'+(d.listed?'#ef4444':'#22c55e')+';flex-shrink:0;"></span>'
+
+            +'<span style="flex:1;font-size:0.9rem;">'+d.name+'</span>'
+
+            +'<span style="font-size:0.8rem;color:'+(d.listed?'#ef4444':'#64748b')+'">'+(d.listed?'Listed':'Clean')+'</span>'
+
+            +'</div>';
+
+        });
+
+        results.innerHTML=html;
+
+      })
+
+      .catch(function(err){results.innerHTML='<div class="bl-summary">Error checking blacklists: '+err.message+'</div>';});
+
+  };
+
+  document.addEventListener('DOMContentLoaded',function(){
+
+    var input=document.getElementById('blInput')||document.getElementById('ipInput')||document.getElementById('blacklistInput');
+
+    if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();checkBlacklist();}});
+
+    var params=new URLSearchParams(window.location.search);
+
+    var q=params.get('ip')||params.get('q')||'';
+
+    if(q&&input){input.value=q;setTimeout(checkBlacklist,400);}
+
+  });
+
+})();
+
+</script>
+
+</body>
