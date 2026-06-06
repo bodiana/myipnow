@@ -552,3 +552,11 @@ body {
 section[id="faq"] {
   margin-top: 3rem !important;
 }
+
+.guide-content a, .guide-section a {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+.guide-content a:hover, .guide-section a:hover {
+  opacity: 0.8;
+}
