@@ -1296,7 +1296,7 @@ body.home .category-nav ul > li:first-child > a {
 
     </a>
 
-    <form class="hdr-search" action="/search.html" method="get">
+    <form class="hdr-search" action="/search/" method="get">
 
       <input type="search" name="q" placeholder="Search..." aria-label="Search">
 
@@ -1476,7 +1476,7 @@ body.home .category-nav ul > li:first-child > a {
 
     <div class="m-sec" style="padding:.75rem 1rem">
 
-      <form class="hdr-search" style="display:flex;max-width:none;width:100%" action="/search.html" method="get">
+      <form class="hdr-search" style="display:flex;max-width:none;width:100%" action="/search/" method="get">
 
         <input type="search" name="q" placeholder="Search..." aria-label="Search">
 
@@ -1869,6 +1869,98 @@ Find out where you are right now. This tool instantly shows your real public IPv
 </div>
 
 </div></section>
+
+<style>
+.tools-grid-section{background:var(--card-bg);padding:2rem;border-radius:var(--border-radius);box-shadow:var(--card-shadow);margin-bottom:2rem;}
+.tools-grid-section h2{text-align:center;color:var(--text-primary);font-size:1.3rem;font-weight:600;margin:0 0 1.5rem 0;}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+@media(max-width:768px){.tools-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.tools-grid{grid-template-columns:1fr;}}
+.tool-card{display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.25rem;background:var(--card,#f8fafc);border:1px solid var(--border,#e2e8f0);border-radius:10px;text-decoration:none;transition:background-color var(--transition-speed),box-shadow var(--transition-speed);}
+.tool-card:hover{background:var(--card-hover,#e2e8f0);box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+.tool-card-icon{font-size:1.4rem;line-height:1;}
+.tool-card-name{font-size:0.95rem;font-weight:600;color:var(--accent-color);}
+.tool-card-desc{font-size:0.82rem;color:var(--text-secondary);line-height:1.4;}
+</style>
+
+<section class="tools-grid-section">
+<h2>All Tools</h2>
+<div class="tools-grid">
+
+<a class="tool-card" href="/dns-lookup/">
+<span class="tool-card-icon">🔍</span>
+<span class="tool-card-name">DNS Lookup</span>
+<span class="tool-card-desc">Query DNS records for any domain</span>
+</a>
+
+<a class="tool-card" href="/whois-lookup/">
+<span class="tool-card-icon">📋</span>
+<span class="tool-card-name">WHOIS Lookup</span>
+<span class="tool-card-desc">Find domain registration and ownership info</span>
+</a>
+
+<a class="tool-card" href="/asn-lookup/">
+<span class="tool-card-icon">🌐</span>
+<span class="tool-card-name">ASN Lookup</span>
+<span class="tool-card-desc">Look up Autonomous System Numbers and routing data</span>
+</a>
+
+<a class="tool-card" href="/ip-blacklist/">
+<span class="tool-card-icon">🚫</span>
+<span class="tool-card-name">IP Blacklist Check</span>
+<span class="tool-card-desc">Check if your IP is on spam blacklists</span>
+</a>
+
+<a class="tool-card" href="/ip-subnet-calculator/">
+<span class="tool-card-icon">🔢</span>
+<span class="tool-card-name">Subnet Calculator</span>
+<span class="tool-card-desc">Calculate CIDR, subnet masks and IP ranges</span>
+</a>
+
+<a class="tool-card" href="/cidr-to-ip-range-calculator/">
+<span class="tool-card-icon">📊</span>
+<span class="tool-card-name">CIDR to IP Range</span>
+<span class="tool-card-desc">Convert CIDR notation to full IP range</span>
+</a>
+
+<a class="tool-card" href="/ip-range-to-cidr-calculator/">
+<span class="tool-card-icon">🔄</span>
+<span class="tool-card-name">IP Range to CIDR</span>
+<span class="tool-card-desc">Convert IP ranges to CIDR blocks</span>
+</a>
+
+<a class="tool-card" href="/ping-test/">
+<span class="tool-card-icon">📡</span>
+<span class="tool-card-name">Ping Test</span>
+<span class="tool-card-desc">Test latency to any host from multiple locations</span>
+</a>
+
+<a class="tool-card" href="/internet-speed-test/">
+<span class="tool-card-icon">⚡</span>
+<span class="tool-card-name">Speed Test</span>
+<span class="tool-card-desc">Check your download and upload speed</span>
+</a>
+
+<a class="tool-card" href="/generate-password/">
+<span class="tool-card-icon">🔑</span>
+<span class="tool-card-name">Password Generator</span>
+<span class="tool-card-desc">Generate strong secure passwords</span>
+</a>
+
+<a class="tool-card" href="/hide-my-ip/">
+<span class="tool-card-icon">🛡️</span>
+<span class="tool-card-name">Hide My IP</span>
+<span class="tool-card-desc">Learn how to hide your IP with a VPN</span>
+</a>
+
+<a class="tool-card" href="/what-is-a-vpn/">
+<span class="tool-card-icon">🔒</span>
+<span class="tool-card-name">What Is a VPN?</span>
+<span class="tool-card-desc">Complete guide to VPNs and online privacy</span>
+</a>
+
+</div>
+</section>
 
 </main>
 
